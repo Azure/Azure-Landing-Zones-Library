@@ -1,0 +1,27 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Deploy-Resource-Diag",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This policy set deploys the configurations of application Azure resources to forward diagnostic logs and metrics to an Azure Log Analytics workspace. See the list of policies of the services that are included",
+    "displayName": "Deploy Diagnostic Settings to Azure Services",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Diagnostics-LogAnalytics",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Diagnostic settings {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "parameters": {
+      "logAnalytics": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder/providers/Microsoft.OperationalInsights/workspaces/placeholder"
+      }
+    },
+    "notScopes": []
+  }
+}

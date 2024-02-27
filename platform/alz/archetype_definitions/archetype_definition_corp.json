@@ -1,0 +1,13 @@
+{
+  "name": "corp",
+  "policy_assignments": [
+    "Audit-PeDnsZones",
+    "Deny-HybridNetworking",
+    "Deny-Public-Endpoints",
+    "Deny-Public-IP-On-NIC",
+    "Deploy-Private-DNS-Zones"
+  ],
+  "policy_definitions": [],
+  "policy_set_definitions": [],
+  "role_definitions": []
+}

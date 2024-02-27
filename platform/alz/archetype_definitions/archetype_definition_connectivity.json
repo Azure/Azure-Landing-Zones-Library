@@ -1,0 +1,9 @@
+{
+  "name": "connectivity",
+  "policy_assignments": [
+    "Enable-DDoS-VNET"
+  ],
+  "policy_definitions": [],
+  "policy_set_definitions": [],
+  "role_definitions": []
+}

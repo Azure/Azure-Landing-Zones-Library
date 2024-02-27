@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "policy_assignments": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "policy_definitions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "policy_set_definitions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "role_definitions": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "name",
+    "policy_assignments",
+    "policy_definitions",
+    "policy_set_definitions",
+    "role_definitions"
+  ],
+  "type": "object"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "decommissioned",
+  "policy_assignments": [
+    "Enforce-ALZ-Decomm"
+  ],
+  "policy_definitions": [],
+  "policy_set_definitions": [],
+  "role_definitions": []
+}
