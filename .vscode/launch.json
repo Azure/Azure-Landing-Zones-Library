@@ -1,0 +1,22 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "PowerShell: Launch LibraryUpdatePolicyAssignments",
+      "type": "PowerShell",
+      "request": "launch",
+      "script": "${workspaceFolder}/.github/scripts/Invoke-LibraryUpdatePolicyAssignments.ps1",
+      "args": [
+        "-AlzToolsPath",
+        "./.temp/Enterprise-Scale/src/Alz.Tools",
+        "-TargetPath",
+        "./platform/alz/",
+        "-SourcePath",
+        "./.temp/Enterprise-Scale/"
+      ]
+    }
+  ]
+}

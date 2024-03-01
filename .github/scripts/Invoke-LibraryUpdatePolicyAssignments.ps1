@@ -29,12 +29,26 @@ if ($IsWindows) {
 
 $parser = "$parserPath/$parserExe"
 
+$os = ""
+if ($IsWindows) {
+  $os = "windows"
+}
+if ($IsLinux) {
+  $os = "linux"
+}
+if ($IsMacOS) {
+  $os = "darwin"
+}
+
 if (!(Test-Path $parser)) {
   Write-Information "Downloading Template Parser." -InformationAction Continue
   New-Item -ItemType Directory -Path $parserPath -Force | Out-Null
   Invoke-WebRequest "$ParserToolUrl/$parserExe" -OutFile $parser
-  if ($IsLinux) {
-    chmod +x $parser
+  if ($os -ne "windows") {
+    $isExecutable = $(test -x "$parser"; 0 -eq $LASTEXITCODE)
+    if (!($isExecutable)) {
+      chmod +x $parser
+    }
   }
 }
 
