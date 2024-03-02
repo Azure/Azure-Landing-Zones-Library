@@ -31,9 +31,13 @@ $parser = "$parserPath/$parserExe"
 
 if (!(Test-Path $parser)) {
   Write-Information "Downloading Template Parser." -InformationAction Continue
+  New-Item -ItemType Directory -Path $parserPath -Force | Out-Null
   Invoke-WebRequest "$ParserToolUrl/$parserExe" -OutFile $parser
-  if ($IsLinux) {
-    chmod +x $parser
+  if (! $IsWindows) {
+    $isExecutable = $(test -x "$parser"; 0 -eq $LASTEXITCODE)
+    if (!($isExecutable)) {
+      chmod +x $parser
+    }
   }
 }
 
@@ -106,7 +110,7 @@ foreach ($managementGroup in $policyAssignments.Keys) {
   }
 }
 
-$policyAssignmentTargetPath = "$TargetPath/lib/archetype_definitions"
+$policyAssignmentTargetPath = "$TargetPath/archetype_definitions"
 
 foreach ($managementGroup in $finalPolicyAssignments.Keys) {
   $archetypeFilePath = "$policyAssignmentTargetPath/archetype_definition_$managementGroup.json"
