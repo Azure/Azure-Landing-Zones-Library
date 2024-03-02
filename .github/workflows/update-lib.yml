@@ -1,0 +1,133 @@
+---
+name: update lib
+
+# yamllint disable-line rule:truthy
+on:
+  schedule:
+    - cron: "0 8 * * 1-5"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  remote_repository: "Azure/Enterprise-Scale"
+  branch_name: "update-lib"
+  pr_title: "feat: update library (automated)"
+  pr_body:
+    "This is an automated 'pull_request' containing updates to the library templates stored in 'lib'.\n
+    Please review the 'files changed' tab to review changes."
+
+jobs:
+  update-lib:
+    name: update
+    environment: libupdate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Local repository checkout
+        uses: actions/checkout@v4
+        with:
+          path: ${{ github.repository }}
+          fetch-depth: 0
+
+      - name: Remote repository checkout
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.remote_repository }}
+          path: ${{ env.remote_repository }}
+          ref: main
+
+      - uses: tibdex/github-app-token@v2
+        id: generate-token
+        with:
+          app_id: ${{ secrets.TOKEN_APP_ID }}
+          private_key: ${{ secrets.TOKEN_APP_PRIVATE_KEY }}
+
+      - name: Configure local git
+        run: |
+          git config user.name github-actions
+          git config user.email action@github.com
+        working-directory: ${{ github.repository }}
+
+      - name: Create and checkout branch
+        run: |
+          BRANCH_URL="repos/${{ github.repository }}/branches"
+          JQ_FILTER=".[] | select(.name == \"${{ env.branch_name }}\").name"
+          CHECK_BRANCH_ORIGIN=$(gh api $BRANCH_URL | jq -r "$JQ_FILTER")
+          if [ -z "$CHECK_BRANCH_ORIGIN" ]
+          then
+            echo "Checkout local branch (create new, no origin)..."
+            git checkout -b ${{ env.branch_name }}
+          else
+            echo "Checkout local branch (create new, track from origin)..."
+            git checkout -b ${{ env.branch_name }} --track origin/${{ env.branch_name }}
+          fi
+        working-directory: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+
+      - name: Update library templates
+        uses: azure/powershell@v1
+        with:
+          inlineScript: |
+            Write-Information "==> Running policy definitions script..." -InformationAction Continue
+            ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
+              -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}" `
+              -Reset
+
+            Write-Information "==> Running policy assignments script..." -InformationAction Continue
+            ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignments.ps1 `
+              -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+
+            Write-Information "==> Running archetypes script..." -InformationAction Continue
+            ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
+              -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+          azPSVersion: "latest"
+
+      - name: Check for changes
+        id: git_status
+        run: |
+          mapfile -t "CHECK_GIT_STATUS" < <(git status -s)
+          printf "%s\n" "${CHECK_GIT_STATUS[@]}"
+          echo "changes=${#CHECK_GIT_STATUS[@]}" >> "$GITHUB_OUTPUT"
+        working-directory: ${{ github.repository }}
+
+      - name: Add files, commit and push
+        if: steps.git_status.outputs.changes > 0
+        run: |
+          echo "Pushing changes to origin..."
+          git add lib
+          git commit -m '${{ env.pr_title }}'
+          git push origin ${{ env.branch_name }}
+        working-directory: ${{ github.repository }}
+
+      - name: Create pull request
+        if: steps.git_status.outputs.changes > 0
+        run: |
+          HEAD_LABEL="${{ github.repository_owner }}:${{ env.branch_name }}"
+          BASE_LABEL="${{ github.repository_owner }}:$(echo '${{ github.ref }}' | sed 's:refs/heads/::')"
+          PULL_REQUEST_URL="repos/${{ github.repository }}/pulls"
+          JQ_FILTER=".[] | select(.head.label == \"$HEAD_LABEL\") | select(.base.label == \"$BASE_LABEL\") | .url"
+          CHECK_PULL_REQUEST_URL=$(gh api $PULL_REQUEST_URL | jq -r "$JQ_FILTER")
+          if [ -z "$CHECK_PULL_REQUEST_URL" ]
+          then
+            CHECK_PULL_REQUEST_URL=$(gh pr create \
+            --title "${{ env.pr_title }}" \
+            --body "${{ env.pr_body }}" \
+            --base "${{ github.ref }}" \
+            --head "${{ env.branch_name }}" \
+            --draft)
+            echo "Created new PR: $CHECK_PULL_REQUEST_URL"
+          else
+            echo "Existing PR found: $CHECK_PULL_REQUEST_URL"
+          fi
+        working-directory: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}

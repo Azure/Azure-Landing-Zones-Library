@@ -1,0 +1,84 @@
+---
+name: Go test
+
+on:
+  push:
+    paths-ignore:
+      - ".github/**"
+      - ".vscode/**"
+    branches:
+      - main
+  pull_request_target:
+    branches:
+      - main
+  workflow_dispatch:
+  merge_group:
+    types: [checks_requested]
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  test:
+    environment: test
+    if: |
+      (
+        github.event.pull_request.head.repo.full_name == 'Azure/alzlib'
+      )
+      ||
+      (
+        github.event.pull_request.head.repo.full_name != 'Azure/alzlib'
+        &&
+        contains(github.event.pull_request.labels.*.name, 'PR: Safe to test :test_tube:')
+      )
+      ||
+      (
+        github.event_name == 'workflow_dispatch'
+      )
+      ||
+      (
+        github.event_name == 'merge_group'
+      )
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+    - uses: actions/checkout@v4
+      name: checkout
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        persist-credentials: false
+
+    - uses: actions/setup-go@v5
+      name: setup go
+      with:
+        go-version-file: 'go.mod'
+        cache: true
+
+    - uses: azure/login@v1
+      name: Azure login
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        allow-no-subscriptions: true
+
+    - run: make test
+      name: make test
+      # Tests are run on Linux using make testcover
+      if: matrix.os != 'ubuntu-latest'
+
+    - run: make testrace
+      name: make testrace
+      if: matrix.os == 'ubuntu-latest'
+
+    - run: make testcover
+      name: make testcover
+      if: matrix.os == 'ubuntu-latest'
+
+    - uses: codecov/codecov-action@v4
+      if: matrix.os == 'ubuntu-latest' && github.event_name != 'merge_group'
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.out
