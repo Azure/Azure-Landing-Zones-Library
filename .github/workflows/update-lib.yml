@@ -1,5 +1,5 @@
 ---
-name: update lib
+name: Update alz lib
 
 # yamllint disable-line rule:truthy
 on:
@@ -74,20 +74,20 @@ jobs:
             Write-Information "==> Running policy definitions script..." -InformationAction Continue
             ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
               -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}"/platform/alz `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}" `
               -Reset
 
             Write-Information "==> Running policy assignments script..." -InformationAction Continue
             ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignments.ps1 `
               -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}"/platform/alz `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
 
             Write-Information "==> Running archetypes script..." -InformationAction Continue
             ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
               -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}"/platform/alz `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
           azPSVersion: "latest"
 
