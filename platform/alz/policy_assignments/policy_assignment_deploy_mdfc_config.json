@@ -37,7 +37,7 @@
         "value": "Disabled"
       },
       "vulnerabilityAssessmentProvider": {
-        "value": "default"
+        "value": "mdeTvm"
       },
       "enableAscForSql": {
         "value": "Disabled"

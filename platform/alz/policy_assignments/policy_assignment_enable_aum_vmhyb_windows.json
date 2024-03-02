@@ -1,0 +1,39 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Enable-AUM-VMHyb-Windows",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "\tConfigure auto-assessment (every 24 hours) for OS updates on Azure Arc-enabled servers. You can control the scope of assignment according to machine subscription, resource group, location or tag. Learn more about this for Windows: https://aka.ms/computevm-windowspatchassessmentmode, for Linux: https://aka.ms/computevm-linuxpatchassessmentmode.",
+    "displayName": "Configure periodic checking for missing system updates on azure Arc-enabled servers - Windows",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/bfea026e-043f-4ff4-9d1b-bf301ca7ff46",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Periodic checking of missing updates {enforcementMode} be enabled."
+      }
+    ],
+    "parameters": {
+      "assessmentMode": {
+        "value": "AutomaticByPlatform"
+      },
+      "osType": {
+        "value": "Windows"
+      },
+      "locations": {
+        "value": []
+      },
+      "tagValues": {
+        "value": {}
+      },
+      "tagOperator": {
+        "value": "Any"
+      }
+    },
+    "notScopes": []
+  }
+}

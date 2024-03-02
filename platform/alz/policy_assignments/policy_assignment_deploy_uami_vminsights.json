@@ -1,0 +1,39 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Deploy-UAMI-VMInsights",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "Deploy User Assigned Managed Identity for VM Insights",
+    "displayName": "Deploy User Assigned Managed Identity for VM Insights",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policyDefinitions/Deploy-UserAssignedManagedIdentity-VMInsights",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "User Assigned Identity {enforcementMode} be created for VM Insights."
+      }
+    ],
+    "parameters": {
+      "identityResourceGroup": {
+        "value": "defaultString1"
+      },
+      "userAssignedIdentityName": {
+        "value": "defaultString2"
+      },
+      "builtInIdentityResourceGroupLocation": {
+        "value": "northeurope"
+      },
+      "bringYourOwnUserAssignedManagedIdentity": {
+        "value": true
+      },
+      "effect": {
+        "value": "DeployIfNotExists"
+      }
+    },
+    "notScopes": []
+  }
+}

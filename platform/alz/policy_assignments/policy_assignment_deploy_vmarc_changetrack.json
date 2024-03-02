@@ -1,0 +1,59 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Deploy-vmArc-ChangeTrack",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "Enable ChangeTracking and Inventory for Arc-enabled virtual machines. Takes Data Collection Rule ID as parameter and asks for an option to input applicable locations.",
+    "displayName": "Enable ChangeTracking and Inventory for Arc-enabled virtual machines",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/53448c70-089b-4f52-8f38-89196d7f2de1",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Change Tracking {enforcementMode} be enabled for Arc-enabled Virtual Machines."
+      }
+    ],
+    "parameters": {
+      "dcrResourceId": {
+        "value": "defaultString1"
+      },
+      "listOfApplicableLocations": {
+        "value": [
+          "australiasoutheast",
+          "australiaeast",
+          "brazilsouth",
+          "canadacentral",
+          "centralindia",
+          "centralus",
+          "eastasia",
+          "eastus2euap",
+          "eastus",
+          "eastus2",
+          "francecentral",
+          "japaneast",
+          "koreacentral",
+          "northcentralus",
+          "northeurope",
+          "norwayeast",
+          "southcentralus",
+          "southeastasia",
+          "switzerlandnorth",
+          "uaenorth",
+          "uksouth",
+          "westcentralus",
+          "westeurope",
+          "westus",
+          "westus2"
+        ]
+      },
+      "effect": {
+        "value": "DeployIfNotExists"
+      }
+    },
+    "notScopes": []
+  }
+}
