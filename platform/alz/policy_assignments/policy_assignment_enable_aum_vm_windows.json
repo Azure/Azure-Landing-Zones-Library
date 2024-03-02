@@ -1,0 +1,39 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Enable-AUM-VM-Windows",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "Configure auto-assessment (every 24 hours) for OS updates on native Azure virtual machines. You can control the scope of assignment according to machine subscription, resource group, location or tag. Learn more about this for Windows: https://aka.ms/computevm-windowspatchassessmentmode, for Linux: https://aka.ms/computevm-linuxpatchassessmentmode.",
+    "displayName": "Configure periodic checking for missing system updates on azure virtual machines - Windows",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/59efceea-0c96-497e-a4a1-4eb2290dac15",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Periodic checking of missing updates {enforcementMode} be enabled."
+      }
+    ],
+    "parameters": {
+      "assessmentMode": {
+        "value": "AutomaticByPlatform"
+      },
+      "osType": {
+        "value": "Windows"
+      },
+      "locations": {
+        "value": []
+      },
+      "tagValues": {
+        "value": {}
+      },
+      "tagOperator": {
+        "value": "Any"
+      }
+    },
+    "notScopes": []
+  }
+}

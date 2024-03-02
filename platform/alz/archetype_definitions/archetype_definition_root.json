@@ -1,7 +1,9 @@
 {
   "name": "root",
   "policy_assignments": [
+    "Audit-ResourceRGLocation",
     "Audit-UnusedResources",
+    "Audit-ZoneResiliency",
     "Deny-Classic-Resources",
     "Deny-UnmanagedDisk",
     "Deploy-ASC-Monitoring",
@@ -11,8 +13,6 @@
     "Deploy-MDFC-OssDb",
     "Deploy-MDFC-SqlAtp",
     "Deploy-Resource-Diag",
-    "Deploy-VM-Monitoring",
-    "Deploy-VMSS-Monitoring",
     "Enforce-ACSB"
   ],
   "policy_definitions": [
