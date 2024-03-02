@@ -21,7 +21,7 @@ $ErrorActionPreference = "Stop"
 # module.
 Import-Module $AlzToolsPath -ErrorAction Stop
 
-$parserPath = "$TargetPath/.github/scripts"
+$parserPath = "$TargetPath/.temp/scripts"
 $parserExe = "Template.Parser.Cli"
 if ($IsWindows) {
   $parserExe += ".exe"
