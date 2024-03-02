@@ -7,6 +7,10 @@ on:
     - cron: "0 8 * * 1-5"
   workflow_dispatch: {}
 
+permissions:
+  contents: write
+  pull-requests: write
+
 env:
   remote_repository: "Azure/Enterprise-Scale"
   branch_name: "update-lib"
@@ -18,6 +22,7 @@ env:
 jobs:
   update-lib:
     name: update
+    environment: libupdate
     runs-on: ubuntu-latest
     steps:
       - name: Local repository checkout
