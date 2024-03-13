@@ -10,7 +10,7 @@
   "properties": {
     "description": "Configure auto-assessment (every 24 hours) for OS updates. You can control the scope of assignment according to machine subscription, resource group, location or tag. Learn more about this for Windows: https://aka.ms/computevm-windowspatchassessmentmode, for Linux: https://aka.ms/computevm-linuxpatchassessmentmode.",
     "displayName": "Configure periodic checking for missing system updates on azure virtual machines and Arc-enabled virtual machines.",
-    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/PolicySetDefinitions/Deploy-AUM-CheckUpdates",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policySetDefinitions/Deploy-AUM-CheckUpdates",
     "enforcementMode": "Default",
     "nonComplianceMessages": [
       {
