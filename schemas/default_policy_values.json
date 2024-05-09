@@ -4,25 +4,25 @@
     "defaults": {
       "items": {
         "properties": {
-          "defaultName": {
+          "default_name": {
             "type": "string"
           },
-          "policyAssignments": {
+          "policy_assignments": {
             "items": {
               "properties": {
-                "parameterNames": {
+                "parameter_names": {
                   "items": {
                     "type": "string"
                   },
                   "type": "array"
                 },
-                "policyAssignmentName": {
+                "policy_assignment_name": {
                   "type": "string"
                 }
               },
               "required": [
-                "policyAssignmentName",
-                "parameterNames"
+                "policy_assignment_name",
+                "parameter_names"
               ],
               "type": "object"
             },
@@ -30,8 +30,8 @@
           }
         },
         "required": [
-          "defaultName",
-          "policyAssignments"
+          "default_name",
+          "policy_assignments"
         ],
         "type": "object"
       },
