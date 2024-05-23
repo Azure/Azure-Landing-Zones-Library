@@ -11,7 +11,7 @@
         "value": "Deny"
       }
     },
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deny-Databricks-NoPublicIp",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/Deny-Databricks-NoPublicIp",
     "nonComplianceMessages": [
       {
         "message": "Databricks workspace {enforcementMode} use the noPublicIp feature to host Databricks clusters."

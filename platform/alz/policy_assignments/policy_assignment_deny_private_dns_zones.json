@@ -7,7 +7,7 @@
     "displayName": "Deny the creation of private DNS",
     "notScopes": [],
     "parameters": {},
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deny-Private-DNS-Zones",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/Deny-Private-DNS-Zones",
     "nonComplianceMessages": [
       {
         "message": "Private DNS {enforcementMode} be created centrally in the connectivity subscription."

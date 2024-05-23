@@ -58,7 +58,7 @@
     "policyDefinitions": [
       {
         "policyDefinitionReferenceId": "AuditDisksUnusedResourcesCostOptimization",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Audit-Disks-UnusedResourcesCostOptimization",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/Audit-Disks-UnusedResourcesCostOptimization",
         "parameters": {
           "effect": {
             "value": "[parameters('effectDisks')]"
@@ -68,7 +68,7 @@
       },
       {
         "policyDefinitionReferenceId": "AuditPublicIpAddressesUnusedResourcesCostOptimization",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Audit-PublicIpAddresses-UnusedResourcesCostOptimization",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/Audit-PublicIpAddresses-UnusedResourcesCostOptimization",
         "parameters": {
           "effect": {
             "value": "[parameters('effectPublicIpAddresses')]"
@@ -78,7 +78,7 @@
       },
       {
         "policyDefinitionReferenceId": "AuditServerFarmsUnusedResourcesCostOptimization",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Audit-ServerFarms-UnusedResourcesCostOptimization",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/Audit-ServerFarms-UnusedResourcesCostOptimization",
         "parameters": {
           "effect": {
             "value": "[parameters('effectServerFarms')]"
@@ -88,7 +88,7 @@
       },
       {
         "policyDefinitionReferenceId": "AuditAzureHybridBenefitUnusedResourcesCostOptimization",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Audit-AzureHybridBenefit",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/Audit-AzureHybridBenefit",
         "parameters": {
           "effect": {
             "value": "Audit"

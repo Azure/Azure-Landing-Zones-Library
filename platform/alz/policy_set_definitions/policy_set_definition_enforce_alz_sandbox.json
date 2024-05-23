@@ -70,7 +70,7 @@
       },
       {
         "policyDefinitionReferenceId": "SandboxDenyVnetPeering",
-        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deny-VNET-Peer-Cross-Sub",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/Deny-VNET-Peer-Cross-Sub",
         "parameters": {
           "effect": {
             "value": "[parameters('effectDenyVnetPeering')]"

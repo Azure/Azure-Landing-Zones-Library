@@ -7,7 +7,7 @@
     "displayName": "Subnets should have a User-Defined Route",
     "notScopes": [],
     "parameters": {},
-    "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Udr",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/Deny-Subnet-Without-Udr",
     "nonComplianceMessages": [
       {
         "message": "Subnets {enforcementMode} have a User-Defined Route."
