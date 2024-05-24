@@ -99,7 +99,7 @@ jobs:
         if: steps.git_status.outputs.changes > 0
         run: |
           echo "Pushing changes to origin..."
-          git add lib
+          git add platform/alz
           git commit -m '${{ env.pr_title }}'
           git push origin ${{ env.branch_name }}
         working-directory: ${{ github.repository }}
