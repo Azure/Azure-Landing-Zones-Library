@@ -41,6 +41,14 @@ if (!(Test-Path $parser)) {
   }
 }
 
+$EmptyArchetype = @{
+  "name"                   = "name"
+  "policy_assignments"     = @()
+  "policy_definitions"     = @()
+  "policy_set_definitions" = @()
+  "role_definitions"       = @()
+}
+
 # Update the policy assignments if enabled
 Write-Information "Updating Policy Assignment Archetypes." -InformationAction Continue
 
@@ -113,9 +121,13 @@ foreach ($managementGroup in $policyAssignments.Keys) {
 $policyAssignmentTargetPath = "$TargetPath/archetype_definitions"
 
 foreach ($managementGroup in $finalPolicyAssignments.Keys) {
-  $archetypeFilePath = "$policyAssignmentTargetPath/archetype_definition_$managementGroup.json"
+  $archetypeFilePath = "$policyAssignmentTargetPath/$managementGroup.alz_archetype_definition.json"
+  if (!(Test-Path $archetypeFilePath)) {
+    $ThisArchetype = $EmptyArchetype.Clone()
+    $ThisArchetype.name = $managementGroup
+    $ThisArchetype | ConvertTo-Json | Edit-LineEndings -LineEnding $LineEnding | Out-File -FilePath "$archetypeFilePath" -Force
+  }
   $archetypeJson = Get-Content $archetypeFilePath | ConvertFrom-Json
-
   $archetypeJson.policy_assignments = @($finalPolicyAssignments[$managementGroup] | Sort-Object)
 
   Write-Information "Writing $archetypeFilePath" -InformationAction Continue

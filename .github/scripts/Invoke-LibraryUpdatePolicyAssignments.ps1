@@ -122,7 +122,7 @@ foreach ($targetPolicyAssignmentFile in $targetPolicyAssignmentFiles) {
 }
 
 foreach ($key in $parsedAssignments.Keys | Sort-Object) {
-  $targetPolicyAssignmentFileName = "policy_assignment_$($key.ToLower() -replace "-", "_").json"
+  $targetPolicyAssignmentFileName = "$($key.ToLower() -replace "-", "_").alz_policy_assignment.json"
 
   # $mappedKey = $key
   # if ($temporaryNameMatches.ContainsKey($key)) {

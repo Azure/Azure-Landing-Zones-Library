@@ -1,5 +1,5 @@
 ---
-name: Update alz lib
+name: update lib
 
 # yamllint disable-line rule:truthy
 on:
@@ -7,22 +7,17 @@ on:
     - cron: "0 8 * * 1-5"
   workflow_dispatch: {}
 
-permissions:
-  contents: write
-  pull-requests: write
-
 env:
   remote_repository: "Azure/Enterprise-Scale"
   branch_name: "update-lib"
   pr_title: "feat: update library (automated)"
-  pr_body:
+  pr_body: |-
     "This is an automated 'pull_request' containing updates to the library templates stored in 'lib'.\n
     Please review the 'files changed' tab to review changes."
 
 jobs:
   update-lib:
     name: update
-    environment: libupdate
     runs-on: ubuntu-latest
     steps:
       - name: Local repository checkout
@@ -74,20 +69,20 @@ jobs:
             Write-Information "==> Running policy definitions script..." -InformationAction Continue
             ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
               -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}/platform/alz" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}" `
               -Reset
 
             Write-Information "==> Running policy assignments script..." -InformationAction Continue
             ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignments.ps1 `
               -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}/platform/alz" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
 
             Write-Information "==> Running archetypes script..." -InformationAction Continue
             ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
               -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}/platform/alz" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
           azPSVersion: "latest"
 
@@ -103,7 +98,7 @@ jobs:
         if: steps.git_status.outputs.changes > 0
         run: |
           echo "Pushing changes to origin..."
-          git add platform/alz
+          git add lib
           git commit -m '${{ env.pr_title }}'
           git push origin ${{ env.branch_name }}
         working-directory: ${{ github.repository }}

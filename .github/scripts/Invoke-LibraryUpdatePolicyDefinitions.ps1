@@ -36,6 +36,14 @@ $ErrorActionPreference = "Stop"
 # module.
 Import-Module $AlzToolsPath -ErrorAction Stop
 
+$EmptyRootArchetype = @{
+  "name"                   = "root"
+  "policy_assignments"     = @()
+  "policy_definitions"     = @()
+  "policy_set_definitions" = @()
+  "role_definitions"       = @()
+}
+
 # To avoid needing to authenticate with Azure, the following
 # code will preload the ProviderApiVersions cache from a
 # stored state in the module if the UseCacheFromModule flag
@@ -80,21 +88,21 @@ $policySetDefinitionFilePaths = (
 # defaultConfig object.
 $exportConfig = @()
 # Add Policy Definition source files to $exportConfig
-$exportConfig += $policyDefinitionFilePaths |
-  ForEach-Object {
-    [PsCustomObject]@{
-      inputPath          = $_
-      resourceTypeFilter = "Microsoft.Authorization/policyDefinitions"
-      fileNamePrefix     = "policy_definitions/policy_definition_"
-    }
+$exportConfig += $policyDefinitionFilePaths | ForEach-Object {
+  [PsCustomObject]@{
+    inputPath          = $_
+    resourceTypeFilter = "Microsoft.Authorization/policyDefinitions"
+    fileNamePrefix     = "policy_definitions/"
+    fileNameSuffix     = ".alz_policy_definition.json"
   }
+}
 # Add Policy Set Definition source files to $exportConfig
 $exportConfig += $policySetDefinitionFilePaths | ForEach-Object {
   [PsCustomObject]@{
     inputPath          = $_
     resourceTypeFilter = "Microsoft.Authorization/policySetDefinitions"
-    fileNamePrefix     = "policy_set_definitions/policy_set_definition_"
-    fileNameSuffix     = ".json"
+    fileNamePrefix     = "policy_set_definitions/"
+    fileNameSuffix     = ".alz_policy_set_definition.json"
   }
 }
 
@@ -102,9 +110,9 @@ $exportConfig += $policySetDefinitionFilePaths | ForEach-Object {
 # artefacts (by resource type) from the library
 if ($Reset) {
   Write-Information "Deleting existing Policy Definitions from library." -InformationAction Continue
-  Remove-Item -Path "$TargetPath/policy_definitions/*.json" -Recurse -Force
+  Remove-Item -Path "$TargetPath/policy_definitions/*.alz_policy_definition.json" -Recurse -Force
   Write-Information "Deleting existing Policy Set Definitions from library." -InformationAction Continue
-  Remove-Item -Path "$TargetPath/policy_set_definitions/*.json" -Recurse -Force
+  Remove-Item -Path "$TargetPath/policy_set_definitions/*.alz_policy_set_definition.json" -Recurse -Force
 }
 
 # Process the files added to $exportConfig, to add content
@@ -124,13 +132,13 @@ foreach ($config in $exportConfig) {
 }
 
 # Get a list of current Policy Definition names
-$policyDefinitionFiles = Get-ChildItem -Path "$TargetPath/policy_definitions/" -Filter "*.json"
+$policyDefinitionFiles = Get-ChildItem -Path "$TargetPath/policy_definitions/" -Filter "*.alz_policy_definition.json"
 $policyDefinitionNames = $policyDefinitionFiles | ForEach-Object {
   (Get-Content -Path $_ | ConvertFrom-Json).Name
 }
 
 # Get a list of current Policy Set Definition names
-$policySetDefinitionFiles = Get-ChildItem -Path "$TargetPath/policy_set_definitions/" -Filter "*.json"
+$policySetDefinitionFiles = Get-ChildItem -Path "$TargetPath/policy_set_definitions/" -Filter "*.alz_policy_set_definition.json"
 $policySetDefinitionNames = $policySetDefinitionFiles | ForEach-Object {
   (Get-Content -Path $_ | ConvertFrom-Json).Name
 }
@@ -138,8 +146,12 @@ $policySetDefinitionNames = $policySetDefinitionFiles | ForEach-Object {
 # Update the es_root archetype definition to reflect
 # the current list of Policy Definitions and Policy
 # Set Definitions
-$esRootFilePath = $TargetPath + "/archetype_definitions/archetype_definition_root.json"
+$esRootFilePath = $TargetPath + "/archetype_definitions/root.alz_archetype_definition.json"
 Write-Information "Loading `"root`" archetype definition." -InformationAction Continue
+if (!(Test-Path -Path $esRootFilePath)) {
+  Write-Information "Creating `"root`" archetype definition as it does not exist." -InformationAction Continue
+  $EmptyRootArchetype | ConvertTo-Json | Edit-LineEndings -LineEnding $LineEnding | Out-File -FilePath $esRootFilePath -Force
+}
 $esRootConfig = Get-Content -Path $esRootFilePath | ConvertFrom-Json
 Write-Information "Updating Policy Definitions in `"root`" archetype definition." -InformationAction Continue
 $esRootConfig.policy_definitions = $policyDefinitionNames
