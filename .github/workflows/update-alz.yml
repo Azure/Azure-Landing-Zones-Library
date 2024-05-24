@@ -1,5 +1,5 @@
 ---
-name: update lib
+name: update platform/alz
 
 # yamllint disable-line rule:truthy
 on:
