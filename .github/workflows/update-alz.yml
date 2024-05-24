@@ -19,6 +19,7 @@ jobs:
   update-lib:
     name: update
     runs-on: ubuntu-latest
+    environment: libupdate
     steps:
       - name: Local repository checkout
         uses: actions/checkout@v4
