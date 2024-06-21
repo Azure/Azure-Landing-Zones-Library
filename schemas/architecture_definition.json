@@ -1,0 +1,49 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "management_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "archetypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "display_name": {
+            "type": "string"
+          },
+          "exists": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "parent_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        },
+        "required": [
+          "archetypes",
+          "display_name",
+          "exists",
+          "id",
+          "parent_id"
+        ]
+      }
+    },
+    "name": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "management_groups",
+    "name"
+  ]
+}
