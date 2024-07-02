@@ -64,26 +64,20 @@ jobs:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
 
       - name: Update library templates
-        uses: azure/powershell@v1
+        uses: azure/powershell@v2
         with:
           inlineScript: |
             Write-Information "==> Running policy definitions script..." -InformationAction Continue
-            ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
+            ${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
               -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}/platform/alz" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}" `
               -Reset
 
-            Write-Information "==> Running policy assignments script..." -InformationAction Continue
-            ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignments.ps1 `
+            Write-Information "==> Running policy assignments and archetypes script..." -InformationAction Continue
+            ${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
               -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}/platform/alz" `
-              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
-
-            Write-Information "==> Running archetypes script..." -InformationAction Continue
-            ${{ github.workspace }}/${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
-              -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}/platform/alz" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
           azPSVersion: "latest"
 
