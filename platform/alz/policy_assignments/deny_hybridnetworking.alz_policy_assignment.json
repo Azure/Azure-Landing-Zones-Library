@@ -31,9 +31,8 @@
         "value": "Deny"
       }
     },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
   },
-  "identity": {
-    "type": "None"
-  }
+  "location": "uksouth"
 }

@@ -13,10 +13,9 @@
         "message": "Network interfaces {enforcementMode} not have a public IP associated."
       }
     ],
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": [],
     "parameters": {}
   },
-  "identity": {
-    "type": "None"
-  }
+  "location": "uksouth"
 }

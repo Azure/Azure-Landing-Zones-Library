@@ -7,7 +7,7 @@
   "properties": {
     "description": "This initiative will help enforce and govern subscriptions that are placed within the Sandbox Management Group. See https://aka.ms/alz/policies for more information.",
     "displayName": "Enforce ALZ Sandbox Guardrails",
-    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policySetDefinitions/Enforce-ALZ-Sandbox",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Enforce-ALZ-Sandbox",
     "enforcementMode": "Default",
     "nonComplianceMessages": [
       {
@@ -29,9 +29,7 @@
         ]
       }
     },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
-  },
-  "identity": {
-    "type": "None"
   }
 }

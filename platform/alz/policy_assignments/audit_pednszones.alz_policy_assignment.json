@@ -1,24 +1,19 @@
 {
+  "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2022-06-01",
-  "dependsOn": [],
-  "identity": {
-    "type": "None"
-  },
   "name": "Audit-PeDnsZones",
+  "dependsOn": [],
   "properties": {
     "description": "Audits the deployment of Private Link Private DNS Zone resources in the Corp landing zone.",
     "displayName": "Audit Private Link Private DNS Zone resources",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policyDefinitions/Audit-PrivateLinkDnsZones",
     "enforcementMode": "Default",
     "nonComplianceMessages": [
       {
         "message": "Private Link Private DNS Zone resources {enforcementMode} be deployed in the Corp landing zone."
       }
     ],
-    "notScopes": [],
     "parameters": {
-      "effect": {
-        "value": "Audit"
-      },
       "privateLinkDnsZones": {
         "value": [
           "privatelink.adf.azure.com",
@@ -86,9 +81,13 @@
           "privatelink.web.core.windows.net",
           "privatelink.webpubsub.azure.com"
         ]
+      },
+      "effect": {
+        "value": "Audit"
       }
     },
-    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policyDefinitions/Audit-PrivateLinkDnsZones"
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
   },
-  "type": "Microsoft.Authorization/policyAssignments"
+  "location": "uksouth"
 }

@@ -10,13 +10,14 @@
   "properties": {
     "description": "This initiative assignment enables Azure Compute Security Baseline compliance auditing for Windows and Linux virtual machines.",
     "displayName": "Enforce Azure Compute Security Baseline compliance auditing",
-    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policySetDefinitions/Enforce-ACSB",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Enforce-ACSB",
     "enforcementMode": "Default",
     "nonComplianceMessages": [
       {
         "message": "Azure Compute Security Baseline compliance auditing {enforcementMode} be enforced."
       }
     ],
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": [],
     "parameters": {}
   }

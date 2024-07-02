@@ -19,12 +19,13 @@
     ],
     "parameters": {
       "dcrResourceId": {
-        "value": "defaultString1"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Insights/dataCollectionRules/placeholder"
       },
       "enableProcessesAndDependencies": {
         "value": true
       }
     },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
   }
 }
