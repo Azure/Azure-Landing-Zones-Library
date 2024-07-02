@@ -6,17 +6,16 @@
   "properties": {
     "description": "This policy denies any network security rule that allows management port access from the Internet",
     "displayName": "Management port access from the Internet should be blocked",
-    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policyDefinitions/Deny-MgmtPorts-From-Internet",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policyDefinitions/Deny-MgmtPorts-From-Internet",
     "enforcementMode": "Default",
     "nonComplianceMessages": [
       {
         "message": "Management port access from the Internet {enforcementMode} be blocked."
       }
     ],
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": [],
     "parameters": {}
   },
-  "identity": {
-    "type": "None"
-  }
+  "location": "uksouth"
 }

@@ -10,7 +10,7 @@
   "properties": {
     "description": "This policy initiative is a group of policies that ensures private endpoints to Azure PaaS services are integrated with Azure Private DNS zones",
     "displayName": "Configure Azure PaaS services to use private DNS zones",
-    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/alz/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Private-DNS-Zones",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Deploy-Private-DNS-Zones",
     "enforcementMode": "Default",
     "nonComplianceMessages": [
       {
@@ -19,162 +19,208 @@
     ],
     "parameters": {
       "azureFilePrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.afs.azure.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.afs.azure.net"
       },
       "azureAutomationWebhookPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azure-automation.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azure-automation.net"
       },
       "azureAutomationDSCHybridPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azure-automation.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azure-automation.net"
       },
       "azureCosmosSQLPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.documents.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.documents.azure.com"
       },
       "azureCosmosMongoPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.mongo.cosmos.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.mongo.cosmos.azure.com"
       },
       "azureCosmosCassandraPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.cassandra.cosmos.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.cassandra.cosmos.azure.com"
       },
       "azureCosmosGremlinPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.gremlin.cosmos.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.gremlin.cosmos.azure.com"
       },
       "azureCosmosTablePrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.table.cosmos.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.table.cosmos.azure.com"
       },
       "azureDataFactoryPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.datafactory.azure.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.datafactory.azure.net"
       },
       "azureDataFactoryPortalPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.adf.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.adf.azure.com"
       },
       "azureDatabricksPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azuredatabricks.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azuredatabricks.net"
       },
       "azureHDInsightPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azurehdinsight.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azurehdinsight.net"
       },
       "azureMigratePrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.prod.migration.windowsazure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.prod.migration.windowsazure.com"
       },
       "azureStorageBlobPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
       },
       "azureStorageBlobSecPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
       },
       "azureStorageQueuePrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.queue.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.queue.core.windows.net"
       },
       "azureStorageQueueSecPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.queue.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.queue.core.windows.net"
       },
       "azureStorageFilePrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.file.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.file.core.windows.net"
       },
       "azureStorageStaticWebPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.web.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.web.core.windows.net"
       },
       "azureStorageStaticWebSecPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.web.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.web.core.windows.net"
       },
       "azureStorageDFSPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.dfs.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.dfs.core.windows.net"
       },
       "azureStorageDFSSecPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.dfs.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.dfs.core.windows.net"
       },
       "azureSynapseSQLPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.sql.azuresynapse.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.sql.azuresynapse.net"
       },
       "azureSynapseSQLODPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.sql.azuresynapse.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.sql.azuresynapse.net"
       },
       "azureSynapseDevPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.dev.azuresynapse.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.dev.azuresynapse.net"
       },
       "azureMediaServicesKeyPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.media.azure.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.media.azure.net"
       },
       "azureMediaServicesLivePrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.media.azure.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.media.azure.net"
       },
       "azureMediaServicesStreamPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.media.azure.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.media.azure.net"
       },
       "azureMonitorPrivateDnsZoneId1": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.monitor.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.monitor.azure.com"
       },
       "azureMonitorPrivateDnsZoneId2": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.oms.opinsights.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.oms.opinsights.azure.com"
       },
       "azureMonitorPrivateDnsZoneId3": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.ods.opinsights.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.ods.opinsights.azure.com"
       },
       "azureMonitorPrivateDnsZoneId4": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.agentsvc.azure-automation.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.agentsvc.azure-automation.net"
       },
       "azureMonitorPrivateDnsZoneId5": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
       },
       "azureWebPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.webpubsub.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.webpubsub.azure.com"
       },
       "azureBatchPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.batch.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.batch.azure.com"
       },
       "azureAppPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azconfig.io"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azconfig.io"
       },
       "azureAsrPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.siterecovery.windowsazure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.siterecovery.windowsazure.com"
       },
       "azureIotPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azure-devices-provisioning.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azure-devices-provisioning.net"
       },
       "azureKeyVaultPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.vaultcore.azure.net"
       },
       "azureSignalRPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.service.signalr.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.service.signalr.net"
       },
       "azureAppServicesPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azurewebsites.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azurewebsites.net"
       },
       "azureEventGridTopicsPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.eventgrid.azure.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.eventgrid.azure.net"
       },
       "azureDiskAccessPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
       },
       "azureCognitiveServicesPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.cognitiveservices.azure.com"
       },
       "azureIotHubsPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azure-devices.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azure-devices.net"
       },
       "azureEventGridDomainsPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.eventgrid.azure.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.eventgrid.azure.net"
       },
       "azureRedisCachePrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.redis.cache.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.redis.cache.windows.net"
       },
       "azureAcrPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azurecr.io"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azurecr.io"
       },
       "azureEventHubNamespacePrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.servicebus.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.servicebus.windows.net"
       },
       "azureMachineLearningWorkspacePrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.api.azureml.ms"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.api.azureml.ms"
+      },
+      "azureMachineLearningWorkspaceSecondPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.notebooks.azure.net"
       },
       "azureServiceBusNamespacePrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.servicebus.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.servicebus.windows.net"
       },
       "azureCognitiveSearchPrivateDnsZoneId": {
-        "value": "placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.search.windows.net"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.search.windows.net"
+      },
+      "azureBotServicePrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.directline.botframework.com"
+      },
+      "azureManagedGrafanaWorkspacePrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.grafana.azure.com"
+      },
+      "azureVirtualDesktopHostpoolPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.wvd.microsoft.com"
+      },
+      "azureVirtualDesktopWorkspacePrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.wvd.microsoft.com"
+      },
+      "azureIotDeviceupdatePrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azure-devices.net"
+      },
+      "azureArcGuestconfigurationPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.guestconfiguration.azure.com"
+      },
+      "azureArcHybridResourceProviderPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.his.arc.azure.com"
+      },
+      "azureArcKubernetesConfigurationPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.dp.kubernetesconfiguration.azure.com"
+      },
+      "azureIotCentralPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.azureiotcentral.com"
+      },
+      "azureStorageTablePrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.table.core.windows.net"
+      },
+      "azureStorageTableSecondaryPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.table.core.windows.net"
+      },
+      "azureSiteRecoveryBackupPrivateDnsZoneID": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.ne.backup.windowsazure.com"
+      },
+      "azureSiteRecoveryBlobPrivateDnsZoneID": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.blob.core.windows.net"
+      },
+      "azureSiteRecoveryQueuePrivateDnsZoneID": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.queue.core.windows.net"
       }
     },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
   }
 }

@@ -19,24 +19,25 @@
     ],
     "parameters": {
       "workspaceName": {
-        "value": "placeholder"
+        "value": "placeholder-la"
       },
       "automationAccountName": {
-        "value": "placeholder"
+        "value": "placeholder-automation"
       },
       "workspaceRegion": {
-        "value": "placeholder"
+        "value": "northeurope"
       },
       "automationRegion": {
-        "value": "placeholder"
+        "value": "northeurope"
       },
       "rgName": {
-        "value": "placeholder"
+        "value": "${root_scope_id}-mgmt"
       },
       "dataRetention": {
         "value": "30"
       }
     },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
   }
 }

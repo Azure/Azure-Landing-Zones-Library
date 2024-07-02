@@ -19,41 +19,13 @@
     ],
     "parameters": {
       "dcrResourceId": {
-        "value": "defaultString1"
-      },
-      "listOfApplicableLocations": {
-        "value": [
-          "australiasoutheast",
-          "australiaeast",
-          "brazilsouth",
-          "canadacentral",
-          "centralindia",
-          "centralus",
-          "eastasia",
-          "eastus2euap",
-          "eastus",
-          "eastus2",
-          "francecentral",
-          "japaneast",
-          "koreacentral",
-          "northcentralus",
-          "northeurope",
-          "norwayeast",
-          "southcentralus",
-          "southeastasia",
-          "switzerlandnorth",
-          "uaenorth",
-          "uksouth",
-          "westcentralus",
-          "westeurope",
-          "westus",
-          "westus2"
-        ]
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Insights/dataCollectionRules/placeholder"
       },
       "effect": {
         "value": "DeployIfNotExists"
       }
     },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
   }
 }

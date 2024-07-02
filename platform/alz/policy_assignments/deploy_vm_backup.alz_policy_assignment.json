@@ -18,6 +18,7 @@
       }
     ],
     "parameters": {},
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
   }
 }
