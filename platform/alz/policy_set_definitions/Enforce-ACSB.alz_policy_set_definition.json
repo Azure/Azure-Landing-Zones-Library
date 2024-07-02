@@ -1,0 +1,89 @@
+{
+  "name": "Enforce-ACSB",
+  "properties": {
+    "description": "Enforce Azure Compute Security Benchmark compliance auditing for Windows and Linux virtual machines.",
+    "displayName": "Enforce Azure Compute Security Benchmark compliance auditing",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Guest Configuration",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "AuditIfNotExists",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "includeArcMachines": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "By selecting this option, you agree to be charged monthly per Arc connected machine.",
+          "displayName": "Include Arc connected servers"
+        },
+        "type": "String"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "groupNames": [],
+        "parameters": {},
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/3cf2ab00-13f1-4d0c-8971-2ac904541a7e",
+        "policyDefinitionReferenceId": "GcIdentity"
+      },
+      {
+        "groupNames": [],
+        "parameters": {},
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/331e8ea8-378a-410f-a2e5-ae22f38bb0da",
+        "policyDefinitionReferenceId": "GcLinux"
+      },
+      {
+        "groupNames": [],
+        "parameters": {},
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/385f5831-96d4-41db-9a3c-cd3af78aaae6",
+        "policyDefinitionReferenceId": "GcWindows"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "IncludeArcMachines": {
+            "value": "[parameters('includeArcMachines')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/72650e9f-97bc-4b2a-ab5f-9781a9fcecbc",
+        "policyDefinitionReferenceId": "WinAcsb"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "IncludeArcMachines": {
+            "value": "[parameters('includeArcMachines')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/fc9b3da7-8347-4380-8e70-0a0361d8dedd",
+        "policyDefinitionReferenceId": "LinAcsb"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

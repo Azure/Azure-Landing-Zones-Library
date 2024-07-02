@@ -1,0 +1,52 @@
+{
+  "name": "Deny-MachineLearning-PublicNetworkAccess",
+  "properties": {
+    "description": "Denies public network access for Azure Machine Learning workspaces. Superseded by https://www.azadvertizer.net/azpolicyadvertizer/438c38d2-3772-465a-a9cc-7a6666a275ce.html",
+    "displayName": "[Deprecated] Azure Machine Learning should have disabled public network access",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Machine Learning",
+      "deprecated": true,
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "supersededBy": "438c38d2-3772-465a-a9cc-7a6666a275ce",
+      "version": "1.0.0-deprecated"
+    },
+    "mode": "Indexed",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Disabled",
+          "Deny"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.MachineLearningServices/workspaces",
+            "field": "type"
+          },
+          {
+            "field": "Microsoft.MachineLearningServices/workspaces/publicNetworkAccess",
+            "notEquals": "Disabled"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

@@ -1,0 +1,100 @@
+{
+  "name": "Deny-Storage-ServicesEncryption",
+  "properties": {
+    "description": "Azure Storage accounts should enforce encryption for all storage services. Enforce this for increased encryption scope.",
+    "displayName": "Encryption for storage services should be enforced for Storage Accounts",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Storage",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Storage/storageAccounts",
+            "field": "type"
+          },
+          {
+            "anyOf": [
+              {
+                "anyOf": [
+                  {
+                    "exists": "false",
+                    "field": "Microsoft.Storage/storageAccounts/encryption.services.blob.enabled"
+                  },
+                  {
+                    "field": "Microsoft.Storage/storageAccounts/encryption.services.blob.enabled",
+                    "notEquals": true
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "exists": "false",
+                    "field": "Microsoft.Storage/storageAccounts/encryption.services.file.enabled"
+                  },
+                  {
+                    "field": "Microsoft.Storage/storageAccounts/encryption.services.file.enabled",
+                    "notEquals": true
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "exists": "false",
+                    "field": "Microsoft.Storage/storageAccounts/encryption.services.queue.keyType"
+                  },
+                  {
+                    "field": "Microsoft.Storage/storageAccounts/encryption.services.queue.keyType",
+                    "notEquals": "Account"
+                  }
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "exists": "false",
+                    "field": "Microsoft.Storage/storageAccounts/encryption.services.table.keyType"
+                  },
+                  {
+                    "field": "Microsoft.Storage/storageAccounts/encryption.services.table.keyType",
+                    "notEquals": "Account"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

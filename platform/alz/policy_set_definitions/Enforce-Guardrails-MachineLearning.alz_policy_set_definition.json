@@ -1,0 +1,115 @@
+{
+  "name": "Enforce-Guardrails-MachineLearning",
+  "properties": {
+    "description": "This policy initiative is a group of policies that ensures Machine Learning is compliant per regulated Landing Zones.",
+    "displayName": "Enforce recommended guardrails for Machine Learning",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Machine Learning",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "mlLocalAuth": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "mlModifyLocalAuth": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "type": "string"
+      },
+      "mlModifyPublicNetworkAccess": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "type": "string"
+      },
+      "mlOutdatedOS": {
+        "allowedValues": [
+          "Audit",
+          "Disabled"
+        ],
+        "defaultValue": "Audit",
+        "type": "string"
+      },
+      "mlUserAssignedIdentity": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "groupNames": [],
+        "parameters": {
+          "effects": {
+            "value": "[parameters('mlOutdatedOS')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f110a506-2dcb-422e-bcea-d533fc8c35e2",
+        "policyDefinitionReferenceId": "Deny-ML-Outdated-Os"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlLocalAuth')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e96a9a5f-07ca-471b-9bc5-6a0f33cbd68f",
+        "policyDefinitionReferenceId": "Deny-ML-Local-Auth"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlModifyLocalAuth')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a6f9a2d0-cff7-4855-83ad-4cd750666512",
+        "policyDefinitionReferenceId": "Modify-ML-Local-Auth"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlUserAssignedIdentity')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5f0c7d88-c7de-45b8-ac49-db49e72eaa78",
+        "policyDefinitionReferenceId": "Deny-ML-User-Assigned-Identity"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlModifyPublicNetworkAccess')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a10ee784-7409-4941-b091-663697637c0f",
+        "policyDefinitionReferenceId": "Modify-ML-Public-Network-Access"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

@@ -1,0 +1,59 @@
+{
+  "name": "Enforce-Guardrails-KeyVault-Sup",
+  "properties": {
+    "description": "This policy initiative is a group of policies that ensures Key Vault is compliant per regulated Landing Zones.",
+    "displayName": "Enforce additional recommended guardrails for Key Vault",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Key Vault",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "keyVaultManagedHsmDisablePublicNetworkModify": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "type": "string"
+      },
+      "keyVaultModifyFw": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "type": "string"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('keyVaultManagedHsmDisablePublicNetworkModify')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/84d327c3-164a-4685-b453-900478614456",
+        "policyDefinitionReferenceId": "Modify-KV-PublicNetworkAccess"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('keyVaultModifyFw')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ac673a9a-f77d-4846-b2d8-a57f8e1c01dc",
+        "policyDefinitionReferenceId": "Modify-KV-Fw"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

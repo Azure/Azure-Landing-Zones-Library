@@ -1,0 +1,124 @@
+{
+  "name": "Deploy-SqlMi-minTLS",
+  "properties": {
+    "description": "Deploy a specific min TLS version requirement and enforce SSL on SQL managed instances. Enables secure server to client by enforce  minimal Tls Version to secure the connection between your database server and your client applications helps protect against 'man in the middle' attacks by encrypting the data stream between the server and your application. This configuration enforces that SSL is always enabled for accessing your database server.",
+    "displayName": "SQL managed instances deploy a specific min TLS version requirement.",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "SQL",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.2.0"
+    },
+    "mode": "Indexed",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy minimum TLS version SQL servers",
+          "displayName": "Effect SQL servers"
+        },
+        "type": "String"
+      },
+      "minimalTlsVersion": {
+        "allowedValues": [
+          "1.2",
+          "1.1",
+          "1.0"
+        ],
+        "defaultValue": "1.2",
+        "metadata": {
+          "description": "Select version minimum TLS version SQL servers to enforce",
+          "displayName": "Select version for SQL server"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Sql/managedInstances",
+            "field": "type"
+          },
+          {
+            "field": "Microsoft.Sql/managedInstances/minimalTlsVersion",
+            "notequals": "[parameters('minimalTlsVersion')]"
+          }
+        ]
+      },
+      "then": {
+        "details": {
+          "deployment": {
+            "properties": {
+              "mode": "Incremental",
+              "parameters": {
+                "location": {
+                  "value": "[field('location')]"
+                },
+                "minimalTlsVersion": {
+                  "value": "[parameters('minimalTlsVersion')]"
+                },
+                "resourceName": {
+                  "value": "[field('name')]"
+                }
+              },
+              "template": {
+                "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "outputs": {},
+                "parameters": {
+                  "location": {
+                    "type": "String"
+                  },
+                  "minimalTlsVersion": {
+                    "type": "String"
+                  },
+                  "resourceName": {
+                    "type": "String"
+                  }
+                },
+                "resources": [
+                  {
+                    "apiVersion": "2020-02-02-preview",
+                    "location": "[parameters('location')]",
+                    "name": "[concat(parameters('resourceName'))]",
+                    "properties": {
+                      "minimalTlsVersion": "[parameters('minimalTlsVersion')]"
+                    },
+                    "type": "Microsoft.Sql/managedInstances"
+                  }
+                ],
+                "variables": {}
+              }
+            }
+          },
+          "evaluationDelay": "AfterProvisioningSuccess",
+          "existenceCondition": {
+            "allOf": [
+              {
+                "equals": "[parameters('minimalTlsVersion')]",
+                "field": "Microsoft.Sql/managedInstances/minimalTlsVersion"
+              }
+            ]
+          },
+          "name": "current",
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/4939a1f6-9ae0-4e48-a1e0-f2cbe897382d"
+          ],
+          "type": "Microsoft.Sql/managedInstances"
+        },
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

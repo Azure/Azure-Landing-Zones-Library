@@ -1,0 +1,236 @@
+{
+  "name": "Deploy-MDFC-DefenderSQL-AMA",
+  "properties": {
+    "description": "Initiative is deprecated as the built-in initiative now supports bringing your own UAMI and DCR. Superseded by https://www.azadvertizer.net/azpolicyinitiativesadvertizer/de01d381-bae9-4670-8870-786f89f49e26.html",
+    "displayName": "[Deprecated]: Configure SQL VM and Arc-enabled SQL Servers to install Microsoft Defender for SQL and AMA with a user-defined LAW",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Security Center",
+      "deprecated": true,
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "supersededBy": "de01d381-bae9-4670-8870-786f89f49e26",
+      "version": "1.0.1-deprecated"
+    },
+    "parameters": {
+      "dcrId": {
+        "metadata": {
+          "description": "Id of the Data Collection Rule.",
+          "displayName": "Data Collection Rule Id"
+        },
+        "type": "String"
+      },
+      "dcrName": {
+        "metadata": {
+          "description": "Name of the Data Collection Rule.",
+          "displayName": "Data Collection Rule Name"
+        },
+        "type": "String"
+      },
+      "dcrResourceGroup": {
+        "metadata": {
+          "description": "Resource Group of the Data Collection Rule.",
+          "displayName": "Data Collection Rule Resource Group"
+        },
+        "type": "String"
+      },
+      "effect": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "enableCollectionOfSqlQueriesForSecurityResearch": {
+        "allowedValues": [
+          true,
+          false
+        ],
+        "defaultValue": false,
+        "metadata": {
+          "description": "Enable or disable the collection of SQL queries for security research.",
+          "displayName": "Enable collection of SQL queries for security research"
+        },
+        "type": "Boolean"
+      },
+      "identityResourceGroup": {
+        "defaultValue": "",
+        "metadata": {
+          "description": "The name of the resource group created by the policy.",
+          "displayName": "Identity Resource Group"
+        },
+        "type": "String"
+      },
+      "userAssignedIdentityName": {
+        "defaultValue": "",
+        "metadata": {
+          "description": "The name of the user assigned managed identity.",
+          "displayName": "User Assigned Managed Identity Name"
+        },
+        "type": "String"
+      },
+      "userWorkspaceResourceId": {
+        "metadata": {
+          "description": "Workspace resource Id of the Log Analytics workspace destination for the Data Collection Rule.",
+          "displayName": "Workspace Resource Id",
+          "strongType": "omsWorkspace"
+        },
+        "type": "String"
+      },
+      "workspaceRegion": {
+        "metadata": {
+          "description": "Region of the Log Analytics workspace destination for the Data Collection Rule.",
+          "displayName": "Workspace region",
+          "strongType": "location"
+        },
+        "type": "String"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/3592ff98-9787-443a-af59-4505d0fe0786",
+        "policyDefinitionReferenceId": "defenderForSqlArcAma"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('effect')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/65503269-6a54-4553-8a28-0065a8e6d929",
+        "policyDefinitionReferenceId": "defenderForSqlArcMdsql"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "dcrId": {
+            "value": "[parameters('dcrId')]"
+          },
+          "dcrName": {
+            "value": "[parameters('dcrName')]"
+          },
+          "dcrResourceGroup": {
+            "value": "[parameters('dcrResourceGroup')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          },
+          "enableCollectionOfSqlQueriesForSecurityResearch": {
+            "value": "[parameters('enableCollectionOfSqlQueriesForSecurityResearch')]"
+          },
+          "userWorkspaceResourceId": {
+            "value": "[parameters('userWorkspaceResourceId')]"
+          },
+          "workspaceRegion": {
+            "value": "[parameters('workspaceRegion')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-MDFC-Arc-Sql-DefenderSQL-DCR",
+        "policyDefinitionReferenceId": "defenderForSqlArcMdsqlDcr"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "dcrId": {
+            "value": "[parameters('dcrId')]"
+          },
+          "dcrName": {
+            "value": "[parameters('dcrName')]"
+          },
+          "dcrResourceGroup": {
+            "value": "[parameters('dcrResourceGroup')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          },
+          "workspaceRegion": {
+            "value": "[parameters('workspaceRegion')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-MDFC-Arc-SQL-DCR-Association",
+        "policyDefinitionReferenceId": "defenderForSqlArcDcrAssociation"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('effect')]"
+          },
+          "identityResourceGroup": {
+            "value": "[parameters('identityResourceGroup')]"
+          },
+          "userAssignedIdentityName": {
+            "value": "[parameters('userAssignedIdentityName')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-MDFC-SQL-AMA",
+        "policyDefinitionReferenceId": "defenderForSqlAma"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "dcrId": {
+            "value": "[parameters('dcrId')]"
+          },
+          "dcrName": {
+            "value": "[parameters('dcrName')]"
+          },
+          "dcrResourceGroup": {
+            "value": "[parameters('dcrResourceGroup')]"
+          },
+          "effect": {
+            "value": "[parameters('effect')]"
+          },
+          "workspaceRegion": {
+            "value": "[parameters('workspaceRegion')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-MDFC-SQL-DefenderSQL",
+        "policyDefinitionReferenceId": "defenderForSqlMdsql"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "dcrId": {
+            "value": "[parameters('dcrId')]"
+          },
+          "dcrName": {
+            "value": "[parameters('dcrName')]"
+          },
+          "dcrResourceGroup": {
+            "value": "[parameters('dcrResourceGroup')]"
+          },
+          "effect": {
+            "value": "Disabled"
+          },
+          "enableCollectionOfSqlQueriesForSecurityResearch": {
+            "value": "[parameters('enableCollectionOfSqlQueriesForSecurityResearch')]"
+          },
+          "userWorkspaceResourceId": {
+            "value": "[parameters('userWorkspaceResourceId')]"
+          },
+          "workspaceRegion": {
+            "value": "[parameters('workspaceRegion')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-MDFC-SQL-DefenderSQL-DCR",
+        "policyDefinitionReferenceId": "defenderForSqlMdsqlDcr"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

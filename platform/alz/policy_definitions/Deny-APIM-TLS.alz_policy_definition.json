@@ -1,0 +1,68 @@
+{
+  "name": "Deny-APIM-TLS",
+  "properties": {
+    "description": "Azure API Management service should use TLS version 1.2",
+    "displayName": "API Management services should use TLS version 1.2",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "API Management",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.ApiManagement/service",
+            "field": "type"
+          },
+          {
+            "anyOf": [
+              {
+                "greater": 0,
+                "value": "[indexof(toLower(string(field('Microsoft.ApiManagement/service/customProperties'))), '\"microsoft.windowsazure.apimanagement.gateway.security.protocols.tls10\":\"true\"')]"
+              },
+              {
+                "greater": 0,
+                "value": "[indexof(toLower(string(field('Microsoft.ApiManagement/service/customProperties'))), '\"microsoft.windowsazure.apimanagement.gateway.security.protocols.tls10\":true')]"
+              },
+              {
+                "greater": 0,
+                "value": "[indexof(toLower(string(field('Microsoft.ApiManagement/service/customProperties'))), '\"microsoft.windowsazure.apimanagement.gateway.security.protocols.tls11\":\"true\"')]"
+              },
+              {
+                "greater": 0,
+                "value": "[indexof(toLower(string(field('Microsoft.ApiManagement/service/customProperties'))), '\"microsoft.windowsazure.apimanagement.gateway.security.protocols.tls11\":true')]"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

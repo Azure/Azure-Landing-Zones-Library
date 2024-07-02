@@ -1,0 +1,123 @@
+{
+  "name": "Deploy-Sql-AuditingSettings",
+  "properties": {
+    "description": "Deploy auditing settings to SQL Database when it not exist in the deployment",
+    "displayName": "Deploy SQL database auditing settings",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "SQL",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "Indexed",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "equals": "Microsoft.Sql/servers/databases",
+        "field": "type"
+      },
+      "then": {
+        "details": {
+          "deployment": {
+            "properties": {
+              "mode": "Incremental",
+              "parameters": {
+                "location": {
+                  "value": "[field('location')]"
+                },
+                "sqlServerDataBaseName": {
+                  "value": "[field('name')]"
+                },
+                "sqlServerName": {
+                  "value": "[first(split(field('fullname'),'/'))]"
+                }
+              },
+              "template": {
+                "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "outputs": {},
+                "parameters": {
+                  "location": {
+                    "type": "String"
+                  },
+                  "sqlServerDataBaseName": {
+                    "type": "String"
+                  },
+                  "sqlServerName": {
+                    "type": "String"
+                  }
+                },
+                "resources": [
+                  {
+                    "apiVersion": "2017-03-01-preview",
+                    "name": "[concat( parameters('sqlServerName'),'/',parameters('sqlServerDataBaseName'),'/default')]",
+                    "properties": {
+                      "auditActionsAndGroups": [
+                        "BATCH_COMPLETED_GROUP",
+                        "DATABASE_OBJECT_CHANGE_GROUP",
+                        "SCHEMA_OBJECT_CHANGE_GROUP",
+                        "BACKUP_RESTORE_GROUP",
+                        "APPLICATION_ROLE_CHANGE_PASSWORD_GROUP",
+                        "DATABASE_PRINCIPAL_CHANGE_GROUP",
+                        "DATABASE_PRINCIPAL_IMPERSONATION_GROUP",
+                        "DATABASE_ROLE_MEMBER_CHANGE_GROUP",
+                        "USER_CHANGE_PASSWORD_GROUP",
+                        "DATABASE_OBJECT_OWNERSHIP_CHANGE_GROUP",
+                        "DATABASE_OBJECT_PERMISSION_CHANGE_GROUP",
+                        "DATABASE_PERMISSION_CHANGE_GROUP",
+                        "SCHEMA_OBJECT_PERMISSION_CHANGE_GROUP",
+                        "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+                        "FAILED_DATABASE_AUTHENTICATION_GROUP"
+                      ],
+                      "isAzureMonitorTargetEnabled": true,
+                      "state": "enabled"
+                    },
+                    "type": "Microsoft.Sql/servers/databases/auditingSettings"
+                  }
+                ],
+                "variables": {}
+              }
+            }
+          },
+          "existenceCondition": {
+            "allOf": [
+              {
+                "equals": "enabled",
+                "field": "Microsoft.Sql/servers/databases/auditingSettings/state"
+              },
+              {
+                "equals": "true",
+                "field": "Microsoft.Sql/servers/databases/auditingSettings/isAzureMonitorTargetEnabled"
+              }
+            ]
+          },
+          "name": "default",
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/056cd41c-7e88-42e1-933e-88ba6a50c9c3"
+          ],
+          "type": "Microsoft.Sql/servers/databases/auditingSettings"
+        },
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

@@ -1,0 +1,65 @@
+{
+  "name": "Deny-FileServices-InsecureSmbChannel",
+  "properties": {
+    "description": "This policy denies the use of insecure channel encryption (AES-128-CCM) when using File Services on a storage account.",
+    "displayName": "File Services with insecure SMB channel encryption should be denied",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Storage",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "The effect determines what happens when the policy rule is evaluated to match",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "notAllowedChannelEncryption": {
+        "allowedValues": [
+          "AES-128-CCM",
+          "AES-128-GCM",
+          "AES-256-GCM"
+        ],
+        "defaultValue": "AES-128-CCM",
+        "metadata": {
+          "description": "The list of channelEncryption not allowed.",
+          "displayName": "SMB channel encryption supported by server. Valid values are AES-128-CCM, AES-128-GCM, AES-256-GCM."
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Storage/storageAccounts/fileServices",
+            "field": "type"
+          },
+          {
+            "contains": "[parameters('notAllowedChannelEncryption')]",
+            "field": "Microsoft.Storage/storageAccounts/fileServices/protocolSettings.smb.channelEncryption"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

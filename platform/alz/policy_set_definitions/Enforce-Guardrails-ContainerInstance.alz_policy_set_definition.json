@@ -1,0 +1,42 @@
+{
+  "name": "Enforce-Guardrails-ContainerInstance",
+  "properties": {
+    "description": "This policy initiative is a group of policies that ensures Container Apps is compliant per regulated Landing Zones.",
+    "displayName": "Enforce recommended guardrails for Container Instance",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Container Instances",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "containerInstanceVnet": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('containerInstanceVnet')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8af8f826-edcb-4178-b35f-851ea6fea615",
+        "policyDefinitionReferenceId": "Deny-ContainerInstance-Vnet"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

@@ -1,0 +1,34 @@
+{
+  "name": "DenyAction-DeleteProtection",
+  "properties": {
+    "description": "Enforces DenyAction - Delete on Activity Log Settings and Diagnostic Settings.",
+    "displayName": "DenyAction Delete - Activity Log Settings and Diagnostic Settings",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Monitoring",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "parameters": {},
+    "policyDefinitions": [
+      {
+        "groupNames": [],
+        "parameters": {},
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/DenyAction-DiagnosticLogs",
+        "policyDefinitionReferenceId": "DenyActionDelete-DiagnosticSettings"
+      },
+      {
+        "groupNames": [],
+        "parameters": {},
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/DenyAction-ActivityLogs",
+        "policyDefinitionReferenceId": "DenyActionDelete-ActivityLogSettings"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

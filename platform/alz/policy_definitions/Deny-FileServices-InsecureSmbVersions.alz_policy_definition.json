@@ -1,0 +1,67 @@
+{
+  "name": "Deny-FileServices-InsecureSmbVersions",
+  "properties": {
+    "description": "This policy denies the use of insecure versions of SMB (2.1 \u0026 3.0) when using File Services on a storage account.",
+    "displayName": "File Services with insecure SMB versions should be denied",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Storage",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "allowedSmbVersion": {
+        "allowedValues": [
+          "SMB2.1",
+          "SMB3.0",
+          "SMB3.1.1"
+        ],
+        "defaultValue": "SMB3.1.1",
+        "metadata": {
+          "description": "The allowed SMB version for maximum security",
+          "displayName": "Allowed SMB Version"
+        },
+        "type": "String"
+      },
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "The effect determines what happens when the policy rule is evaluated to match",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Storage/storageAccounts/fileServices",
+            "field": "type"
+          },
+          {
+            "not": {
+              "contains": "[parameters('allowedSmbVersion')]",
+              "field": "Microsoft.Storage/storageAccounts/fileServices/protocolSettings.smb.versions"
+            }
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}
