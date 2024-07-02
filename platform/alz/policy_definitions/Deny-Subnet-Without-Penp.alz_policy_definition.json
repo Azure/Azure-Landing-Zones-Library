@@ -1,0 +1,99 @@
+{
+  "name": "Deny-Subnet-Without-Penp",
+  "properties": {
+    "description": "This policy denies the creation of a subnet without Private Endpoint Netwotk Policies enabled. This policy is intended for 'workload' subnets, not 'central infrastructure' (aka, 'hub') subnets.",
+    "displayName": "Subnets without Private Endpoint Network Policies enabled should be denied",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Network",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "The effect determines what happens when the policy rule is evaluated to match",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "excludedSubnets": {
+        "defaultValue": [
+          "GatewaySubnet",
+          "AzureFirewallSubnet",
+          "AzureFirewallManagementSubnet",
+          "AzureBastionSubnet"
+        ],
+        "metadata": {
+          "description": "Array of subnet names that are excluded from this policy",
+          "displayName": "Excluded Subnets"
+        },
+        "type": "Array"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "anyOf": [
+          {
+            "allOf": [
+              {
+                "equals": "Microsoft.Network/virtualNetworks",
+                "field": "type"
+              },
+              {
+                "count": {
+                  "field": "Microsoft.Network/virtualNetworks/subnets[*]",
+                  "where": {
+                    "allOf": [
+                      {
+                        "field": "Microsoft.Network/virtualNetworks/subnets[*].privateEndpointNetworkPolicies",
+                        "notEquals": "Enabled"
+                      },
+                      {
+                        "field": "Microsoft.Network/virtualNetworks/subnets[*].name",
+                        "notIn": "[parameters('excludedSubnets')]"
+                      }
+                    ]
+                  }
+                },
+                "notEquals": 0
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "equals": "Microsoft.Network/virtualNetworks/subnets",
+                "field": "type"
+              },
+              {
+                "field": "name",
+                "notIn": "[parameters('excludedSubnets')]"
+              },
+              {
+                "field": "Microsoft.Network/virtualNetworks/subnets/privateEndpointNetworkPolicies",
+                "notEquals": "Enabled"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

@@ -1,0 +1,52 @@
+{
+  "name": "Deny-AzFw-Without-Policy",
+  "properties": {
+    "description": "This policy denies the creation of Azure Firewall without a default Firewall Policy.",
+    "displayName": "Azure Firewall should have a default Firewall Policy",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Network",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Network/azureFirewalls",
+            "field": "type"
+          },
+          {
+            "exists": "false",
+            "field": "Microsoft.Network/azureFirewalls/firewallPolicy.id"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

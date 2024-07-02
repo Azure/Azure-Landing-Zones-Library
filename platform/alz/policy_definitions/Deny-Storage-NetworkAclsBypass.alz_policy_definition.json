@@ -1,0 +1,88 @@
+{
+  "name": "Deny-Storage-NetworkAclsBypass",
+  "properties": {
+    "description": "Azure Storage accounts should restrict the bypass option for service-level network ACLs. Enforce this for increased data exfiltration protection.",
+    "displayName": "Network ACL bypass option should be restricted for Storage Accounts",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Storage",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "allowedBypassOptions": {
+        "allowedValues": [
+          "None",
+          "Logging",
+          "Metrics",
+          "AzureServices",
+          "Logging, Metrics",
+          "Logging, AzureServices",
+          "Metrics, AzureServices",
+          "Logging, Metrics, AzureServices",
+          "Logging, Metrics, AzureServices"
+        ],
+        "defaultValue": [
+          "Logging",
+          "Metrics",
+          "AzureServices",
+          "Logging, Metrics",
+          "Logging, AzureServices",
+          "Metrics, AzureServices",
+          "Logging, Metrics, AzureServices",
+          "Logging, Metrics, AzureServices"
+        ],
+        "metadata": {
+          "description": "Specifies which options are allowed to bypass the vnet configuration",
+          "displayName": "Allowed Bypass Options"
+        },
+        "type": "Array"
+      },
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Storage/storageAccounts",
+            "field": "type"
+          },
+          {
+            "anyOf": [
+              {
+                "exists": "false",
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.bypass"
+              },
+              {
+                "field": "Microsoft.Storage/storageAccounts/networkAcls.bypass",
+                "notIn": "[parameters('allowedBypassOptions')]"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

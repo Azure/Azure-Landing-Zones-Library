@@ -1,0 +1,124 @@
+{
+  "name": "Deploy-Sql-Tde",
+  "properties": {
+    "description": "Deploy the Transparent Data Encryption when it is not enabled in the deployment. Please use this policy instead https://www.azadvertizer.net/azpolicyadvertizer/86a912f6-9a06-4e26-b447-11b16ba8659f.html",
+    "displayName": "[Deprecated] Deploy SQL Database Transparent Data Encryption",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "SQL",
+      "deprecated": true,
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "supersededBy": "86a912f6-9a06-4e26-b447-11b16ba8659f",
+      "version": "1.1.1-deprecated"
+    },
+    "mode": "Indexed",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "excludedDatabases": {
+        "defaultValue": [
+          "master",
+          "model",
+          "tempdb",
+          "msdb",
+          "resource"
+        ],
+        "metadata": {
+          "description": "Array of databases that are excluded from this policy",
+          "displayName": "Excluded Databases"
+        },
+        "type": "Array"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Sql/servers/databases",
+            "field": "type"
+          },
+          {
+            "field": "name",
+            "notIn": "[parameters('excludedDatabases')]"
+          }
+        ]
+      },
+      "then": {
+        "details": {
+          "deployment": {
+            "properties": {
+              "mode": "Incremental",
+              "parameters": {
+                "location": {
+                  "value": "[field('location')]"
+                },
+                "sqlServerDataBaseName": {
+                  "value": "[field('name')]"
+                },
+                "sqlServerName": {
+                  "value": "[first(split(field('fullname'),'/'))]"
+                }
+              },
+              "template": {
+                "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "outputs": {},
+                "parameters": {
+                  "location": {
+                    "type": "String"
+                  },
+                  "sqlServerDataBaseName": {
+                    "type": "String"
+                  },
+                  "sqlServerName": {
+                    "type": "String"
+                  }
+                },
+                "resources": [
+                  {
+                    "apiVersion": "2014-04-01",
+                    "name": "[concat( parameters('sqlServerName'),'/',parameters('sqlServerDataBaseName'),'/current')]",
+                    "properties": {
+                      "status": "Enabled"
+                    },
+                    "type": "Microsoft.Sql/servers/databases/transparentDataEncryption"
+                  }
+                ],
+                "variables": {}
+              }
+            }
+          },
+          "existenceCondition": {
+            "allOf": [
+              {
+                "equals": "Enabled",
+                "field": "Microsoft.Sql/transparentDataEncryption.status"
+              }
+            ]
+          },
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/056cd41c-7e88-42e1-933e-88ba6a50c9c3"
+          ],
+          "type": "Microsoft.Sql/servers/databases/transparentDataEncryption"
+        },
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}
