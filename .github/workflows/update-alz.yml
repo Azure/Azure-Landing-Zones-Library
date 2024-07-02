@@ -12,6 +12,7 @@ permissions:
 
 env:
   remote_repository: "Azure/Enterprise-Scale"
+  alzlib_repository: "Azure/alzlib"
   branch_name: "update-platform-alz"
   pr_title: "feat: update library (automated)"
   pr_body: |-
@@ -25,19 +26,34 @@ jobs:
     environment: libupdate
     steps:
       - name: Local repository checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           path: ${{ github.repository }}
           fetch-depth: 0
 
       - name: Remote repository checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
           repository: ${{ env.remote_repository }}
           path: ${{ env.remote_repository }}
           ref: main
 
-      - uses: tibdex/github-app-token@v2
+      - name: checkout alzlib
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          repository: ${{ env.alzlib_repository }}
+          path: ${{ env.alzlib_repository }}
+
+      - name: setup go
+        uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
+        with:
+          go-version-file: ${{ github.workspace }}/${{ env.alzlib_repository }}/go.mod
+
+      - name: install alzlibtool
+        run: go install ./tools/alzlibtool
+        working-directory: ${{ github.workspace }}/${{ env.alzlib_repository }}
+
+      - uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
         id: generate-token
         with:
           app_id: ${{ secrets.TOKEN_APP_ID }}
@@ -66,17 +82,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
 
-      - name: Update library templates
-        uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709
+      - name: Update library policy definitions
+        run: |
+          alzlibtool convert policydefinition -o \
+            "${{ github.workspace }}/${{ env.remote_repository }}/src/resources/Microsoft.Authorization/PolicyDefinitions" \
+            "${{ github.workspace }}/${{ github.repository }}/platform/alz/policy_definitions"
+
+      - name: Update library policy definitions
+        run: |
+          alzlibtool convert policysetdefinition -o \
+            "${{ github.workspace }}/${{ env.remote_repository }}/src/resources/Microsoft.Authorization/PolicySetDefinitions" \
+            "${{ github.workspace }}/${{ github.repository }}/platform/alz/policy_set_definitions"
+
+      - name: Update library policy assignments and archetypes
+        uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
         with:
           inlineScript: |
-            Write-Information "==> Running policy definitions script..." -InformationAction Continue
-            ${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
-              -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
-              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}" `
-              -Reset
-
             Write-Information "==> Running policy assignments and archetypes script..." -InformationAction Continue
             ${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
               -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
