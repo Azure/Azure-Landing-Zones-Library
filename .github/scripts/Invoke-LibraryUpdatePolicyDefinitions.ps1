@@ -53,7 +53,7 @@ $defaultConfig = @{
     outputPath         = $TargetPath + "/platform/alz"
     fileNamePrefix     = ""
     fileNameSuffix     = ".json"
-    exportFormat       = "Terraform"
+    exportFormat       = "ArmResource"
     recurse            = $false
 }
 
