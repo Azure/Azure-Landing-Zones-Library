@@ -19,50 +19,22 @@
     ],
     "parameters": {
       "dcrResourceId": {
-        "value": "defaultString1"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Insights/dataCollectionRules/placeholder"
       },
       "bringYourOwnUserAssignedManagedIdentity": {
         "value": true
       },
-      "userAssignedManagedIdentityResourceGroup": {
-        "value": "defaultString3"
+      "restrictBringYourOwnUserAssignedIdentityToSubscription": {
+        "value": false
       },
-      "userAssignedManagedIdentityName": {
-        "value": "defaultString4"
-      },
-      "listOfApplicableLocations": {
-        "value": [
-          "australiasoutheast",
-          "australiaeast",
-          "brazilsouth",
-          "canadacentral",
-          "centralindia",
-          "centralus",
-          "eastasia",
-          "eastus2euap",
-          "eastus",
-          "eastus2",
-          "francecentral",
-          "japaneast",
-          "koreacentral",
-          "northcentralus",
-          "northeurope",
-          "norwayeast",
-          "southcentralus",
-          "southeastasia",
-          "switzerlandnorth",
-          "uaenorth",
-          "uksouth",
-          "westcentralus",
-          "westeurope",
-          "westus",
-          "westus2"
-        ]
+      "userAssignedIdentityResourceId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/placeholder"
       },
       "effect": {
         "value": "DeployIfNotExists"
       }
     },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
   }
 }

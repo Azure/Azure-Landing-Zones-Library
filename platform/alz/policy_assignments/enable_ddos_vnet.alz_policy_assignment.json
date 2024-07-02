@@ -20,6 +20,7 @@
         "value": "Modify"
       }
     },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
   }
 }

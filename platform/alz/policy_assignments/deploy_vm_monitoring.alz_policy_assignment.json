@@ -19,16 +19,16 @@
     ],
     "parameters": {
       "dcrResourceId": {
-        "value": "defaultString1"
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Insights/dataCollectionRules/placeholder"
       },
       "bringYourOwnUserAssignedManagedIdentity": {
         "value": true
       },
-      "userAssignedManagedIdentityResourceGroup": {
-        "value": "defaultString3"
+      "restrictBringYourOwnUserAssignedIdentityToSubscription": {
+        "value": false
       },
-      "userAssignedManagedIdentityName": {
-        "value": "defaultString4"
+      "userAssignedIdentityResourceId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/placeholder"
       },
       "enableProcessesAndDependencies": {
         "value": true
@@ -37,6 +37,7 @@
         "value": false
       }
     },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
   }
 }

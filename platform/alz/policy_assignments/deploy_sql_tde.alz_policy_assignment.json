@@ -17,6 +17,7 @@
         "message": "TDE {enforcementMode} be deployed on SQL servers."
       }
     ],
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": [],
     "parameters": {}
   }

@@ -41,7 +41,7 @@
       },
       {
         "policyDefinitionReferenceId": "DecomShutdownMachines",
-        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/Deploy-Vm-autoShutdown",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/Deploy-Vm-autoShutdown",
         "parameters": {},
         "groupNames": []
       }

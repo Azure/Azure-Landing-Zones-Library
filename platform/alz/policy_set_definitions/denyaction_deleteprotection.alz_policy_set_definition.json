@@ -21,13 +21,13 @@
     "policyDefinitions": [
       {
         "policyDefinitionReferenceId": "DenyActionDelete-DiagnosticSettings",
-        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/DenyAction-DiagnosticLogs",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/DenyAction-DiagnosticLogs",
         "parameters": {},
         "groupNames": []
       },
       {
         "policyDefinitionReferenceId": "DenyActionDelete-ActivityLogSettings",
-        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/PLACEHOLDER/providers/Microsoft.Authorization/policyDefinitions/DenyAction-ActivityLogs",
+        "policyDefinitionId": "${root_scope_resource_id}/providers/Microsoft.Authorization/policyDefinitions/DenyAction-ActivityLogs",
         "parameters": {},
         "groupNames": []
       }
