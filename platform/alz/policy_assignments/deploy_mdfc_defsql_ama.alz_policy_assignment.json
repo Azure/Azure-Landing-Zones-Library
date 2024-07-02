@@ -19,7 +19,7 @@
     ],
     "parameters": {
       "workspaceRegion": {
-        "value": "uksouth"
+        "value": "northeurope"
       },
       "userWorkspaceResourceId": {
         "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder/providers/Microsoft.OperationalInsights/workspaces/placeholder-la"
