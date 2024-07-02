@@ -233,10 +233,10 @@ foreach ($managementGroup in $policyAssignments.Keys) {
     }
 }
 
-$policyAssignmentTargetPath = "$TargetPath/modules/archetypes/lib/archetype_definitions"
+$archetypeTargetPath = "$TargetPath/platform/alz/archetype_definitions"
 
 foreach ($managementGroup in $finalPolicyAssignments.Keys) {
-    $archetypeFilePath = "$policyAssignmentTargetPath/$managementGroup.alz_archetype_definition.json"
+    $archetypeFilePath = "$archetypeTargetPath/$managementGroup.alz_archetype_definition.json"
     $archetypeJson = Get-Content $archetypeFilePath | ConvertFrom-Json
 
     $archetypeJson.policy_assignments = @($finalPolicyAssignments[$managementGroup] | Sort-Object)
