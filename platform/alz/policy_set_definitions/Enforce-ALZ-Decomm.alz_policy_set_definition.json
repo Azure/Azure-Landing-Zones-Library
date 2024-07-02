@@ -1,0 +1,48 @@
+{
+  "name": "Enforce-ALZ-Decomm",
+  "properties": {
+    "description": "Enforce policies in the Decommissioned Landing Zone.",
+    "displayName": "Enforce policies in the Decommissioned Landing Zone",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Decommissioned",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "listOfResourceTypesAllowed": {
+        "defaultValue": [],
+        "metadata": {
+          "description": "Allowed resource types in the Decommissioned landing zone, default is none.",
+          "displayName": "Allowed resource types in the Decommissioned landing zone",
+          "strongType": "resourceTypes"
+        },
+        "type": "Array"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "groupNames": [],
+        "parameters": {
+          "listOfResourceTypesAllowed": {
+            "value": "[parameters('listOfResourceTypesAllowed')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a08ec900-254a-4555-9bf5-e42af04b5c5c",
+        "policyDefinitionReferenceId": "DecomDenyResources"
+      },
+      {
+        "groupNames": [],
+        "parameters": {},
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-Vm-autoShutdown",
+        "policyDefinitionReferenceId": "DecomShutdownMachines"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

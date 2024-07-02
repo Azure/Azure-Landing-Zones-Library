@@ -1,0 +1,36 @@
+{
+  "name": "DenyAction-ActivityLogs",
+  "properties": {
+    "description": "This is a DenyAction implementation policy on Activity Logs.",
+    "displayName": "DenyAction implementation on Activity Logs",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Monitoring",
+      "deprecated": false,
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "Indexed",
+    "parameters": {},
+    "policyRule": {
+      "if": {
+        "equals": "Microsoft.Resources/subscriptions/providers/diagnosticSettings",
+        "field": "type"
+      },
+      "then": {
+        "details": {
+          "actionNames": [
+            "delete"
+          ]
+        },
+        "effect": "denyAction"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

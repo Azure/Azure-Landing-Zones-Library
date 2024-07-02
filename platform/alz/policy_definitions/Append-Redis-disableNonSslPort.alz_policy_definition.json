@@ -1,0 +1,61 @@
+{
+  "name": "Append-Redis-disableNonSslPort",
+  "properties": {
+    "description": "Azure Cache for Redis Append and the enforcement that enableNonSslPort is disabled. Enables secure server to client by enforce  minimal Tls Version to secure the connection between your database server and your client applications helps protect against 'man in the middle' attacks by encrypting the data stream between the server and your application. This configuration enforces that SSL is always enabled for accessing your database server.",
+    "displayName": "Azure Cache for Redis Append and the enforcement that enableNonSslPort is disabled.",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Cache",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.1"
+    },
+    "mode": "Indexed",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Append",
+          "Disabled"
+        ],
+        "defaultValue": "Append",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy minimum TLS version Azure Cache for Redis",
+          "displayName": "Effect Azure Cache for Redis"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Cache/redis",
+            "field": "type"
+          },
+          {
+            "anyOf": [
+              {
+                "equals": "true",
+                "field": "Microsoft.Cache/Redis/enableNonSslPort"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "details": [
+          {
+            "field": "Microsoft.Cache/Redis/enableNonSslPort",
+            "value": false
+          }
+        ],
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

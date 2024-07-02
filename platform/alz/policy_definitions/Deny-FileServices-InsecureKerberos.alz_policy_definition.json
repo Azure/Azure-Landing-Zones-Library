@@ -1,0 +1,64 @@
+{
+  "name": "Deny-FileServices-InsecureKerberos",
+  "properties": {
+    "description": "This policy denies the use of insecure Kerberos ticket encryption (RC4-HMAC) when using File Services on a storage account.",
+    "displayName": "File Services with insecure Kerberos ticket encryption should be denied",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Storage",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "The effect determines what happens when the policy rule is evaluated to match",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "notAllowedKerberosTicketEncryption": {
+        "allowedValues": [
+          "RC4-HMAC",
+          "AES-256"
+        ],
+        "defaultValue": "RC4-HMAC",
+        "metadata": {
+          "description": "The list of kerberosTicketEncryption not allowed.",
+          "displayName": "Kerberos ticket encryption supported by server. Valid values are RC4-HMAC, AES-256."
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Storage/storageAccounts/fileServices",
+            "field": "type"
+          },
+          {
+            "contains": "[parameters('notAllowedKerberosTicketEncryption')]",
+            "field": "Microsoft.Storage/storageAccounts/fileServices/protocolSettings.smb.kerberosTicketEncryption"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}
