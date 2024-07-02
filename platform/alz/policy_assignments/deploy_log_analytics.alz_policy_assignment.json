@@ -25,10 +25,10 @@
         "value": "placeholder-automation"
       },
       "workspaceRegion": {
-        "value": "uksouth"
+        "value": "northeurope"
       },
       "automationRegion": {
-        "value": "uksouth"
+        "value": "northeurope"
       },
       "rgName": {
         "value": "${root_scope_id}-mgmt"
