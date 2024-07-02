@@ -85,13 +85,13 @@ jobs:
       - name: Update library policy definitions
         run: |
           alzlibtool convert policydefinition -o \
-            "${{ github.workspace }}/${{ env.remote_repository }}/src/resources/Microsoft.Authorization/PolicyDefinitions" \
+            "${{ github.workspace }}/${{ env.remote_repository }}/src/resources/Microsoft.Authorization/policyDefinitions" \
             "${{ github.workspace }}/${{ github.repository }}/platform/alz/policy_definitions"
 
       - name: Update library policy definitions
         run: |
           alzlibtool convert policysetdefinition -o \
-            "${{ github.workspace }}/${{ env.remote_repository }}/src/resources/Microsoft.Authorization/PolicySetDefinitions" \
+            "${{ github.workspace }}/${{ env.remote_repository }}/src/resources/Microsoft.Authorization/policySetDefinitions" \
             "${{ github.workspace }}/${{ github.repository }}/platform/alz/policy_set_definitions"
 
       - name: Update library policy assignments and archetypes
