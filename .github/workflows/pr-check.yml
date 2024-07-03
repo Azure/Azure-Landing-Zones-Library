@@ -20,6 +20,7 @@ jobs:
 
       - name: get a list of changed files from base branch
         run: |
+          git fetch --depth=1 origin main
           git fetch --depth=1 origin +refs/pull/${{ github.event.number }}/merge
           git diff --name-only origin/main...FETCH_HEAD
         id: changed-files
