@@ -23,7 +23,9 @@ jobs:
       - name: Get list of changed files
         id: files
         run: |
-          echo "::set-output name=list::$(git diff --name-only ${{ github.base_ref }}...${{ github.head_ref }})"
+          git fetch origin ${{ github.base_ref }}
+          git fetch origin ${{ github.head_ref }}
+          echo "list=$(git diff --name-only ${{ github.base_ref }}...${{ github.head_ref }})" >> "$GITHUB_OUTPUT"
         shell: bash
 
       - name: Print changed files
