@@ -24,7 +24,7 @@ jobs:
         id: libs
         run: |
           DIFF="$(git diff --name-only origin/${{ github.base_ref }} | xargs dirname | sort | uniq)"
-          LIBS=$(echo "${DIFF}" | grep '^platform/' | cut -d'/' -f2 | sort | uniq")
+          LIBS=$(echo "${DIFF}" | grep '^platform/' | cut -d'/' -f2 | sort | uniq)
           JSONARRAY=$(echo "${LIBS}" | jq -R -s -c 'split("\n")'[:-1])
           echo "list=${JSONARRAY}" >> "$GITHUB_OUTPUT"
         shell: bash
