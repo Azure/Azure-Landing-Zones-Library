@@ -20,22 +20,15 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get list of changed dirs
-        id: dirs
-        run: |
-          DIFF="$(git diff --name-only origin/${{ github.base_ref }} | xargs dirname | sort | uniq)"
-          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
-          echo "list<<$EOF" >> "$GITHUB_OUTPUT"
-          echo "${DIFF}" >> "$GITHUB_OUTPUT"
-          echo "$EOF" >> $GITHUB_OUTPUT
-        shell: bash
-
-      - name: Get list of changed library members
+      - name: Get list of changed libs
         id: libs
         run: |
-          LIBS=$(echo "${{ steps.dirs.outputs.list }}" | grep '^platform/' | cut -d'/' -f2 | sort | uniq")
+          DIFF="$(git diff --name-only origin/${{ github.base_ref }} | xargs dirname | sort | uniq)"
+          LIBS=$(echo "${DIFF}" | grep '^platform/' | cut -d'/' -f2 | sort | uniq")
           JSONARRAY=$(echo "${LIBS}" | jq -R -s -c 'split("\n")'[:-1])
-          echo "array=${JSONARRAY}" >> "$GITHUB_OUTPUT"
+          echo "list=${JSONARRAY}" >> "$GITHUB_OUTPUT"
+        shell: bash
+
     outputs:
       list: ${{ steps.libs.outputs.list }}
 
