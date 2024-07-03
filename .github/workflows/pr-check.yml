@@ -17,10 +17,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          fetch-depth: 0
 
-      - name: get a list of changed files from base branch
+      - name: Get list of changed files
+        id: files
         run: |
-          git fetch --depth=1 origin main
-          git fetch --depth=1 origin +refs/pull/${{ github.event.number }}/merge
-          git diff --name-only main...FETCH_HEAD
-        id: changed-files
+          echo "::set-output name=list::$(git diff --name-only ${{ github.base_ref }}...${{ github.head_ref }})"
+        shell: bash
+
+      - name: Print changed files
+        run: |
+          echo "Changed files in PR: ${{ steps.files.outputs.list }}"
