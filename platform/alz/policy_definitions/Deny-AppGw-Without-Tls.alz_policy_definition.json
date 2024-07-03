@@ -1,0 +1,76 @@
+{
+  "name": "Deny-AppGw-Without-Tls",
+  "properties": {
+    "description": "This policy enables you to restrict that Application Gateways is always deployed with predefined Microsoft policy that is using TLS version 1.2",
+    "displayName": "Application Gateway should be deployed with predefined Microsoft policy that is using TLS version 1.2",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Network",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "predefinedPolicyName": {
+        "defaultValue": [
+          "AppGwSslPolicy20220101",
+          "AppGwSslPolicy20170401S",
+          "AppGwSslPolicy20220101S"
+        ],
+        "metadata": {
+          "description": "Predefined policy name",
+          "displayName": "Predefined policy name"
+        },
+        "type": "array"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Network/applicationGateways",
+            "field": "type"
+          },
+          {
+            "anyOf": [
+              {
+                "field": "Microsoft.Network/applicationGateways/sslPolicy.policyType",
+                "notEquals": "Predefined"
+              },
+              {
+                "exists": "false",
+                "field": "Microsoft.Network/applicationGateways/sslPolicy.policyType"
+              },
+              {
+                "field": "Microsoft.Network/applicationGateways/sslPolicy.policyName",
+                "notIn": "[parameters('predefinedPolicyName')]"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

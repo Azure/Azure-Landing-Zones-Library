@@ -1,0 +1,62 @@
+{
+  "name": "Deny-Databricks-VirtualNetwork",
+  "properties": {
+    "description": "Enforces the use of vnet injection for Databricks workspaces.",
+    "displayName": "Deny Databricks workspaces without Vnet injection",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Databricks",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "Indexed",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Disabled",
+          "Deny"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Databricks/workspaces",
+            "field": "type"
+          },
+          {
+            "anyOf": [
+              {
+                "exists": false,
+                "field": "Microsoft.DataBricks/workspaces/parameters.customVirtualNetworkId.value"
+              },
+              {
+                "exists": false,
+                "field": "Microsoft.DataBricks/workspaces/parameters.customPublicSubnetName.value"
+              },
+              {
+                "exists": false,
+                "field": "Microsoft.DataBricks/workspaces/parameters.customPrivateSubnetName.value"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

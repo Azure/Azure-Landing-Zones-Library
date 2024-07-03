@@ -1,0 +1,121 @@
+{
+  "name": "Enforce-Guardrails-CosmosDb",
+  "properties": {
+    "description": "This policy initiative is a group of policies that ensures Cosmos DB is compliant per regulated Landing Zones.",
+    "displayName": "Enforce recommended guardrails for Cosmos DB",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Cosmos DB",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "cosmosDbAtp": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "type": "string"
+      },
+      "cosmosDbFwRules": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "cosmosDbLocalAuth": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "cosmosDbModifyLocalAuth": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "type": "string"
+      },
+      "cosmosDbModifyPublicAccess": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "type": "string"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('cosmosDbModifyLocalAuth')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/dc2d41d1-4ab1-4666-a3e1-3d51c43e0049",
+        "policyDefinitionReferenceId": "Modify-CosmosDb-Local-Auth"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('cosmosDbAtp')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b5f04e03-92a3-4b09-9410-2cc5e5047656",
+        "policyDefinitionReferenceId": "Dine-CosmosDb-Atp"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('cosmosDbFwRules')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb",
+        "policyDefinitionReferenceId": "Deny-CosmosDb-Fw-Rules"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('cosmosDbLocalAuth')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5450f5bd-9c72-4390-a9c4-a7aba4edfdd2",
+        "policyDefinitionReferenceId": "Deny-CosmosDb-Local-Auth"
+      },
+      {
+        "groupNames": [],
+        "parameters": {},
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4750c32b-89c0-46af-bfcb-2e4541a818d5",
+        "policyDefinitionReferenceId": "Append-CosmosDb-Metadata"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('cosmosDbModifyPublicAccess')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/da69ba51-aaf1-41e5-8651-607cd0b37088",
+        "policyDefinitionReferenceId": "Modify-CosmosDb-Public-Network-Access"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

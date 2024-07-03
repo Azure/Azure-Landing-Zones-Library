@@ -1,0 +1,64 @@
+{
+  "name": "Deny-LogicApp-Public-Network",
+  "properties": {
+    "description": "Disabling public network access improves security by ensuring that the Logic App is not exposed on the public internet. Creating private endpoints can limit exposure of a Logic App. Learn more at: https://aka.ms/app-service-private-endpoint.",
+    "displayName": "Logic apps should disable public network access",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Logic Apps",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Web/sites",
+            "field": "type"
+          },
+          {
+            "contains": "workflowapp",
+            "field": "kind"
+          },
+          {
+            "anyOf": [
+              {
+                "exists": "false",
+                "field": "Microsoft.Web/sites/publicNetworkAccess"
+              },
+              {
+                "field": "Microsoft.Web/sites/publicNetworkAccess",
+                "notEquals": "Disabled"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

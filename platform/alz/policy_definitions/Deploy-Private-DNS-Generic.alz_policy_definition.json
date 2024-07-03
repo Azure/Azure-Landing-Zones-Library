@@ -1,0 +1,152 @@
+{
+  "name": "Deploy-Private-DNS-Generic",
+  "properties": {
+    "description": "Configure private DNS zone group to override the DNS resolution for PaaS services private endpoint. See https://aka.ms/pepdnszones for information on values to provide to parameters in this policy.",
+    "displayName": "Deploy-Private-DNS-Generic",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Networking",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "evaluationDelay": {
+        "defaultValue": "PT10M",
+        "metadata": {
+          "description": "The delay in evaluation of the policy. Review delay options at https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effect-deploy-if-not-exists",
+          "displayName": "Evaluation Delay"
+        },
+        "type": "String"
+      },
+      "groupId": {
+        "metadata": {
+          "description": "The group ID of the PaaS private endpoint. Also referred to as subresource.",
+          "displayName": "PaaS Private endpoint group ID (subresource)"
+        },
+        "type": "String"
+      },
+      "privateDnsZoneId": {
+        "metadata": {
+          "assignPermissions": true,
+          "description": "The private DNS zone name required for specific Paas Services to resolve a private DNS Zone.",
+          "displayName": "Private DNS Zone ID for Paas services",
+          "strongType": "Microsoft.Network/privateDnsZones"
+        },
+        "type": "String"
+      },
+      "resourceType": {
+        "metadata": {
+          "description": "The PaaS endpoint resource type.",
+          "displayName": "PaaS private endpoint resource type"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Network/privateEndpoints",
+            "field": "type"
+          },
+          {
+            "count": {
+              "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*]",
+              "where": {
+                "allOf": [
+                  {
+                    "contains": "[parameters('resourceType')]",
+                    "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].privateLinkServiceId"
+                  },
+                  {
+                    "equals": "[parameters('groupId')]",
+                    "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].groupIds[*]"
+                  }
+                ]
+              }
+            },
+            "greaterOrEquals": 1
+          }
+        ]
+      },
+      "then": {
+        "details": {
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "parameters": {
+                "location": {
+                  "value": "[field('location')]"
+                },
+                "privateDnsZoneId": {
+                  "value": "[parameters('privateDnsZoneId')]"
+                },
+                "privateEndpointName": {
+                  "value": "[field('name')]"
+                }
+              },
+              "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "location": {
+                    "type": "string"
+                  },
+                  "privateDnsZoneId": {
+                    "type": "string"
+                  },
+                  "privateEndpointName": {
+                    "type": "string"
+                  }
+                },
+                "resources": [
+                  {
+                    "apiVersion": "2020-03-01",
+                    "location": "[parameters('location')]",
+                    "name": "[concat(parameters('privateEndpointName'), '/deployedByPolicy')]",
+                    "properties": {
+                      "privateDnsZoneConfigs": [
+                        {
+                          "name": "PaaS-Service-Private-DNS-Zone-Config",
+                          "properties": {
+                            "privateDnsZoneId": "[parameters('privateDnsZoneId')]"
+                          }
+                        }
+                      ]
+                    },
+                    "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups"
+                  }
+                ]
+              }
+            }
+          },
+          "evaluationDelay": "[parameters('evaluationDelay')]",
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7"
+          ],
+          "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups"
+        },
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

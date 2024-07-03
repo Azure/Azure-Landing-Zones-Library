@@ -1,0 +1,65 @@
+---
+name: pr check
+
+permissions:
+  contents: read
+  pull-requests: write
+  id-token: write
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  libschanged:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          fetch-depth: 0
+
+      - name: Get list of changed libs
+        id: libs
+        run: |
+          DIFF="$(git diff --name-only origin/${{ github.base_ref }} | xargs dirname | sort | uniq)"
+          LIBS=$(echo "${DIFF}" | grep '^platform/' | cut -d'/' -f2 | sort | uniq)
+          JSONARRAY=$(echo "${LIBS}" | jq -R -s -c 'split("\n")'[:-1])
+          echo "list=${JSONARRAY}" >> "$GITHUB_OUTPUT"
+        shell: bash
+
+    outputs:
+      list: ${{ steps.libs.outputs.list }}
+
+  checklib:
+    needs: libschanged
+    runs-on: ubuntu-latest
+    environment: test
+    strategy:
+      matrix:
+        lib: ${{ fromJson(needs.libschanged.outputs.list) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Set up go
+        uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
+        with:
+          check-latest: true
+
+      - name: Install alzlibtool
+        run: go install github.com/Azure/alzlib/cmd/alzlibtool@v0.18.0
+
+      - name: Azure login
+        uses: azure/login@6c251865b4e6290e7b78be643ea2d005bc51f69a # v2.1.1
+        with:
+          client-id: ${{ vars.AZURE_CLIENT_ID }}
+          tenant-id: ${{ vars.AZURE_TENANT_ID }}
+          allow-no-subscriptions: true
+
+      - name: Check lib
+        run: |
+          alzlibtool check library "platform/${{ matrix.lib }}"
+        shell: bash

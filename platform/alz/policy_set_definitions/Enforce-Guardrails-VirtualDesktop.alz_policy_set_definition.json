@@ -1,0 +1,59 @@
+{
+  "name": "Enforce-Guardrails-VirtualDesktop",
+  "properties": {
+    "description": "This policy initiative is a group of policies that ensures Virtual Desktop is compliant per regulated Landing Zones.",
+    "displayName": "Enforce recommended guardrails for Virtual Desktop",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Desktop Virtualization",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "avdHostPoolModifyPublicNetworkAccess": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "type": "string"
+      },
+      "avdWorkspaceModifyPublicNetworkAccess": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "type": "string"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('avdWorkspaceModifyPublicNetworkAccess')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ce6ebf1d-0b94-4df9-9257-d8cacc238b4f",
+        "policyDefinitionReferenceId": "Modify-Workspace-PublicNetworkAccess"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('avdHostPoolModifyPublicNetworkAccess')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0913ff-51e7-47b8-97bb-ea17127f7c8d",
+        "policyDefinitionReferenceId": "Modify-Hostpool-PublicNetworkAccess"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

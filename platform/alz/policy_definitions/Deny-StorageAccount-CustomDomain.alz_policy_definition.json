@@ -1,0 +1,60 @@
+{
+  "name": "Deny-StorageAccount-CustomDomain",
+  "properties": {
+    "description": "This policy denies the creation of Storage Accounts with custom domains assigned as communication cannot be encrypted, and always uses HTTP.",
+    "displayName": "Storage Accounts with custom domains assigned should be denied",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Storage",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "metadata": {
+          "description": "The effect determines what happens when the policy rule is evaluated to match",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Storage/storageAccounts",
+            "field": "type"
+          },
+          {
+            "anyOf": [
+              {
+                "exists": "true",
+                "field": "Microsoft.Storage/storageAccounts/customDomain"
+              },
+              {
+                "equals": "true",
+                "field": "Microsoft.Storage/storageAccounts/customDomain.useSubDomainName"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

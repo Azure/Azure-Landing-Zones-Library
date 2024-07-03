@@ -1,0 +1,211 @@
+{
+  "name": "Deploy-Custom-Route-Table",
+  "properties": {
+    "description": "Deploys a route table with specific user defined routes when one does not exist. The route table deployed by the policy must be manually associated to subnet(s)",
+    "displayName": "Deploy a route table with specific user defined routes",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Network",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "Indexed",
+    "parameters": {
+      "disableBgpPropagation": {
+        "defaultValue": false,
+        "metadata": {
+          "description": "Disable BGP Propagation",
+          "displayName": "DisableBgpPropagation"
+        },
+        "type": "Boolean"
+      },
+      "effect": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "requiredRoutes": {
+        "metadata": {
+          "description": "Routes that must exist in compliant route tables deployed by this policy",
+          "displayName": "requiredRoutes"
+        },
+        "type": "Array"
+      },
+      "routeTableName": {
+        "metadata": {
+          "description": "Name of the route table automatically deployed by this policy",
+          "displayName": "routeTableName"
+        },
+        "type": "String"
+      },
+      "vnetRegion": {
+        "metadata": {
+          "description": "Only VNets in this region will be evaluated against this policy",
+          "displayName": "vnetRegion"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Network/virtualNetworks",
+            "field": "type"
+          },
+          {
+            "equals": "[parameters('vnetRegion')]",
+            "field": "location"
+          }
+        ]
+      },
+      "then": {
+        "details": {
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "parameters": {
+                "disableBgpPropagation": {
+                  "value": "[parameters('disableBgpPropagation')]"
+                },
+                "requiredRoutes": {
+                  "value": "[parameters('requiredRoutes')]"
+                },
+                "routeTableName": {
+                  "value": "[parameters('routeTableName')]"
+                },
+                "vnetRegion": {
+                  "value": "[parameters('vnetRegion')]"
+                }
+              },
+              "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "disableBgpPropagation": {
+                    "type": "bool"
+                  },
+                  "requiredRoutes": {
+                    "type": "array"
+                  },
+                  "routeTableName": {
+                    "type": "string"
+                  },
+                  "vnetRegion": {
+                    "type": "string"
+                  }
+                },
+                "resources": [
+                  {
+                    "apiVersion": "2021-04-01",
+                    "name": "routeTableDepl",
+                    "properties": {
+                      "mode": "Incremental",
+                      "parameters": {
+                        "disableBgpPropagation": {
+                          "value": "[parameters('disableBgpPropagation')]"
+                        },
+                        "requiredRoutes": {
+                          "value": "[parameters('requiredRoutes')]"
+                        },
+                        "routeTableName": {
+                          "value": "[parameters('routeTableName')]"
+                        },
+                        "vnetRegion": {
+                          "value": "[parameters('vnetRegion')]"
+                        }
+                      },
+                      "template": {
+                        "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                        "contentVersion": "1.0.0.0",
+                        "parameters": {
+                          "disableBgpPropagation": {
+                            "type": "bool"
+                          },
+                          "requiredRoutes": {
+                            "type": "array"
+                          },
+                          "routeTableName": {
+                            "type": "string"
+                          },
+                          "vnetRegion": {
+                            "type": "string"
+                          }
+                        },
+                        "resources": [
+                          {
+                            "apiVersion": "2021-02-01",
+                            "location": "[[parameters('vnetRegion')]",
+                            "name": "[[parameters('routeTableName')]",
+                            "properties": {
+                              "copy": "[variables('copyLoop')]",
+                              "disableBgpRoutePropagation": "[[parameters('disableBgpPropagation')]"
+                            },
+                            "type": "Microsoft.Network/routeTables"
+                          }
+                        ]
+                      }
+                    },
+                    "type": "Microsoft.Resources/deployments"
+                  }
+                ],
+                "variables": {
+                  "copyLoop": [
+                    {
+                      "count": "[[length(parameters('requiredRoutes'))]",
+                      "input": {
+                        "name": "[[concat('route-',copyIndex('routes'))]",
+                        "properties": {
+                          "addressPrefix": "[[split(parameters('requiredRoutes')[copyIndex('routes')], ';')[0]]",
+                          "nextHopIpAddress": "[[if(equals(toLower(split(parameters('requiredRoutes')[copyIndex('routes')], ';')[1]),'virtualappliance'),split(parameters('requiredRoutes')[copyIndex('routes')], ';')[2], null())]",
+                          "nextHopType": "[[split(parameters('requiredRoutes')[copyIndex('routes')], ';')[1]]"
+                        }
+                      },
+                      "name": "routes"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "existenceCondition": {
+            "allOf": [
+              {
+                "equals": "[parameters('routeTableName')]",
+                "field": "name"
+              },
+              {
+                "count": {
+                  "field": "Microsoft.Network/routeTables/routes[*]",
+                  "where": {
+                    "in": "[parameters('requiredRoutes')]",
+                    "value": "[concat(current('Microsoft.Network/routeTables/routes[*].addressPrefix'), ';', current('Microsoft.Network/routeTables/routes[*].nextHopType'), if(equals(toLower(current('Microsoft.Network/routeTables/routes[*].nextHopType')),'virtualappliance'), concat(';', current('Microsoft.Network/routeTables/routes[*].nextHopIpAddress')), ''))]"
+                  }
+                },
+                "equals": "[length(parameters('requiredRoutes'))]"
+              }
+            ]
+          },
+          "roleDefinitionIds": [
+            "/subscriptions/e867a45d-e513-44ac-931e-4741cef80b24/providers/Microsoft.Authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7"
+          ],
+          "type": "Microsoft.Network/routeTables"
+        },
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

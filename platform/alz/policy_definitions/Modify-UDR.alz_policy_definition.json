@@ -1,0 +1,101 @@
+{
+  "name": "Modify-UDR",
+  "properties": {
+    "description": "This policy enforces the configuration of User-Defined Routes (UDR) within a subnet.",
+    "displayName": "Enforce specific configuration of User-Defined Routes (UDR)",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Network",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "addressPrefix": {
+        "metadata": {
+          "description": "The destination IP address range in CIDR notation that this Policy checks for within the UDR. Example: 0.0.0.0/0 to check for the presence of a default route.",
+          "displayName": "Address Prefix"
+        },
+        "type": "string"
+      },
+      "effect": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "nextHopIpAddress": {
+        "metadata": {
+          "description": "The IP address packets should be forwarded to.",
+          "displayName": "Next Hop IP Address"
+        },
+        "type": "string"
+      },
+      "nextHopType": {
+        "allowedValues": [
+          "VnetLocal",
+          "VirtualNetworkGateway",
+          "Internet",
+          "VirtualAppliance",
+          "None"
+        ],
+        "metadata": {
+          "description": "The next hope type that the policy checks for within the inspected route. The value can be Virtual Network, Virtual Network Gateway, Internet, Virtual Appliance, or None.",
+          "displayName": "Next Hop Type"
+        },
+        "type": "string"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Network/routeTables",
+            "field": "type"
+          },
+          {
+            "count": {
+              "field": "Microsoft.Network/routeTables/routes[*]"
+            },
+            "equals": 0
+          }
+        ]
+      },
+      "then": {
+        "details": {
+          "conflictEffect": "audit",
+          "operations": [
+            {
+              "field": "Microsoft.Network/routeTables/routes[*]",
+              "operation": "add",
+              "value": {
+                "name": "default",
+                "properties": {
+                  "addressPrefix": "[parameters('addressPrefix')]",
+                  "nextHopIpAddress": "[parameters('nextHopIpAddress')]",
+                  "nextHopType": "[parameters('nextHopType')]"
+                }
+              }
+            }
+          ],
+          "roleDefinitionIds": [
+            "/providers/microsoft.authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7"
+          ]
+        },
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

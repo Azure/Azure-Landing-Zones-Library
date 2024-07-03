@@ -1,0 +1,86 @@
+{
+  "name": "Audit-AzureHybridBenefit",
+  "properties": {
+    "description": "Optimize cost by enabling Azure Hybrid Benefit. Leverage this Policy definition as a cost control to reveal Virtual Machines not using AHUB.",
+    "displayName": "Audit AHUB for eligible VMs",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Cost Optimization",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Disabled"
+        ],
+        "defaultValue": "Audit",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "field": "type",
+            "in": [
+              "Microsoft.Compute/virtualMachines",
+              "Microsoft.Compute/virtualMachineScaleSets"
+            ]
+          },
+          {
+            "equals": "MicrosoftWindowsServer",
+            "field": "Microsoft.Compute/imagePublisher"
+          },
+          {
+            "equals": "WindowsServer",
+            "field": "Microsoft.Compute/imageOffer"
+          },
+          {
+            "anyOf": [
+              {
+                "field": "Microsoft.Compute/imageSKU",
+                "like": "2008-R2-SP1*"
+              },
+              {
+                "field": "Microsoft.Compute/imageSKU",
+                "like": "2012-*"
+              },
+              {
+                "field": "Microsoft.Compute/imageSKU",
+                "like": "2016-*"
+              },
+              {
+                "field": "Microsoft.Compute/imageSKU",
+                "like": "2019-*"
+              },
+              {
+                "field": "Microsoft.Compute/imageSKU",
+                "like": "2022-*"
+              }
+            ]
+          },
+          {
+            "field": "Microsoft.Compute/licenseType",
+            "notEquals": "Windows_Server"
+          }
+        ]
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}
