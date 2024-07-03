@@ -12,7 +12,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  pr-check:
+  libschanged:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -20,16 +20,37 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Get list of changed files
-        id: files
+      - name: Get list of changed dirs
+        id: dirs
         run: |
-          DIFF="$(git diff --name-only origin/${{ github.base_ref }})"
+          DIFF="$(git diff --name-only origin/${{ github.base_ref }} | xargs dirname | sort | uniq)"
           EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
           echo "list<<$EOF" >> "$GITHUB_OUTPUT"
           echo "${DIFF}" >> "$GITHUB_OUTPUT"
           echo "$EOF" >> $GITHUB_OUTPUT
         shell: bash
 
-      - name: Print changed files
+      - name: Get list of changed library members
+        id: libs
         run: |
-          echo "Changed files in PR: ${{ steps.files.outputs.list }}"
+          LIBS=$(echo "${{ steps.dirs.outputs.list }}" | grep '^platform/' | cut -d'/' -f2 | sort | uniq")
+          JSONARRAY=$(echo "${LIBS}" | jq -R -s -c 'split("\n")'[:-1])
+          echo "array=${JSONARRAY}" >> "$GITHUB_OUTPUT"
+    outputs:
+      list: ${{ steps.libs.outputs.list }}
+
+  checklib:
+    needs: libschanged
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        lib: ${{ fromJson(needs.libschanged.outputs.list) }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Set up go
+        uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
+
+      - name: Install alzlibtool
+        run: go install github.com/Azure/alzlib/cmd/alzlibtool
