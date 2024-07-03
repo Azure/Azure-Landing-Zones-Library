@@ -48,4 +48,4 @@ jobs:
           check-latest: true
 
       - name: Install alzlibtool
-        run: go install github.com/Azure/alzlib/cmd/alzlibtool@latest
+        run: go install github.com/Azure/alzlib/cmd/alzlibtool@v0.18.0
