@@ -24,7 +24,10 @@ jobs:
         id: files
         run: |
           DIFF="$(git diff --name-only origin/${{ github.base_ref }})"
-          echo "list=${DIFF}" >> "$GITHUB_OUTPUT"
+          EOF=$(dd if=/dev/urandom bs=15 count=1 status=none | base64)
+          echo "list<<$EOF" >> "$GITHUB_OUTPUT"
+          echo "${DIFF}" >> "$GITHUB_OUTPUT"
+          echo "$EOF" >> $GITHUB_OUTPUT
         shell: bash
 
       - name: Print changed files
