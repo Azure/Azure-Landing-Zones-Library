@@ -23,8 +23,8 @@ jobs:
       - name: Get list of changed files
         id: files
         run: |
-          DIFF=$(git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...)
-          echo "list=${DIFF}" >> "$GITHUB_ENV"
+          DIFF="$(git diff --name-only --diff-filter=d origin/${{ github.base_ref }}...)"
+          echo "list=$DIFF" >> "$GITHUB_OUTPUT"
         shell: bash
 
       - name: Print changed files
