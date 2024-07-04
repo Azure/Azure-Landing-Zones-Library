@@ -95,7 +95,7 @@ jobs:
           mapfile -t "CHECK_GIT_STATUS" < <(git status -s ${{ env.library_dir }})
           printf "%s\n" "${CHECK_GIT_STATUS[@]}"
           echo "changes=${#CHECK_GIT_STATUS[@]}" >> "$GITHUB_OUTPUT"
-        working-directory: ${{ github.workspace }}${{ github.repository }}
+        working-directory: ${{ github.workspace }}/${{ github.repository }}
 
       - name: Add files, commit and push
         if: steps.git_status.outputs.changes > 0
