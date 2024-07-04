@@ -125,7 +125,7 @@ jobs:
       - name: close and comment out of date prs
         if: steps.git_status.outputs.changes > 0
         run: |
-          PULL_REQUESTS=$(gh pr list --search "title:'${{ env.pr_title }}'" --json number,headRefName)
+          PULL_REQUESTS=$(gh pr list --search 'feat: update platform/alz library (automated)' --json number,headRefName)
           echo "$PULL_REQUESTS" | jq -r '.[] | select(.number != ${{ steps.pr.outputs.number }}) | .number' | xargs -I {} gh pr close {} --delete-branch --comment "Supersceeded by #${{ steps.pr.outputs.pull-request-number }}"
         working-directory: ${{ github.repository }}
         env:
