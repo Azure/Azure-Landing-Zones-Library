@@ -1422,13 +1422,13 @@
           "effect": {
             "value": "[parameters('effect')]"
           },
-          "privateDnsZoneIdForGuestConfiguration": {
+          "privateDnsZoneIDForGuestConfiguration": {
             "value": "[parameters('azureArcGuestconfigurationPrivateDnsZoneId')]"
           },
-          "privateDnsZoneIdForHybridResourceProvider": {
+          "privateDnsZoneIDForHybridResourceProvider": {
             "value": "[parameters('azureArcHybridResourceProviderPrivateDnsZoneId')]"
           },
-          "privateDnsZoneIdForKubernetesConfiguration": {
+          "privateDnsZoneIDForKubernetesConfiguration": {
             "value": "[parameters('azureArcKubernetesConfigurationPrivateDnsZoneId')]"
           }
         },
