@@ -41,6 +41,7 @@ jobs:
 
   checklib:
     needs: libschanged
+    if: ${{ needs.libschanged.outputs.list != '[]' }}
     runs-on: ubuntu-latest
     environment: test
     strategy:
