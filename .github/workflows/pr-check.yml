@@ -40,7 +40,7 @@ jobs:
           JSONARRAY=$(echo "${LIBS}" | jq -R -s -c 'split("\n")'[:-1])
           echo "Got JSONARRAY: ${JSONARRAY}"
           echo "list=${JSONARRAY}" >> "$GITHUB_OUTPUT"
-        shell: bash]
+        shell: bash
 
     outputs:
       list: ${{ steps.libs.outputs.list }}
