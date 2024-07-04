@@ -13,10 +13,10 @@ permissions:
 env:
   remote_repository: "Azure/Enterprise-Scale"
   alzlib_repository: "Azure/alzlib"
-  branch_name: "update-platform-alz"
-  pr_title: "feat: update library (automated)"
+  library_dir: "platform/alz"
+  pr_title: "feat: update `platform/alz` library (automated)"
   pr_body: |-
-    This is an automated 'pull_request' containing updates to the library templates stored in 'lib'.\n
+    This is an automated 'pull_request' containing updates to the library templates stored in 'platform/alz'.\n
     Please review the 'files changed' tab to review changes.
 
 jobs:
@@ -38,20 +38,13 @@ jobs:
           path: ${{ env.remote_repository }}
           ref: main
 
-      - name: checkout alzlib
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-        with:
-          repository: ${{ env.alzlib_repository }}
-          path: ${{ env.alzlib_repository }}
-
       - name: setup go
         uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
         with:
           go-version-file: ${{ github.workspace }}/${{ env.alzlib_repository }}/go.mod
 
       - name: install alzlibtool
-        run: go install ./cmd/alzlibtool
-        working-directory: ${{ github.workspace }}/${{ env.alzlib_repository }}
+        run: go install github.com/Azure/alzlib/cmd/alzlibtool@v0.18.0
 
       - uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
         id: generate-token
@@ -66,18 +59,11 @@ jobs:
         working-directory: ${{ github.repository }}
 
       - name: Create and checkout branch
+        id: branch
         run: |
-          BRANCH_URL="repos/${{ github.repository }}/branches"
-          JQ_FILTER=".[] | select(.name == \"${{ env.branch_name }}\").name"
-          CHECK_BRANCH_ORIGIN=$(gh api $BRANCH_URL | jq -r "$JQ_FILTER")
-          if [ -z "$CHECK_BRANCH_ORIGIN" ]
-          then
-            echo "Checkout local branch (create new, no origin)..."
-            git checkout -b ${{ env.branch_name }}
-          else
-            echo "Checkout local branch (create new, track from origin)..."
-            git checkout -b ${{ env.branch_name }} --track origin/${{ env.branch_name }}
-          fi
+          BRANCH="platform-alz-${{ github.run_number }}"
+          echo "name=$BRANCH" >> "$GITHUB_OUTPUT"
+          git checkout -b "$BRANCH"
         working-directory: ${{ github.repository }}
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
@@ -86,13 +72,13 @@ jobs:
         run: |
           alzlibtool convert policydefinition -o \
             "${{ github.workspace }}/${{ env.remote_repository }}/src/resources/Microsoft.Authorization/policyDefinitions" \
-            "${{ github.workspace }}/${{ github.repository }}/platform/alz/policy_definitions"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions"
 
       - name: Update library policy set definitions
         run: |
           alzlibtool convert policysetdefinition -o \
             "${{ github.workspace }}/${{ env.remote_repository }}/src/resources/Microsoft.Authorization/policySetDefinitions" \
-            "${{ github.workspace }}/${{ github.repository }}/platform/alz/policy_set_definitions"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions"
 
       - name: Update library policy assignments and archetypes
         uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
@@ -108,40 +94,40 @@ jobs:
       - name: Check for changes
         id: git_status
         run: |
-          mapfile -t "CHECK_GIT_STATUS" < <(git status -s)
+          mapfile -t "CHECK_GIT_STATUS" < <(git status -s ${{ env.library_dir }})
           printf "%s\n" "${CHECK_GIT_STATUS[@]}"
           echo "changes=${#CHECK_GIT_STATUS[@]}" >> "$GITHUB_OUTPUT"
-        working-directory: ${{ github.repository }}
+        working-directory: ${{ github.workspace }}${{ github.repository }}
 
       - name: Add files, commit and push
         if: steps.git_status.outputs.changes > 0
         run: |
           echo "Pushing changes to origin..."
-          git add platform/alz
+          git add ${{ env.library_dir }}
           git commit -m '${{ env.pr_title }}'
-          git push origin ${{ env.branch_name }}
+          git push origin ${{ steps.branch.outputs.name }}
         working-directory: ${{ github.repository }}
 
       - name: Create pull request
         if: steps.git_status.outputs.changes > 0
+        id: pr
         run: |
-          HEAD_LABEL="${{ github.repository_owner }}:${{ env.branch_name }}"
-          BASE_LABEL="${{ github.repository_owner }}:$(echo '${{ github.ref }}' | sed 's:refs/heads/::')"
-          PULL_REQUEST_URL="repos/${{ github.repository }}/pulls"
-          JQ_FILTER=".[] | select(.head.label == \"$HEAD_LABEL\") | select(.base.label == \"$BASE_LABEL\") | .url"
-          CHECK_PULL_REQUEST_URL=$(gh api $PULL_REQUEST_URL | jq -r "$JQ_FILTER")
-          if [ -z "$CHECK_PULL_REQUEST_URL" ]
-          then
-            CHECK_PULL_REQUEST_URL=$(gh pr create \
+          PR="$(gh pr create \
             --title "${{ env.pr_title }}" \
             --body "${{ env.pr_body }}" \
             --base "${{ github.ref }}" \
-            --head "${{ env.branch_name }}" \
-            --draft)
+            --head "${{ steps.branch.outputs.name }}" \
+            --draft)"
             echo "Created new PR: $CHECK_PULL_REQUEST_URL"
-          else
-            echo "Existing PR found: $CHECK_PULL_REQUEST_URL"
-          fi
+            echo number=$(gh pr view $PR_URL --json number | jq -r '.number') >> "$GITHUB_OUTPUT"
         working-directory: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+
+      - name: close and comment out of date prs
+        if: steps.git_status.outputs.changes > 0
+        run: |
+          PULL_REQUESTS=$(gh pr list --search "${{ env.pr_title }}" --json number,headRefName)
+          echo "$PULL_REQUESTS" | jq -r '.[] | select(.number != ${{ steps.pr.outputs.number }}) | .number' | xargs -I {} gh pr close {} --delete-branch --comment "Supersceeded by #${{ steps.pr.outputs.pull-request-number }}"
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
