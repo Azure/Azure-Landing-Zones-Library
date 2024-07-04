@@ -24,21 +24,15 @@ jobs:
       - name: Get list of changed libs
         id: libs
         run: |
-          echo "Begin..."
           DIFF="$(git diff --name-only origin/${{ github.base_ref }} | xargs dirname | sort | uniq)"
-          echo "Got diff: ${DIFF}"
-          LIBDIFF="$(echo "${DIFF}" | grep '^platform/')"
-          echo "Got lib diff: ${LIBDIFF}"
+          LIBDIFF="$(echo "${DIFF}" | grep '^platform/' || true)"
           if [ -z "${LIBDIFF}" ]; then
             echo "No libraries changed"
             echo "list=[]" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          echo  "Libraries changed: ${LIBDIFF}"
           LIBS=$(echo "${LIBDIFF}" | cut -d'/' -f2 | sort | uniq)
-          echo "Got libs: ${LIBS}"
           JSONARRAY=$(echo "${LIBS}" | jq -R -s -c 'split("\n")'[:-1])
-          echo "Got JSONARRAY: ${JSONARRAY}"
           echo "list=${JSONARRAY}" >> "$GITHUB_OUTPUT"
         shell: bash
 
