@@ -25,7 +25,13 @@ jobs:
         id: libs
         run: |
           DIFF="$(git diff --name-only origin/${{ github.base_ref }} | xargs dirname | sort | uniq)"
-          LIBS=$(echo "${DIFF}" | grep '^platform/' | cut -d'/' -f2 | sort | uniq)
+          LIBDIFF="$(echo "${DIFF}" | grep '^platform/' || true)"
+          if [ -z "${LIBDIFF}" ]; then
+            echo "No libraries changed"
+            echo "list=[]" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          LIBS=$(echo "${LIBDIFF}" | cut -d'/' -f2 | sort | uniq)
           JSONARRAY=$(echo "${LIBS}" | jq -R -s -c 'split("\n")'[:-1])
           echo "list=${JSONARRAY}" >> "$GITHUB_OUTPUT"
         shell: bash
@@ -35,6 +41,7 @@ jobs:
 
   checklib:
     needs: libschanged
+    if: ${{ needs.libschanged.outputs.list != '[]' }}
     runs-on: ubuntu-latest
     environment: test
     strategy:
