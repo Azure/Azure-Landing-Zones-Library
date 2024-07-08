@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/archetype_definition.json",
   "name": "connectivity",
   "policy_assignments": [
     "Enable-DDoS-VNET"

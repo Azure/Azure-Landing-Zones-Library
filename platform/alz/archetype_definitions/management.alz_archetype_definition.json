@@ -1,4 +1,5 @@
 {
+  "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/archetype_definition.json",
   "name": "management",
   "policy_assignments": [
     "Deploy-Log-Analytics"
