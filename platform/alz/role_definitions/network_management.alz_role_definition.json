@@ -5,13 +5,13 @@
     "properties": {
         "roleName": "Network-Management",
         "description": "Platform-wide global connectivity management: virtual networks, UDRs, NSGs, NVAs, VPN, Azure ExpressRoute, and others",
-        "type": "customRole",
+        "type": "CustomRole",
         "permissions": [
             {
                 "actions": [
-                    "*/read", 
-                    "Microsoft.Network/*", 
-                    "Microsoft.Resources/deployments/*", 
+                    "*/read",
+                    "Microsoft.Network/*",
+                    "Microsoft.Resources/deployments/*",
                     "Microsoft.Support/*"
                 ],
                 "notActions": [],

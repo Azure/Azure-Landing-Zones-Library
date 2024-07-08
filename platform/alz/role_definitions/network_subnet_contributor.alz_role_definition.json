@@ -5,7 +5,7 @@
     "properties": {
         "roleName": "Network-Subnet-Contributor",
         "description": "Enterprise-scale custom Role Definition. Grants full access to manage Virtual Network subnets, but no other network resources.",
-        "type": "customRole",
+        "type": "CustomRole",
         "permissions": [
             {
                 "actions": [
