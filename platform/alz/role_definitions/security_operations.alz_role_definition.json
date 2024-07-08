@@ -5,7 +5,7 @@
     "properties": {
         "roleName": "Security-Operations",
         "description": "Security Administrator role with a horizontal view across the entire Azure estate and the Azure Key Vault purge policy.",
-        "type": "customRole",
+        "type": "CustomRole",
         "permissions": [
             {
                 "actions": [

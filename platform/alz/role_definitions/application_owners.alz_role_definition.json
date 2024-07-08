@@ -5,16 +5,16 @@
     "properties": {
         "roleName": "Application-Owners",
         "description": "Contributor role granted for application/operations team at resource group level",
-        "type": "customRole",
+        "type": "CustomRole",
         "permissions": [
             {
                 "actions": [
                     "*"
                 ],
                 "notActions": [
-                    "Microsoft.Authorization/*/write", 
-                    "Microsoft.Network/publicIPAddresses/write", 
-                    "Microsoft.Network/virtualNetworks/write", 
+                    "Microsoft.Authorization/*/write",
+                    "Microsoft.Network/publicIPAddresses/write",
+                    "Microsoft.Network/virtualNetworks/write",
                     "Microsoft.KeyVault/locations/deletedVaults/purge/action"
                 ],
                 "dataActions": [],
