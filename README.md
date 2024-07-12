@@ -2,8 +2,7 @@
 
 # Azure Landing Zones Library
 
-This repo contains the assets required to deploy Azure Landing Zones.
-It is in a early stage of development.
+All documentation is on our GitHub Pages site: <https://azure.github.io/Azure-Landing-Zones-Library/>
 
 ## Contributing
 
