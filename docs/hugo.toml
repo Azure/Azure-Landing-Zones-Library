@@ -1,4 +1,4 @@
-baseURL = 'https://azure.github.io/Azure-Landing-Zones-Librarys'
+baseURL = 'https://azure.github.io/Azure-Landing-Zones-Library'
 languageCode = 'en-us'
 title = 'Azure Landing Zones Library Documentation'
 theme = "hugo-geekdoc"
@@ -31,7 +31,7 @@ enableRobotsTXT = true
 
   # (Optional, default static/brand.svg) Set the path to a logo for the Geekdoc
   # relative to your 'static/' folder.
-  # geekdocLogo = "img/avm_logo_square.png"
+  geekdocLogo = "img/alzlibrary-logo-square.png"
 
   # (Optional, default false) Render menu from data file in 'data/menu/main.yaml'.
   # See also https://geekdocs.de/usage/menus/#bundle-menu.
