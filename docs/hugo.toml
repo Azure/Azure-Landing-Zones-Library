@@ -112,8 +112,8 @@ enableRobotsTXT = true
   # e.g. 'title_reverse'.
   geekdocFileTreeSortBy = "title"
 
-  (Optional, default none) Adds a "Content licensed under <license>" line to the footer.
-  Could be used if you want to define a default license for your content.
+  # (Optional, default none) Adds a "Content licensed under <license>" line to the footer.
+  # Could be used if you want to define a default license for your content.
   [params.geekdocContentLicense]
     name = "MIT License"
     link = "https://github.com/Azure/Azure-Landing-Zones-Library?tab=MIT-1-ov-file#readme"
