@@ -1,0 +1,10 @@
+---
+header:
+  - name: GitHub
+    ref: https://github.com/Azure/Azure-Landing-Zones-Library
+    icon: gdoc_github
+    external: true
+  - name: Issue
+    ref: https://github.com/Azure/Azure-Landing-Zones-Library/issues/new
+    icon: bug
+    external: true

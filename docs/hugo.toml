@@ -1,6 +1,7 @@
-baseURL = 'https://azure.github.io/Azure-Landing-Zones-Library'
-languageCode = 'en-us'
-title = 'Azure Landing Zones Library Documentation'
+baseURL = "https://azure.github.io/Azure-Landing-Zones-Library"
+languageCode = "en-us"
+title = "Azure Landing Zones Library Documentation"
+description = "Documentation site for the Azure Landing Zones Library."
 theme = "hugo-geekdoc"
 
 # Required to get well formatted code blocks
@@ -35,7 +36,7 @@ enableRobotsTXT = true
 
   # (Optional, default false) Render menu from data file in 'data/menu/main.yaml'.
   # See also https://geekdocs.de/usage/menus/#bundle-menu.
-  geekdocMenuBundle = false
+  geekdocMenuBundle = true
 
   # (Optional, default false) Collapse all menu entries, can not be overwritten
   # per page if enabled. Can be enabled per page via 'geekdocCollapseSection'.
@@ -56,7 +57,7 @@ enableRobotsTXT = true
   # (Optional, default none) Enable 'Edit page' links. Requires 'geekdocRepo' param
   # and the path must point to the parent directory of the 'content' folder.
   # You can also specify this parameter per page in front matter.
-  geekdocEditPath = "/tree/main/docs/"
+  geekdocEditPath = "edit/main/docs"
 
   # (Optional, default true) Enables search function with flexsearch.
   # Index is built on the fly and might slow down your website.
