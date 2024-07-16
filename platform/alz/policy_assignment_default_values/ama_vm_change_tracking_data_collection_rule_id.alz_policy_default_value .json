@@ -1,11 +1,11 @@
 {
-    "name": "ama_vm_change_tracking_data_collection_rule_id",
-    "policy_assignments": [
-        {
-            "policy_assignment_name": "Deploy-VM-ChangeTrack",
-            "parameter_names": [
-                "dcrResourceId"
-            ]
-        }
-    ]
+  "name": "ama_vm_change_tracking_data_collection_rule_id",
+  "policy_assignments": [
+    {
+      "policy_assignment_name": "Deploy-VM-ChangeTrack",
+      "parameter_names": [
+        "dcrResourceId"
+      ]
+    }
+  ]
 }

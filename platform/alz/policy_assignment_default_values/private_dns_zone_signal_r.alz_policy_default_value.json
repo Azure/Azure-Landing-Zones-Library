@@ -1,0 +1,11 @@
+{
+  "name": "private_dns_zone_signal_r",
+  "policy_assignments": [
+    {
+      "policy_assignment_name": "Deploy-Private-DNS-Zones",
+      "parameter_names": [
+        "azureSignalRPrivateDnsZoneId"
+      ]
+    }
+  ]
+}

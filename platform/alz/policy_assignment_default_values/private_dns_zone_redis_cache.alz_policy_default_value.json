@@ -1,0 +1,11 @@
+{
+  "name": "private_dns_zone_redis_cache",
+  "policy_assignments": [
+    {
+      "policy_assignment_name": "Deploy-Private-DNS-Zones",
+      "parameter_names": [
+        "azureRedisCachePrivateDnsZoneId"
+      ]
+    }
+  ]
+}

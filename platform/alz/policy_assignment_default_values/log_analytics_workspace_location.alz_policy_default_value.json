@@ -1,11 +1,11 @@
 {
-    "name": "log_analytics_workspace_location",
-    "policy_assignments": [
-        {
-            "policy_assignment_name": "Deploy-Log-Analytics",
-            "parameter_names": [
-                "workspaceRegion"
-            ]
-        }
-    ]
+  "name": "log_analytics_workspace_location",
+  "policy_assignments": [
+    {
+      "policy_assignment_name": "Deploy-Log-Analytics",
+      "parameter_names": [
+        "workspaceRegion"
+      ]
+    }
+  ]
 }
