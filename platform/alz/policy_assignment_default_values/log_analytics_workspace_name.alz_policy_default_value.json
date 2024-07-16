@@ -1,0 +1,11 @@
+{
+    "name": "log_analytics_workspace_name",
+    "policy_assignments": [
+        {
+            "policy_assignment_name": "Deploy-Log-Analytics",
+            "parameter_names": [
+                "workspaceName"
+            ]
+        }
+    ]
+}

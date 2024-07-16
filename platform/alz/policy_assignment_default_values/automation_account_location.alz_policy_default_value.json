@@ -1,0 +1,11 @@
+{
+    "name": "automation_account_location",
+    "policy_assignments": [
+        {
+            "policy_assignment_name": "Deploy-Log-Analytics",
+            "parameter_names": [
+                "automationRegion"
+            ]
+        }
+    ]
+}
