@@ -1,0 +1,11 @@
+{
+  "name": "ddos_protection_plan_id",
+  "policy_assignments": [
+    {
+      "policy_assignment_name": "Enable-DDoS-VNET",
+      "parameter_names": [
+        "ddosPlan"
+      ]
+    }
+  ]
+}

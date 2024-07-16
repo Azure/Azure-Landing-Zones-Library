@@ -1,0 +1,11 @@
+{
+  "name": "private_dns_zone_event_hub_namespace",
+  "policy_assignments": [
+    {
+      "policy_assignment_name": "Deploy-Private-DNS-Zones",
+      "parameter_names": [
+        "azureEventHubNamespacePrivateDnsZoneId"
+      ]
+    }
+  ]
+}
