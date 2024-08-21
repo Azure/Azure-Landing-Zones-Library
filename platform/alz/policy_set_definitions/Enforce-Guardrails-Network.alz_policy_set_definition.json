@@ -11,7 +11,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "parameters": {
       "afwEmptyIDPSBypassList": {
@@ -111,9 +111,8 @@
       },
       "modifyNsgRuleAccess": {
         "allowedValues": [
-          "Audit",
-          "Deny",
-          "Disabled"
+          "Allow",
+          "Deny"
         ],
         "defaultValue": "Deny",
         "type": "string"
@@ -198,6 +197,11 @@
         "type": "string"
       },
       "vnetModifyDdos": {
+        "allowedValues": [
+          "Audit",
+          "Modify",
+          "Disabled"
+        ],
         "defaultValue": "Modify",
         "type": "string"
       },
