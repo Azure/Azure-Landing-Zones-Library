@@ -1,0 +1,7 @@
+{
+  "name": "ALZ",
+  "display_name": "Azure Landing Zones",
+  "description": "This library provides the reference set of Azure Landing Zones (ALZ) policies, archetypes, and management group architecture.",
+  "path": "platform/alz",
+  "dependencies": []
+}
