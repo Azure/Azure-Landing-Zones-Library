@@ -17,9 +17,9 @@ provider "alz" {
   
 ## Architectures
   
-The following architectures are available in this library:
+The following architectures are available in this library, please note that the diagrams denote the management group display name and, in brackets, the associated archetypes:
   
-### `alz`
+### architecture `alz`
   
 > [!NOTE]  
 > This hierarchy will be deployed as a child of the user-supplied root management group.
@@ -50,18 +50,18 @@ flowchart TD
   
 ## Archetypes
   
-### `connectivity`
+### archetype `connectivity`
   
-#### Policy Assignments
+#### connectivity policy assignments
   
 <details><summary>1 policy assignments</summary>
 
 - Enable-DDoS-VNET
 </details>
   
-### `corp`
+### archetype `corp`
   
-#### Policy Assignments
+#### corp policy assignments
   
 <details><summary>5 policy assignments</summary>
 
@@ -72,18 +72,18 @@ flowchart TD
 - Deploy-Private-DNS-Zones
 </details>
   
-### `decommissioned`
+### archetype `decommissioned`
   
-#### Policy Assignments
+#### decommissioned policy assignments
   
 <details><summary>1 policy assignments</summary>
 
 - Enforce-ALZ-Decomm
 </details>
   
-### `identity`
+### archetype `identity`
   
-#### Policy Assignments
+#### identity policy assignments
   
 <details><summary>4 policy assignments</summary>
 
@@ -93,9 +93,9 @@ flowchart TD
 - Deploy-VM-Backup
 </details>
   
-### `landing_zones`
+### archetype `landing_zones`
   
-#### Policy Assignments
+#### landing_zones policy assignments
   
 <details><summary>25 policy assignments</summary>
 
@@ -126,18 +126,18 @@ flowchart TD
 - Enforce-TLS-SSL-H224
 </details>
   
-### `management`
+### archetype `management`
   
-#### Policy Assignments
+#### management policy assignments
   
 <details><summary>1 policy assignments</summary>
 
 - Deploy-Log-Analytics
 </details>
   
-### `platform`
+### archetype `platform`
   
-#### Policy Assignments
+#### platform policy assignments
   
 <details><summary>11 policy assignments</summary>
 
@@ -154,9 +154,9 @@ flowchart TD
 - Enforce-GR-KeyVault
 </details>
   
-### `root`
+### archetype `root`
   
-#### Policy Definitions
+#### root policy definitions
   
 <details><summary>158 policy definitions</summary>
 
@@ -320,7 +320,7 @@ flowchart TD
 - Modify-UDR
 </details>
   
-#### Policy Set Definitions
+#### root policy set definitions
   
 <details><summary>45 policy set definitions</summary>
 
@@ -371,7 +371,7 @@ flowchart TD
 - Enforce-Guardrails-VirtualDesktop
 </details>
   
-#### Policy Assignments
+#### root policy assignments
   
 <details><summary>15 policy assignments</summary>
 
@@ -392,7 +392,7 @@ flowchart TD
 - Enforce-ACSB
 </details>
   
-#### Role Definitions
+#### root role definitions
   
 <details><summary>5 role definitions</summary>
 
@@ -403,19 +403,720 @@ flowchart TD
 - Subscription-Owner
 </details>
   
-### `sandboxes`
+### archetype `sandboxes`
   
-#### Policy Assignments
+#### sandboxes policy assignments
   
 <details><summary>1 policy assignments</summary>
 
 - Enforce-ALZ-Sandbox
 </details>
   
+## Policy Default Values
+  
+The following policy default values are available in this library:
+  
+### default name `ama_user_assigned_managed_identity_id`
+  
+#### assignment `Deploy-VM-ChangeTrack`
+  
+<details><summary>1 parameter names</summary>
+
+- userAssignedIdentityResourceId
+</details>
+  
+#### assignment `Deploy-vmArc-ChangeTrack`
+  
+<details><summary>1 parameter names</summary>
+
+- userAssignedIdentityResourceId
+</details>
+  
+#### assignment `Deploy-VMSS-ChangeTrack`
+  
+<details><summary>1 parameter names</summary>
+
+- userAssignedIdentityResourceId
+</details>
+  
+### default name `ama_user_assigned_managed_identity_name`
+  
+#### assignment `DenyAction-DeleteUAMIAMA`
+  
+<details><summary>1 parameter names</summary>
+
+- resourceName
+</details>
+  
+### default name `ama_vm_change_tracking_data_collection_rule_id`
+  
+#### assignment `Deploy-VM-ChangeTrack`
+  
+<details><summary>1 parameter names</summary>
+
+- dcrResourceId
+</details>
+  
+### default name `ama_vmarc_change_tracking_data_collection_rule_id`
+  
+#### assignment `Deploy-vmArc-ChangeTrack`
+  
+<details><summary>1 parameter names</summary>
+
+- dcrResourceId
+</details>
+  
+### default name `ama_vmss_change_tracking_data_collection_rule_id`
+  
+#### assignment `Deploy-VMSS-ChangeTrack`
+  
+<details><summary>1 parameter names</summary>
+
+- dcrResourceId
+</details>
+  
+### default name `automation_account_location`
+  
+#### assignment `Deploy-Log-Analytics`
+  
+<details><summary>1 parameter names</summary>
+
+- automationRegion
+</details>
+  
+### default name `automation_account_name`
+  
+#### assignment `Deploy-Log-Analytics`
+  
+<details><summary>1 parameter names</summary>
+
+- automationAccountName
+</details>
+  
+### default name `ddos_protection_plan_id`
+  
+#### assignment `Enable-DDoS-VNET`
+  
+<details><summary>1 parameter names</summary>
+
+- ddosPlan
+</details>
+  
+### default name `log_analytics_workspace_id`
+  
+#### assignment `Deploy-AzActivity-Log`
+  
+<details><summary>1 parameter names</summary>
+
+- logAnalytics
+</details>
+  
+#### assignment `Deploy-AzSqlDb-Auditing`
+  
+<details><summary>1 parameter names</summary>
+
+- logAnalyticsWorkspaceId
+</details>
+  
+#### assignment `Deploy-Diag-Logs`
+  
+<details><summary>1 parameter names</summary>
+
+- logAnalytics
+</details>
+  
+#### assignment `Deploy-MDFC-Config-H224`
+  
+<details><summary>1 parameter names</summary>
+
+- logAnalytics
+</details>
+  
+#### assignment `Deploy-MDFC-Config`
+  
+<details><summary>1 parameter names</summary>
+
+- logAnalytics
+</details>
+  
+#### assignment `Deploy-MDFC-DefSQL-AMA`
+  
+<details><summary>1 parameter names</summary>
+
+- userWorkspaceResourceId
+</details>
+  
+### default name `log_analytics_workspace_location`
+  
+#### assignment `Deploy-Log-Analytics`
+  
+<details><summary>1 parameter names</summary>
+
+- workspaceRegion
+</details>
+  
+### default name `log_analytics_workspace_name`
+  
+#### assignment `Deploy-Log-Analytics`
+  
+<details><summary>1 parameter names</summary>
+
+- workspaceName
+</details>
+  
+### default name `log_analytics_workspace_resource_group_name`
+  
+#### assignment `Deploy-Log-Analytics`
+  
+<details><summary>1 parameter names</summary>
+
+- rgName
+</details>
+  
+### default name `log_analytics_workspace_retention_in_days`
+  
+#### assignment `Deploy-Log-Analytics`
+  
+<details><summary>1 parameter names</summary>
+
+- dataRetention
+</details>
+  
+### default name `log_analytics_workspace_sku`
+  
+#### assignment `Deploy-Log-Analytics`
+  
+<details><summary>1 parameter names</summary>
+
+- sku
+</details>
+  
+### default name `private_dns_zone_app`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureAppPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_app_services`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureAppServicesPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_arc_guestconfiguration`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureArcGuestconfigurationPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_arc_hybrid_resource_provider`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureArcHybridResourceProviderPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_arc_kubernetes_configuration`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureArcKubernetesConfigurationPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_asr`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureAsrPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_automation_dsc_hybrid`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureAutomationDSCHybridPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_automation_webhook`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureAutomationWebhookPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_batch`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureBatchPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_cognitive_search`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureCognitiveSearchPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_cognitive_services`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureCognitiveServicesPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_cosmos_cassandra`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureCosmosCassandraPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_cosmos_gremlin`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureCosmosGremlinPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_cosmos_mongo`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureCosmosMongoPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_cosmos_sql`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureCosmosSQLPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_cosmos_table`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureCosmosTablePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_data_factory`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureDataFactoryPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_data_factory_portal`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureDataFactoryPortalPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_disk_access`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureDiskAccessPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_event_grid_domains`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureEventGridDomainsPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_event_grid_topics`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureEventGridTopicsPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_event_hub_namespace`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureEventHubNamespacePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_file`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureFilePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_hdinsight`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureHDInsightPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_iot`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureIotPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_iot_hubs`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureIotHubsPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_key_vault`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureKeyVaultPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_machine_learning_workspace`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMachineLearningWorkspacePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_managed_grafana_workspace`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureManagedGrafanaWorkspacePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_media_services_key`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMediaServicesKeyPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_media_services_live`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMediaServicesLivePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_media_services_stream`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMediaServicesStreamPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_migrate`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMigratePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_monitor_1`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMonitorPrivateDnsZoneId1
+</details>
+  
+### default name `private_dns_zone_monitor_2`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMonitorPrivateDnsZoneId2
+</details>
+  
+### default name `private_dns_zone_monitor_3`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMonitorPrivateDnsZoneId3
+</details>
+  
+### default name `private_dns_zone_monitor_4`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMonitorPrivateDnsZoneId4
+</details>
+  
+### default name `private_dns_zone_monitor_5`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMonitorPrivateDnsZoneId5
+</details>
+  
+### default name `private_dns_zone_redis_cache`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureRedisCachePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_service_bus_namespace`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureServiceBusNamespacePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_signal_r`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureSignalRPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_site_recovery_blob`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureSiteRecoveryBlobPrivateDnsZoneID
+</details>
+  
+### default name `private_dns_zone_site_recovery_queue`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureSiteRecoveryQueuePrivateDnsZoneID
+</details>
+  
+### default name `private_dns_zone_storage_blob`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageBlobPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_storage_blob_sec`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageBlobSecPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_storage_dfs`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageDFSPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_storage_dfs_sec`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageDFSSecPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_storage_file`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageFilePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_storage_queue`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageQueuePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_storage_queue_sec`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageQueueSecPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_storage_static_web`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageStaticWebPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_storage_static_web_sec`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageStaticWebSecPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_synapse_dev`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureSynapseDevPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_synapse_sql`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureSynapseSQLPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_synapse_sql_od`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureSynapseSQLODPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_virtual_desktop_hostpool`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureVirtualDesktopHostpoolPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_virtual_desktop_workspace`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureVirtualDesktopWorkspacePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_web`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureWebPrivateDnsZoneId
+</details>
+  
 ---
 ## Contents
   
-### Policy Definitions
+### all policy definitions
   
 <details><summary>158 policy definitions</summary>
 
@@ -579,7 +1280,7 @@ flowchart TD
 - Modify-UDR
 </details>
   
-### Policy Set Definitions
+### all policy set definitions
   
 <details><summary>45 policy set definitions</summary>
 
@@ -630,7 +1331,7 @@ flowchart TD
 - Enforce-Guardrails-VirtualDesktop
 </details>
   
-### Policy Assignments
+### all policy assignments
   
 <details><summary>69 policy assignments</summary>
 
@@ -705,7 +1406,7 @@ flowchart TD
 - Enforce-TLS-SSL-H224
 </details>
   
-### Role Definitions
+### all role definitions
   
 <details><summary>5 role definitions</summary>
 
