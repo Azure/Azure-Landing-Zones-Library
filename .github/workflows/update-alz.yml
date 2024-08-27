@@ -40,6 +40,8 @@ jobs:
 
       - name: setup go
         uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
+        with:
+          go-version: 'stable'
 
       - name: install alzlibtool
         run: go install github.com/Azure/alzlib/cmd/alzlibtool@v0.18.0
@@ -83,7 +85,7 @@ jobs:
         with:
           inlineScript: |
             Write-Information "==> Running policy assignments and archetypes script..." -InformationAction Continue
-            ${{ github.repository }}/.github/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
+            ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
               -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
               -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"

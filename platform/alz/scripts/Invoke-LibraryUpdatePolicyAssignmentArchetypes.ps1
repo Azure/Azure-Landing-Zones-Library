@@ -102,6 +102,7 @@ $parameters = @{
         userAssignedIdentityResourceId           = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/placeholder"
         dcrResourceId                            = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Insights/dataCollectionRules/placeholder"
         dataCollectionRuleResourceId             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Insights/dataCollectionRules/placeholder"
+        resourceType                             = "Microsoft.ManagedIdentity/userAssignedIdentities"
     }
     overrides = @{
         sql_data_collection_rule_overrides             = @{

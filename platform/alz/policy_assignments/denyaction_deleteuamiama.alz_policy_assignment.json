@@ -16,7 +16,7 @@
         "value": "defaultString3"
       },
       "resourceType": {
-        "value": "defaultString4"
+        "value": "Microsoft.ManagedIdentity/userAssignedIdentities"
       }
     },
     "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
