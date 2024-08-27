@@ -13,6 +13,15 @@
     },
     {
       "archetypes": [
+        "platform"
+      ],
+      "display_name": "Platform",
+      "exists": false,
+      "id": "platform",
+      "parent_id": "alzroot"
+    },
+    {
+      "archetypes": [
         "landing_zones"
       ],
       "display_name": "Landing zones",
@@ -37,15 +46,6 @@
       "exists": false,
       "id": "online",
       "parent_id": "landingzones"
-    },
-    {
-      "archetypes": [
-        "platform"
-      ],
-      "display_name": "Platform",
-      "exists": false,
-      "id": "platform",
-      "parent_id": "alzroot"
     },
     {
       "archetypes": [
@@ -82,6 +82,15 @@
       "exists": false,
       "id": "identity",
       "parent_id": "platform"
+    },
+    {
+      "archetypes": [
+        "decommissioned"
+      ],
+      "display_name": "Decommissioned",
+      "exists": false,
+      "id": "decommissioned",
+      "parent_id": "alzroot"
     }
   ]
 }
