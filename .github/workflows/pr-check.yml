@@ -70,3 +70,5 @@ jobs:
         run: |
           alzlibtool check library "platform/${{ matrix.lib }}"
         shell: bash
+        env:
+          LIBRARY_PATH: platform/${{ matrix.lib }}
