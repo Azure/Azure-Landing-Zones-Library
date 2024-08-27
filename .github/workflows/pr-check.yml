@@ -54,7 +54,7 @@ jobs:
       - name: Set up go
         uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
         with:
-          check-latest: true
+          go-version: 'stable'
 
       - name: Install alzlibtool
         run: go install github.com/Azure/alzlib/cmd/alzlibtool@v0.18.0
