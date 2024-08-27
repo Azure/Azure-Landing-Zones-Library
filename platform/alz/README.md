@@ -27,6 +27,8 @@ The following architectures are available in this library:
 ```mermaid
 flowchart TD
   alzroot["ALZ root\n(root)"]
+  alzroot --> decommissioned
+  decommissioned["Decommissioned\n(decommissioned)"]
   alzroot --> landingzones
   landingzones["Landing zones\n(landing_zones)"]
   landingzones --> corp
@@ -35,12 +37,12 @@ flowchart TD
   online["Online\n(online)"]
   alzroot --> platform
   platform["Platform\n(platform)"]
-  platform --> management
-  management["Management\n(management)"]
   platform --> connectivity
   connectivity["Connectivity\n(connectivity)"]
   platform --> identity
   identity["Identity\n(identity)"]
+  platform --> management
+  management["Management\n(management)"]
   alzroot --> sandboxes
   sandboxes["Sandboxes\n(sandboxes)"]
 
