@@ -30,6 +30,9 @@ The above assets are organized in to a hierarchy of constructs. The constructs a
 - [**Archetypes**](/Azure-Landing-Zones-Library/assets/archetypes): These constructs that represent a set of policies and roles.
 One or more archetypes may be assigned to a management group using an architecture.
 
+- [**Archetype Overrides**](/Azure-Landing-Zones-Library/assets/archetype-overrides): These constructs that represent a delta from a base archetype.
+Just like regular archetypes, thay may be assigned to a management group using an architecture.
+
 - [**Architectures**](/Azure-Landing-Zones-Library/assets/architectures): These are the constructs that represent a deployable management group hierarchy, together with associated archetypes.
 
 There are also some additional items in each library member:
