@@ -1,3 +1,6 @@
 # temporary dir
 .temp
 .alzlib
+
+# Custom VSCode launch settings
+.vscode/launch.json

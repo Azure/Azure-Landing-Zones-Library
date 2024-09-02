@@ -3,3 +3,9 @@ main:
   - name: Home
     ref: /
     icon: gdoc_home
+  - name: Assets
+    ref: /assets
+  - name: Clients
+    ref: /clients
+  - name: Extensibility
+    ref: /extensibility
