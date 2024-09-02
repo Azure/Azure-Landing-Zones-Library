@@ -1,0 +1,7 @@
+{
+  "recommendations": [
+    "EditorConfig.EditorConfig",
+    "redhat.vscode-yaml",
+    "remcohaszing.schemastore"
+  ]
+}
