@@ -80,116 +80,162 @@
           run: |
             mkdir -p "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Automation/automationAccounts/Deploy-AA-TotalJob-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-DataDiskReadLatency-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-DataDiskSpace-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-DataDiskWriteLatency-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-HeartBeat-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-NetworkIn-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-NetworkOut-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-OSDiskReadLatency-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-OSDiskSpace-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-OSDiskWriteLatency-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-PercentCPU-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Compute/virtualMachines/Deploy-VM-PercentMemory-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-DataDiskReadLatency-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-DataDiskSpace-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-DataDiskWriteLatency-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-HeartBeat-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-NetworkIn-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-NetworkOut-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-OSDiskReadLatency-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-OSDiskSpace-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-OSDiskWriteLatency-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-PercentCPU-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-PercentMemory-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/HybridCompute/machines/Deploy-Hybrid-VM-Disconnected-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/KeyVault/vaults/Deploy-KV-Availability-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/KeyVault/vaults/Deploy-KV-Capacity-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/KeyVault/vaults/Deploy-KV-Latency-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/KeyVault/vaults/Deploy-KV-Requests-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/KeyVault/vaults/Deploy-ActivityLog-KeyVault-Del.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/KeyVault/managedHSMs/Deploy-ActivityLog-HSMs-Del.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/KeyVault/managedHSMs/Deploy-HSMs-Availability-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/KeyVault/managedHSMs/Deploy-HSMs-Latency-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/OperationalInsights/workspaces/Deploy-ActivityLog-LAWorkspace-Del.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/OperationalInsights/workspaces/Deploy-ActivityLog-LAWorkspace-KeyRegen.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/OperationalInsights/workspaces/Deploy-LAWorkspace-DailyCapLimitReached-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/azureFirewalls/Deploy-ActivityLog-AzureFirewall-Del.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/azureFirewalls/Deploy-AFW-FirewallHealth-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/azureFirewalls/Deploy-AFW-SNATPortUtilization-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRouteCircuits/Deploy-ERCIR-ARPAvailability-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRouteCircuits/Deploy-ERCIR-BGPAvailability-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRouteCircuits/Deploy-ERCIR-QOSDropsBitsIn-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRouteCircuits/Deploy-ERCIR-QOSDropsBitsOut-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRouteGateways/Deploy-ERG-BitsInPerSecond-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRouteGateways/Deploy-ERG-BitsOutPerSecond-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRouteGateways/Deploy-ERG-CPUUtilization-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRoutePorts/Deploy-ERP-BitsInPerSecond-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRoutePorts/Deploy-ERP-BitsOutPerSecond-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRoutePorts/Deploy-ERP-LineProtocol-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRoutePorts/Deploy-ERP-RxLightLevelHigh-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRoutePorts/Deploy-ERP-RxLightLevelLow-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRoutePorts/Deploy-ERP-TxLightLevelHigh-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/expressRoutePorts/Deploy-ERP-TxLightLevelLow-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/privateDnsZones/Deploy-PDNSZ-CapacityUtilization-Alert.json" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/privateDnsZones/Deploy-PDNSZ-QueryVolume-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/privateDnsZones/Deploy-PDNSZ-RecordSetCapacity-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/privateDnsZones/Deploy-PDNSZ-RegistrationCapacityUtilization-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/virtualNetworkGateways/Deploy-VNETG-ERGBitsPerSecond-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/virtualNetworkGateways/Deploy-VNETG-ERGCPUUtilization-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/virtualNetworkGateways/Deploy-VNETG-BandwidthUtilization-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/virtualNetworkGateways/Deploy-VNETG-Egress-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/virtualNetworkGateways/Deploy-VNETG-EgressPacketDropCount-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/virtualNetworkGateways/Deploy-VNETG-EgressPacketDropMismatch-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/virtualNetworkGateways/Deploy-VNETG-Ingress-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/virtualNetworkGateways/Deploy-VNETG-IngressPacketDropCount-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/virtualNetworkGateways/Deploy-VNETG-IngressPacketDropMismatch-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/vpnGateways/Deploy-ActivityLog-VPNG-Del.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/vpnGateways/Deploy-VPNG-BandwidthUtilization-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/vpnGateways/Deploy-VPNG-BGPPeerStatus-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/vpnGateways/Deploy-VPNG-Egress-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/vpnGateways/Deploy-VPNG-EgressPacketDropCount-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/vpnGateways/Deploy-VPNG-EgressPacketDropMismatch-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/vpnGateways/Deploy-VPNG-Ingress-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/vpnGateways/Deploy-VPNG-IngressPacketDropCount-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/vpnGateways/Deploy-VPNG-IngressPacketDropMismatch-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/applicationGateways/Deploy-AGW-ApplicationGatewayTotalTime-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Network/applicationGateways/Deploy-AGW-BackendLastByteResponseTime-Alert.json" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
 
         - name: Update library policy definitions
           run: |
             alzlibtool convert policydefinition -o \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy" \
               "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions"
 
         - name: Update library policy set definitions
