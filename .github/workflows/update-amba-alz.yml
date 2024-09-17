@@ -11,6 +11,7 @@
     contents: write
 
   env:
+    alz_repository: "Azure/Enterprise-Scale"
     remote_repository: "Azure/azure-monitor-baseline-alerts"
     alzlib_repository: "Azure/alzlib"
     library_dir: "platform/amba-alz"
@@ -92,7 +93,7 @@
             inlineScript: |
               Write-Information "==> Running policy assignments and archetypes script..." -InformationAction Continue
               ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
-                -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
+                -AlzToolsPath "${{ github.workspace }}/${{ env.alz_repository }}/src/Alz.Tools/" `
                 -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
                 -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
             azPSVersion: "latest"
