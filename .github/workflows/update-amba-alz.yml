@@ -72,7 +72,7 @@
           run: |
             mkdir -p "${{ env.library_dir }}/policy_definitions_copy"
             cp "${{ github.workspace }}/${{ env.remote_repository }}/services/Automation/automationAccounts/Deploy-AA-TotalJob-Alert.json" \
-            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+            "${{ env.library_dir }}/policy_definitions_copy"
 
         - name: Update library policy definitions
           run: |
