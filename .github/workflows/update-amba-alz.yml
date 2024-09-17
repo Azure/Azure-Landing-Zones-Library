@@ -94,16 +94,16 @@
               "${{ github.workspace }}/${{ env.remote_repository }}/patterns/alz/policySetDefinitions" \
               "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions"
 
-        - name: Update library policy assignments and archetypes
-          uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
-          with:
-            inlineScript: |
-              Write-Information "==> Running policy assignments and archetypes script..." -InformationAction Continue
-              ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
-                -AlzToolsPath "${{ github.workspace }}/${{ env.alz_repository }}/src/Alz.Tools/" `
-                -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
-                -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
-            azPSVersion: "latest"
+#        - name: Update library policy assignments and archetypes
+#          uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
+#          with:
+#            inlineScript: |
+#              Write-Information "==> Running policy assignments and archetypes script..." -InformationAction Continue
+#              ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
+#                -AlzToolsPath "${{ github.workspace }}/${{ env.alz_repository }}/src/Alz.Tools/" `
+#                -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+#                -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+#            azPSVersion: "latest"
 
         - name: Check for changes
           id: git_status
