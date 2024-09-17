@@ -77,8 +77,8 @@
         - name: Update library policy definitions
           run: |
             alzlibtool convert policydefinition -o \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions"
+              "${{ env.library_dir }}/policy_definitions_copy" \
+              "${{ env.library_dir }}/policy_definitions"
 
         - name: Update library policy set definitions
           run: |
