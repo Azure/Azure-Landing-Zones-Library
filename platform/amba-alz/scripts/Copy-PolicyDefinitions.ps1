@@ -14,7 +14,7 @@ param (
     $TargetPath
 )
 
-$files = (Select-String -Path $TemplatePath/policies-*.bicep -Pattern "../../../services/").Line -replace ([regex]::Escape("loadTextContent('../../..")), "" -replace ([regex]::Escape("')")), ""
+$files = (Select-String -Path $TemplatePath/policies-*.bicep -Pattern "../../../services/").Line -replace ([regex]::Escape("    loadTextContent('../../..")), "" -replace ([regex]::Escape("')")), ""
 
 New-Item $TargetPath -Type Directory
 
