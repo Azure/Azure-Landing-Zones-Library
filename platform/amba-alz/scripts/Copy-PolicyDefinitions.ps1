@@ -19,5 +19,5 @@ $files = (Select-String -Path $TemplatePath/policies-*.bicep -Pattern "../../../
 New-Item $TargetPath -Type Directory
 
 foreach ($file in $files) {
-    Copy-Item -Path $SourcePath+$file -Destination $TargetPath -Force
+    Copy-Item -Path $($SourcePath+$file) -Destination $TargetPath -Force
 }
