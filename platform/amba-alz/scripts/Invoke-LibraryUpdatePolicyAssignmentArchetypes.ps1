@@ -11,7 +11,7 @@ param (
     [Parameter()][String]$TargetPath = "$PWD/library",
     [Parameter()][String]$SourcePath = "$PWD/enterprise-scale",
     [Parameter()][String]$LineEnding = "unix",
-    [Parameter()][String]$ParserToolUrl = "https://github.com/Azure/arm-template-parser/releases/download/0.2.4/Template.Parser.Cli"
+    [Parameter()][String]$ParserToolUrl = "https://github.com/Azure/arm-template-parser/releases/download/0.2.4"
 )
 
 $ErrorActionPreference = "Stop"
