@@ -31,6 +31,7 @@ $parser = "$parserPath/$parserExe"
 
 if (!(Test-Path $parser)) {
     Write-Information "Downloading Template Parser." -InformationAction Continue
+    New-Item $parserPath -Type Directory
     Invoke-WebRequest "$ParserToolUrl/$parserExe" -OutFile $parser
     if ($IsLinux -Or $IsMacOS) {
         chmod +x $parser
