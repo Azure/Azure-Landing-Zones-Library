@@ -142,8 +142,8 @@ $parameters = @{
 
 $finalPolicyAssignments = New-Object 'System.Collections.Generic.Dictionary[string,System.Collections.Generic.List[string]]'
 
-$policyAssignmentSourcePath = "$SourcePath/eslzArm/managementGroupTemplates/policyAssignments"
-$policyAssignmentTargetPath = "$TargetPath/platform/alz/policy_assignments"
+$policyAssignmentSourcePath = "$SourcePath/patterns/alz/policyAssignments"
+$policyAssignmentTargetPath = "$TargetPath/platform/amba-alz/policy_assignments"
 
 foreach ($managementGroup in $policyAssignments.Keys) {
     $managementGroupNameFinal = $managementGroupMapping[$managementGroup.Replace("defaults-", "")]
@@ -235,7 +235,7 @@ foreach ($managementGroup in $policyAssignments.Keys) {
     }
 }
 
-$archetypeTargetPath = "$TargetPath/platform/alz/archetype_definitions"
+$archetypeTargetPath = "$TargetPath/platform/amba-alz/archetype_definitions"
 
 foreach ($managementGroup in $finalPolicyAssignments.Keys) {
     $archetypeFilePath = "$archetypeTargetPath/$managementGroup.alz_archetype_definition.json"
