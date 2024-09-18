@@ -1,0 +1,71 @@
+{
+  "name": "Alerting-RecoveryServices",
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Recovery Services such as Azure Backup, and Azure Site Recovery.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Recovery Services",
+    "metadata": {
+      "_deployed_by_amba": true,
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Monitoring",
+      "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "ALZMonitorDisableTagName": {
+        "defaultValue": "MonitorDisable",
+        "metadata": {
+          "description": "Tag name used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag name"
+        },
+        "type": "String"
+      },
+      "ALZMonitorDisableTagValues": {
+        "defaultValue": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ],
+        "metadata": {
+          "description": "Tag value(s) used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag values(s)"
+        },
+        "type": "Array"
+      },
+      "RVBackupHealthMonitorPolicyEffect": {
+        "allowedValues": [
+          "modify",
+          "audit",
+          "disabled"
+        ],
+        "defaultValue": "modify",
+        "metadata": {
+          "description": "Policy effect for the alert, modify will modify the alert if it exists, or audit if it does not exist",
+          "displayName": "Recovery Vault Backup Health Monitor Policy Effect"
+        },
+        "type": "string"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('RVBackupHealthMonitorPolicyEffect')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_RecoveryVault_BackupHealthMonitor_Alert",
+        "policyDefinitionReferenceId": "ALZ_RVBackupHealthMonitor"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

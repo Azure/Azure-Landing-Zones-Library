@@ -1,0 +1,340 @@
+{
+  "name": "Deploy_AA_TotalJob_Alert",
+  "properties": {
+    "description": "Policy to audit/deploy Automation Account TotalJob Alert",
+    "displayName": "Deploy Automation Account TotalJob Alert",
+    "metadata": {
+      "_deployed_by_amba": "True",
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Automation",
+      "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
+      "version": "1.2.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "MonitorDisableTagName": {
+        "defaultValue": "MonitorDisable",
+        "metadata": {
+          "description": "Tag name to disable monitoring. Set to true if monitoring should be disabled",
+          "displayName": "ALZ Monitoring disabled tag name"
+        },
+        "type": "String"
+      },
+      "MonitorDisableTagValues": {
+        "defaultValue": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ],
+        "metadata": {
+          "description": "Tag value(s) used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag values(s)"
+        },
+        "type": "Array"
+      },
+      "autoMitigate": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "Auto Mitigate"
+        },
+        "type": "String"
+      },
+      "effect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Effect of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "enabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Alert State"
+        },
+        "type": "String"
+      },
+      "evaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT1M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "Evaluation Frequency"
+        },
+        "type": "String"
+      },
+      "severity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the Alert",
+          "displayName": "Severity"
+        },
+        "type": "String"
+      },
+      "threshold": {
+        "defaultValue": "0",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "Threshold"
+        },
+        "type": "String"
+      },
+      "windowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "Window Size"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Automation/automationAccounts",
+            "field": "type"
+          },
+          {
+            "field": "[concat('tags[', parameters('MonitorDisableTagName'), ']')]",
+            "notIn": "[parameters('MonitorDisableTagValues')]"
+          }
+        ]
+      },
+      "then": {
+        "details": {
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "parameters": {
+                "autoMitigate": {
+                  "value": "[parameters('autoMitigate')]"
+                },
+                "enabled": {
+                  "value": "[parameters('enabled')]"
+                },
+                "evaluationFrequency": {
+                  "value": "[parameters('evaluationFrequency')]"
+                },
+                "resourceId": {
+                  "value": "[field('id')]"
+                },
+                "resourceName": {
+                  "value": "[field('name')]"
+                },
+                "severity": {
+                  "value": "[parameters('severity')]"
+                },
+                "threshold": {
+                  "value": "[if(contains(field('tags'), '_amba-TotalJob-threshold-override_'), field('tags._amba-TotalJob-threshold-override_'), parameters('threshold'))]"
+                },
+                "windowSize": {
+                  "value": "[parameters('windowSize')]"
+                }
+              },
+              "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "autoMitigate": {
+                    "type": "String"
+                  },
+                  "enabled": {
+                    "type": "String"
+                  },
+                  "evaluationFrequency": {
+                    "type": "String"
+                  },
+                  "resourceId": {
+                    "metadata": {
+                      "description": "Resource ID of the resource emitting the metric that will be used for the comparison",
+                      "displayName": "resourceId"
+                    },
+                    "type": "String"
+                  },
+                  "resourceName": {
+                    "metadata": {
+                      "description": "Name of the resource",
+                      "displayName": "resourceName"
+                    },
+                    "type": "String"
+                  },
+                  "severity": {
+                    "type": "String"
+                  },
+                  "threshold": {
+                    "type": "String"
+                  },
+                  "windowSize": {
+                    "type": "String"
+                  }
+                },
+                "resources": [
+                  {
+                    "apiVersion": "2018-03-01",
+                    "location": "global",
+                    "name": "[concat(parameters('resourceName'), '-TotalJob')]",
+                    "properties": {
+                      "autoMitigate": "[parameters('autoMitigate')]",
+                      "criteria": {
+                        "allOf": [
+                          {
+                            "criterionType": "StaticThresholdCriterion",
+                            "dimensions": [
+                              {
+                                "name": "Status",
+                                "operator": "Exclude",
+                                "values": [
+                                  "Completed"
+                                ]
+                              }
+                            ],
+                            "metricName": "TotalJob",
+                            "metricNamespace": "Microsoft.Automation/automationAccounts",
+                            "name": "TotalJob",
+                            "operator": "GreaterThan",
+                            "threshold": "[parameters('threshold')]",
+                            "timeAggregation": "Average"
+                          }
+                        ],
+                        "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
+                      },
+                      "description": "Metric Alert for Automation Account TotalJob Alert",
+                      "enabled": "[parameters('enabled')]",
+                      "evaluationFrequency": "[parameters('evaluationFrequency')]",
+                      "parameters": {
+                        "autoMitigate": {
+                          "value": "[parameters('autoMitigate')]"
+                        },
+                        "enabled": {
+                          "value": "[parameters('enabled')]"
+                        },
+                        "evaluationFrequency": {
+                          "value": "[parameters('evaluationFrequency')]"
+                        },
+                        "severity": {
+                          "value": "[parameters('severity')]"
+                        },
+                        "threshold": {
+                          "value": "[parameters('threshold')]"
+                        },
+                        "windowSize": {
+                          "value": "[parameters('windowSize')]"
+                        }
+                      },
+                      "scopes": [
+                        "[parameters('resourceId')]"
+                      ],
+                      "severity": "[parameters('severity')]",
+                      "windowSize": "[parameters('windowSize')]"
+                    },
+                    "tags": {
+                      "_deployed_by_amba": true
+                    },
+                    "type": "Microsoft.Insights/metricAlerts"
+                  }
+                ],
+                "variables": {}
+              }
+            }
+          },
+          "existenceCondition": {
+            "allOf": [
+              {
+                "equals": "Microsoft.Automation/automationAccounts",
+                "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-SingleResourceMultipleMetricCriteria.allOf[*].metricNamespace"
+              },
+              {
+                "equals": "TotalJob",
+                "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-SingleResourceMultipleMetricCriteria.allOf[*].metricName"
+              },
+              {
+                "equals": "[concat(subscription().id, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Automation/automationAccounts/', field('fullName'))]",
+                "field": "Microsoft.Insights/metricalerts/scopes[*]"
+              },
+              {
+                "equals": "[parameters('enabled')]",
+                "field": "Microsoft.Insights/metricAlerts/enabled"
+              },
+              {
+                "equals": "[parameters('evaluationFrequency')]",
+                "field": "Microsoft.Insights/metricAlerts/evaluationFrequency"
+              },
+              {
+                "equals": "[parameters('windowSize')]",
+                "field": "Microsoft.Insights/metricAlerts/windowSize"
+              },
+              {
+                "equals": "[parameters('severity')]",
+                "field": "Microsoft.Insights/metricalerts/severity"
+              },
+              {
+                "equals": "[parameters('autoMitigate')]",
+                "field": "Microsoft.Insights/metricAlerts/autoMitigate"
+              },
+              {
+                "equals": "Average",
+                "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-SingleResourceMultipleMetricCriteria.allOf[*].timeAggregation"
+              },
+              {
+                "equals": "GreaterThan",
+                "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-SingleResourceMultipleMetricCriteria.allOf[*].operator"
+              },
+              {
+                "equals": "[if(contains(field('tags'), '_amba-TotalJob-threshold-override_'), field('tags._amba-TotalJob-threshold-override_'), parameters('threshold'))]",
+                "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-SingleResourceMultipleMetricCriteria.allOf[*].threshold"
+              }
+            ]
+          },
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "type": "Microsoft.Insights/metricAlerts"
+        },
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}
