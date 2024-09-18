@@ -60,6 +60,12 @@
             app_id: ${{ secrets.TOKEN_APP_ID }}
             private_key: ${{ secrets.TOKEN_APP_PRIVATE_KEY }}
 
+        - name: Configure local git
+          run: |
+            git config user.name github-actions
+            git config user.email action@github.com
+          working-directory: ${{ github.repository }}
+
         - name: Create and checkout branch
           id: branch
           run: |
