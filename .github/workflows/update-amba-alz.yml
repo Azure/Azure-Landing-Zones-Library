@@ -70,9 +70,26 @@
           env:
             GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
 
+        - name: Check for changes
+          id: git_status
+          run: |
+            mapfile -t "CHECK_GIT_STATUS" < <(git status -s ${{ env.library_dir }})
+            printf "%s\n" "${CHECK_GIT_STATUS[@]}"
+            echo "changes=${#CHECK_GIT_STATUS[@]}" >> "$GITHUB_OUTPUT"
+          working-directory: ${{ github.workspace }}/${{ github.repository }}
+
+        - name: Add files, commit and push
+          if: steps.git_status.outputs.changes > 0
+          run: |
+            echo "Pushing changes to origin..."
+            git add ${{ env.library_dir }}
+            git commit -m '${{ env.pr_title }}'
+            git push origin ${{ steps.branch.outputs.name }}
+          working-directory: ${{ github.repository }}
+
     update-lib:
       needs: copy-policy-definitions
-      name: update
+      name: Update library
       runs-on: ubuntu-latest
       environment: libupdate
       steps:
