@@ -1,0 +1,2391 @@
+{
+  "name": "Alerting-VM",
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Azure Virtual Machines.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Virtual Machines",
+    "metadata": {
+      "_deployed_by_amba": true,
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Monitoring",
+      "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "ALZManagementSubscriptionId": {
+        "defaultValue": "",
+        "metadata": {
+          "description": "The subscription ID of the management subscription where the user assigned managed identity will be created."
+        },
+        "type": "string"
+      },
+      "ALZMonitorDisableTagName": {
+        "defaultValue": "MonitorDisable",
+        "metadata": {
+          "description": "Tag name used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag name"
+        },
+        "type": "String"
+      },
+      "ALZMonitorDisableTagValues": {
+        "defaultValue": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ],
+        "metadata": {
+          "description": "Tag value(s) used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag values(s)"
+        },
+        "type": "Array"
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "defaultValue": "centralus",
+        "metadata": {
+          "description": "Location of the resource group where the ALZ Monitor resources will be deployed",
+          "displayName": "ALZ Monitor Resource Group Location"
+        },
+        "type": "String"
+      },
+      "ALZMonitorResourceGroupName": {
+        "defaultValue": "ALZ-Monitoring-RG",
+        "metadata": {
+          "description": "Name of the resource group where the ALZ Monitor resources will be deployed",
+          "displayName": "ALZ Monitor Resource Group Name"
+        },
+        "type": "String"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "defaultValue": {
+          "_deployed_by_alz_monitor": true
+        },
+        "metadata": {
+          "description": "Tags for the resource group where the ALZ Monitor resources will be deployed",
+          "displayName": "ALZ Monitor Resource Group Tags"
+        },
+        "type": "Object"
+      },
+      "ALZUserAssignedManagedIdentityName": {
+        "defaultValue": "id-AMBA-ARG-Reader-001",
+        "metadata": {
+          "description": "The name of the user assigned managed identity to be created for monitoring purpose.",
+          "displayName": "Name of the user assigned managed identity to be created."
+        },
+        "type": "string"
+      },
+      "BYOUserAssignedManagedIdentityResourceId": {
+        "defaultValue": "",
+        "metadata": {
+          "description": "The resource Id of the user assigned managed identity provided by the customer.",
+          "displayName": "Customer defined User Assigned managed Identity resource Id."
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the alert for VM Data Disk Read Latency",
+          "displayName": "VM Data Disk Read Latency Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMDataDiskReadLatencyAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert, true will enable the alert, false will disable the alert",
+          "displayName": "VM Data Disk Read Latency Alert State"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM Data Disk Read Latency Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM Data Disk Read Latency Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM Data Disk Read Latency Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyComputersToInclude": {
+        "defaultValue": [
+          "*"
+        ],
+        "metadata": {
+          "description": "Computers To Include for the alert",
+          "displayName": "VM Data Disk Read Latency Computers To Include"
+        },
+        "type": "array"
+      },
+      "VMDataDiskReadLatencyEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM Data Disk Read Latency Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyEvaluationPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Evaluation Periods for the alert",
+          "displayName": "VM Data Disk Read Latency Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM Data Disk Read Latency Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyOperator": {
+        "allowedValues": [
+          "GreaterThan"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM Data Disk Read Latency Operator"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM Data Disk Read Latency Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyThreshold": {
+        "defaultValue": "30",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM Data Disk Read Latency Threshold"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM Data Disk Read Latency Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMDataDiskReadLatencyWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT15M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM Data Disk Read Latency Window Size"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the alert for VM Data Disk Space",
+          "displayName": "VM Data Disk Space Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMDataDiskSpaceAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert, true will enable the alert, false will disable the alert",
+          "displayName": "VM Data Disk Space Alert State"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM Data Disk Space Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM Data Disk Space Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM Data Disk Space Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceComputersToInclude": {
+        "defaultValue": [
+          "*"
+        ],
+        "metadata": {
+          "description": "Computers To Include for the alert",
+          "displayName": "VM Data Disk Space Computers To Include"
+        },
+        "type": "array"
+      },
+      "VMDataDiskSpaceEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM Data Disk Space Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceEvaluationPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Evaluation Periods for the alert",
+          "displayName": "VM Data Disk Space Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM Data Disk Space Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceOperator": {
+        "allowedValues": [
+          "GreaterThan"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM Data Disk Space Operator"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpacePolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM Data Disk Space Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceThreshold": {
+        "defaultValue": "10",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM Data Disk Space Threshold"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM Data Disk Space Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMDataDiskSpaceWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT15M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM Data Disk Space Window Size"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the alert for VM Data Disk Write Latency",
+          "displayName": "VM Data Disk Write Latency Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMDataDiskWriteLatencyAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert, true will enable the alert, false will disable the alert",
+          "displayName": "VM Data Disk Write Latency Alert State"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM Data Disk Write Latency Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM Data Disk Write Latency Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM Data Disk Write Latency Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyComputersToInclude": {
+        "defaultValue": [
+          "*"
+        ],
+        "metadata": {
+          "description": "Computers To Include for the alert",
+          "displayName": "VM Data Disk Write Latency Computers To Include"
+        },
+        "type": "array"
+      },
+      "VMDataDiskWriteLatencyEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM Data Disk Write Latency Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyEvaluationPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Evaluation Periods for the alert",
+          "displayName": "VM Data Disk Write Latency Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM Data Disk Write Latency Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyOperator": {
+        "allowedValues": [
+          "GreaterThan"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM Data Disk Write Latency Operator"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM Data Disk Write Latency Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyThreshold": {
+        "defaultValue": "30",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM Data Disk Write Latency Threshold"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM Data Disk Write Latency Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMDataDiskWriteLatencyWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT15M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM Data Disk Write Latency Window Size"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert for VM Heart Beat RG",
+          "displayName": "VM Heart Beat RG Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMHeartBeatRGAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "VM Heart Beat RG Alert State"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM Heart Beat RG Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM Heart Beat RG Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM Heart Beat RG Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGComputersToInclude": {
+        "defaultValue": [
+          "*"
+        ],
+        "metadata": {
+          "description": "Computers To Include for the alert",
+          "displayName": "VM Heart Beat RG Computers To Include"
+        },
+        "type": "array"
+      },
+      "VMHeartBeatRGEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM Heart Beat RG Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM Heart Beat RG Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGOperator": {
+        "allowedValues": [
+          "GreaterThan"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM Heart Beat RG Operator"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM Heart Beat RG Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGThreshold": {
+        "defaultValue": "10",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM Heart Beat RG Threshold"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM Heart Beat RG Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMHeartBeatRGWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT6H",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM Heart Beat RG Window Size"
+        },
+        "type": "string"
+      },
+      "VMNetworkInAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the alert for VM Network In",
+          "displayName": "VM Network In Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMNetworkInAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "VM Network In Alert State"
+        },
+        "type": "string"
+      },
+      "VMNetworkInAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM Network In Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMNetworkInAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM Network In Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMNetworkInAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM Network In Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMNetworkInComputersToInclude": {
+        "defaultValue": [
+          "*"
+        ],
+        "metadata": {
+          "description": "Computers To Include for the alert",
+          "displayName": "VM Network In Computers To Include"
+        },
+        "type": "array"
+      },
+      "VMNetworkInEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM Network In Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMNetworkInEvaluationPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Evaluation Periods for the alert",
+          "displayName": "VM Network In Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "VMNetworkInFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM Network In Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMNetworkInOperator": {
+        "allowedValues": [
+          "GreaterThan"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM Network In Operator"
+        },
+        "type": "string"
+      },
+      "VMNetworkInPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM Network In Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMNetworkInThreshold": {
+        "defaultValue": "10000000",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM Network In Threshold"
+        },
+        "type": "string"
+      },
+      "VMNetworkInTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM Network In Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMNetworkInWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT15M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM Network In Window Size"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the alert for VM Network Out",
+          "displayName": "VM Network Out Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMNetworkOutAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert, true will enable the alert, false will disable the alert",
+          "displayName": "VM Network Out Alert State"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM Network Out Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM Network Out Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM Network Out Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutComputersToInclude": {
+        "defaultValue": [
+          "*"
+        ],
+        "metadata": {
+          "description": "Computers To Include for the alert",
+          "displayName": "VM Network Out Computers To Include"
+        },
+        "type": "array"
+      },
+      "VMNetworkOutEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM Network Out Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutEvaluationPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Evaluation Periods for the alert",
+          "displayName": "VM Network Out Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM Network Out Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutOperator": {
+        "allowedValues": [
+          "GreaterThan"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM Network Out Operator"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM Network Out Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutThreshold": {
+        "defaultValue": "10000000",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM Network Out Threshold"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM Network Out Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMNetworkOutWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT15M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM Network Out Window Size"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the alert for VM OS Disk Read Latency",
+          "displayName": "VM OS Disk Read Latency Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMOSDiskReadLatencyAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert, true will enable the alert, false will disable the alert",
+          "displayName": "VM OS Disk Read Latency Alert State"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM OS Disk Read Latency Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM OS Disk Read Latency Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM OS Disk Read Latency Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyComputersToInclude": {
+        "defaultValue": [
+          "*"
+        ],
+        "metadata": {
+          "description": "Computers To Include for the alert",
+          "displayName": "VM OS Disk Read Latency Computers To Include"
+        },
+        "type": "array"
+      },
+      "VMOSDiskReadLatencyEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM OS Disk Read Latency Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyEvaluationPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Evaluation Periods for the alert",
+          "displayName": "VM OS Disk Read Latency Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM OS Disk Read Latency Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyOperator": {
+        "allowedValues": [
+          "GreaterThan"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM OS Disk Read Latency Operator"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM OS Disk Read Latency Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyThreshold": {
+        "defaultValue": "30",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM OS Disk Read Latency Threshold"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM OS Disk Read Latency Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMOSDiskReadLatencyWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT15M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM OS Disk Read Latency Window Size"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the alert for VM OS Disk Space",
+          "displayName": "VM OS Disk Space Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMOSDiskSpaceAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert, true will enable the alert, false will disable the alert",
+          "displayName": "VM OS Disk Space Alert State"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM OS Disk Space Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM OS Disk Space Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM OS Disk Space Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceComputersToInclude": {
+        "defaultValue": [
+          "*"
+        ],
+        "metadata": {
+          "description": "Computers To Include for the alert",
+          "displayName": "VM OS Disk Space Computers To Include"
+        },
+        "type": "array"
+      },
+      "VMOSDiskSpaceEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM OS Disk Space Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceEvaluationPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Evaluation Periods for the alert",
+          "displayName": "VM OS Disk Space Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM OS Disk Space Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceOperator": {
+        "allowedValues": [
+          "GreaterThan"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM OS Disk Space Operator"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpacePolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM OS Disk Space Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceThreshold": {
+        "defaultValue": "10",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM OS Disk Space Threshold"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM OS Disk Space Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMOSDiskSpaceWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT15M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM OS Disk Space Window Size"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the alert for VM OS Disk Write Latency",
+          "displayName": "VM OS Disk Write Latency Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMOSDiskWriteLatencyAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert, true will enable the alert, false will disable the alert",
+          "displayName": "VM OS Disk Write Latency Alert State"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM OS Disk Write Latency Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM OS Disk Write Latency Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM OS Disk Write Latency Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyComputersToInclude": {
+        "defaultValue": [
+          "*"
+        ],
+        "metadata": {
+          "description": "Computers To Include for the alert",
+          "displayName": "VM OS Disk Write Latency Computers To Include"
+        },
+        "type": "array"
+      },
+      "VMOSDiskWriteLatencyEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM OS Disk Write Latency Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyEvaluationPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Evaluation Periods for the alert",
+          "displayName": "VM OS Disk Write Latency Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM OS Disk Write Latency Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyOperator": {
+        "allowedValues": [
+          "GreaterThan"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM OS Disk Write Latency Operator"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM OS Disk Write Latency Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyThreshold": {
+        "defaultValue": "30",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM OS Disk Write Latency Threshold"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM OS Disk Write Latency Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencyWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT15M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM OS Disk Write Latency Window Size"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the alert for VM Percent CPU",
+          "displayName": "VM Percent CPU Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMPercentCPUAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert, true will enable the alert, false will disable the alert",
+          "displayName": "VM Percent CPU Alert State"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM Percent CPU Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM Percent CPU Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM Percent CPU Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM Percent CPU Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM Percent CPU Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUOperator": {
+        "allowedValues": [
+          "Equals",
+          "GreaterThan",
+          "GreaterThanOrEqual",
+          "LessThan",
+          "LessThanOrEqual"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM Percent CPU Operator"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM Percent CPU Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUThreshold": {
+        "defaultValue": "85",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM Percent CPU Threshold"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM Percent CPU Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMPercentCPUWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT15M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM Percent CPU Window Size"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the alert for VM Percent Memory",
+          "displayName": "VM Percent Memory Alert Severity"
+        },
+        "type": "String"
+      },
+      "VMPercentMemoryAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert, true will enable the alert, false will disable the alert",
+          "displayName": "VM Percent Memory Alert State"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryAutoMitigate": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "VM Percent Memory Auto Mitigate"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryAutoResolve": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Resolve for the alert",
+          "displayName": "VM Percent Memory Auto Resolve"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryAutoResolveTime": {
+        "defaultValue": "00:10:00",
+        "metadata": {
+          "description": "Auto Resolve Time for the alert",
+          "displayName": "VM Percent Memory Auto Resolve Time"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryEvaluationFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "VM Percent Memory Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryFailingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Failing Periods for the alert",
+          "displayName": "VM Percent Memory Failing Periods"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryOperator": {
+        "allowedValues": [
+          "GreaterThan"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "description": "Operator for the alert",
+          "displayName": "VM Percent Memory Operator"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "VM Percent Memory Policy Effect"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryThreshold": {
+        "defaultValue": "10",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "VM Percent Memory Threshold"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryTimeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "description": "Time Aggregation for the alert",
+          "displayName": "VM Percent Memory Time Aggregation"
+        },
+        "type": "string"
+      },
+      "VMPercentMemoryWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT15M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "VM Percent Memory Window Size"
+        },
+        "type": "string"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMHeartBeatRGAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMHeartBeatRGAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMHeartBeatRGAutoResolveTime')]"
+          },
+          "computersToInclude": {
+            "value": "[parameters('VMHeartBeatRGComputersToInclude')]"
+          },
+          "effect": {
+            "value": "[parameters('VMHeartBeatRGPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMHeartBeatRGAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMHeartBeatRGEvaluationFrequency')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMHeartBeatRGFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMHeartBeatRGOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMHeartBeatRGAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMHeartBeatRGThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMHeartBeatRGTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMHeartBeatRGWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_HeartBeat_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMHeartBeatRG"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMNetworkInAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMNetworkInAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMNetworkInAutoResolveTime')]"
+          },
+          "computersToInclude": {
+            "value": "[parameters('VMNetworkInComputersToInclude')]"
+          },
+          "effect": {
+            "value": "[parameters('VMNetworkInPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMNetworkInAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMNetworkInEvaluationFrequency')]"
+          },
+          "evaluationPeriods": {
+            "value": "[parameters('VMNetworkInEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMNetworkInFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMNetworkInOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMNetworkInAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMNetworkInThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMNetworkInTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMNetworkInWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_NetworkIn_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMNetworkIn"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMNetworkOutAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMNetworkOutAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMNetworkOutAutoResolveTime')]"
+          },
+          "computersToInclude": {
+            "value": "[parameters('VMNetworkOutComputersToInclude')]"
+          },
+          "effect": {
+            "value": "[parameters('VMNetworkOutPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMNetworkOutAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMNetworkOutEvaluationFrequency')]"
+          },
+          "evaluationPeriods": {
+            "value": "[parameters('VMNetworkOutEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMNetworkOutFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMNetworkOutOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMNetworkOutAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMNetworkOutThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMNetworkOutTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMNetworkOutWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_NetworkOut_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMNetworkOut"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMOSDiskReadLatencyAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMOSDiskReadLatencyAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMOSDiskReadLatencyAutoResolveTime')]"
+          },
+          "computersToInclude": {
+            "value": "[parameters('VMOSDiskReadLatencyComputersToInclude')]"
+          },
+          "effect": {
+            "value": "[parameters('VMOSDiskReadLatencyPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMOSDiskReadLatencyAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMOSDiskReadLatencyEvaluationFrequency')]"
+          },
+          "evaluationPeriods": {
+            "value": "[parameters('VMOSDiskReadLatencyEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMOSDiskReadLatencyFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMOSDiskReadLatencyOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMOSDiskReadLatencyAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMOSDiskReadLatencyThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMOSDiskReadLatencyTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMOSDiskReadLatencyWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_OSDiskreadLatency_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMOSDiskReadLatency"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMOSDiskWriteLatencyAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMOSDiskWriteLatencyAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMOSDiskWriteLatencyAutoResolveTime')]"
+          },
+          "computersToInclude": {
+            "value": "[parameters('VMOSDiskWriteLatencyComputersToInclude')]"
+          },
+          "effect": {
+            "value": "[parameters('VMOSDiskWriteLatencyPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMOSDiskWriteLatencyAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMOSDiskWriteLatencyEvaluationFrequency')]"
+          },
+          "evaluationPeriods": {
+            "value": "[parameters('VMOSDiskWriteLatencyEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMOSDiskWriteLatencyFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMOSDiskWriteLatencyOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMOSDiskWriteLatencyAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMOSDiskWriteLatencyThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMOSDiskWriteLatencyTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMOSDiskWriteLatencyWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_OSDiskwriteLatency_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMOSDiskWriteLatency"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMOSDiskSpaceAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMOSDiskSpaceAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMOSDiskSpaceAutoResolveTime')]"
+          },
+          "computersToInclude": {
+            "value": "[parameters('VMOSDiskSpaceComputersToInclude')]"
+          },
+          "effect": {
+            "value": "[parameters('VMOSDiskSpacePolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMOSDiskSpaceAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMOSDiskSpaceEvaluationFrequency')]"
+          },
+          "evaluationPeriods": {
+            "value": "[parameters('VMOSDiskSpaceEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMOSDiskSpaceFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMOSDiskSpaceOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMOSDiskSpaceAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMOSDiskSpaceThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMOSDiskSpaceTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMOSDiskSpaceWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_OSDiskSpace_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMOSDiskSpace"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMPercentCPUAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMPercentCPUAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMPercentCPUAutoResolveTime')]"
+          },
+          "effect": {
+            "value": "[parameters('VMPercentCPUPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMPercentCPUAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMPercentCPUEvaluationFrequency')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMPercentCPUFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMPercentCPUOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMPercentCPUAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMPercentCPUThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMPercentCPUTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMPercentCPUWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_CPU_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMPercentCPU"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMPercentMemoryAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMPercentMemoryAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMPercentMemoryAutoResolveTime')]"
+          },
+          "effect": {
+            "value": "[parameters('VMPercentMemoryPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMPercentMemoryAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMPercentMemoryEvaluationFrequency')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMPercentMemoryFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMPercentMemoryOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMPercentMemoryAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMPercentMemoryThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMPercentMemoryTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMPercentMemoryWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_Memory_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMPercentMemory"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMDataDiskSpaceAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMDataDiskSpaceAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMDataDiskSpaceAutoResolveTime')]"
+          },
+          "computersToInclude": {
+            "value": "[parameters('VMDataDiskSpaceComputersToInclude')]"
+          },
+          "effect": {
+            "value": "[parameters('VMDataDiskSpacePolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMDataDiskSpaceAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMDataDiskSpaceEvaluationFrequency')]"
+          },
+          "evaluationPeriods": {
+            "value": "[parameters('VMDataDiskSpaceEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMDataDiskSpaceFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMDataDiskSpaceOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMDataDiskSpaceAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMDataDiskSpaceThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMDataDiskSpaceTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMDataDiskSpaceWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_dataDiskSpace_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMDataDiskSpace"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMDataDiskReadLatencyAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMDataDiskReadLatencyAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMDataDiskReadLatencyAutoResolveTime')]"
+          },
+          "computersToInclude": {
+            "value": "[parameters('VMDataDiskReadLatencyComputersToInclude')]"
+          },
+          "effect": {
+            "value": "[parameters('VMDataDiskReadLatencyPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMDataDiskReadLatencyAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMDataDiskReadLatencyEvaluationFrequency')]"
+          },
+          "evaluationPeriods": {
+            "value": "[parameters('VMDataDiskReadLatencyEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMDataDiskReadLatencyFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMDataDiskReadLatencyOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMDataDiskReadLatencyAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMDataDiskReadLatencyThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMDataDiskReadLatencyTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMDataDiskReadLatencyWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_dataDiskReadLatency_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMDataDiskReadLatency"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "UAMIResourceId": {
+            "value": "[if(empty(parameters('BYOUserAssignedManagedIdentityResourceId')), concat('/subscriptions/', parameters('ALZManagementSubscriptionId'), '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('ALZUserAssignedManagedIdentityName')),parameters('BYOUserAssignedManagedIdentityResourceId'))]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "autoMitigate": {
+            "value": "[parameters('VMDataDiskWriteLatencyAutoMitigate')]"
+          },
+          "autoResolve": {
+            "value": "[parameters('VMDataDiskWriteLatencyAutoResolve')]"
+          },
+          "autoResolveTime": {
+            "value": "[parameters('VMDataDiskWriteLatencyAutoResolveTime')]"
+          },
+          "computersToInclude": {
+            "value": "[parameters('VMDataDiskWriteLatencyComputersToInclude')]"
+          },
+          "effect": {
+            "value": "[parameters('VMDataDiskWriteLatencyPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VMDataDiskWriteLatencyAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VMDataDiskWriteLatencyEvaluationFrequency')]"
+          },
+          "evaluationPeriods": {
+            "value": "[parameters('VMDataDiskWriteLatencyEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('VMDataDiskWriteLatencyFailingPeriods')]"
+          },
+          "operator": {
+            "value": "[parameters('VMDataDiskWriteLatencyOperator')]"
+          },
+          "severity": {
+            "value": "[parameters('VMDataDiskWriteLatencyAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VMDataDiskWriteLatencyThreshold')]"
+          },
+          "timeAggregation": {
+            "value": "[parameters('VMDataDiskWriteLatencyTimeAggregation')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VMDataDiskWriteLatencyWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_VM_dataDiskWriteLatency_Alert",
+        "policyDefinitionReferenceId": "ALZ_VMDataDiskWriteLatency"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}
