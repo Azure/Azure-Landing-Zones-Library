@@ -1,0 +1,27 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2020-09-01",
+  "name": "Deploy-AMBA-Notification",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative deploys Notification Assets for Azure Monitor Baseline Alerts. This includes the setup of an Alert Processing Rule and an Action Group to manage notifications and actions, along with a Notification Suppression Rule to manage alert notifications, as well as a Notification Suppression Rule to control alert notifications.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts - Notification Assets",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Notification-Assets",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Notification Assets {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "parameters": {},
+    "metadata": {
+      "_deployed_by_amba": true
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
+  }
+}
