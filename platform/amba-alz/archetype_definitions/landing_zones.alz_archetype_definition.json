@@ -1,7 +1,16 @@
 {
   "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/archetype_definition.json",
   "name": "landing_zones",
-  "policy_assignments": [],
+  "policy_assignments": [
+    "Deploy-AMBA-HybridVM",
+    "Deploy-AMBA-KeyMgmt",
+    "Deploy-AMBA-LoadBalance",
+    "Deploy-AMBA-NetworkChang",
+    "Deploy-AMBA-RecoverySvc",
+    "Deploy-AMBA-Storage",
+    "Deploy-AMBA-VM",
+    "Deploy-AMBA-Web"
+  ],
   "policy_definitions": [],
   "policy_set_definitions": [],
   "role_definitions": []
