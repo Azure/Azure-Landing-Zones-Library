@@ -425,13 +425,6 @@ The following policy default values are available in this library:
 - userAssignedIdentityResourceId
 </details>
   
-#### assignment `Deploy-vmArc-ChangeTrack`
-  
-<details><summary>1 parameter names</summary>
-
-- userAssignedIdentityResourceId
-</details>
-  
 #### assignment `Deploy-VMSS-ChangeTrack`
   
 <details><summary>1 parameter names</summary>
