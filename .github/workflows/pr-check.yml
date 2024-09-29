@@ -57,7 +57,7 @@ jobs:
           go-version: 'stable'
 
       - name: Install alzlibtool
-        run: go install github.com/Azure/alzlib/cmd/alzlibtool@v0.18.0
+        run: go install github.com/Azure/alzlib/cmd/alzlibtool@v0.20.0
 
       - name: Azure login
         uses: azure/login@6c251865b4e6290e7b78be643ea2d005bc51f69a # v2.1.1
@@ -66,9 +66,25 @@ jobs:
           tenant-id: ${{ vars.AZURE_TENANT_ID }}
           allow-no-subscriptions: true
 
+      - name: Check README
+        run: |
+          alzlibtool document library . > README.md
+          if [ -z "$(git status -suno)" ]; then
+            echo "README.md is up to date"
+          else
+            echo "README.md is out of date"
+            git --no-pager diff
+            exit 1
+          fi
+        shell: bash
+        working-directory: platform/${{ matrix.lib }}
+        env:
+          LIBRARY_PATH: platform/${{ matrix.lib }}
+
       - name: Check lib
         run: |
-          alzlibtool check library "platform/${{ matrix.lib }}"
+          alzlibtool check library .
         shell: bash
+        working-directory: platform/${{ matrix.lib }}
         env:
           LIBRARY_PATH: platform/${{ matrix.lib }}
