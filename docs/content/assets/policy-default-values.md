@@ -12,7 +12,7 @@ Filename patterns:
 - `alz_policy_default_values.yml`
 
 A policy default values file is a mapping of common values to policy assignments and parameter names.
-There can only be one policy default values file in an archetype, we recommend that this is stored in the root of the library member directory.
+There can only be one policy default values file in an library member, we recommend that this is stored in the root of the library member directory.
 
 It is common to want to specify a default log analytics workspace for all policy assignments that require one.
 This file allows you to specify the default values for these parameters.
