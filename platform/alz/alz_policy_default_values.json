@@ -14,12 +14,6 @@
           "parameter_names": [
             "userAssignedIdentityResourceId"
           ],
-          "policy_assignment_name": "Deploy-vmArc-ChangeTrack"
-        },
-        {
-          "parameter_names": [
-            "userAssignedIdentityResourceId"
-          ],
           "policy_assignment_name": "Deploy-VMSS-ChangeTrack"
         }
       ]

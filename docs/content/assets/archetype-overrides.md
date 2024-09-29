@@ -21,7 +21,7 @@ They should not be stored in a central library.
 
 We publish the schema of an archetype override [here](https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/archetype_override.json) and we have registered the file extensions with [schemastore.org](https://www.schemastore.org/json/) to enable  automatic validation in editors.
 
-An archetype override has a name, which must be unique amonst all archetypes and override archetypes.
+An archetype override has a name, which must be unique amongst all archetypes and override archetypes.
 It also has and a set of policy definitions, policy set definitions, policy assignments, and role definitions to add and remove from the referenced base archetype.
 All of these associated assets are referenced by their name (JSON `.name`) property.
 
