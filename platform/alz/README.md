@@ -497,6 +497,20 @@ The following policy default values are available in this library:
   
 ### default name `log_analytics_workspace_id`
   
+#### assignment `Deploy-MDFC-Config`
+  
+<details><summary>1 parameter names</summary>
+
+- logAnalytics
+</details>
+  
+#### assignment `Deploy-MDFC-DefSQL-AMA`
+  
+<details><summary>1 parameter names</summary>
+
+- userWorkspaceResourceId
+</details>
+  
 #### assignment `Deploy-AzActivity-Log`
   
 <details><summary>1 parameter names</summary>
@@ -523,20 +537,6 @@ The following policy default values are available in this library:
 <details><summary>1 parameter names</summary>
 
 - logAnalytics
-</details>
-  
-#### assignment `Deploy-MDFC-Config`
-  
-<details><summary>1 parameter names</summary>
-
-- logAnalytics
-</details>
-  
-#### assignment `Deploy-MDFC-DefSQL-AMA`
-  
-<details><summary>1 parameter names</summary>
-
-- userWorkspaceResourceId
 </details>
   
 ### default name `log_analytics_workspace_location`
