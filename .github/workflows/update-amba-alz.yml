@@ -115,6 +115,17 @@
                 -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
             azPSVersion: "latest"
 
+        - name: Update library policy definitions in archetype definitions
+          uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
+          with:
+            inlineScript: |
+              Write-Information "==> Running policy definitions in archetype definitions script..." -InformationAction Continue
+              ${{ github.repository }}/platform/amba-alz/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
+                -AlzToolsPath "${{ github.workspace }}/${{ env.alz_repository }}/src/Alz.Tools/" `
+                -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+                -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+            azPSVersion: "latest"
+
         - name: Check for changes
           id: git_status
           run: |
