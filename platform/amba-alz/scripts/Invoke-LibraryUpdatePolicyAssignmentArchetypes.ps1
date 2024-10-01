@@ -229,5 +229,5 @@ foreach ($policySetDefinition in $policySetDefinitions) {
 
   $policyAssignmentJson.properties.parameters = $newParameters
 
-  $policyAssignmentJson | ConvertTo-Json -Depth 100 | Set-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth")
+  $policyAssignmentJson | ConvertTo-Json -Depth 100 | Set-Content ToLower($policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth"))
 }
