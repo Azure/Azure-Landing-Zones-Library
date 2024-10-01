@@ -87,6 +87,7 @@ $managementGroupMapping = @{
 $parameters = @{
   default   = @{
     nonComplianceMessagePlaceholder    = "{donotchange}"
+    topLevelManagementGroupPrefix      = "`${temp}"
     userAssignedManagedIdentityName    = "id-amba-alz-prod-001"
     ALZMonitorResourceGroupName        = "rg-amba-alz-prod-001"
     ALZUserAssignedManagedIdentityName = "id-amba-alz-arg-reader-prod-001"
