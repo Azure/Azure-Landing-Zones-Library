@@ -86,11 +86,12 @@ $managementGroupMapping = @{
 
 $parameters = @{
   default   = @{
-    nonComplianceMessagePlaceholder          = "{donotchange}"
-    userAssignedManagedIdentityName = "id-amba-alz-prod-001"
-    ALZMonitorResourceGroupName     = "rg-amba-alz-prod-001"
+    nonComplianceMessagePlaceholder    = "{donotchange}"
+    userAssignedManagedIdentityName    = "id-amba-alz-prod-001"
+    ALZMonitorResourceGroupName        = "rg-amba-alz-prod-001"
     ALZUserAssignedManagedIdentityName = "id-amba-alz-arg-reader-prod-001"
-    ALZMonitorResourceGroupLocation = "eastus"
+    ALZMonitorResourceGroupLocation    = "eastus"
+    ALZMonitorDisableTagName           = "MonitorDisable"
   }
   overrides = @{}
 }
@@ -204,13 +205,13 @@ foreach ($managementGroup in $finalPolicyAssignments.Keys) {
   $json | Edit-LineEndings -LineEnding $LineEnding | Out-File -FilePath "$archetypeFilePath" -Force
 }
 
-$policySetDefinitions = Get-ChildItem -Path $TargetPath/platform/amba-alz/policy_set_definitions -Filter *.alz_policy_set_definition.json -Recurse
+$policySetDefinitions = Get-ChildItem -Path "$TargetPath/platform/amba-alz/policy_set_definitions" -Filter *.alz_policy_set_definition.json -Recurse
 
 foreach ($policySetDefinition in $policySetDefinitions) {
   $policySetDefinitionJson = Get-Content $policySetDefinition.FullName -Raw | ConvertFrom-Json
-  $policyAssignmentJson = Get-Content ToLower($policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth")) -Raw | ConvertFrom-Json
+  $policyAssignmentJson = Get-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth").ToLower() -Raw | ConvertFrom-Json
 
-  $policySetDefinitionJson.properties.parameters = $policySetDefinitionJson.properties.parameters | Select-Object * -ExcludeProperty *WindowSize, *EvaluationFrequency, *AlertState, *AlertSeverity, *Threshold, *Frequency, *Severity, *AutoMitigate, *AutoResolve, *AutoResolveTime, *ComputersToInclude, *EvaluationPeriods, *FailingPeriods, *Operator, *TimeAggregation
+  $policySetDefinitionJson.properties.parameters = $policySetDefinitionJson.properties.parameters | Select-Object * -ExcludeProperty *WindowSize, *EvaluationFrequency, *AlertState, *AlertSeverity, *Threshold, *Frequency, *Severity, *AutoMitigate, *AutoResolve, *AutoResolveTime, *ComputersToInclude, *EvaluationPeriods, *FailingPeriods, *Operator, *TimeAggregation, *AlertSensitivity
 
   $newParameters = [ordered]@{}
 
@@ -229,5 +230,5 @@ foreach ($policySetDefinition in $policySetDefinitions) {
 
   $policyAssignmentJson.properties.parameters = $newParameters
 
-  $policyAssignmentJson | ConvertTo-Json -Depth 100 | Set-Content ToLower($policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth"))
+  $policyAssignmentJson | ConvertTo-Json -Depth 100 | Set-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth").ToLower()
 }
