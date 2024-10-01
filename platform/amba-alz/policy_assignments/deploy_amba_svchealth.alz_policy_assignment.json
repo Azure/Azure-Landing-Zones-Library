@@ -17,7 +17,75 @@
         "message": "Alerting {enforcementMode} be deployed to Azure services."
       }
     ],
-    "parameters": {},
+    "parameters": {
+      "ALZArmRoleId": {
+        "value": []
+      },
+      "ALZEventHubResourceId": {
+        "value": []
+      },
+      "ALZFunctionResourceId": {
+        "value": ""
+      },
+      "ALZFunctionTriggerUrl": {
+        "value": ""
+      },
+      "ALZLogicappCallbackUrl": {
+        "value": ""
+      },
+      "ALZLogicappResourceId": {
+        "value": ""
+      },
+      "ALZMonitorActionGroupEmail": {
+        "value": []
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_alz_monitor": true
+        }
+      },
+      "ALZWebhookServiceUri": {
+        "value": []
+      },
+      "BYOActionGroup": {
+        "value": []
+      },
+      "BYOAlertProcessingRule": {
+        "value": ""
+      },
+      "ResHlthUnhealthyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "serviceHealthAdvisoryPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "serviceHealthIncidentPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "serviceHealthMaintenancePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "serviceHealthSecurityPolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
     "metadata": {
       "_deployed_by_amba": true
     },

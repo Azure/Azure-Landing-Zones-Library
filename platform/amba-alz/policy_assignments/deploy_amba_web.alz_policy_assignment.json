@@ -17,7 +17,31 @@
         "message": "Alerting {enforcementMode} be deployed to Azure services."
       }
     ],
-    "parameters": {},
+    "parameters": {
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "WSFCPUPercentagePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "WSFDiskQueueLengthPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "WSFHttpQueueLengthPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "WSFMemoryPercentagePolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
     "metadata": {
       "_deployed_by_amba": true
     },

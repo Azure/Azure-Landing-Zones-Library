@@ -127,7 +127,6 @@
     "Alerting-HybridVM",
     "Alerting-Identity",
     "Alerting-KeyManagement",
-    "Alerting-LandingZone",
     "Alerting-LoadBalancing",
     "Alerting-Management",
     "Alerting-NetworkChanges",

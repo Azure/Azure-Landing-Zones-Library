@@ -17,7 +17,72 @@
         "message": "Alerting {enforcementMode} be deployed to Azure services."
       }
     ],
-    "parameters": {},
+    "parameters": {
+      "ALZManagementSubscriptionId": {
+        "value": ""
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_alz_monitor": true
+        }
+      },
+      "ALZUserAssignedManagedIdentityName": {
+        "value": "id-amba-alz-arg-reader-prod-001"
+      },
+      "BYOUserAssignedManagedIdentityResourceId": {
+        "value": ""
+      },
+      "VMDataDiskReadLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMDataDiskSpacePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMDataDiskWriteLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMHeartBeatRGPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMNetworkInPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMNetworkOutPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMOSDiskReadLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMOSDiskSpacePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMOSDiskWriteLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMPercentCPUPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMPercentMemoryPolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
     "metadata": {
       "_deployed_by_amba": true
     },

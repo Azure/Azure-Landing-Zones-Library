@@ -17,7 +17,54 @@
         "message": "Alerting {enforcementMode} be deployed to Azure services."
       }
     ],
-    "parameters": {},
+    "parameters": {
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_amba": true
+        }
+      },
+      "HSMsAvailabilityPolicyEffect": {
+        "value": "disabled"
+      },
+      "HSMsLatencyAvailabilityPolicyEffect": {
+        "value": "disabled"
+      },
+      "KVCapacityPolicyEffect": {
+        "value": "disabled"
+      },
+      "KVRequestPolicyEffect": {
+        "value": "disabled"
+      },
+      "KvAvailabilityPolicyEffect": {
+        "value": "disabled"
+      },
+      "KvLatencyAvailabilityPolicyEffect": {
+        "value": "disabled"
+      },
+      "activityHSMsDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "activityKVDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
     "metadata": {
       "_deployed_by_amba": true
     },
