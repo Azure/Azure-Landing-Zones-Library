@@ -104,6 +104,11 @@
             rm -rf "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
           working-directory: ${{ github.workspace }}
 
+        - name: Remove deprecated policy definitions
+          run: |
+            rm -rf "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions/Alerting-LandingZone.alz_policy_set_definition.json"
+          working-directory: ${{ github.workspace }}
+
         - name: Update library policy assignments and archetypes
           uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
           with:

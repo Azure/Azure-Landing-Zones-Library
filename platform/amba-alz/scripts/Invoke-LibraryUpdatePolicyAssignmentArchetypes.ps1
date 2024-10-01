@@ -84,29 +84,13 @@ $managementGroupMapping = @{
   "platform"       = "platform"
 }
 
-$logAnalyticsWorkspaceIdPlaceholder = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder/providers/Microsoft.OperationalInsights/workspaces/placeholder-la"
-
 $parameters = @{
   default   = @{
     nonComplianceMessagePlaceholder          = "{donotchange}"
-    logAnalyticsWorkspaceName                = "placeholder-la"
-    automationAccountName                    = "placeholder-automation"
-    workspaceRegion                          = "northeurope"
-    automationRegion                         = "northeurope"
-    retentionInDays                          = "30"
-    rgName                                   = "`${root_scope_id}-mgmt"
-    logAnalyticsResourceId                   = "$logAnalyticsWorkspaceIdPlaceholder"
-    topLevelManagementGroupPrefix            = "`${temp}"
-    dnsZoneResourceGroupId                   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones/"
-    ddosPlanResourceId                       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/ddosProtectionPlans/placeholder"
-    emailContactAsc                          = "security_contact@replace_me"
-    location                                 = "northeurope"
-    listOfResourceTypesDisallowedForDeletion = "[[[Array]]]"
-    userWorkspaceResourceId                  = "$logAnalyticsWorkspaceIdPlaceholder"
-    userAssignedIdentityResourceId           = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.ManagedIdentity/userAssignedIdentities/placeholder"
-    dcrResourceId                            = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Insights/dataCollectionRules/placeholder"
-    dataCollectionRuleResourceId             = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Insights/dataCollectionRules/placeholder"
-    resourceType                             = "Microsoft.ManagedIdentity/userAssignedIdentities"
+    userAssignedManagedIdentityName = "id-amba-alz-prod-001"
+    ALZMonitorResourceGroupName     = "rg-amba-alz-prod-001"
+    ALZUserAssignedManagedIdentityName = "id-amba-alz-arg-reader-prod-001"
+    ALZMonitorResourceGroupLocation = "eastus"
   }
   overrides = @{}
 }
@@ -218,4 +202,32 @@ foreach ($managementGroup in $finalPolicyAssignments.Keys) {
   Write-Information "Writing $archetypeFilePath" -InformationAction Continue
   $json = $archetypeJson | ConvertTo-Json -Depth 10
   $json | Edit-LineEndings -LineEnding $LineEnding | Out-File -FilePath "$archetypeFilePath" -Force
+}
+
+$policySetDefinitions = Get-ChildItem -Path $TargetPath/platform/amba-alz/policy_set_definitions -Filter *.alz_policy_set_definition.json -Recurse
+
+foreach ($policySetDefinition in $policySetDefinitions) {
+  $policySetDefinitionJson = Get-Content $policySetDefinition.FullName -Raw | ConvertFrom-Json
+  $policyAssignmentJson = Get-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth") -Raw | ConvertFrom-Json
+
+  $policySetDefinitionJson.properties.parameters = $policySetDefinitionJson.properties.parameters | Select-Object * -ExcludeProperty *WindowSize, *EvaluationFrequency, *AlertState, *AlertSeverity, *Threshold, *Frequency, *Severity, *AutoMitigate, *AutoResolve, *AutoResolveTime, *ComputersToInclude, *EvaluationPeriods, *FailingPeriods, *Operator, *TimeAggregation
+
+  $newParameters = [ordered]@{}
+
+  foreach ($param in $policySetDefinitionJson.properties.parameters.PSObject.Properties) {
+    if ($parameters.default.ContainsKey($param.Name)) {
+      $value = $parameters.default.$($param.Name)
+    }
+    else {
+      $value = $param.Value.defaultValue
+    }
+
+    $newParameters.$($param.Name) = [PSCustomObject]@{
+      value = $value
+    }
+  }
+
+  $policyAssignmentJson.properties.parameters = $newParameters
+
+  $policyAssignmentJson | ConvertTo-Json -Depth 100 | Set-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth")
 }
