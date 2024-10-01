@@ -208,7 +208,7 @@ $policySetDefinitions = Get-ChildItem -Path $TargetPath/platform/amba-alz/policy
 
 foreach ($policySetDefinition in $policySetDefinitions) {
   $policySetDefinitionJson = Get-Content $policySetDefinition.FullName -Raw | ConvertFrom-Json
-  $policyAssignmentJson = Get-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth") -Raw | ConvertFrom-Json
+  $policyAssignmentJson = Get-Content ToLower($policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth")) -Raw | ConvertFrom-Json
 
   $policySetDefinitionJson.properties.parameters = $policySetDefinitionJson.properties.parameters | Select-Object * -ExcludeProperty *WindowSize, *EvaluationFrequency, *AlertState, *AlertSeverity, *Threshold, *Frequency, *Severity, *AutoMitigate, *AutoResolve, *AutoResolveTime, *ComputersToInclude, *EvaluationPeriods, *FailingPeriods, *Operator, *TimeAggregation
 
