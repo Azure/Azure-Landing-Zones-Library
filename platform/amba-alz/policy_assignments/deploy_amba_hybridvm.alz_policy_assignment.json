@@ -17,7 +17,75 @@
         "message": "Alerting {enforcementMode} be deployed to Azure services."
       }
     ],
-    "parameters": {},
+    "parameters": {
+      "ALZManagementSubscriptionId": {
+        "value": ""
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_alz_monitor": true
+        }
+      },
+      "ALZUserAssignedManagedIdentityName": {
+        "value": "id-amba-alz-arg-reader-prod-001"
+      },
+      "BYOUserAssignedManagedIdentityResourceId": {
+        "value": ""
+      },
+      "HybridVMDataDiskReadLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMDataDiskSpacePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMDataDiskWriteLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMDisconnectedAlertPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMHeartBeatRGPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMNetworkInPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMNetworkOutPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMOSDiskReadLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMOSDiskSpacePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMOSDiskWriteLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMPercentCPUPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMPercentMemoryPolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
     "metadata": {
       "_deployed_by_amba": true
     },
