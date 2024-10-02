@@ -15,6 +15,18 @@
             "userAssignedIdentityResourceId"
           ],
           "policy_assignment_name": "Deploy-VMSS-ChangeTrack"
+        },
+        {
+          "policy_assignment_name": "Deploy-VM-Monitoring",
+          "parameter_names": [
+            "userAssignedIdentityResourceId"
+          ]
+        },
+        {
+          "policy_assignment_name": "Deploy-VMSS-Monitoring",
+          "parameter_names": [
+            "userAssignedIdentityResourceId"
+          ]
         }
       ]
     },
@@ -26,6 +38,29 @@
             "resourceName"
           ],
           "policy_assignment_name": "DenyAction-DeleteUAMIAMA"
+        }
+      ]
+    },
+    {
+      "default_name": "ama_vm_insights_data_collection_rule_id",
+      "policy_assignments": [
+        {
+          "policy_assignment_name": "Deploy-VM-Monitoring",
+          "parameter_names": [
+            "dcrResourceId"
+          ]
+        },
+        {
+          "policy_assignment_name": "Deploy-VMSS-Monitoring",
+          "parameter_names": [
+            "dcrResourceId"
+          ]
+        },
+        {
+          "policy_assignment_name": "Deploy-vmHybr-Monitoring",
+          "parameter_names": [
+            "dcrResourceId"
+          ]
         }
       ]
     },
