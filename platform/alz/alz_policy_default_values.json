@@ -30,6 +30,17 @@
       ]
     },
     {
+      "default_name": "ama_mdfc_sql_data_collection_rule_id",
+      "policy_assignments": [
+        {
+          "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA",
+          "parameter_names": [
+            "dcrResourceId"
+          ]
+        }
+      ]
+    },
+    {
       "default_name": "ama_change_tracking_data_collection_rule_id",
       "policy_assignments": [
         {
