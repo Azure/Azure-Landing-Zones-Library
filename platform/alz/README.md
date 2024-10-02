@@ -489,6 +489,13 @@ The following policy default values are available in this library:
   
 ### default name `ama_vm_insights_data_collection_rule_id`
   
+#### assignment `Deploy-vmHybr-Monitoring`
+  
+<details><summary>1 parameter names</summary>
+
+- dcrResourceId
+</details>
+  
 #### assignment `Deploy-VM-Monitoring`
   
 <details><summary>1 parameter names</summary>
@@ -497,13 +504,6 @@ The following policy default values are available in this library:
 </details>
   
 #### assignment `Deploy-VMSS-Monitoring`
-  
-<details><summary>1 parameter names</summary>
-
-- dcrResourceId
-</details>
-  
-#### assignment `Deploy-vmHybr-Monitoring`
   
 <details><summary>1 parameter names</summary>
 
