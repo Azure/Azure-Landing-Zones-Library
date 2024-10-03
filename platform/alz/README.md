@@ -425,14 +425,14 @@ The following policy default values are available in this library:
 - dcrResourceId
 </details>
   
-#### assignment `Deploy-vmArc-ChangeTrack`
+#### assignment `Deploy-VMSS-ChangeTrack`
   
 <details><summary>1 parameter names</summary>
 
 - dcrResourceId
 </details>
   
-#### assignment `Deploy-VMSS-ChangeTrack`
+#### assignment `Deploy-vmArc-ChangeTrack`
   
 <details><summary>1 parameter names</summary>
 
@@ -450,20 +450,6 @@ The following policy default values are available in this library:
   
 ### default name `ama_user_assigned_managed_identity_id`
   
-#### assignment `Deploy-VM-Monitoring`
-  
-<details><summary>1 parameter names</summary>
-
-- userAssignedIdentityResourceId
-</details>
-  
-#### assignment `Deploy-VMSS-Monitoring`
-  
-<details><summary>1 parameter names</summary>
-
-- userAssignedIdentityResourceId
-</details>
-  
 #### assignment `Deploy-VM-ChangeTrack`
   
 <details><summary>1 parameter names</summary>
@@ -471,7 +457,21 @@ The following policy default values are available in this library:
 - userAssignedIdentityResourceId
 </details>
   
+#### assignment `Deploy-VM-Monitoring`
+  
+<details><summary>1 parameter names</summary>
+
+- userAssignedIdentityResourceId
+</details>
+  
 #### assignment `Deploy-VMSS-ChangeTrack`
+  
+<details><summary>1 parameter names</summary>
+
+- userAssignedIdentityResourceId
+</details>
+  
+#### assignment `Deploy-VMSS-Monitoring`
   
 <details><summary>1 parameter names</summary>
 
@@ -489,6 +489,13 @@ The following policy default values are available in this library:
   
 ### default name `ama_vm_insights_data_collection_rule_id`
   
+#### assignment `Deploy-VM-Monitoring`
+  
+<details><summary>1 parameter names</summary>
+
+- dcrResourceId
+</details>
+  
 #### assignment `Deploy-VMSS-Monitoring`
   
 <details><summary>1 parameter names</summary>
@@ -497,13 +504,6 @@ The following policy default values are available in this library:
 </details>
   
 #### assignment `Deploy-vmHybr-Monitoring`
-  
-<details><summary>1 parameter names</summary>
-
-- dcrResourceId
-</details>
-  
-#### assignment `Deploy-VM-Monitoring`
   
 <details><summary>1 parameter names</summary>
 
@@ -560,14 +560,14 @@ The following policy default values are available in this library:
 - logAnalytics
 </details>
   
-#### assignment `Deploy-MDFC-Config-H224`
+#### assignment `Deploy-MDFC-Config`
   
 <details><summary>1 parameter names</summary>
 
 - logAnalytics
 </details>
   
-#### assignment `Deploy-MDFC-Config`
+#### assignment `Deploy-MDFC-Config-H224`
   
 <details><summary>1 parameter names</summary>
 
