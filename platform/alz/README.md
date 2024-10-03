@@ -450,20 +450,6 @@ The following policy default values are available in this library:
   
 ### default name `ama_user_assigned_managed_identity_id`
   
-#### assignment `Deploy-VM-ChangeTrack`
-  
-<details><summary>1 parameter names</summary>
-
-- userAssignedIdentityResourceId
-</details>
-  
-#### assignment `Deploy-VMSS-ChangeTrack`
-  
-<details><summary>1 parameter names</summary>
-
-- userAssignedIdentityResourceId
-</details>
-  
 #### assignment `Deploy-VM-Monitoring`
   
 <details><summary>1 parameter names</summary>
@@ -472,6 +458,20 @@ The following policy default values are available in this library:
 </details>
   
 #### assignment `Deploy-VMSS-Monitoring`
+  
+<details><summary>1 parameter names</summary>
+
+- userAssignedIdentityResourceId
+</details>
+  
+#### assignment `Deploy-VM-ChangeTrack`
+  
+<details><summary>1 parameter names</summary>
+
+- userAssignedIdentityResourceId
+</details>
+  
+#### assignment `Deploy-VMSS-ChangeTrack`
   
 <details><summary>1 parameter names</summary>
 
@@ -489,6 +489,13 @@ The following policy default values are available in this library:
   
 ### default name `ama_vm_insights_data_collection_rule_id`
   
+#### assignment `Deploy-VMSS-Monitoring`
+  
+<details><summary>1 parameter names</summary>
+
+- dcrResourceId
+</details>
+  
 #### assignment `Deploy-vmHybr-Monitoring`
   
 <details><summary>1 parameter names</summary>
@@ -497,13 +504,6 @@ The following policy default values are available in this library:
 </details>
   
 #### assignment `Deploy-VM-Monitoring`
-  
-<details><summary>1 parameter names</summary>
-
-- dcrResourceId
-</details>
-  
-#### assignment `Deploy-VMSS-Monitoring`
   
 <details><summary>1 parameter names</summary>
 
@@ -539,6 +539,20 @@ The following policy default values are available in this library:
   
 ### default name `log_analytics_workspace_id`
   
+#### assignment `Deploy-AzActivity-Log`
+  
+<details><summary>1 parameter names</summary>
+
+- logAnalytics
+</details>
+  
+#### assignment `Deploy-AzSqlDb-Auditing`
+  
+<details><summary>1 parameter names</summary>
+
+- logAnalyticsWorkspaceId
+</details>
+  
 #### assignment `Deploy-Diag-Logs`
   
 <details><summary>1 parameter names</summary>
@@ -565,20 +579,6 @@ The following policy default values are available in this library:
 <details><summary>1 parameter names</summary>
 
 - userWorkspaceResourceId
-</details>
-  
-#### assignment `Deploy-AzActivity-Log`
-  
-<details><summary>1 parameter names</summary>
-
-- logAnalytics
-</details>
-  
-#### assignment `Deploy-AzSqlDb-Auditing`
-  
-<details><summary>1 parameter names</summary>
-
-- logAnalyticsWorkspaceId
 </details>
   
 ### default name `log_analytics_workspace_location`
