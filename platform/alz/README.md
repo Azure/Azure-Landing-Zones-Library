@@ -450,6 +450,13 @@ The following policy default values are available in this library:
   
 ### default name `ama_user_assigned_managed_identity_id`
   
+#### assignment `Deploy-MDFC-DefSQL-AMA`
+  
+<details><summary>1 parameter names</summary>
+
+- userAssignedIdentityResourceId
+</details>
+  
 #### assignment `Deploy-VM-ChangeTrack`
   
 <details><summary>1 parameter names</summary>

@@ -27,6 +27,12 @@
           "parameter_names": [
             "userAssignedIdentityResourceId"
           ]
+        },
+        {
+          "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA",
+          "parameter_names": [
+            "userAssignedIdentityResourceId"
+          ]
         }
       ]
     },
