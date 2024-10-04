@@ -21,6 +21,10 @@ Within the resource definition, there are several values that specific to the sc
 These are:
 
 - The resource id (this must end with a UUID)
+- The name (UUID) of the role definition - this must be unique within the tenant
+- The role name (`.properties.roleName`) - this must be unique within the tenant
 - The assignable scopes
+
+We recommend that clients append the management group id to the end of the rolenames to ensure uniqueness.
 
 [Clients](/Azure-Landing-Zones-Library/clients) should be aware of these values and ensure that they are correctly set when deploying the resource.
