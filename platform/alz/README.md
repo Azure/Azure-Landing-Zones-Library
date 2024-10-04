@@ -27,25 +27,35 @@ The following architectures are available in this library, please note that the 
 ```mermaid
 flowchart TD
   alzroot["ALZ root
-(root)"]\n  alzroot --> decommissioned
+(root)"]
+  alzroot --> decommissioned
   decommissioned["Decommissioned
-(decommissioned)"]\n  alzroot --> landingzones
+(decommissioned)"]
+  alzroot --> landingzones
   landingzones["Landing zones
-(landing_zones)"]\n  landingzones --> corp
+(landing_zones)"]
+  landingzones --> corp
   corp["Corp
-(corp)"]\n  landingzones --> online
+(corp)"]
+  landingzones --> online
   online["Online
-(online)"]\n  alzroot --> platform
+(online)"]
+  alzroot --> platform
   platform["Platform
-(platform)"]\n  platform --> connectivity
+(platform)"]
+  platform --> connectivity
   connectivity["Connectivity
-(connectivity)"]\n  platform --> identity
+(connectivity)"]
+  platform --> identity
   identity["Identity
-(identity)"]\n  platform --> management
+(identity)"]
+  platform --> management
   management["Management
-(management)"]\n  alzroot --> sandboxes
+(management)"]
+  alzroot --> sandboxes
   sandboxes["Sandboxes
-(sandboxes)"]\n
+(sandboxes)"]
+
 ```
   
 ## Archetypes
