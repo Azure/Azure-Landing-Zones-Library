@@ -11,9 +11,50 @@
       ],
       "category": "Cognitive Services",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "parameters": {
+      "azureAiDiagSettings": {
+        "allowedValues": [
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "AuditIfNotExists",
+        "type": "string"
+      },
+      "azureAiDisableLocalKey": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "type": "string"
+      },
+      "azureAiDisableLocalKey2": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "type": "string"
+      },
+      "azureAiNetworkAccess": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "azureAiPrivateLink": {
+        "allowedValues": [
+          "Audit",
+          "Disabled"
+        ],
+        "defaultValue": "Audit",
+        "type": "string"
+      },
       "cognitiveServicesCustomerStorage": {
         "allowedValues": [
           "Audit",
@@ -128,6 +169,56 @@
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/14de9e63-1b31-492e-a5a3-c3f7fd57f555",
         "policyDefinitionReferenceId": "Modify-Cognitive-Services-Local-Auth"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('azureAiNetworkAccess')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/037eea7a-bd0a-46c5-9a66-03aea78705d3",
+        "policyDefinitionReferenceId": "Deny-AzureAI-Network-Access"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('azureAiPrivateLink')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/d6759c02-b87f-42b7-892e-71b3f471d782",
+        "policyDefinitionReferenceId": "Audit-AzureAI-Private-Link"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('azureAiDisableLocalKey')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/d45520cb-31ca-44ba-8da2-fcf914608544",
+        "policyDefinitionReferenceId": "Dine-AzureAI-Local-Key"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('azureAiDisableLocalKey2')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/55eff01b-f2bd-4c32-9203-db285f709d30",
+        "policyDefinitionReferenceId": "Dine-AzureAI-Local-Key2"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('azureAiDiagSettings')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1b4d1c4e-934c-4703-944c-27c82c06bebb",
+        "policyDefinitionReferenceId": "Aine-AzureAI-Diag-Settings"
       }
     ],
     "policyType": "Custom"
