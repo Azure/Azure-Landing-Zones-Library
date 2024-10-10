@@ -116,7 +116,6 @@ flowchart TD
 - Deny-Privileged-AKS
 - Deny-Storage-http
 - Deny-Subnet-Without-Nsg
-- Deploy-AKS-Policy
 - Deploy-AzSqlDb-Auditing
 - Deploy-MDFC-DefSQL-AMA
 - Deploy-SQL-TDE
@@ -133,6 +132,7 @@ flowchart TD
 - Enforce-AKS-HTTPS
 - Enforce-ASR
 - Enforce-GR-KeyVault
+- Enforce-Subnet-Private
 - Enforce-TLS-SSL-H224
 </details>
   
@@ -149,7 +149,7 @@ flowchart TD
   
 #### platform policy assignments
   
-<details><summary>11 policy assignments</summary>
+<details><summary>12 policy assignments</summary>
 
 - DenyAction-DeleteUAMIAMA
 - Deploy-MDFC-DefSQL-AMA
@@ -162,6 +162,7 @@ flowchart TD
 - Enable-AUM-CheckUpdates
 - Enforce-ASR
 - Enforce-GR-KeyVault
+- Enforce-Subnet-Private
 </details>
   
 ### archetype `root`
@@ -393,7 +394,7 @@ flowchart TD
 - Deny-UnmanagedDisk
 - Deploy-ASC-Monitoring
 - Deploy-AzActivity-Log
-- Deploy-Diag-Logs
+- Deploy-Diag-LogsCat
 - Deploy-MDEndpoints
 - Deploy-MDEndpointsAMA
 - Deploy-MDFC-Config-H224
@@ -1334,7 +1335,7 @@ The following policy default values are available in this library:
   
 ### all policy set definitions
   
-<details><summary>45 policy set definitions</summary>
+<details><summary>46 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -1358,6 +1359,7 @@ The following policy default values are available in this library:
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
 - Enforce-Guardrails-Automation
+- Enforce-Guardrails-BotService
 - Enforce-Guardrails-CognitiveServices
 - Enforce-Guardrails-Compute
 - Enforce-Guardrails-ContainerApps
@@ -1385,7 +1387,7 @@ The following policy default values are available in this library:
   
 ### all policy assignments
   
-<details><summary>69 policy assignments</summary>
+<details><summary>71 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -1421,6 +1423,7 @@ The following policy default values are available in this library:
 - Deploy-AzActivity-Log
 - Deploy-AzSqlDb-Auditing
 - Deploy-Diag-Logs
+- Deploy-Diag-LogsCat
 - Deploy-Log-Analytics
 - Deploy-MDEndpoints
 - Deploy-MDEndpointsAMA
@@ -1454,6 +1457,7 @@ The following policy default values are available in this library:
 - Enforce-ALZ-Sandbox
 - Enforce-ASR
 - Enforce-GR-KeyVault
+- Enforce-Subnet-Private
 - Enforce-TLS-SSL
 - Enforce-TLS-SSL-H224
 </details>
