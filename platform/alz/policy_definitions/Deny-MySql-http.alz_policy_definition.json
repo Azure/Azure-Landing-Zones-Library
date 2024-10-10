@@ -11,7 +11,7 @@
       ],
       "category": "SQL",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "mode": "Indexed",
     "parameters": {
@@ -62,7 +62,7 @@
               },
               {
                 "field": "Microsoft.DBforMySQL/servers/minimalTlsVersion",
-                "notequals": "[parameters('minimalTlsVersion')]"
+                "less": "[parameters('minimalTlsVersion')]"
               }
             ]
           }

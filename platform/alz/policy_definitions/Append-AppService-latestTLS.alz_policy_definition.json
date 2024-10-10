@@ -11,7 +11,7 @@
       ],
       "category": "App Service",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     "mode": "All",
     "parameters": {
@@ -29,6 +29,7 @@
       },
       "minTlsVersion": {
         "allowedValues": [
+          "1.3",
           "1.2",
           "1.0",
           "1.1"
@@ -50,7 +51,7 @@
           },
           {
             "field": "Microsoft.Web/sites/config/minTlsVersion",
-            "notEquals": "[parameters('minTlsVersion')]"
+            "less": "[parameters('minTlsVersion')]"
           }
         ]
       },

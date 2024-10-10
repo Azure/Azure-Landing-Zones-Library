@@ -11,7 +11,7 @@
       ],
       "category": "Cache",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "mode": "Indexed",
     "parameters": {
@@ -52,7 +52,7 @@
             "anyOf": [
               {
                 "field": "Microsoft.Cache/Redis/minimumTlsVersion",
-                "notequals": "[parameters('minimumTlsVersion')]"
+                "less": "[parameters('minimumTlsVersion')]"
               }
             ]
           }

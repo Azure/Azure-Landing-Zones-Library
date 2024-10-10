@@ -11,7 +11,7 @@
       ],
       "category": "Cognitive Services",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "parameters": {
       "cognitiveSearchLocalAuth": {
@@ -32,12 +32,46 @@
         "defaultValue": "Deny",
         "type": "string"
       },
+      "cognitiveServicesCustomerStorage": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "cognitiveServicesLocalAuth": {
+        "allowedValues": [
+          "Modify",
+          "Disabled"
+        ],
+        "defaultValue": "Modify",
+        "type": "string"
+      },
+      "cognitiveServicesManagedIdentity": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
       "cognitiveServicesModifyPublicNetworkAccess": {
         "allowedValues": [
           "Modify",
           "Disabled"
         ],
         "defaultValue": "Modify",
+        "type": "string"
+      },
+      "cognitiveServicesResourceLogs": {
+        "allowedValues": [
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "AuditIfNotExists",
         "type": "string"
       },
       "modifyCognitiveSearchLocalAuth": {
@@ -107,6 +141,46 @@
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/47ba1dd7-28d9-4b07-a8d5-9813bed64e0c",
         "policyDefinitionReferenceId": "Modify-Cognitive-Services-Public-Network-Access"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('cognitiveServicesManagedIdentity')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/fe3fd216-4f83-4fc1-8984-2bbec80a3418",
+        "policyDefinitionReferenceId": "Deny-Cognitive-Services-Managed-Identity"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('cognitiveServicesCustomerStorage')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/46aa9b05-0e60-4eae-a88b-1e9d374fa515",
+        "policyDefinitionReferenceId": "Deny-Cognitive-Services-Customer-Storage"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('cognitiveServicesLocalAuth')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/14de9e63-1b31-492e-a5a3-c3f7fd57f555",
+        "policyDefinitionReferenceId": "Modify-Cognitive-Services-Local-Auth"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('cognitiveServicesResourceLogs')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b4330a05-a843-4bc8-bf9a-cacce50c67f4",
+        "policyDefinitionReferenceId": "Aine-Cognitive-Services-Resource-Logs"
       }
     ],
     "policyType": "Custom"

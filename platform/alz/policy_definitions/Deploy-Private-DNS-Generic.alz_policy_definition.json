@@ -11,7 +11,7 @@
       ],
       "category": "Networking",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "2.0.0"
     },
     "mode": "All",
     "parameters": {
@@ -42,11 +42,20 @@
         },
         "type": "String"
       },
+      "location": {
+        "defaultValue": "northeurope",
+        "metadata": {
+          "description": "Specify the Private Endpoint location",
+          "displayName": "Location (Specify the Private Endpoint location)",
+          "strongType": "location"
+        },
+        "type": "String"
+      },
       "privateDnsZoneId": {
         "metadata": {
           "assignPermissions": true,
-          "description": "The private DNS zone name required for specific Paas Services to resolve a private DNS Zone.",
-          "displayName": "Private DNS Zone ID for Paas services",
+          "description": "The private DNS zone name required for specific PaaS Services to resolve a private DNS Zone.",
+          "displayName": "Private DNS Zone ID for PaaS services",
           "strongType": "Microsoft.Network/privateDnsZones"
         },
         "type": "String"
@@ -62,6 +71,10 @@
     "policyRule": {
       "if": {
         "allOf": [
+          {
+            "equals": "[parameters('location')]",
+            "field": "location"
+          },
           {
             "equals": "Microsoft.Network/privateEndpoints",
             "field": "type"

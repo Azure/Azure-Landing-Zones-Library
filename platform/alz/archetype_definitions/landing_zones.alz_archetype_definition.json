@@ -9,7 +9,6 @@
     "Deny-Privileged-AKS",
     "Deny-Storage-http",
     "Deny-Subnet-Without-Nsg",
-    "Deploy-AKS-Policy",
     "Deploy-AzSqlDb-Auditing",
     "Deploy-MDFC-DefSQL-AMA",
     "Deploy-SQL-TDE",
@@ -26,6 +25,7 @@
     "Enforce-AKS-HTTPS",
     "Enforce-ASR",
     "Enforce-GR-KeyVault",
+    "Enforce-Subnet-Private",
     "Enforce-TLS-SSL-H224"
   ],
   "policy_definitions": [],
