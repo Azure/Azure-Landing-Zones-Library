@@ -11,7 +11,7 @@
       ],
       "category": "SQL",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     "mode": "Indexed",
     "parameters": {
@@ -57,7 +57,7 @@
               },
               {
                 "field": "Microsoft.DBforPostgreSQL/servers/minimalTlsVersion",
-                "notEquals": "[parameters('minimalTlsVersion')]"
+                "less": "[parameters('minimalTlsVersion')]"
               }
             ]
           }
