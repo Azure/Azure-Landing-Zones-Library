@@ -9,7 +9,7 @@
       ],
       "category": "Encryption",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "3.0.0"
+      "version": "3.1.0"
     },
     "parameters": {
       "ACRCmkEffect": {
@@ -234,6 +234,18 @@
           "Audit",
           "Deny",
           "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "botServiceCmk": {
+        "allowedValues": [
+          "Audit",
+          "audit",
+          "Deny",
+          "deny",
+          "Disabled",
+          "disabled"
         ],
         "defaultValue": "Deny",
         "type": "string"
@@ -617,6 +629,16 @@
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f0e5abd0-2554-4736-b7c0-4ffef23475ef",
         "policyDefinitionReferenceId": "Deny-Storage-Queue-Cmk"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('botServiceCmk')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/51522a96-0869-4791-82f3-981000c2c67f",
+        "policyDefinitionReferenceId": "Deny-BotService-Cmk"
       }
     ],
     "policyType": "Custom"

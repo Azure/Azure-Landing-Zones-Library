@@ -11,7 +11,7 @@
       ],
       "category": "Storage",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.2.0"
+      "version": "1.3.0"
     },
     "mode": "Indexed",
     "parameters": {
@@ -56,7 +56,7 @@
               },
               {
                 "field": "Microsoft.Storage/storageAccounts/minimumTlsVersion",
-                "notEquals": "[parameters('minimumTlsVersion')]"
+                "less": "[parameters('minimumTlsVersion')]"
               }
             ]
           }
