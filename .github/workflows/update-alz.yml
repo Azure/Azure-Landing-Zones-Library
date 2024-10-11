@@ -80,6 +80,17 @@ jobs:
             "${{ github.workspace }}/${{ env.remote_repository }}/src/resources/Microsoft.Authorization/policySetDefinitions" \
             "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions"
 
+      - name: Update library policy definitions in archetype definitions
+        uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
+        with:
+          inlineScript: |
+            Write-Information "==> Running policy definitions in archetype definitions script..." -InformationAction Continue
+            ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
+              -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+          azPSVersion: "latest"
+
       - name: Update library policy assignments and archetypes
         uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
         with:
@@ -98,6 +109,12 @@ jobs:
           printf "%s\n" "${CHECK_GIT_STATUS[@]}"
           echo "changes=${#CHECK_GIT_STATUS[@]}" >> "$GITHUB_OUTPUT"
         working-directory: ${{ github.workspace }}/${{ github.repository }}
+
+      - name: Regerate README.md
+        if: steps.git_status.outputs.changes > 0
+        run: |
+          alzlibtool document library . >README.md
+        working-directory: ${{ github.repository }}
 
       - name: Add files, commit and push
         if: steps.git_status.outputs.changes > 0
