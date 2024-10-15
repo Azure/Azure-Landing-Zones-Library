@@ -76,7 +76,7 @@ flowchart TD
 (landing_zones)"]
   mcfs-landingzones --> mcfs-landingzones-confidential-corp
   mcfs-landingzones-confidential-corp["Confidential Corp
-(corp, confidential)"]
+(confidential, corp)"]
   mcfs-landingzones --> mcfs-landingzones-confidential-online
   mcfs-landingzones-confidential-online["Confidential Online
 (confidential, online)"]
