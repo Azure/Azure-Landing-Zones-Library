@@ -3,5 +3,11 @@
   "name": "SLZ",
   "display_name": "Sovereign Landing Zones",
   "description": "This library provides the reference set of Sovereign Landing Zones (SLZ) policies, archetypes, and management group architecture.",
-  "path": "platform/slz"
+  "path": "platform/slz",
+  "dependencies": [
+    {
+      "path": "platform/alz",
+      "ref": "2024.07.02"
+    }
+  ]
 }
