@@ -72,7 +72,7 @@ jobs:
           if [ -z "$(git status -suno)" ]; then
             echo "README.md is up to date"
           else
-            echo "README.md is out of date, generate using `alzlibtool document library . >README.md`"
+            echo "README.md is out of date, generate using 'alzlibtool document library . >README.md'"
             git --no-pager diff
             exit 1
           fi
