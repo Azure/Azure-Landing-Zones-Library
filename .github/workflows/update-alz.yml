@@ -86,7 +86,6 @@ jobs:
           inlineScript: |
             Write-Information "==> Running policy definitions in archetype definitions script..." -InformationAction Continue
             ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
-              -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
               -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
           azPSVersion: "latest"
@@ -97,7 +96,6 @@ jobs:
           inlineScript: |
             Write-Information "==> Running policy assignments and archetypes script..." -InformationAction Continue
             ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
-              -AlzToolsPath "${{ github.workspace }}/${{ env.remote_repository }}/src/Alz.Tools/" `
               -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
           azPSVersion: "latest"

@@ -116,7 +116,6 @@ flowchart TD
 - Deny-Privileged-AKS
 - Deny-Storage-http
 - Deny-Subnet-Without-Nsg
-- Deploy-AKS-Policy
 - Deploy-AzSqlDb-Auditing
 - Deploy-MDFC-DefSQL-AMA
 - Deploy-SQL-TDE
@@ -133,23 +132,15 @@ flowchart TD
 - Enforce-AKS-HTTPS
 - Enforce-ASR
 - Enforce-GR-KeyVault
+- Enforce-Subnet-Private
 - Enforce-TLS-SSL-H224
-</details>
-  
-### archetype `management`
-  
-#### management policy assignments
-  
-<details><summary>1 policy assignments</summary>
-
-- Deploy-Log-Analytics
 </details>
   
 ### archetype `platform`
   
 #### platform policy assignments
   
-<details><summary>11 policy assignments</summary>
+<details><summary>12 policy assignments</summary>
 
 - DenyAction-DeleteUAMIAMA
 - Deploy-MDFC-DefSQL-AMA
@@ -162,6 +153,7 @@ flowchart TD
 - Enable-AUM-CheckUpdates
 - Enforce-ASR
 - Enforce-GR-KeyVault
+- Enforce-Subnet-Private
 </details>
   
 ### archetype `root`
@@ -332,7 +324,7 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>45 policy set definitions</summary>
+<details><summary>46 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -356,6 +348,7 @@ flowchart TD
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
 - Enforce-Guardrails-Automation
+- Enforce-Guardrails-BotService
 - Enforce-Guardrails-CognitiveServices
 - Enforce-Guardrails-Compute
 - Enforce-Guardrails-ContainerApps
@@ -393,7 +386,7 @@ flowchart TD
 - Deny-UnmanagedDisk
 - Deploy-ASC-Monitoring
 - Deploy-AzActivity-Log
-- Deploy-Diag-Logs
+- Deploy-Diag-LogsCat
 - Deploy-MDEndpoints
 - Deploy-MDEndpointsAMA
 - Deploy-MDFC-Config-H224
@@ -527,24 +520,6 @@ The following policy default values are available in this library:
 - dcrResourceId
 </details>
   
-### default name `automation_account_location`
-  
-#### assignment `Deploy-Log-Analytics`
-  
-<details><summary>1 parameter names</summary>
-
-- automationRegion
-</details>
-  
-### default name `automation_account_name`
-  
-#### assignment `Deploy-Log-Analytics`
-  
-<details><summary>1 parameter names</summary>
-
-- automationAccountName
-</details>
-  
 ### default name `ddos_protection_plan_id`
   
 #### assignment `Enable-DDoS-VNET`
@@ -596,51 +571,6 @@ The following policy default values are available in this library:
 <details><summary>1 parameter names</summary>
 
 - userWorkspaceResourceId
-</details>
-  
-### default name `log_analytics_workspace_location`
-  
-#### assignment `Deploy-Log-Analytics`
-  
-<details><summary>1 parameter names</summary>
-
-- workspaceRegion
-</details>
-  
-### default name `log_analytics_workspace_name`
-  
-#### assignment `Deploy-Log-Analytics`
-  
-<details><summary>1 parameter names</summary>
-
-- workspaceName
-</details>
-  
-### default name `log_analytics_workspace_resource_group_name`
-  
-#### assignment `Deploy-Log-Analytics`
-  
-<details><summary>1 parameter names</summary>
-
-- rgName
-</details>
-  
-### default name `log_analytics_workspace_retention_in_days`
-  
-#### assignment `Deploy-Log-Analytics`
-  
-<details><summary>1 parameter names</summary>
-
-- dataRetention
-</details>
-  
-### default name `log_analytics_workspace_sku`
-  
-#### assignment `Deploy-Log-Analytics`
-  
-<details><summary>1 parameter names</summary>
-
-- sku
 </details>
   
 ### default name `private_dns_zone_app`
@@ -1334,7 +1264,7 @@ The following policy default values are available in this library:
   
 ### all policy set definitions
   
-<details><summary>45 policy set definitions</summary>
+<details><summary>46 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -1358,6 +1288,7 @@ The following policy default values are available in this library:
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
 - Enforce-Guardrails-Automation
+- Enforce-Guardrails-BotService
 - Enforce-Guardrails-CognitiveServices
 - Enforce-Guardrails-Compute
 - Enforce-Guardrails-ContainerApps
@@ -1385,7 +1316,7 @@ The following policy default values are available in this library:
   
 ### all policy assignments
   
-<details><summary>69 policy assignments</summary>
+<details><summary>49 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -1393,50 +1324,32 @@ The following policy default values are available in this library:
 - Audit-TrustedLaunch
 - Audit-UnusedResources
 - Audit-ZoneResiliency
-- Deny-AppGW-Without-WAF
 - Deny-Classic-Resources
-- Deny-DataB-Pip
-- Deny-DataB-Sku
-- Deny-DataB-Vnet
 - Deny-HybridNetworking
 - Deny-IP-forwarding
 - Deny-MgmtPorts-Internet
 - Deny-Priv-Esc-AKS
-- Deny-Private-DNS-Zones
 - Deny-Privileged-AKS
 - Deny-Public-Endpoints
 - Deny-Public-IP
 - Deny-Public-IP-On-NIC
-- Deny-RDP-From-Internet
-- Deny-RSG-Locations
-- Deny-Resource-Locations
-- Deny-Resource-Types
 - Deny-Storage-http
 - Deny-Subnet-Without-Nsg
-- Deny-Subnet-Without-Udr
 - Deny-UnmanagedDisk
 - DenyAction-DeleteUAMIAMA
-- Deploy-AKS-Policy
 - Deploy-ASC-Monitoring
 - Deploy-AzActivity-Log
 - Deploy-AzSqlDb-Auditing
-- Deploy-Diag-Logs
-- Deploy-Log-Analytics
+- Deploy-Diag-LogsCat
 - Deploy-MDEndpoints
 - Deploy-MDEndpointsAMA
-- Deploy-MDFC-Config
 - Deploy-MDFC-Config-H224
 - Deploy-MDFC-DefSQL-AMA
-- Deploy-MDFC-DefenSQL-AMA
 - Deploy-MDFC-OssDb
 - Deploy-MDFC-SqlAtp
 - Deploy-Private-DNS-Zones
-- Deploy-Resource-Diag
-- Deploy-SQL-DB-Auditing
-- Deploy-SQL-Security
 - Deploy-SQL-TDE
 - Deploy-SQL-Threat
-- Deploy-UAMI-VMInsights
 - Deploy-VM-Backup
 - Deploy-VM-ChangeTrack
 - Deploy-VM-Monitoring
@@ -1445,8 +1358,6 @@ The following policy default values are available in this library:
 - Deploy-vmArc-ChangeTrack
 - Deploy-vmHybr-Monitoring
 - Enable-AUM-CheckUpdates
-- Enable-AUM-VM-Windows
-- Enable-AUM-VMHyb-Windows
 - Enable-DDoS-VNET
 - Enforce-ACSB
 - Enforce-AKS-HTTPS
@@ -1454,7 +1365,7 @@ The following policy default values are available in this library:
 - Enforce-ALZ-Sandbox
 - Enforce-ASR
 - Enforce-GR-KeyVault
-- Enforce-TLS-SSL
+- Enforce-Subnet-Private
 - Enforce-TLS-SSL-H224
 </details>
   

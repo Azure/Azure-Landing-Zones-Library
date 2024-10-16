@@ -7,19 +7,17 @@
 
 [CmdletBinding(SupportsShouldProcess)]
 param (
-  [Parameter()][String]$AlzToolsPath = "$PWD/enterprise-scale/src/Alz.Tools",
   [Parameter()][String]$TargetPath = "$PWD/library",
   [Parameter()][String]$SourcePath = "$PWD/enterprise-scale",
   [Parameter()][String]$LineEnding = "unix",
   [Parameter()][String]$ParserToolUrl = "https://github.com/Azure/arm-template-parser/releases/download/0.2.4"
 )
 
-$ErrorActionPreference = "Stop"
+$assignmentsToSkip = @(
+  "Deploy-Log-Analytics"
+)
 
-# This script relies on a custom set of classes and functions
-# defined within the EnterpriseScaleLibraryTools PowerShell
-# module.
-Import-Module $AlzToolsPath -ErrorAction Stop
+$ErrorActionPreference = "Stop"
 
 $parserPath = "$TargetPath/platform/alz/scripts"
 $parserExe = "Template.Parser.Cli"
@@ -171,6 +169,10 @@ foreach ($managementGroup in $policyAssignments.Keys) {
 
       $policyAssignmentName = $parsedAssignment.name
 
+      if ($assignmentsToSkip.Contains($policyAssignmentName)) {
+        continue
+      }
+
       Write-Output "Parsed Assignment Name: $($parsedAssignment.name)"
 
       if (!(Get-Member -InputObject $parsedAssignment.properties -Name "scope" -MemberType Properties)) {
@@ -188,10 +190,6 @@ foreach ($managementGroup in $policyAssignments.Keys) {
       if (!(Get-Member -InputObject $parsedAssignment -Name "location" -MemberType Properties)) {
         $parsedAssignment | Add-Member -MemberType NoteProperty -Name "location" -Value "uksouth"
       }
-
-      # if (!(Get-Member -InputObject $parsedAssignment -Name "identity" -MemberType Properties)) {
-      #     $parsedAssignment | Add-Member -MemberType NoteProperty -Name "identity" -Value @{ type = "None" }
-      # }
 
       if ($parsedAssignment.properties.policyDefinitionId.StartsWith("/providers/Microsoft.Management/managementGroups/`${temp}")) {
         $parsedAssignment.properties.policyDefinitionId = $parsedAssignment.properties.policyDefinitionId.Replace("/providers/Microsoft.Management/managementGroups/`${temp}", "/providers/Microsoft.Management/managementGroups/placeholder")
@@ -214,11 +212,11 @@ foreach ($managementGroup in $policyAssignments.Keys) {
         }
       }
 
-      $targetPolicyAssignmentFileName = "$($policyAssignmentName.ToLower() -replace "-", "_").alz_policy_assignment.json"
+      $targetPolicyAssignmentFileName = $policyAssignmentName + ".alz_policy_assignment.json"
 
       Write-Information "Writing $targetPolicyAssignmentFileName" -InformationAction Continue
       $json = $parsedAssignment | ConvertTo-Json -Depth 10
-      $json | Edit-LineEndings -LineEnding $LineEnding | Out-File -FilePath "$policyAssignmentTargetPath/$targetPolicyAssignmentFileName" -Force
+      $json | Out-File -FilePath "$policyAssignmentTargetPath/$targetPolicyAssignmentFileName" -Force
 
       Write-Verbose "Got final data for $managementGroupNameFinal and $policyAssignmentName"
 
@@ -244,5 +242,5 @@ foreach ($managementGroup in $finalPolicyAssignments.Keys) {
 
   Write-Information "Writing $archetypeFilePath" -InformationAction Continue
   $json = $archetypeJson | ConvertTo-Json -Depth 10
-  $json | Edit-LineEndings -LineEnding $LineEnding | Out-File -FilePath "$archetypeFilePath" -Force
+  $json | Out-File -FilePath "$archetypeFilePath" -Force
 }

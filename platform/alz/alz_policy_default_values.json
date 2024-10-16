@@ -105,28 +105,6 @@
       ]
     },
     {
-      "default_name": "automation_account_location",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "automationRegion"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "automation_account_name",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "automationAccountName"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
       "default_name": "ddos_protection_plan_id",
       "policy_assignments": [
         {
@@ -175,61 +153,6 @@
             "userWorkspaceResourceId"
           ],
           "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
-        }
-      ]
-    },
-    {
-      "default_name": "log_analytics_workspace_location",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "workspaceRegion"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "log_analytics_workspace_name",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "workspaceName"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "log_analytics_workspace_resource_group_name",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "rgName"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "log_analytics_workspace_retention_in_days",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "dataRetention"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "log_analytics_workspace_sku",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "sku"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
         }
       ]
     },
