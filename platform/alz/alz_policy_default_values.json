@@ -243,12 +243,6 @@
         },
         {
           "parameter_names": [
-            "logAnalytics"
-          ],
-          "policy_assignment_name": "Deploy-MDFC-Config"
-        },
-        {
-          "parameter_names": [
             "userWorkspaceResourceId"
           ],
           "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
