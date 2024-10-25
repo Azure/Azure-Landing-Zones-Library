@@ -134,7 +134,7 @@
           "parameter_names": [
             "logAnalytics"
           ],
-          "policy_assignment_name": "Deploy-Diag-Logs"
+          "policy_assignment_name": "Deploy-Diag-LogsCat"
         },
         {
           "parameter_names": [
