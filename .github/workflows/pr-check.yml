@@ -53,7 +53,7 @@ jobs:
     steps:
       - name: Install alzlibtool
         run: |
-          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlib_0.22.0_darwin_arm64.tar.gz | tar -xv
+          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlib_0.22.0_darwin_arm64.tar.gz | tar -xvz
           sudo cp alzlibtool /usr/local/bin
 
       - name: Checkout code
