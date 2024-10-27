@@ -12,6 +12,9 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  alzlibtool_version: "0.22.0"
+
 jobs:
   libschanged:
     runs-on: ubuntu-latest
@@ -48,16 +51,13 @@ jobs:
       matrix:
         lib: ${{ fromJson(needs.libschanged.outputs.list) }}
     steps:
+      - name: Install alzlibtool
+        run: |
+          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlib_0.22.0_darwin_arm64.tar.gz | tar -xv
+          sudo cp alzlibtool /usr/local/bin
+
       - name: Checkout code
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-
-      - name: Set up go
-        uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
-        with:
-          go-version: 'stable'
-
-      - name: Install alzlibtool
-        run: go install github.com/Azure/alzlib/cmd/alzlibtool@v0.21.7
 
       - name: Azure login
         uses: azure/login@6c251865b4e6290e7b78be643ea2d005bc51f69a # v2.1.1
