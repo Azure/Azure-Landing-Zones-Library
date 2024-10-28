@@ -11,6 +11,7 @@ permissions:
   contents: write
 
 env:
+  alzlibtool_version: "0.22.0"
   remote_repository: "Azure/Enterprise-Scale"
   alzlib_repository: "Azure/alzlib"
   library_dir: "platform/alz"
@@ -25,6 +26,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: libupdate
     steps:
+      - name: Install alzlibtool
+        run: |
+          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlib_0.22.0_linux_amd64.tar.gz | tar -xvz
+          sudo cp alzlibtool /usr/local/bin
+
       - name: Local repository checkout
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
         with:
@@ -37,14 +43,6 @@ jobs:
           repository: ${{ env.remote_repository }}
           path: ${{ env.remote_repository }}
           ref: main
-
-      - name: setup go
-        uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
-        with:
-          go-version: 'stable'
-
-      - name: install alzlibtool
-        run: go install github.com/Azure/alzlib/cmd/alzlibtool@v0.21.7
 
       - uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
         id: generate-token

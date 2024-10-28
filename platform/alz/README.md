@@ -545,14 +545,7 @@ The following policy default values are available in this library:
 - logAnalyticsWorkspaceId
 </details>
   
-#### assignment `Deploy-Diag-Logs`
-  
-<details><summary>1 parameter names</summary>
-
-- logAnalytics
-</details>
-  
-#### assignment `Deploy-MDFC-Config`
+#### assignment `Deploy-Diag-LogsCat`
   
 <details><summary>1 parameter names</summary>
 
@@ -571,6 +564,51 @@ The following policy default values are available in this library:
 <details><summary>1 parameter names</summary>
 
 - userWorkspaceResourceId
+</details>
+  
+### default name `private_dns_bot_service`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureBotServicePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_databricks`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureDatabricksPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_iot_central`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureIotCentralPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_iot_device_update`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureIotDeviceupdatePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_acr`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureAcrPrivateDnsZoneId
 </details>
   
 ### default name `private_dns_zone_app`
@@ -825,6 +863,15 @@ The following policy default values are available in this library:
 - azureMachineLearningWorkspacePrivateDnsZoneId
 </details>
   
+### default name `private_dns_zone_machine_learning_workspace_second`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureMachineLearningWorkspaceSecondPrivateDnsZoneId
+</details>
+  
 ### default name `private_dns_zone_managed_grafana_workspace`
   
 #### assignment `Deploy-Private-DNS-Zones`
@@ -942,6 +989,15 @@ The following policy default values are available in this library:
 - azureSignalRPrivateDnsZoneId
 </details>
   
+### default name `private_dns_zone_site_recovery_backup`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureSiteRecoveryBackupPrivateDnsZoneID
+</details>
+  
 ### default name `private_dns_zone_site_recovery_blob`
   
 #### assignment `Deploy-Private-DNS-Zones`
@@ -1039,6 +1095,24 @@ The following policy default values are available in this library:
 <details><summary>1 parameter names</summary>
 
 - azureStorageStaticWebSecPrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_storage_table`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageTablePrivateDnsZoneId
+</details>
+  
+### default name `private_dns_zone_storage_table_secondary`
+  
+#### assignment `Deploy-Private-DNS-Zones`
+  
+<details><summary>1 parameter names</summary>
+
+- azureStorageTableSecondaryPrivateDnsZoneId
 </details>
   
 ### default name `private_dns_zone_synapse_dev`

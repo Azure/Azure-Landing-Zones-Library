@@ -2,6 +2,105 @@
   "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/default_policy_values.json",
   "defaults": [
     {
+      "default_name": "private_dns_zone_acr",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "azureAcrPrivateDnsZoneId"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
+      "default_name": "private_dns_bot_service",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "azureBotServicePrivateDnsZoneId"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
+      "default_name": "private_dns_databricks",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "azureDatabricksPrivateDnsZoneId"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
+      "default_name": "private_dns_iot_central",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "azureIotCentralPrivateDnsZoneId"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
+      "default_name": "private_dns_iot_device_update",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "azureIotDeviceupdatePrivateDnsZoneId"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
+      "default_name": "private_dns_zone_site_recovery_backup",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "azureSiteRecoveryBackupPrivateDnsZoneID"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
+      "default_name": "private_dns_zone_storage_table",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "azureStorageTablePrivateDnsZoneId"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
+      "default_name": "private_dns_zone_storage_table_secondary",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "azureStorageTableSecondaryPrivateDnsZoneId"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
+      "default_name": "private_dns_zone_machine_learning_workspace_second",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "azureMachineLearningWorkspaceSecondPrivateDnsZoneId"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
       "default_name": "ama_user_assigned_managed_identity_id",
       "policy_assignments": [
         {
@@ -17,22 +116,22 @@
           "policy_assignment_name": "Deploy-VMSS-ChangeTrack"
         },
         {
-          "policy_assignment_name": "Deploy-VM-Monitoring",
           "parameter_names": [
             "userAssignedIdentityResourceId"
-          ]
+          ],
+          "policy_assignment_name": "Deploy-VM-Monitoring"
         },
         {
-          "policy_assignment_name": "Deploy-VMSS-Monitoring",
           "parameter_names": [
             "userAssignedIdentityResourceId"
-          ]
+          ],
+          "policy_assignment_name": "Deploy-VMSS-Monitoring"
         },
         {
-          "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA",
           "parameter_names": [
             "userAssignedIdentityResourceId"
-          ]
+          ],
+          "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
         }
       ]
     },
@@ -51,22 +150,22 @@
       "default_name": "ama_vm_insights_data_collection_rule_id",
       "policy_assignments": [
         {
-          "policy_assignment_name": "Deploy-VM-Monitoring",
           "parameter_names": [
             "dcrResourceId"
-          ]
+          ],
+          "policy_assignment_name": "Deploy-VM-Monitoring"
         },
         {
-          "policy_assignment_name": "Deploy-VMSS-Monitoring",
           "parameter_names": [
             "dcrResourceId"
-          ]
+          ],
+          "policy_assignment_name": "Deploy-VMSS-Monitoring"
         },
         {
-          "policy_assignment_name": "Deploy-vmHybr-Monitoring",
           "parameter_names": [
             "dcrResourceId"
-          ]
+          ],
+          "policy_assignment_name": "Deploy-vmHybr-Monitoring"
         }
       ]
     },
@@ -74,10 +173,10 @@
       "default_name": "ama_mdfc_sql_data_collection_rule_id",
       "policy_assignments": [
         {
-          "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA",
           "parameter_names": [
             "dcrResourceId"
-          ]
+          ],
+          "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
         }
       ]
     },
@@ -134,19 +233,13 @@
           "parameter_names": [
             "logAnalytics"
           ],
-          "policy_assignment_name": "Deploy-Diag-Logs"
+          "policy_assignment_name": "Deploy-Diag-LogsCat"
         },
         {
           "parameter_names": [
             "logAnalytics"
           ],
           "policy_assignment_name": "Deploy-MDFC-Config-H224"
-        },
-        {
-          "parameter_names": [
-            "logAnalytics"
-          ],
-          "policy_assignment_name": "Deploy-MDFC-Config"
         },
         {
           "parameter_names": [
