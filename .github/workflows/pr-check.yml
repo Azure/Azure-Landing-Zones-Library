@@ -53,7 +53,7 @@ jobs:
     steps:
       - name: Install alzlibtool
         run: |
-          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlib_linux_amd64.tar.gz | tar -xvz
+          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlibtool_linux_amd64.tar.gz | tar -xvz
           sudo cp alzlibtool /usr/local/bin
 
       - name: Checkout code
