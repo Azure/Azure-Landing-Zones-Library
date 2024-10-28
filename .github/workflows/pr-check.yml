@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 env:
-  alzlibtool_version: "0.22.0"
+  alzlibtool_version: "0.22.1"
 
 jobs:
   libschanged:
@@ -53,7 +53,7 @@ jobs:
     steps:
       - name: Install alzlibtool
         run: |
-          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlib_0.22.0_linux_amd64.tar.gz | tar -xvz
+          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlib_linux_amd64.tar.gz | tar -xvz
           sudo cp alzlibtool /usr/local/bin
 
       - name: Checkout code
