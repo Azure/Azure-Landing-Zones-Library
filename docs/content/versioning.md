@@ -4,7 +4,7 @@ geekdocNav: true
 geekdocAnchor: true
 ---
 
-Each library member is released using a [calver](https://calver.org/) tagging strategy.
+Each library member is released using a [CalVer](https://calver.org/) tagging strategy.
 The strategy is as follows:
 
 ```text
