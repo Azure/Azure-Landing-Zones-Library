@@ -30,6 +30,7 @@ Here is an example policy default values file:
   "defaults": [
     {
       "default_name": "ama_user_assigned_managed_identity_id",
+      "description": "An optional description that can be used for documentation",
       "policy_assignments": [
         {
           "parameter_names": [

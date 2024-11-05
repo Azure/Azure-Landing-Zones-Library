@@ -7,6 +7,9 @@
           "default_name": {
             "type": "string"
           },
+          "description": {
+            "type": "string"
+          },
           "policy_assignments": {
             "items": {
               "properties": {
