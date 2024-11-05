@@ -3,6 +3,8 @@ main:
   - name: Home
     ref: /
     icon: gdoc_home
+  - name: Versioning
+    ref: /versioning
   - name: Assets
     ref: /assets
   - name: Clients
