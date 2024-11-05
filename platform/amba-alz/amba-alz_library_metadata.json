@@ -3,5 +3,11 @@
   "name": "AMBA-ALZ",
   "display_name": "Azure Monitor Baseline Alerts for Azure Landing Zones",
   "description": "This library provides the reference set of Azure Monitor Baseline Alerts for Azure Landing Zones (ALZ) policies, archetypes, and management group architecture.",
-  "path": "platform/amba-alz"
+  "path": "platform/amba-alz",
+  "dependencies": [
+    {
+      "path": "platform/alz",
+      "ref": "2024.10.1"
+    }
+  ]
 }
