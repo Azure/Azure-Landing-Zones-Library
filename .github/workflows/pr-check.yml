@@ -13,7 +13,7 @@ on:
   workflow_dispatch:
 
 env:
-  alzlibtool_version: "0.22.1"
+  alzlibtool_version: "0.23.0"
 
 jobs:
   libschanged:
