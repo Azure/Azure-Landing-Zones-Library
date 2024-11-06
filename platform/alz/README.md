@@ -421,753 +421,708 @@ The following policy default values are available in this library:
   
 ### default name `ama_change_tracking_data_collection_rule_id`
   
-#### assignment `Deploy-VM-ChangeTrack`
+The data collection rule id that should be used for the change tracking deployment.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        | PARAMETER NAMES |
+|--------------------------|-----------------|
+| Deploy-VM-ChangeTrack    | dcrResourceId   |
+| Deploy-VMSS-ChangeTrack  | dcrResourceId   |
+| Deploy-vmArc-ChangeTrack | dcrResourceId   |
 
-- dcrResourceId
-</details>
-  
-#### assignment `Deploy-VMSS-ChangeTrack`
-  
-<details><summary>1 parameter names</summary>
-
-- dcrResourceId
-</details>
-  
-#### assignment `Deploy-vmArc-ChangeTrack`
-  
-<details><summary>1 parameter names</summary>
-
-- dcrResourceId
-</details>
   
 ### default name `ama_mdfc_sql_data_collection_rule_id`
   
-#### assignment `Deploy-MDFC-DefSQL-AMA`
+The data collection rule id that should be used for the SQL MDFC deployment.
   
-<details><summary>1 parameter names</summary>
+|       ASSIGNMENT       | PARAMETER NAMES |
+|------------------------|-----------------|
+| Deploy-MDFC-DefSQL-AMA | dcrResourceId   |
 
-- dcrResourceId
-</details>
   
 ### default name `ama_user_assigned_managed_identity_id`
   
-#### assignment `Deploy-MDFC-DefSQL-AMA`
+The user assigned managed identity id that should be used for the AMA deployment.
   
-<details><summary>1 parameter names</summary>
+|       ASSIGNMENT        |        PARAMETER NAMES         |
+|-------------------------|--------------------------------|
+| Deploy-MDFC-DefSQL-AMA  | userAssignedIdentityResourceId |
+| Deploy-VM-ChangeTrack   | userAssignedIdentityResourceId |
+| Deploy-VM-Monitoring    | userAssignedIdentityResourceId |
+| Deploy-VMSS-ChangeTrack | userAssignedIdentityResourceId |
+| Deploy-VMSS-Monitoring  | userAssignedIdentityResourceId |
 
-- userAssignedIdentityResourceId
-</details>
-  
-#### assignment `Deploy-VM-ChangeTrack`
-  
-<details><summary>1 parameter names</summary>
-
-- userAssignedIdentityResourceId
-</details>
-  
-#### assignment `Deploy-VM-Monitoring`
-  
-<details><summary>1 parameter names</summary>
-
-- userAssignedIdentityResourceId
-</details>
-  
-#### assignment `Deploy-VMSS-ChangeTrack`
-  
-<details><summary>1 parameter names</summary>
-
-- userAssignedIdentityResourceId
-</details>
-  
-#### assignment `Deploy-VMSS-Monitoring`
-  
-<details><summary>1 parameter names</summary>
-
-- userAssignedIdentityResourceId
-</details>
   
 ### default name `ama_user_assigned_managed_identity_name`
   
-#### assignment `DenyAction-DeleteUAMIAMA`
+The user assigned managed identity name that is used for the deny action policy to prevent the accidental deletion of the AMA identity.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        | PARAMETER NAMES |
+|--------------------------|-----------------|
+| DenyAction-DeleteUAMIAMA | resourceName    |
 
-- resourceName
-</details>
   
 ### default name `ama_vm_insights_data_collection_rule_id`
   
-#### assignment `Deploy-VM-Monitoring`
+The data collection rule id that should be used for the VM Insights deployment.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        | PARAMETER NAMES |
+|--------------------------|-----------------|
+| Deploy-VM-Monitoring     | dcrResourceId   |
+| Deploy-VMSS-Monitoring   | dcrResourceId   |
+| Deploy-vmHybr-Monitoring | dcrResourceId   |
 
-- dcrResourceId
-</details>
-  
-#### assignment `Deploy-VMSS-Monitoring`
-  
-<details><summary>1 parameter names</summary>
-
-- dcrResourceId
-</details>
-  
-#### assignment `Deploy-vmHybr-Monitoring`
-  
-<details><summary>1 parameter names</summary>
-
-- dcrResourceId
-</details>
   
 ### default name `ddos_protection_plan_id`
   
-#### assignment `Enable-DDoS-VNET`
+The DDoS protection plan id that should be used for the DDoS protection plan deployment. If this is invalid or you do not use DDoS protection, make sure to change the enforcement mode of the Enable-DDoS-VNET policy to 'DoNotEnforce'.
   
-<details><summary>1 parameter names</summary>
+|    ASSIGNMENT    | PARAMETER NAMES |
+|------------------|-----------------|
+| Enable-DDoS-VNET | ddosPlan        |
 
-- ddosPlan
-</details>
   
 ### default name `log_analytics_workspace_id`
   
-#### assignment `Deploy-AzActivity-Log`
+The Log Analytics workspace id that should be used for centralized log collection.
   
-<details><summary>1 parameter names</summary>
+|       ASSIGNMENT        |     PARAMETER NAMES     |
+|-------------------------|-------------------------|
+| Deploy-AzActivity-Log   | logAnalytics            |
+| Deploy-AzSqlDb-Auditing | logAnalyticsWorkspaceId |
+| Deploy-Diag-LogsCat     | logAnalytics            |
+| Deploy-MDFC-Config-H224 | logAnalytics            |
+| Deploy-MDFC-DefSQL-AMA  | userWorkspaceResourceId |
 
-- logAnalytics
-</details>
-  
-#### assignment `Deploy-AzSqlDb-Auditing`
-  
-<details><summary>1 parameter names</summary>
-
-- logAnalyticsWorkspaceId
-</details>
-  
-#### assignment `Deploy-Diag-LogsCat`
-  
-<details><summary>1 parameter names</summary>
-
-- logAnalytics
-</details>
-  
-#### assignment `Deploy-MDFC-Config-H224`
-  
-<details><summary>1 parameter names</summary>
-
-- logAnalytics
-</details>
-  
-#### assignment `Deploy-MDFC-DefSQL-AMA`
-  
-<details><summary>1 parameter names</summary>
-
-- userWorkspaceResourceId
-</details>
   
 ### default name `private_dns_bot_service`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES         |
+|--------------------------|---------------------------------|
+| Deploy-Private-DNS-Zones | azureBotServicePrivateDnsZoneId |
 
-- azureBotServicePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_databricks`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES         |
+|--------------------------|---------------------------------|
+| Deploy-Private-DNS-Zones | azureDatabricksPrivateDnsZoneId |
 
-- azureDatabricksPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_iot_central`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES         |
+|--------------------------|---------------------------------|
+| Deploy-Private-DNS-Zones | azureIotCentralPrivateDnsZoneId |
 
-- azureIotCentralPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_iot_device_update`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |           PARAMETER NAMES            |
+|--------------------------|--------------------------------------|
+| Deploy-Private-DNS-Zones | azureIotDeviceupdatePrivateDnsZoneId |
 
-- azureIotDeviceupdatePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_acr`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |     PARAMETER NAMES      |
+|--------------------------|--------------------------|
+| Deploy-Private-DNS-Zones | azureAcrPrivateDnsZoneId |
 
-- azureAcrPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_app`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |     PARAMETER NAMES      |
+|--------------------------|--------------------------|
+| Deploy-Private-DNS-Zones | azureAppPrivateDnsZoneId |
 
-- azureAppPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_app_services`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES          |
+|--------------------------|----------------------------------|
+| Deploy-Private-DNS-Zones | azureAppServicesPrivateDnsZoneId |
 
-- azureAppServicesPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_arc_guestconfiguration`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |              PARAMETER NAMES               |
+|--------------------------|--------------------------------------------|
+| Deploy-Private-DNS-Zones | azureArcGuestconfigurationPrivateDnsZoneId |
 
-- azureArcGuestconfigurationPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_arc_hybrid_resource_provider`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |                PARAMETER NAMES                 |
+|--------------------------|------------------------------------------------|
+| Deploy-Private-DNS-Zones | azureArcHybridResourceProviderPrivateDnsZoneId |
 
-- azureArcHybridResourceProviderPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_arc_kubernetes_configuration`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |                 PARAMETER NAMES                 |
+|--------------------------|-------------------------------------------------|
+| Deploy-Private-DNS-Zones | azureArcKubernetesConfigurationPrivateDnsZoneId |
 
-- azureArcKubernetesConfigurationPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_asr`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |     PARAMETER NAMES      |
+|--------------------------|--------------------------|
+| Deploy-Private-DNS-Zones | azureAsrPrivateDnsZoneId |
 
-- azureAsrPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_automation_dsc_hybrid`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |             PARAMETER NAMES              |
+|--------------------------|------------------------------------------|
+| Deploy-Private-DNS-Zones | azureAutomationDSCHybridPrivateDnsZoneId |
 
-- azureAutomationDSCHybridPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_automation_webhook`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |            PARAMETER NAMES             |
+|--------------------------|----------------------------------------|
+| Deploy-Private-DNS-Zones | azureAutomationWebhookPrivateDnsZoneId |
 
-- azureAutomationWebhookPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_batch`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |      PARAMETER NAMES       |
+|--------------------------|----------------------------|
+| Deploy-Private-DNS-Zones | azureBatchPrivateDnsZoneId |
 
-- azureBatchPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_cognitive_search`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |           PARAMETER NAMES            |
+|--------------------------|--------------------------------------|
+| Deploy-Private-DNS-Zones | azureCognitiveSearchPrivateDnsZoneId |
 
-- azureCognitiveSearchPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_cognitive_services`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |            PARAMETER NAMES             |
+|--------------------------|----------------------------------------|
+| Deploy-Private-DNS-Zones | azureCognitiveServicesPrivateDnsZoneId |
 
-- azureCognitiveServicesPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_cosmos_cassandra`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |           PARAMETER NAMES            |
+|--------------------------|--------------------------------------|
+| Deploy-Private-DNS-Zones | azureCosmosCassandraPrivateDnsZoneId |
 
-- azureCosmosCassandraPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_cosmos_gremlin`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |          PARAMETER NAMES           |
+|--------------------------|------------------------------------|
+| Deploy-Private-DNS-Zones | azureCosmosGremlinPrivateDnsZoneId |
 
-- azureCosmosGremlinPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_cosmos_mongo`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES          |
+|--------------------------|----------------------------------|
+| Deploy-Private-DNS-Zones | azureCosmosMongoPrivateDnsZoneId |
 
-- azureCosmosMongoPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_cosmos_sql`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |        PARAMETER NAMES         |
+|--------------------------|--------------------------------|
+| Deploy-Private-DNS-Zones | azureCosmosSQLPrivateDnsZoneId |
 
-- azureCosmosSQLPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_cosmos_table`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES          |
+|--------------------------|----------------------------------|
+| Deploy-Private-DNS-Zones | azureCosmosTablePrivateDnsZoneId |
 
-- azureCosmosTablePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_data_factory`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES          |
+|--------------------------|----------------------------------|
+| Deploy-Private-DNS-Zones | azureDataFactoryPrivateDnsZoneId |
 
-- azureDataFactoryPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_data_factory_portal`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |            PARAMETER NAMES             |
+|--------------------------|----------------------------------------|
+| Deploy-Private-DNS-Zones | azureDataFactoryPortalPrivateDnsZoneId |
 
-- azureDataFactoryPortalPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_disk_access`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES         |
+|--------------------------|---------------------------------|
+| Deploy-Private-DNS-Zones | azureDiskAccessPrivateDnsZoneId |
 
-- azureDiskAccessPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_event_grid_domains`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |            PARAMETER NAMES            |
+|--------------------------|---------------------------------------|
+| Deploy-Private-DNS-Zones | azureEventGridDomainsPrivateDnsZoneId |
 
-- azureEventGridDomainsPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_event_grid_topics`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |           PARAMETER NAMES            |
+|--------------------------|--------------------------------------|
+| Deploy-Private-DNS-Zones | azureEventGridTopicsPrivateDnsZoneId |
 
-- azureEventGridTopicsPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_event_hub_namespace`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |            PARAMETER NAMES             |
+|--------------------------|----------------------------------------|
+| Deploy-Private-DNS-Zones | azureEventHubNamespacePrivateDnsZoneId |
 
-- azureEventHubNamespacePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_file`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |      PARAMETER NAMES      |
+|--------------------------|---------------------------|
+| Deploy-Private-DNS-Zones | azureFilePrivateDnsZoneId |
 
-- azureFilePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_hdinsight`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |        PARAMETER NAMES         |
+|--------------------------|--------------------------------|
+| Deploy-Private-DNS-Zones | azureHDInsightPrivateDnsZoneId |
 
-- azureHDInsightPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_iot`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |     PARAMETER NAMES      |
+|--------------------------|--------------------------|
+| Deploy-Private-DNS-Zones | azureIotPrivateDnsZoneId |
 
-- azureIotPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_iot_hubs`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |       PARAMETER NAMES        |
+|--------------------------|------------------------------|
+| Deploy-Private-DNS-Zones | azureIotHubsPrivateDnsZoneId |
 
-- azureIotHubsPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_key_vault`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |        PARAMETER NAMES        |
+|--------------------------|-------------------------------|
+| Deploy-Private-DNS-Zones | azureKeyVaultPrivateDnsZoneId |
 
-- azureKeyVaultPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_machine_learning_workspace`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |                PARAMETER NAMES                |
+|--------------------------|-----------------------------------------------|
+| Deploy-Private-DNS-Zones | azureMachineLearningWorkspacePrivateDnsZoneId |
 
-- azureMachineLearningWorkspacePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_machine_learning_workspace_second`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |                   PARAMETER NAMES                   |
+|--------------------------|-----------------------------------------------------|
+| Deploy-Private-DNS-Zones | azureMachineLearningWorkspaceSecondPrivateDnsZoneId |
 
-- azureMachineLearningWorkspaceSecondPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_managed_grafana_workspace`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |               PARAMETER NAMES                |
+|--------------------------|----------------------------------------------|
+| Deploy-Private-DNS-Zones | azureManagedGrafanaWorkspacePrivateDnsZoneId |
 
-- azureManagedGrafanaWorkspacePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_media_services_key`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |            PARAMETER NAMES            |
+|--------------------------|---------------------------------------|
+| Deploy-Private-DNS-Zones | azureMediaServicesKeyPrivateDnsZoneId |
 
-- azureMediaServicesKeyPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_media_services_live`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |            PARAMETER NAMES             |
+|--------------------------|----------------------------------------|
+| Deploy-Private-DNS-Zones | azureMediaServicesLivePrivateDnsZoneId |
 
-- azureMediaServicesLivePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_media_services_stream`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |             PARAMETER NAMES              |
+|--------------------------|------------------------------------------|
+| Deploy-Private-DNS-Zones | azureMediaServicesStreamPrivateDnsZoneId |
 
-- azureMediaServicesStreamPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_migrate`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |       PARAMETER NAMES        |
+|--------------------------|------------------------------|
+| Deploy-Private-DNS-Zones | azureMigratePrivateDnsZoneId |
 
-- azureMigratePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_monitor_1`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |        PARAMETER NAMES        |
+|--------------------------|-------------------------------|
+| Deploy-Private-DNS-Zones | azureMonitorPrivateDnsZoneId1 |
 
-- azureMonitorPrivateDnsZoneId1
-</details>
   
 ### default name `private_dns_zone_monitor_2`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |        PARAMETER NAMES        |
+|--------------------------|-------------------------------|
+| Deploy-Private-DNS-Zones | azureMonitorPrivateDnsZoneId2 |
 
-- azureMonitorPrivateDnsZoneId2
-</details>
   
 ### default name `private_dns_zone_monitor_3`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |        PARAMETER NAMES        |
+|--------------------------|-------------------------------|
+| Deploy-Private-DNS-Zones | azureMonitorPrivateDnsZoneId3 |
 
-- azureMonitorPrivateDnsZoneId3
-</details>
   
 ### default name `private_dns_zone_monitor_4`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |        PARAMETER NAMES        |
+|--------------------------|-------------------------------|
+| Deploy-Private-DNS-Zones | azureMonitorPrivateDnsZoneId4 |
 
-- azureMonitorPrivateDnsZoneId4
-</details>
   
 ### default name `private_dns_zone_monitor_5`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |        PARAMETER NAMES        |
+|--------------------------|-------------------------------|
+| Deploy-Private-DNS-Zones | azureMonitorPrivateDnsZoneId5 |
 
-- azureMonitorPrivateDnsZoneId5
-</details>
   
 ### default name `private_dns_zone_redis_cache`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES         |
+|--------------------------|---------------------------------|
+| Deploy-Private-DNS-Zones | azureRedisCachePrivateDnsZoneId |
 
-- azureRedisCachePrivateDnsZoneId
-</details>
+  
+### default name `private_dns_zone_region`
+  
+The region short name (e.g. `westus`) that should be used for the region specific private link DNS zones.
+  
+|        ASSIGNMENT        | PARAMETER NAMES |
+|--------------------------|-----------------|
+| Deploy-Private-DNS-Zones | dnsZoneRegion   |
+
+  
+### default name `private_dns_zone_resource_group_name`
+  
+The resource group name that hosts the private link DNS zones.
+  
+|        ASSIGNMENT        |     PARAMETER NAMES      |
+|--------------------------|--------------------------|
+| Deploy-Private-DNS-Zones | dnsZoneResourceGroupName |
+
   
 ### default name `private_dns_zone_service_bus_namespace`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |             PARAMETER NAMES              |
+|--------------------------|------------------------------------------|
+| Deploy-Private-DNS-Zones | azureServiceBusNamespacePrivateDnsZoneId |
 
-- azureServiceBusNamespacePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_signal_r`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |       PARAMETER NAMES        |
+|--------------------------|------------------------------|
+| Deploy-Private-DNS-Zones | azureSignalRPrivateDnsZoneId |
 
-- azureSignalRPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_site_recovery_backup`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |             PARAMETER NAMES             |
+|--------------------------|-----------------------------------------|
+| Deploy-Private-DNS-Zones | azureSiteRecoveryBackupPrivateDnsZoneID |
 
-- azureSiteRecoveryBackupPrivateDnsZoneID
-</details>
   
 ### default name `private_dns_zone_site_recovery_blob`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |            PARAMETER NAMES            |
+|--------------------------|---------------------------------------|
+| Deploy-Private-DNS-Zones | azureSiteRecoveryBlobPrivateDnsZoneID |
 
-- azureSiteRecoveryBlobPrivateDnsZoneID
-</details>
   
 ### default name `private_dns_zone_site_recovery_queue`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |            PARAMETER NAMES             |
+|--------------------------|----------------------------------------|
+| Deploy-Private-DNS-Zones | azureSiteRecoveryQueuePrivateDnsZoneID |
 
-- azureSiteRecoveryQueuePrivateDnsZoneID
-</details>
   
 ### default name `private_dns_zone_storage_blob`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES          |
+|--------------------------|----------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageBlobPrivateDnsZoneId |
 
-- azureStorageBlobPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_storage_blob_sec`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |           PARAMETER NAMES           |
+|--------------------------|-------------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageBlobSecPrivateDnsZoneId |
 
-- azureStorageBlobSecPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_storage_dfs`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES         |
+|--------------------------|---------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageDFSPrivateDnsZoneId |
 
-- azureStorageDFSPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_storage_dfs_sec`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |          PARAMETER NAMES           |
+|--------------------------|------------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageDFSSecPrivateDnsZoneId |
 
-- azureStorageDFSSecPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_storage_file`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES          |
+|--------------------------|----------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageFilePrivateDnsZoneId |
 
-- azureStorageFilePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_storage_queue`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |          PARAMETER NAMES          |
+|--------------------------|-----------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageQueuePrivateDnsZoneId |
 
-- azureStorageQueuePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_storage_queue_sec`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |           PARAMETER NAMES            |
+|--------------------------|--------------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageQueueSecPrivateDnsZoneId |
 
-- azureStorageQueueSecPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_storage_static_web`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |            PARAMETER NAMES            |
+|--------------------------|---------------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageStaticWebPrivateDnsZoneId |
 
-- azureStorageStaticWebPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_storage_static_web_sec`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |             PARAMETER NAMES              |
+|--------------------------|------------------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageStaticWebSecPrivateDnsZoneId |
 
-- azureStorageStaticWebSecPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_storage_table`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |          PARAMETER NAMES          |
+|--------------------------|-----------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageTablePrivateDnsZoneId |
 
-- azureStorageTablePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_storage_table_secondary`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |              PARAMETER NAMES               |
+|--------------------------|--------------------------------------------|
+| Deploy-Private-DNS-Zones | azureStorageTableSecondaryPrivateDnsZoneId |
 
-- azureStorageTableSecondaryPrivateDnsZoneId
-</details>
+  
+### default name `private_dns_zone_subscription_id`
+  
+The subscription id that hosts the private link DNS zones.
+  
+|        ASSIGNMENT        |    PARAMETER NAMES    |
+|--------------------------|-----------------------|
+| Deploy-Private-DNS-Zones | dnsZoneSubscriptionId |
+
   
 ### default name `private_dns_zone_synapse_dev`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES         |
+|--------------------------|---------------------------------|
+| Deploy-Private-DNS-Zones | azureSynapseDevPrivateDnsZoneId |
 
-- azureSynapseDevPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_synapse_sql`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |         PARAMETER NAMES         |
+|--------------------------|---------------------------------|
+| Deploy-Private-DNS-Zones | azureSynapseSQLPrivateDnsZoneId |
 
-- azureSynapseSQLPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_synapse_sql_od`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |          PARAMETER NAMES          |
+|--------------------------|-----------------------------------|
+| Deploy-Private-DNS-Zones | azureSynapseSQLODPrivateDnsZoneId |
 
-- azureSynapseSQLODPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_virtual_desktop_hostpool`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |               PARAMETER NAMES               |
+|--------------------------|---------------------------------------------|
+| Deploy-Private-DNS-Zones | azureVirtualDesktopHostpoolPrivateDnsZoneId |
 
-- azureVirtualDesktopHostpoolPrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_virtual_desktop_workspace`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |               PARAMETER NAMES                |
+|--------------------------|----------------------------------------------|
+| Deploy-Private-DNS-Zones | azureVirtualDesktopWorkspacePrivateDnsZoneId |
 
-- azureVirtualDesktopWorkspacePrivateDnsZoneId
-</details>
   
 ### default name `private_dns_zone_web`
   
-#### assignment `Deploy-Private-DNS-Zones`
+DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group_name, and private_dns_zone_subscription_id instead.
   
-<details><summary>1 parameter names</summary>
+|        ASSIGNMENT        |     PARAMETER NAMES      |
+|--------------------------|--------------------------|
+| Deploy-Private-DNS-Zones | azureWebPrivateDnsZoneId |
 
-- azureWebPrivateDnsZoneId
-</details>
   
 ---
 ## Contents
