@@ -4,21 +4,21 @@ name: update platform/alz
 # yamllint disable-line rule:truthy
 on:
   schedule:
-    - cron: "0 8 * * 1-5"
+    - cron: "0 8 * * 1"
   workflow_dispatch: {}
 
 permissions:
   contents: write
 
 env:
-  alzlibtool_version: "0.22.0"
+  alzlibtool_version: "0.23.0"
   remote_repository: "Azure/Enterprise-Scale"
   alzlib_repository: "Azure/alzlib"
   library_dir: "platform/alz"
   pr_title: "feat: update platform/alz library (automated)"
   pr_body: |-
-    This is an automated 'pull_request' containing updates to the library templates stored in 'platform/alz'.\n
-    Please review the 'files changed' tab to review changes.
+    This is an automated pull_request containing updates to the library templates stored in `platform/alz`.
+    Please review the files changed tab to review changes.
 
 jobs:
   update-lib:
@@ -28,7 +28,7 @@ jobs:
     steps:
       - name: Install alzlibtool
         run: |
-          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlib_0.22.0_linux_amd64.tar.gz | tar -xvz
+          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlibtool_linux_amd64.tar.gz | tar -xvz
           sudo cp alzlibtool /usr/local/bin
 
       - name: Local repository checkout
@@ -125,15 +125,15 @@ jobs:
         if: steps.git_status.outputs.changes > 0
         id: pr
         run: |
-          PR="$(gh pr create \
+          PR_URL="$(gh pr create \
             --title "${{ env.pr_title }}" \
             --body "${{ env.pr_body }}" \
             --base "${{ github.ref }}" \
             --head "${{ steps.branch.outputs.name }}" \
             --draft)"
-            echo "Created new PR: $CHECK_PULL_REQUEST_URL"
-            echo number=$(gh pr view $PR_URL --json number | jq -r '.number') >> "$GITHUB_OUTPUT"
-        working-directory: ${{ github.repository }}
+          echo "Created new PR: $PR_URL"
+          echo number=$(gh pr view $PR_URL --json number | jq -r '.number') >> "$GITHUB_OUTPUT"
+        working-directory: ${{ github.repository }}/${{ env.library_dir }}
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
 
