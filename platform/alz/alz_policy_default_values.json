@@ -103,7 +103,7 @@
       "policy_assignments": [
         {
           "parameter_names": [
-            "azureSiteRecoveryBackupPrivateDnsZoneID"
+            "azureSiteRecoveryBackupPrivateDnsZoneId"
           ],
           "policy_assignment_name": "Deploy-Private-DNS-Zones"
         }
@@ -980,7 +980,7 @@
       "policy_assignments": [
         {
           "parameter_names": [
-            "azureSiteRecoveryBlobPrivateDnsZoneID"
+            "azureSiteRecoveryBlobPrivateDnsZoneId"
           ],
           "policy_assignment_name": "Deploy-Private-DNS-Zones"
         }
@@ -992,7 +992,7 @@
       "policy_assignments": [
         {
           "parameter_names": [
-            "azureSiteRecoveryQueuePrivateDnsZoneID"
+            "azureSiteRecoveryQueuePrivateDnsZoneId"
           ],
           "policy_assignment_name": "Deploy-Private-DNS-Zones"
         }

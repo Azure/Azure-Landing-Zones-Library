@@ -941,7 +941,7 @@ DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group
   
 |        ASSIGNMENT        |             PARAMETER NAMES             |
 |--------------------------|-----------------------------------------|
-| Deploy-Private-DNS-Zones | azureSiteRecoveryBackupPrivateDnsZoneID |
+| Deploy-Private-DNS-Zones | azureSiteRecoveryBackupPrivateDnsZoneId |
 
   
 ### default name `private_dns_zone_site_recovery_blob`
@@ -950,7 +950,7 @@ DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group
   
 |        ASSIGNMENT        |            PARAMETER NAMES            |
 |--------------------------|---------------------------------------|
-| Deploy-Private-DNS-Zones | azureSiteRecoveryBlobPrivateDnsZoneID |
+| Deploy-Private-DNS-Zones | azureSiteRecoveryBlobPrivateDnsZoneId |
 
   
 ### default name `private_dns_zone_site_recovery_queue`
@@ -959,7 +959,7 @@ DEPRECATED - please use private_dns_zone_region, private_dns_zone_resource_group
   
 |        ASSIGNMENT        |            PARAMETER NAMES             |
 |--------------------------|----------------------------------------|
-| Deploy-Private-DNS-Zones | azureSiteRecoveryQueuePrivateDnsZoneID |
+| Deploy-Private-DNS-Zones | azureSiteRecoveryQueuePrivateDnsZoneId |
 
   
 ### default name `private_dns_zone_storage_blob`
