@@ -532,73 +532,53 @@ The following policy default values are available in this library:
   
 ### default name `allowedLocations`
   
-#### assignment `SO-01-Data-Residency`
-  
-<details><summary>1 parameter names</summary>
+|      ASSIGNMENT      |     PARAMETER NAMES      |
+|----------------------|--------------------------|
+| SO-01-Data-Residency | listOfAllowedLocations-1 |
 
-- listOfAllowedLocations-1
-</details>
   
 ### default name `allowedLocationsForConfidentialComputing`
   
-#### assignment `Enforce-Fsi-Conf`
-  
-<details><summary>1 parameter names</summary>
+|    ASSIGNMENT    |    PARAMETER NAMES     |
+|------------------|------------------------|
+| Enforce-Fsi-Conf | listOfAllowedLocations |
 
-- listOfAllowedLocations
-</details>
   
 ### default name `ddosProtectionPlanEffect`
   
-#### assignment `Enable-DDoS-VNET`
-  
-<details><summary>1 parameter names</summary>
+|    ASSIGNMENT    | PARAMETER NAMES |
+|------------------|-----------------|
+| Enable-DDoS-VNET | effect          |
 
-- effect
-</details>
   
 ### default name `ddosProtectionPlanId`
   
-#### assignment `Enable-DDoS-VNET`
-  
-<details><summary>1 parameter names</summary>
+|    ASSIGNMENT    | PARAMETER NAMES |
+|------------------|-----------------|
+| Enable-DDoS-VNET | ddosPlan        |
 
-- ddosPlan
-</details>
   
 ### default name `emailSecurityContact`
   
-#### assignment `Deploy-MDFC-Config-H224`
-  
-<details><summary>1 parameter names</summary>
+|       ASSIGNMENT        |   PARAMETER NAMES    |
+|-------------------------|----------------------|
+| Deploy-MDFC-Config-H224 | emailSecurityContact |
 
-- emailSecurityContact
-</details>
   
 ### default name `logAnalyticsWorkspaceId`
   
-#### assignment `Deploy-Diag-Logs`
-  
-<details><summary>1 parameter names</summary>
+|    ASSIGNMENT    | PARAMETER NAMES |
+|------------------|-----------------|
+| Deploy-Diag-Logs | logAnalytics    |
+| TR-01-Logging    | logAnalytics    |
 
-- logAnalytics
-</details>
-  
-#### assignment `TR-01-Logging`
-  
-<details><summary>1 parameter names</summary>
-
-- logAnalytics
-</details>
   
 ### default name `policyEffect`
   
-#### assignment `Enforce-Fsi-Conf`
-  
-<details><summary>1 parameter names</summary>
+|    ASSIGNMENT    | PARAMETER NAMES |
+|------------------|-----------------|
+| Enforce-Fsi-Conf | effect          |
 
-- effect
-</details>
   
 ---
 ## Contents
