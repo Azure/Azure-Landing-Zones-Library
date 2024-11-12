@@ -50,7 +50,7 @@ These are defined by the library path and reference (version):
 {
   "dependencies": [
     {
-      "custom_url": "git::https://github.com/myorg/myrepo.git//mypath@mytag",
+      "custom_url": "git::https://github.com/myorg/myrepo.git//mypath/subdir?ref=mytag-or-branch",
     }
   ]
 }
