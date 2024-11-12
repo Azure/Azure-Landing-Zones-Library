@@ -1,0 +1,9 @@
+{
+  "name": "so_04_cmk",
+  "policy_assignments": [
+    "SO-04-CMK"
+  ],
+  "policy_definitions": [],
+  "policy_set_definitions": [],
+  "role_definitions": []
+}

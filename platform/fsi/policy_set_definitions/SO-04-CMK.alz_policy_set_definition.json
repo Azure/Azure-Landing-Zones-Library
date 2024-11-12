@@ -1,0 +1,147 @@
+{
+  "properties": {
+    "displayName": "SO 04-CMK",
+    "policyType": "Custom",
+    "description": "The customer must have exclusive control over deciding which identities can access keys used to decrypt customer-defined sensitive data.",
+    "metadata": {
+      "category": "Regulatory Compliance",
+      "version": "1.0.0-preview",
+      "preview": true
+    },
+    "version": "1.0.0",
+    "policyDefinitionGroups": [
+      {
+        "name": "SO_04_CMK_Customer_Managed_Keys_SO_04",
+        "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/SO_04_CMK_Customer_Managed_Keys_SO_04",
+        "category": "Customer Managed Keys",
+        "description": "[Preview]: Azure Recovery Services vaults should use customer-managed keys for encrypting backup data"
+      }
+    ],
+    "parameters": {
+      "enableDoubleEncryption-1": {
+        "type": "Boolean",
+        "metadata": {
+          "displayName": "Double encryption should be enabled on Recovery Services vaults for Backup",
+          "description": "Check if double encryption is enabled on Recovery Services vaults for Backup.  For more details refer to https://aka.ms/AB-InfraEncryption."
+        },
+        "defaultValue": false
+      }
+    },
+    "policyDefinitions": [
+      {
+        "definitionVersion": "1.*.*-preview",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2e94d99a-8a36-4563-bc77-810d8893b671",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {
+          "enableDoubleEncryption": {
+            "value": "[parameters('enableDoubleEncryption-1')]"
+          }
+        },
+        "policyDefinitionReferenceId": "[Preview]: Azure Recovery Services vaults should use customer-managed keys for encrypting backup data"
+      },
+      {
+        "definitionVersion": "1.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7d7be79c-23ba-4033-84dd-45e2a5ccdd67",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "Both operating systems and data disks in Azure Kubernetes Service clusters should be encrypted by customer-managed keys"
+      },
+      {
+        "definitionVersion": "2.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/970f84d8-71b6-4091-9979-ace7e3fb6dbb",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "HPC Cache accounts should use customer-managed key for encryption"
+      },
+      {
+        "definitionVersion": "1.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ca91455f-eace-4f96-be59-e6e2c35b4816",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "Managed disks should be double encrypted with both platform-managed and customer-managed keys"
+      },
+      {
+        "definitionVersion": "1.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/83cef61d-dbd1-4b20-a4fc-5fbc7da10833",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "MySQL servers should use customer-managed keys to encrypt data at rest"
+      },
+      {
+        "definitionVersion": "1.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/18adea5e-f416-4d0f-8aa8-d24321e3e274",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "PostgreSQL servers should use customer-managed keys to encrypt data at rest"
+      },
+      {
+        "definitionVersion": "1.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/f0e5abd0-2554-4736-b7c0-4ffef23475ef",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "Queue Storage should use customer-managed key for encryption"
+      },
+      {
+        "definitionVersion": "2.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ac01ad65-10e5-46df-bdd9-6b0cad13e1d2",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "SQL managed instances should use customer-managed keys to encrypt data at rest"
+      },
+      {
+        "definitionVersion": "2.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0a370ff3-6cab-4e85-8995-295fd854c5b8",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "SQL servers should use customer-managed keys to encrypt data at rest"
+      },
+      {
+        "definitionVersion": "1.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b5ec538c-daa0-4006-8596-35468b9148e8",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "Storage account encryption scopes should use customer-managed keys to encrypt data at rest"
+      },
+      {
+        "definitionVersion": "1.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6fac406b-40ca-413b-bf8e-0bf964659c25",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "Storage accounts should use customer-managed key for encryption"
+      },
+      {
+        "definitionVersion": "1.*.*",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7c322315-e26d-4174-a99e-f49d351b4688",
+        "groupNames": [
+          "SO_04_CMK_Customer_Managed_Keys_SO_04"
+        ],
+        "parameters": {},
+        "policyDefinitionReferenceId": "Table Storage should use customer-managed key for encryption"
+      }
+    ]
+  },
+  "id": "/providers/Microsoft.Authorization/policySetDefinitions/50e4abe0-fc74-4546-9bd4-070ad748670b",
+  "name": "50e4abe0-fc74-4546-9bd4-070ad748670b"
+}

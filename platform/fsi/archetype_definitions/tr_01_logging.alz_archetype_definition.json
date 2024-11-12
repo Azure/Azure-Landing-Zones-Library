@@ -1,0 +1,9 @@
+{
+  "name": "tr_01_logging",
+  "policy_assignments": [
+    "TR-01-Logging"
+  ],
+  "policy_definitions": [],
+  "policy_set_definitions": [],
+  "role_definitions": []
+}

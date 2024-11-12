@@ -1,0 +1,87 @@
+{
+  "defaults": [
+    {
+      "default_name": "allowedLocationsForConfidentialComputing",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "listOfAllowedLocations"
+          ],
+          "policy_assignment_name": "Enforce-Fsi-Conf"
+        }
+      ]
+    },
+    {
+      "default_name": "allowedLocations",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "listOfAllowedLocations-1"
+          ],
+          "policy_assignment_name": "SO-01-Data-Residency"
+        }
+      ]
+    },
+    {
+      "default_name": "policyEffect",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "effect"
+          ],
+          "policy_assignment_name": "Enforce-Fsi-Conf"
+        }
+      ]
+    },
+    {
+      "default_name": "ddosProtectionPlanId",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ddosPlan"
+          ],
+          "policy_assignment_name": "Enable-DDoS-VNET"
+        }
+      ]
+    },
+    {
+      "default_name": "ddosProtectionPlanEffect",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "effect"
+          ],
+          "policy_assignment_name": "Enable-DDoS-VNET"
+        }
+      ]
+    },
+    {
+      "default_name": "emailSecurityContact",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "emailSecurityContact"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-Config-H224"
+        }
+      ]
+    },
+    {
+      "default_name": "logAnalyticsWorkspaceId",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "logAnalytics"
+          ],
+          "policy_assignment_name": "TR-01-Logging"
+        },
+        {
+          "parameter_names": [
+            "logAnalytics"
+          ],
+          "policy_assignment_name": "Deploy-Diag-Logs"
+        }
+      ]
+    }
+  ]
+}
