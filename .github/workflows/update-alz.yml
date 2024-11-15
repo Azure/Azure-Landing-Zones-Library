@@ -11,7 +11,6 @@ permissions:
   contents: write
 
 env:
-  alzlibtool_version: "0.23.0"
   remote_repository: "Azure/Enterprise-Scale"
   alzlib_repository: "Azure/alzlib"
   library_dir: "platform/alz"
@@ -28,7 +27,7 @@ jobs:
     steps:
       - name: Install alzlibtool
         run: |
-          curl -L https://github.com/Azure/alzlib/releases/download/v${{ env.alzlibtool_version }}/alzlibtool_linux_amd64.tar.gz | tar -xvz
+          curl -L https://github.com/Azure/alzlib/releases/download/${{ vars.ALZLIBTOOL_VERSION }}/alzlibtool_linux_amd64.tar.gz | tar -xvz
           sudo cp alzlibtool /usr/local/bin
 
       - name: Local repository checkout
