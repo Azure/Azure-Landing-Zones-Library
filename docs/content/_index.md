@@ -9,15 +9,15 @@ Welcome to the Azure Landing Zones Library. This library is a collection of reso
 
 For an example, please see the alz library member in the `platform/alz` directory of the [repository](https://github.com/Azure/Azure-Landing-Zones-Library/tree/main/platform/alz).
 
-For more information on why we built this, see the [Why](/Azure-Landing-Zones-Library/why) section.
+For more information on why we built this, see the [Why]({{< relref "why" >}}) section.
 
 ## What types of things can you find in the library?
 
-See the [Library Assets](/Azure-Landing-Zones-Library/assets) section for more information.
+See the [Library Assets]({{< relref "assets" >}}) section for more information.
 
 ## How can you consume the library?
 
-See the [Library Clients](/Azure-Landing-Zones-Library/clients) section for more information.
+See the [Library Clients]({{< relref "clients" >}}) section for more information.
 
 ## Library structure
 
