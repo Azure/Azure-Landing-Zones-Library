@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/library_metadata.json",
+  "name": "SLZ",
+  "display_name": "Sovereign Landing Zones",
+  "description": "This library provides the reference set of Sovereign Landing Zones (SLZ) policies, archetypes, and management group architecture.",
+  "path": "platform/slz",
+  "dependencies": [
+    {
+      "path": "platform/alz",
+      "ref": "2024.07.02"
+    }
+  ]
+}

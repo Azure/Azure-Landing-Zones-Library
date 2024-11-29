@@ -1,0 +1,10 @@
+{
+  "name": "fsi_root",
+  "policy_assignments": [],
+  "policy_definitions": [],
+  "policy_set_definitions": [
+    "50e4abe0-fc74-4546-9bd4-070ad748670b",
+    "d22ea5a9-2a46-4f25-8d11-e8ef42769e46"
+  ],
+  "role_definitions": []
+}

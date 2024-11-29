@@ -1,0 +1,93 @@
+{
+  "properties": {
+    "displayName": "SO 01-Data-Residency",
+    "policyType": "Custom",
+    "description": "Customer data must be stored and processed entirely in data centers that reside in approved geopolitical regions based upon customer-defined requirements.",
+    "metadata": {
+      "category": "Regulatory Compliance",
+      "version": "1.0.0-preview",
+      "preview": true
+    },
+    "version": "1.0.0",
+    "policyDefinitionGroups": [
+      {
+        "additionalMetadataId": "/providers/Microsoft.PolicyInsights/policyMetadata/SO_01_Data_Residency_Data_Residency_SO_01",
+        "description": "Customer data must be stored and processed entirely in data centers that reside in approved geopolitical regions based upon customer-defined requirements.",
+        "category": "Data Residency",
+        "name": "SO_01_Data_Residency_Data_Residency_SO_01"
+      }
+    ],
+    "parameters": {
+      "listOfAllowedLocations-1": {
+        "type": "Array",
+        "metadata": {
+          "description": "The list of locations that can be specified when deploying resources.",
+          "strongType": "location",
+          "displayName": "Allowed locations"
+        }
+      },
+      "policyEffect-1": {
+        "type": "String",
+        "metadata": {
+          "displayName": "Policy Effect",
+          "description": "The desired effect of the policy."
+        },
+        "allowedValues": [
+          "audit",
+          "Audit",
+          "deny",
+          "Deny",
+          "disabled",
+          "Disabled"
+        ],
+        "defaultValue": "Deny"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "parameters": {
+          "listOfAllowedLocations": {
+            "value": "[parameters('listOfAllowedLocations-1')]"
+          }
+        },
+        "groupNames": [
+          "SO_01_Data_Residency_Data_Residency_SO_01"
+        ],
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
+        "definitionVersion": "1.*.*",
+        "policyDefinitionReferenceId": "Allowed locations"
+      },
+      {
+        "parameters": {
+          "listOfAllowedLocations": {
+            "value": "[parameters('listOfAllowedLocations-1')]"
+          }
+        },
+        "groupNames": [
+          "SO_01_Data_Residency_Data_Residency_SO_01"
+        ],
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988",
+        "definitionVersion": "1.*.*",
+        "policyDefinitionReferenceId": "Allowed locations for resource groups"
+      },
+      {
+        "parameters": {
+          "listOfAllowedLocations": {
+            "value": "[parameters('listOfAllowedLocations-1')]"
+          },
+          "policyEffect": {
+            "value": "[parameters('policyEffect-1')]"
+          }
+        },
+        "groupNames": [
+          "SO_01_Data_Residency_Data_Residency_SO_01"
+        ],
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0473574d-2d43-4217-aefe-941fcdf7e684",
+        "definitionVersion": "1.*.*",
+        "policyDefinitionReferenceId": "Azure Cosmos DB allowed locations"
+      }
+    ]
+  },
+  "id": "/providers/Microsoft.Authorization/policySetDefinitions/d22ea5a9-2a46-4f25-8d11-e8ef42769e46",
+  "name": "d22ea5a9-2a46-4f25-8d11-e8ef42769e46"
+}

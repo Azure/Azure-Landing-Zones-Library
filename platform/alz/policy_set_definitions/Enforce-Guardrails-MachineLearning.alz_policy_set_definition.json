@@ -11,9 +11,59 @@
       ],
       "category": "Machine Learning",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "parameters": {
+      "mlAllowedModule": {
+        "allowedValues": [
+          "enforceSetting",
+          "disabled"
+        ],
+        "defaultValue": "enforceSetting",
+        "type": "string"
+      },
+      "mlAllowedPython": {
+        "allowedValues": [
+          "enforceSetting",
+          "disabled"
+        ],
+        "defaultValue": "enforceSetting",
+        "type": "string"
+      },
+      "mlAllowedRegistries": {
+        "allowedValues": [
+          "enforceSetting",
+          "disabled"
+        ],
+        "defaultValue": "enforceSetting",
+        "type": "string"
+      },
+      "mlAllowedRegistryDeploy": {
+        "allowedValues": [
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "mlIdleShutdown": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
+      "mlLegacyMode": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
       "mlLocalAuth": {
         "allowedValues": [
           "Audit",
@@ -47,6 +97,22 @@
         "defaultValue": "Audit",
         "type": "string"
       },
+      "mlPrivateLink": {
+        "allowedValues": [
+          "Audit",
+          "Disabled"
+        ],
+        "defaultValue": "Audit",
+        "type": "string"
+      },
+      "mlResourceLogs": {
+        "allowedValues": [
+          "AuditIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "AuditIfNotExists",
+        "type": "string"
+      },
       "mlUserAssignedIdentity": {
         "allowedValues": [
           "Audit",
@@ -54,6 +120,14 @@
           "Disabled"
         ],
         "defaultValue": "Deny",
+        "type": "string"
+      },
+      "mlVirtualNetwork": {
+        "allowedValues": [
+          "Audit",
+          "Disabled"
+        ],
+        "defaultValue": "Audit",
         "type": "string"
       }
     },
@@ -107,6 +181,96 @@
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/a10ee784-7409-4941-b091-663697637c0f",
         "policyDefinitionReferenceId": "Modify-ML-Public-Network-Access"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlIdleShutdown')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/679ddf89-ab8f-48a5-9029-e76054077449",
+        "policyDefinitionReferenceId": "Deny-ML-Idle-Shutdown"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlVirtualNetwork')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/7804b5c7-01dc-4723-969b-ae300cc07ff1",
+        "policyDefinitionReferenceId": "Audit-ML-Virtual-Network"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlLegacyMode')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e413671a-dd10-4cc1-a943-45b598596cb7",
+        "policyDefinitionReferenceId": "Deny-ML-Legacy-Mode"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlPrivateLink')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/45e05259-1eb5-4f70-9574-baf73e9d219b",
+        "policyDefinitionReferenceId": "Audit-ML-Private-Link"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlResourceLogs')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/afe0c3be-ba3b-4544-ba52-0c99672a8ad6",
+        "policyDefinitionReferenceId": "Aine-ML-Resource-Logs"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlAllowedRegistryDeploy')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/19539b54-c61e-4196-9a38-67598701be90",
+        "policyDefinitionReferenceId": "Deny-ML-Allowed-Registry-Deploy"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlAllowedModule')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/53c70b02-63dd-11ea-bc55-0242ac130003",
+        "policyDefinitionReferenceId": "Deny-ML-Allowed-Module"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlAllowedPython')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/77eeea86-7e81-4a7d-9067-de844d096752",
+        "policyDefinitionReferenceId": "Deny-ML-Allowed-Python"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('mlAllowedRegistries')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5853517a-63de-11ea-bc55-0242ac130003",
+        "policyDefinitionReferenceId": "Deny-ML-Allowed-Registries"
       }
     ],
     "policyType": "Custom"

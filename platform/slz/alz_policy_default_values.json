@@ -1,0 +1,76 @@
+{
+  "defaults": [
+    {
+      "default_name": "allowedLocationsForConfidentialComputing",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "listOfAllowedLocations"
+          ],
+          "policy_assignment_name": "Enforce-Sovereign-Conf"
+        }
+      ]
+    },
+    {
+      "default_name": "listOfAllowedLocations",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "listOfAllowedLocations"
+          ],
+          "policy_assignment_name": "Enforce-Sovereign-Global"
+        }
+      ]
+    },
+    {
+      "default_name": "policyEffect",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "effect"
+          ],
+          "policy_assignment_name": "Enforce-Sovereign-Conf"
+        },
+        {
+          "parameter_names": [
+            "effect"
+          ],
+          "policy_assignment_name": "Enforce-Sovereign-Global"
+        }
+      ]
+    },
+    {
+      "default_name": "ddos_protection_plan_id",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ddosPlan"
+          ],
+          "policy_assignment_name": "Enable-DDoS-VNET"
+        }
+      ]
+    },
+    {
+      "default_name": "ddos_protection_plan_effect",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "effect"
+          ],
+          "policy_assignment_name": "Enable-DDoS-VNET"
+        }
+      ]
+    },
+    {
+      "default_name": "emailSecurityContact",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "emailSecurityContact"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-Config-H224"
+        }
+      ]
+    }
+  ]
+}

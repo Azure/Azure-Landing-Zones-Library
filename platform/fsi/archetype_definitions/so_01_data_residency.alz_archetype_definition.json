@@ -1,0 +1,9 @@
+{
+  "name": "so_01_data_residency",
+  "policy_assignments": [
+    "SO-01-Data-Residency"
+  ],
+  "policy_definitions": [],
+  "policy_set_definitions": [],
+  "role_definitions": []
+}

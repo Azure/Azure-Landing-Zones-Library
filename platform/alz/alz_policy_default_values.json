@@ -2,7 +2,44 @@
   "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/default_policy_values.json",
   "defaults": [
     {
+      "default_name": "private_dns_zone_subscription_id",
+      "description": "The subscription id that hosts the private link DNS zones.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "dnsZoneSubscriptionId"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
+      "default_name": "private_dns_zone_resource_group_name",
+      "description": "The resource group name that hosts the private link DNS zones.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "dnsZoneResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
+      "default_name": "private_dns_zone_region",
+      "description": "The region short name (e.g. `westus`) that should be used for the region specific private link DNS zones.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "dnsZoneRegion"
+          ],
+          "policy_assignment_name": "Deploy-Private-DNS-Zones"
+        }
+      ]
+    },
+    {
       "default_name": "ama_user_assigned_managed_identity_id",
+      "description": "The user assigned managed identity id that should be used for the AMA deployment.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -14,18 +51,31 @@
           "parameter_names": [
             "userAssignedIdentityResourceId"
           ],
-          "policy_assignment_name": "Deploy-vmArc-ChangeTrack"
+          "policy_assignment_name": "Deploy-VMSS-ChangeTrack"
         },
         {
           "parameter_names": [
             "userAssignedIdentityResourceId"
           ],
-          "policy_assignment_name": "Deploy-VMSS-ChangeTrack"
+          "policy_assignment_name": "Deploy-VM-Monitoring"
+        },
+        {
+          "parameter_names": [
+            "userAssignedIdentityResourceId"
+          ],
+          "policy_assignment_name": "Deploy-VMSS-Monitoring"
+        },
+        {
+          "parameter_names": [
+            "userAssignedIdentityResourceId"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
         }
       ]
     },
     {
       "default_name": "ama_user_assigned_managed_identity_name",
+      "description": "The user assigned managed identity name that is used for the deny action policy to prevent the accidental deletion of the AMA identity.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -36,30 +86,57 @@
       ]
     },
     {
-      "default_name": "ama_vm_change_tracking_data_collection_rule_id",
+      "default_name": "ama_vm_insights_data_collection_rule_id",
+      "description": "The data collection rule id that should be used for the VM Insights deployment.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "dcrResourceId"
+          ],
+          "policy_assignment_name": "Deploy-VM-Monitoring"
+        },
+        {
+          "parameter_names": [
+            "dcrResourceId"
+          ],
+          "policy_assignment_name": "Deploy-VMSS-Monitoring"
+        },
+        {
+          "parameter_names": [
+            "dcrResourceId"
+          ],
+          "policy_assignment_name": "Deploy-vmHybr-Monitoring"
+        }
+      ]
+    },
+    {
+      "default_name": "ama_mdfc_sql_data_collection_rule_id",
+      "description": "The data collection rule id that should be used for the SQL MDFC deployment.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "dcrResourceId"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
+        }
+      ]
+    },
+    {
+      "default_name": "ama_change_tracking_data_collection_rule_id",
+      "description": "The data collection rule id that should be used for the change tracking deployment.",
       "policy_assignments": [
         {
           "parameter_names": [
             "dcrResourceId"
           ],
           "policy_assignment_name": "Deploy-VM-ChangeTrack"
-        }
-      ]
-    },
-    {
-      "default_name": "ama_vmarc_change_tracking_data_collection_rule_id",
-      "policy_assignments": [
+        },
         {
           "parameter_names": [
             "dcrResourceId"
           ],
           "policy_assignment_name": "Deploy-vmArc-ChangeTrack"
-        }
-      ]
-    },
-    {
-      "default_name": "ama_vmss_change_tracking_data_collection_rule_id",
-      "policy_assignments": [
+        },
         {
           "parameter_names": [
             "dcrResourceId"
@@ -69,29 +146,8 @@
       ]
     },
     {
-      "default_name": "automation_account_location",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "automationRegion"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "automation_account_name",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "automationAccountName"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
       "default_name": "ddos_protection_plan_id",
+      "description": "The DDoS protection plan id that should be used for the DDoS protection plan deployment. If this is invalid or you do not use DDoS protection, make sure to change the enforcement mode of the Enable-DDoS-VNET policy to 'DoNotEnforce'.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -103,6 +159,7 @@
     },
     {
       "default_name": "log_analytics_workspace_id",
+      "description": "The Log Analytics workspace id that should be used for centralized log collection.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -120,7 +177,7 @@
           "parameter_names": [
             "logAnalytics"
           ],
-          "policy_assignment_name": "Deploy-Diag-Logs"
+          "policy_assignment_name": "Deploy-Diag-LogsCat"
         },
         {
           "parameter_names": [
@@ -130,708 +187,9 @@
         },
         {
           "parameter_names": [
-            "logAnalytics"
-          ],
-          "policy_assignment_name": "Deploy-MDFC-Config"
-        },
-        {
-          "parameter_names": [
             "userWorkspaceResourceId"
           ],
           "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
-        }
-      ]
-    },
-    {
-      "default_name": "log_analytics_workspace_location",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "workspaceRegion"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "log_analytics_workspace_name",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "workspaceName"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "log_analytics_workspace_resource_group_name",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "rgName"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "log_analytics_workspace_retention_in_days",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "dataRetention"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "log_analytics_workspace_sku",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "sku"
-          ],
-          "policy_assignment_name": "Deploy-Log-Analytics"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_managed_grafana_workspace",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureManagedGrafanaWorkspacePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_arc_kubernetes_configuration",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureArcKubernetesConfigurationPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_arc_hybrid_resource_provider",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureArcHybridResourceProviderPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_arc_guestconfiguration",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureArcGuestconfigurationPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_app",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureAppPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_app_services",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureAppServicesPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_asr",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureAsrPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_automation_dsc_hybrid",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureAutomationDSCHybridPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_automation_webhook",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureAutomationWebhookPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_batch",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureBatchPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_cognitive_search",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureCognitiveSearchPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_cognitive_services",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureCognitiveServicesPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_cosmos_cassandra",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureCosmosCassandraPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_cosmos_gremlin",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureCosmosGremlinPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_cosmos_mongo",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureCosmosMongoPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_cosmos_sql",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureCosmosSQLPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_cosmos_table",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureCosmosTablePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_data_factory_portal",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureDataFactoryPortalPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_data_factory",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureDataFactoryPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_disk_access",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureDiskAccessPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_event_grid_domains",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureEventGridDomainsPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_event_grid_topics",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureEventGridTopicsPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_event_hub_namespace",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureEventHubNamespacePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_file",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureFilePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_hdinsight",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureHDInsightPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_iot_hubs",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureIotHubsPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_iot",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureIotPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_key_vault",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureKeyVaultPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_machine_learning_workspace",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureMachineLearningWorkspacePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_media_services_key",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureMediaServicesKeyPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_media_services_live",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureMediaServicesLivePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_media_services_stream",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureMediaServicesStreamPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_migrate",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureMigratePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_monitor_1",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureMonitorPrivateDnsZoneId1"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_monitor_2",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureMonitorPrivateDnsZoneId2"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_monitor_3",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureMonitorPrivateDnsZoneId3"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_monitor_4",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureMonitorPrivateDnsZoneId4"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_monitor_5",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureMonitorPrivateDnsZoneId5"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_redis_cache",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureRedisCachePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_service_bus_namespace",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureServiceBusNamespacePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_signal_r",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureSignalRPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_storage_blob",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureStorageBlobPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_storage_blob_sec",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureStorageBlobSecPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_storage_dfs",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureStorageDFSPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_storage_dfs_sec",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureStorageDFSSecPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_storage_file",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureStorageFilePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_storage_queue",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureStorageQueuePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_storage_queue_sec",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureStorageQueueSecPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_storage_static_web",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureStorageStaticWebPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_storage_static_web_sec",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureStorageStaticWebSecPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_synapse_dev",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureSynapseDevPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_synapse_sql_od",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureSynapseSQLODPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_synapse_sql",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureSynapseSQLPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_web",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureWebPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_virtual_desktop_hostpool",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureVirtualDesktopHostpoolPrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_virtual_desktop_workspace",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureVirtualDesktopWorkspacePrivateDnsZoneId"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_site_recovery_blob",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureSiteRecoveryBlobPrivateDnsZoneID"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
-        }
-      ]
-    },
-    {
-      "default_name": "private_dns_zone_site_recovery_queue",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "azureSiteRecoveryQueuePrivateDnsZoneID"
-          ],
-          "policy_assignment_name": "Deploy-Private-DNS-Zones"
         }
       ]
     }

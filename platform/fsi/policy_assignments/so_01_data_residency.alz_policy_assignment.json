@@ -1,0 +1,26 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "SO-01-Data-Residency",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "Customer data must be stored and processed entirely in data centers that reside in approved geopolitical regions based upon customer-defined requirements.",
+    "displayName": "SO-01-Data-Residency",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/d22ea5a9-2a46-4f25-8d11-e8ef42769e46",
+    "enforcementMode": "Default",
+    "parameters": {
+      "listOfAllowedLocations-1": {
+        "value": []
+      },
+      "policyEffect-1": {
+        "value": "Deny"
+      }
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
+  }
+}

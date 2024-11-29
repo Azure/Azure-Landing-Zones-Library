@@ -28,3 +28,24 @@ If `parent_id` is set to `null`, the management group is created as a child of t
 Typically, this is the tenant root management group.
 
 All of these associated assets are referenced by their name (JSON `.name`) property.
+
+## Example
+
+Here is an example architecture definition file:
+
+```yaml
+name: my architecture
+management_groups:
+  - id: my-mg
+    display_name: My Management Group
+    archetypes:
+      - root
+    parent_id: null
+    exists: false
+  - id: my-mg-child
+    display_name: My Management Group Child
+    archetypes:
+      - landing_zones
+    parent_id: my-mg
+    exists: false
+```
