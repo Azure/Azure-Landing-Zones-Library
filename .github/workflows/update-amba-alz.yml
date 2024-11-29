@@ -17,8 +17,8 @@
     library_dir: "platform/amba-alz"
     pr_title: "feat: update platform/amba-alz library (automated)"
     pr_body: |-
-      This is an automated 'pull_request' containing updates to the library templates stored in 'platform/amba-alz'.\n
-      Please review the 'files changed' tab to review changes.
+      This is an automated pull_request containing updates to the library templates stored in 'platform/amba-alz'.
+      Please review the files changed tab to review changes.
 
   jobs:
     update-lib:
