@@ -7,7 +7,7 @@
       "Category": "Networking",
       "_deployed_by_amba": "True",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.2.1"
     },
     "mode": "All",
     "parameters": {
@@ -163,7 +163,7 @@
                   "value": "[parameters('severity')]"
                 },
                 "threshold": {
-                  "value": "[if(contains(field('tags'), '_amba-OriginHealthPercentage-threshold-override_'), field('tags._amba-OriginHealthPercentage-threshold-override_'), parameters('threshold'))]"
+                  "value": "[if(contains(field('tags'), '_amba-OriginHealthPercentage-threshold-Override_'), field('tags._amba-OriginHealthPercentage-threshold-Override_'), parameters('threshold'))]"
                 },
                 "windowSize": {
                   "value": "[parameters('windowSize')]"
@@ -309,7 +309,7 @@
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria.allOf[*].StaticThresholdCriterion.operator"
               },
               {
-                "equals": "[if(contains(field('tags'), '_amba-OriginHealthPercentage-threshold-override_'), field('tags._amba-OriginHealthPercentage-threshold-override_'), parameters('threshold'))]",
+                "equals": "[if(contains(field('tags'), '_amba-OriginHealthPercentage-threshold-Override_'), field('tags._amba-OriginHealthPercentage-threshold-Override_'), parameters('threshold'))]",
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria.allOf[*].StaticThresholdCriterion.threshold"
               }
             ]

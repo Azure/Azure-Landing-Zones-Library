@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "mode": "All",
     "parameters": {
@@ -348,7 +348,7 @@
                               "numberOfEvaluationPeriods": "[parameters('evaluationPeriods')]"
                             },
                             "operator": "[parameters('operator')]",
-                            "query": "[format('let excludedResources = (arg(\"\").resources | where type =~ \"Microsoft.OperationalInsights/workspaces\" | where parse_json(tostring(tags.{0})) in~ (\"{1}\") | project customerId = tostring(properties.customerId)); let workspaceResources = (arg(\"\").resources | where type =~ \"Microsoft.OperationalInsights/workspaces\" | project id, customerId = tostring(properties.customerId), workspaceName = tostring(name)); Operation | where TenantId !in~ (excludedResources) | where OperationCategory == \"Data Collection Status\" | where Detail has_any(\"RespectQuota\", \"OverQuota\") | summarize arg_max(TimeGenerated, *) by TenantId | where Detail has \"OverQuota\" | join hint.remote=left kind=inner workspaceResources on $left.TenantId == $right.customerId | project TimeGenerated, id, workspaceName, workspaceId = TenantId, Detail', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'))]",
+                            "query": "[format('let excludedResources = (arg(\"\").resources | where type =~ \"Microsoft.OperationalInsights/workspaces\" | where parse_json(tostring(tags.[\"{0}\"])) in~ (\"{1}\") | project customerId = tostring(properties.customerId)); let workspaceResources = (arg(\"\").resources | where type =~ \"Microsoft.OperationalInsights/workspaces\" | project id, customerId = tostring(properties.customerId), workspaceName = tostring(name)); Operation | where TenantId !in~ (excludedResources) | where OperationCategory == \"Data Collection Status\" | where Detail has_any(\"RespectQuota\", \"OverQuota\") | summarize arg_max(TimeGenerated, *) by TenantId | where Detail has \"OverQuota\" | join hint.remote=left kind=inner workspaceResources on $left.TenantId == $right.customerId | project TimeGenerated, id, workspaceName, workspaceId = TenantId, Detail', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'))]",
                             "resourceIdColumn": "id",
                             "threshold": "[parameters('threshold')]",
                             "timeAggregation": "[parameters('timeAggregation')]"
@@ -463,7 +463,7 @@
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].failingPeriods.minFailingPeriodsToAlert"
               },
               {
-                "equals": "[format('let excludedResources = (arg(\"\").resources | where type =~ \"Microsoft.OperationalInsights/workspaces\" | where parse_json(tostring(tags.{0})) in~ (\"{1}\") | project customerId = tostring(properties.customerId)); let workspaceResources = (arg(\"\").resources | where type =~ \"Microsoft.OperationalInsights/workspaces\" | project id, customerId = tostring(properties.customerId), workspaceName = tostring(name)); Operation | where TenantId !in~ (excludedResources) | where OperationCategory == \"Data Collection Status\" | where Detail has_any(\"RespectQuota\", \"OverQuota\") | summarize arg_max(TimeGenerated, *) by TenantId | where Detail has \"OverQuota\" | join hint.remote=left kind=inner workspaceResources on $left.TenantId == $right.customerId | project TimeGenerated, id, workspaceName, workspaceId = TenantId, Detail', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'))]",
+                "equals": "[format('let excludedResources = (arg(\"\").resources | where type =~ \"Microsoft.OperationalInsights/workspaces\" | where parse_json(tostring(tags.[\"{0}\"])) in~ (\"{1}\") | project customerId = tostring(properties.customerId)); let workspaceResources = (arg(\"\").resources | where type =~ \"Microsoft.OperationalInsights/workspaces\" | project id, customerId = tostring(properties.customerId), workspaceName = tostring(name)); Operation | where TenantId !in~ (excludedResources) | where OperationCategory == \"Data Collection Status\" | where Detail has_any(\"RespectQuota\", \"OverQuota\") | summarize arg_max(TimeGenerated, *) by TenantId | where Detail has \"OverQuota\" | join hint.remote=left kind=inner workspaceResources on $left.TenantId == $right.customerId | project TimeGenerated, id, workspaceName, workspaceId = TenantId, Detail', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'))]",
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].query"
               },
               {

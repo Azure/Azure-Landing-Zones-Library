@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     "parameters": {
       "ALZMonitorDisableTagName": {
@@ -43,7 +43,7 @@
         "type": "String"
       },
       "ALZMonitorResourceGroupName": {
-        "defaultValue": "ALZ-Monitoring-RG",
+        "defaultValue": "rg-amba-monitoring-001",
         "metadata": {
           "description": "Name of the resource group where the ALZ Monitor resources will be deployed",
           "displayName": "ALZ Monitor Resource Group Name"

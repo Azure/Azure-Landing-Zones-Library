@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "parameters": {
       "ALZMonitorDisableTagName": {
@@ -33,6 +33,19 @@
           "displayName": "ALZ Monitoring disabled tag values(s)"
         },
         "type": "Array"
+      },
+      "RVASRHealthMonitorPolicyEffect": {
+        "allowedValues": [
+          "modify",
+          "audit",
+          "disabled"
+        ],
+        "defaultValue": "modify",
+        "metadata": {
+          "description": "Policy effect for the alert, modify will modify the alert if it exists, or audit if it does not exist",
+          "displayName": "Recovery Vault ASR Health Monitor Policy Effect"
+        },
+        "type": "string"
       },
       "RVBackupHealthMonitorPolicyEffect": {
         "allowedValues": [
@@ -63,6 +76,21 @@
         },
         "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_RecoveryVault_BackupHealthMonitor_Alert",
         "policyDefinitionReferenceId": "ALZ_RVBackupHealthMonitor"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('RVASRHealthMonitorPolicyEffect')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_RecoveryVault_ASRHealthMonitor_Alert",
+        "policyDefinitionReferenceId": "ALZ_RVASRHealthMonitor"
       }
     ],
     "policyType": "Custom"
