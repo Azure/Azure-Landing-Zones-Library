@@ -1,0 +1,107 @@
+{
+  "name": "Deploy_RecoveryVault_ASRHealthMonitor_Alert",
+  "properties": {
+    "description": "Policy to audit/update Recovery Vault ASR Health Alerting to Azure monitor alerts",
+    "displayName": "Deploy RV ASR Health Monitoring Alerts",
+    "metadata": {
+      "_deployed_by_amba": "True",
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Site Recovery",
+      "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "MonitorDisableTagName": {
+        "defaultValue": "MonitorDisable",
+        "metadata": {
+          "description": "Tag name used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag name"
+        },
+        "type": "String"
+      },
+      "MonitorDisableTagValues": {
+        "defaultValue": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ],
+        "metadata": {
+          "description": "Tag value(s) used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag values(s)"
+        },
+        "type": "Array"
+      },
+      "effect": {
+        "allowedValues": [
+          "modify",
+          "audit",
+          "disabled"
+        ],
+        "defaultValue": "modify",
+        "metadata": {
+          "description": "Effect of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.RecoveryServices/Vaults",
+            "field": "type"
+          },
+          {
+            "field": "[concat('tags[', parameters('MonitorDisableTagName'), ']')]",
+            "notIn": "[parameters('MonitorDisableTagValues')]"
+          },
+          {
+            "anyOf": [
+              {
+                "field": "Microsoft.RecoveryServices/vaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllReplicationIssues",
+                "notEquals": "Enabled"
+              },
+              {
+                "field": "Microsoft.RecoveryServices/vaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllFailoverIssues",
+                "notEquals": "Enabled"
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "details": {
+          "conflictEffect": "audit",
+          "operations": [
+            {
+              "field": "Microsoft.RecoveryServices/vaults/monitoringSettings.classicAlertSettings.emailNotificationsForSiteRecovery",
+              "operation": "addOrReplace",
+              "value": "Disabled"
+            },
+            {
+              "field": "Microsoft.RecoveryServices/vaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllReplicationIssues",
+              "operation": "addOrReplace",
+              "value": "Enabled"
+            },
+            {
+              "field": "Microsoft.RecoveryServices/vaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllFailoverIssues",
+              "operation": "addOrReplace",
+              "value": "Enabled"
+            }
+          ],
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ]
+        },
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

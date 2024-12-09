@@ -1,0 +1,200 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2020-09-01",
+  "name": "Deploy-AMBA-Connectivity",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Network components such as Azure Firewalls, ExpressRoute, VPN, and Private DNS Zones.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Connectivity",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-Connectivity",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Alerting {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "parameters": {
+      "AFWSNATPortUtilizationPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_alz_monitor": true
+        }
+      },
+      "ERCIRArpAvailabilityPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERCIRBgpAvailabilityPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERCIRQoSDropBitsinPerSecPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERCIRQoSDropBitsoutPerSecPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERGwExpressRouteBitsInPolicyEffect": {
+        "value": "disabled"
+      },
+      "ERGwExpressRouteBitsOutPolicyEffect": {
+        "value": "disabled"
+      },
+      "ERGwExpressRouteCpuUtilPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERPBitsInPerSecondPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERPBitsOutPerSecondPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERPLineProtocolPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERPRxLightLevelHighPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERPRxLightLevelLowPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERPTxLightLevelHighPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ERPTxLightLevelLowPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "FirewallHealthPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "LBDatapathAvailabilityPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "LBGlobalBackendAvailabilityPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "LBHealthProbeStatusPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "LBUsedSNATPortsPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "PDNSZCapacityUtilPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "PDNSZQueryVolumePolicyEffect": {
+        "value": "disabled"
+      },
+      "PDNSZRecordSetCapacityPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "PDNSZRegistrationCapacityUtilPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "PIPBytesInDDoSPolicyEffect": {
+        "value": "disabled"
+      },
+      "PIPDDoSAttackPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "PIPPacketsInDDoSPolicyEffect": {
+        "value": "disabled"
+      },
+      "PIPVIPAvailabilityPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VNETDDOSAttackPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VPNGWBandWidthUtilPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VPNGWEgressPolicyEffect": {
+        "value": "disabled"
+      },
+      "VPNGWIngressPolicyEffect": {
+        "value": "disabled"
+      },
+      "VPNGWTunnelEgressPacketDropCountPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VPNGWTunnelEgressPacketDropMismatchPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VPNGWTunnelIngressPacketDropCountPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VPNGWTunnelIngressPacketDropMismatchPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VPNGwBGPPeerStatusPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VnetGwERCpuUtilPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VnetGwExpressRouteBitsPerSecondPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VnetGwTunnelBWPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VnetGwTunnelEgressPacketDropCountPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VnetGwTunnelEgressPacketDropMismatchPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VnetGwTunnelEgressPolicyEffect": {
+        "value": "disabled"
+      },
+      "VnetGwTunnelIngressPacketDropCountPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VnetGwTunnelIngressPacketDropMismatchPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VnetGwTunnelIngressPolicyEffect": {
+        "value": "disabled"
+      },
+      "activityFWDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "activityNSGDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "activityUDRUpdatePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "activityVPNGWDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
+    "metadata": {
+      "_deployed_by_amba": true
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
+  }
+}

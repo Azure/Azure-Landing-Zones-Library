@@ -1,0 +1,569 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/default_policy_values.json",
+  "defaults": [
+    {
+      "default_name": "amba_alz_management_subscription_id",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZManagementSubscriptionId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-HybridVM"
+        },
+        {
+          "parameter_names": [
+            "ALZManagementSubscriptionId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Management"
+        },
+        {
+          "parameter_names": [
+            "ALZManagementSubscriptionId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-VM"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_resource_group_name",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Connectivity"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-HybridVM"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Identity"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-KeyMgmt"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Management"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-NetworkChang"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Storage"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-VM"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_resource_group_tags",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Connectivity"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-HybridVM"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Identity"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-KeyMgmt"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Management"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-NetworkChang"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Storage"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-VM"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_resource_group_location",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Connectivity"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-HybridVM"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Identity"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-KeyMgmt"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Management"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-NetworkChang"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Storage"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-VM"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_user_assigned_managed_identity_name",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZUserAssignedManagedIdentityName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-HybridVM"
+        },
+        {
+          "parameter_names": [
+            "ALZUserAssignedManagedIdentityName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Management"
+        },
+        {
+          "parameter_names": [
+            "ALZUserAssignedManagedIdentityName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-VM"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_disable_tag_name",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Connectivity"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-HybridVM"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Identity"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-KeyMgmt"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Management"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-NetworkChang"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Storage"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-VM"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_disable_tag_values",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Connectivity"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-HybridVM"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Identity"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-KeyMgmt"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Management"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-NetworkChang"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Storage"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-VM"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_action_group_email",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZMonitorActionGroupEmail"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorActionGroupEmail"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_arm_role_id",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZArmRoleId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZArmRoleId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_webhook_service_uri",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZWebhookServiceUri"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZWebhookServiceUri"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_event_hub_resource_id",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZEventHubResourceId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZEventHubResourceId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_function_resource_id",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZFunctionResourceId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZFunctionResourceId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_function_trigger_url",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZFunctionTriggerUrl"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZFunctionTriggerUrl"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_logicapp_resource_id",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZLogicappResourceId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZLogicappResourceId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_logicapp_callback_url",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ALZLogicappCallbackUrl"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZLogicappCallbackUrl"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_byo_user_assigned_managed_identity_id",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "BYOUserAssignedManagedIdentityResourceId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-HybridVM"
+        },
+        {
+          "parameter_names": [
+            "BYOUserAssignedManagedIdentityResourceId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Management"
+        },
+        {
+          "parameter_names": [
+            "BYOUserAssignedManagedIdentityResourceId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-VM"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_byo_alert_processing_rule",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "BYOAlertProcessingRule"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "BYOAlertProcessingRule"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_byo_action_group",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "BYOActionGroup"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "BYOActionGroup"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+        }
+      ]
+    }
+  ]
+}
