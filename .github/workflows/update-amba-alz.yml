@@ -12,7 +12,7 @@
 
   env:
     alz_repository: "Azure/Enterprise-Scale"
-    remote_repository: "arjenhuitema/azure-monitor-baseline-alerts"
+    remote_repository: "Azure/azure-monitor-baseline-alerts"
     alzlib_repository: "Azure/alzlib"
     library_dir: "platform/amba-alz"
     pr_title: "feat: update platform/amba-alz library (automated)"
@@ -37,7 +37,7 @@
           with:
             repository: ${{ env.remote_repository }}
             path: ${{ env.remote_repository }}
-            ref: feat-tf-sync
+            ref: main
 
         - name: Alz repository checkout
           uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
