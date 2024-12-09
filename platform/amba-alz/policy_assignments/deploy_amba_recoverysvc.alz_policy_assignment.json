@@ -29,6 +29,9 @@
           "Sandbox"
         ]
       },
+      "RVASRHealthMonitorPolicyEffect": {
+        "value": "modify"
+      },
       "RVBackupHealthMonitorPolicyEffect": {
         "value": "modify"
       }

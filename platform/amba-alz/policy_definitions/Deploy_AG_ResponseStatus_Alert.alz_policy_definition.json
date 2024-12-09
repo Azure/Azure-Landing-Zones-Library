@@ -7,7 +7,7 @@
       "Category": "Networking",
       "_deployed_by_amba": "True",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.3.0"
     },
     "mode": "All",
     "parameters": {
@@ -96,6 +96,22 @@
         },
         "type": "String"
       },
+      "evaluationPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "Evaluation Periods"
+        },
+        "type": "String"
+      },
+      "failingPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "Failing Periods"
+        },
+        "type": "String"
+      },
       "severity": {
         "allowedValues": [
           "0",
@@ -161,6 +177,12 @@
                 "evaluationFrequency": {
                   "value": "[parameters('evaluationFrequency')]"
                 },
+                "evaluationPeriods": {
+                  "value": "[parameters('evaluationPeriods')]"
+                },
+                "failingPeriods": {
+                  "value": "[parameters('failingPeriods')]"
+                },
                 "resourceId": {
                   "value": "[field('id')]"
                 },
@@ -188,6 +210,12 @@
                     "type": "String"
                   },
                   "evaluationFrequency": {
+                    "type": "String"
+                  },
+                  "evaluationPeriods": {
+                    "type": "String"
+                  },
+                  "failingPeriods": {
                     "type": "String"
                   },
                   "resourceId": {
@@ -234,8 +262,8 @@
                               }
                             ],
                             "failingPeriods": {
-                              "minFailingPeriodsToAlert": 2,
-                              "numberOfEvaluationPeriods": 2
+                              "minFailingPeriodsToAlert": "[parameters('failingPeriods')]",
+                              "numberOfEvaluationPeriods": "[parameters('evaluationPeriods')]"
                             },
                             "metricName": "ResponseStatus",
                             "metricNamespace": "Microsoft.Network/applicationgateways",
@@ -261,6 +289,12 @@
                         },
                         "evaluationFrequency": {
                           "value": "[parameters('evaluationFrequency')]"
+                        },
+                        "evaluationPeriods": {
+                          "value": "[parameters('evaluationPeriods')]"
+                        },
+                        "failingPeriods": {
+                          "value": "[parameters('failingPeriods')]"
                         },
                         "severity": {
                           "value": "[parameters('severity')]"
@@ -332,11 +366,11 @@
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-MultipleResourceMultipleMetricCriteria.allOf[*].DynamicThresholdCriterion.alertSensitivity"
               },
               {
-                "equals": 2,
+                "equals": "[parameters('failingPeriods')]",
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-MultipleResourceMultipleMetricCriteria.allOf[*].DynamicThresholdCriterion.failingPeriods.minFailingPeriodsToAlert"
               },
               {
-                "equals": 2,
+                "equals": "[parameters('evaluationPeriods')]",
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-MultipleResourceMultipleMetricCriteria.allOf[*].DynamicThresholdCriterion.failingPeriods.numberOfEvaluationPeriods"
               }
             ]

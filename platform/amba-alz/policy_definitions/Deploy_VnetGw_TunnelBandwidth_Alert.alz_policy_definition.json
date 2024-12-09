@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.3.0"
     },
     "mode": "All",
     "parameters": {
@@ -170,7 +170,7 @@
                   "value": "[parameters('severity')]"
                 },
                 "threshold": {
-                  "value": "[parameters('threshold')]"
+                  "value": "[if(contains(field('tags'), '_amba-TunnelAverageBandwidth-threshold-Override_'), field('tags._amba-TunnelAverageBandwidth-threshold-Override_'), parameters('threshold'))]"
                 },
                 "windowSize": {
                   "value": "[parameters('windowSize')]"
@@ -228,7 +228,7 @@
                             "metricNamespace": "Microsoft.Network/virtualNetworkGateways",
                             "name": "TunnelAverageBandwidth",
                             "operator": "LessThan",
-                            "threshold": "[if(contains(field('tags'), '_amba-TunnelAverageBandwidth-threshold-Override_'), field('tags._amba-TunnelAverageBandwidth-threshold-Override_'), parameters('threshold'))]",
+                            "threshold": "[parameters('threshold')]",
                             "timeAggregation": "Average"
                           }
                         ],

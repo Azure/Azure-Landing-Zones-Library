@@ -83,6 +83,7 @@
     "Deploy_PublicIp_DDoSAttack_Alert",
     "Deploy_PublicIp_PacketsInDDoSAttack_Alert",
     "Deploy_PublicIp_VIPAvailability_Alert",
+    "Deploy_RecoveryVault_ASRHealthMonitor_Alert",
     "Deploy_RecoveryVault_BackupHealthMonitor_Alert",
     "Deploy_ServiceHealth_ActionGroups",
     "Deploy_StorageAccount_Availability_Alert",
