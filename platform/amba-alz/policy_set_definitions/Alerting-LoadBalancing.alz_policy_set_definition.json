@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "parameters": {
       "AGWApplicationGatewayTotalTimeAlertSensitivity": {
@@ -61,6 +61,22 @@
         "metadata": {
           "description": "Evaluation frequency for the alert",
           "displayName": "AGW Total Time Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "AGWApplicationGatewayTotalTimeEvaluationPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "AGW Total Time Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "AGWApplicationGatewayTotalTimeFailingPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "AGW Total Time Failing Periods"
         },
         "type": "string"
       },
@@ -142,6 +158,22 @@
         "metadata": {
           "description": "Evaluation frequency for the alert",
           "displayName": "AGW Backend Last Byte Response Time Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "AGWBackendLastByteResponseTimeEvaluationPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "AGW Backend Last Byte Response Time Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "AGWBackendLastByteResponseTimeFailingPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "AGW Backend Last Byte Response Time Failing Periods"
         },
         "type": "string"
       },
@@ -430,6 +462,22 @@
         },
         "type": "string"
       },
+      "AGWFailedRequestsEvaluationPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "AGW Failed Requests Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "AGWFailedRequestsFailingPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "AGW Failed Requests Failing Periods"
+        },
+        "type": "string"
+      },
       "AGWFailedRequestsPolicyEffect": {
         "allowedValues": [
           "deployIfNotExists",
@@ -508,6 +556,22 @@
         "metadata": {
           "description": "Evaluation frequency for the alert",
           "displayName": "AGW Response Status Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "AGWResponseStatusEvaluationPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "AGW Response Status Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "AGWResponseStatusFailingPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "AGW Response Status Failing Periods"
         },
         "type": "string"
       },
@@ -736,6 +800,22 @@
         },
         "type": "string"
       },
+      "CDNPOriginLatencyEvaluationPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "CDN Origin Latency Evaluation Periods"
+        },
+        "type": "String"
+      },
+      "CDNPOriginLatencyFailingPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "CDN Origin Latency Failing Periods"
+        },
+        "type": "String"
+      },
       "CDNPOriginLatencyPolicyEffect": {
         "allowedValues": [
           "deployIfNotExists",
@@ -804,6 +884,22 @@
         },
         "type": "string"
       },
+      "CDNPPercentage4XXEvaluationPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "CDN Percentage 4XX Evaluation Periods"
+        },
+        "type": "String"
+      },
+      "CDNPPercentage4XXFailingPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "CDN Percentage 4XX Failing Periods"
+        },
+        "type": "String"
+      },
       "CDNPPercentage4XXPolicyEffect": {
         "allowedValues": [
           "deployIfNotExists",
@@ -871,6 +967,22 @@
           "displayName": "CDN Percentage 5XX Evaluation Frequency"
         },
         "type": "string"
+      },
+      "CDNPPercentage5XXEvaluationPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "CDN Percentage 5XX Evaluation Periods"
+        },
+        "type": "String"
+      },
+      "CDNPPercentage5XXFailingPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "CDN Percentage 5XX Failing Periods"
+        },
+        "type": "String"
       },
       "CDNPPercentage5XXPolicyEffect": {
         "allowedValues": [
@@ -1930,6 +2042,12 @@
           "evaluationFrequency": {
             "value": "[parameters('AGWApplicationGatewayTotalTimeEvaluationFrequency')]"
           },
+          "evaluationperiods": {
+            "value": "[parameters('AGWApplicationGatewayTotalTimeEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('AGWApplicationGatewayTotalTimeFailingPeriods')]"
+          },
           "severity": {
             "value": "[parameters('AGWApplicationGatewayTotalTimeAlertSeverity')]"
           },
@@ -1959,6 +2077,12 @@
           },
           "evaluationFrequency": {
             "value": "[parameters('AGWBackendLastByteResponseTimeEvaluationFrequency')]"
+          },
+          "evaluationperiods": {
+            "value": "[parameters('AGWBackendLastByteResponseTimeEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('AGWBackendLastByteResponseTimeFailingPeriods')]"
           },
           "severity": {
             "value": "[parameters('AGWBackendLastByteResponseTimeAlertSeverity')]"
@@ -2071,6 +2195,12 @@
           "evaluationFrequency": {
             "value": "[parameters('AGWFailedRequestsEvaluationFrequency')]"
           },
+          "evaluationperiods": {
+            "value": "[parameters('AGWFailedRequestsEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('AGWFailedRequestsFailingPeriods')]"
+          },
           "severity": {
             "value": "[parameters('AGWFailedRequestsAlertSeverity')]"
           },
@@ -2100,6 +2230,12 @@
           },
           "evaluationFrequency": {
             "value": "[parameters('AGWResponseStatusEvaluationFrequency')]"
+          },
+          "evaluationperiods": {
+            "value": "[parameters('AGWResponseStatusEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('AGWResponseStatusFailingPeriods')]"
           },
           "severity": {
             "value": "[parameters('AGWResponseStatusAlertSeverity')]"
@@ -2290,6 +2426,12 @@
           "evaluationFrequency": {
             "value": "[parameters('CDNPOriginLatencyEvaluationFrequency')]"
           },
+          "evaluationperiods": {
+            "value": "[parameters('CDNPOriginLatencyEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('CDNPOriginLatencyFailingPeriods')]"
+          },
           "severity": {
             "value": "[parameters('CDNPOriginLatencyAlertSeverity')]"
           },
@@ -2317,6 +2459,12 @@
           "evaluationFrequency": {
             "value": "[parameters('CDNPPercentage4XXEvaluationFrequency')]"
           },
+          "evaluationperiods": {
+            "value": "[parameters('CDNPPercentage4XXEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('CDNPPercentage4XXFailingPeriods')]"
+          },
           "severity": {
             "value": "[parameters('CDNPPercentage4XXAlertSeverity')]"
           },
@@ -2343,6 +2491,12 @@
           },
           "evaluationFrequency": {
             "value": "[parameters('CDNPPercentage5XXEvaluationFrequency')]"
+          },
+          "evaluationperiods": {
+            "value": "[parameters('CDNPPercentage5XXEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('CDNPPercentage5XXFailingPeriods')]"
           },
           "severity": {
             "value": "[parameters('CDNPPercentage5XXAlertSeverity')]"

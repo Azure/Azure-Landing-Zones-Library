@@ -55,6 +55,9 @@
       "LAWDailyCapLimitPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "RVASRHealthMonitorPolicyEffect": {
+        "value": "modify"
+      },
       "RVBackupHealthMonitorPolicyEffect": {
         "value": "modify"
       },

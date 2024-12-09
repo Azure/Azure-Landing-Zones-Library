@@ -148,6 +148,22 @@
         },
         "type": "string"
       },
+      "WSFDiskQueueLengthEvaluationPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "WSF Disk Queue Lenght Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "WSFDiskQueueLengthFailingPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "WSF Disk Queue Lenght Failing Periods"
+        },
+        "type": "string"
+      },
       "WSFDiskQueueLengthPolicyEffect": {
         "allowedValues": [
           "deployIfNotExists",
@@ -213,6 +229,22 @@
         "metadata": {
           "description": "Evaluation frequency for the alert",
           "displayName": "WSF HTTP Queue Lenght Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "WSFHttpQueueLengthEvaluationPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "WSF HTTP Queue Lenght Evaluation Periods"
+        },
+        "type": "string"
+      },
+      "WSFHttpQueueLengthFailingPeriods": {
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "WSF HTTP Queue Lenght Failing Periods"
         },
         "type": "string"
       },
@@ -401,6 +433,12 @@
           "evaluationFrequency": {
             "value": "[parameters('WSFDiskQueueLengthEvaluationFrequency')]"
           },
+          "evaluationPeriods": {
+            "value": "[parameters('WSFDiskQueueLengthEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('WSFDiskQueueLengthFailingPeriods')]"
+          },
           "severity": {
             "value": "[parameters('WSFDiskQueueLengthAlertSeverity')]"
           },
@@ -427,6 +465,12 @@
           },
           "evaluationFrequency": {
             "value": "[parameters('WSFHttpQueueLengthEvaluationFrequency')]"
+          },
+          "evaluationPeriods": {
+            "value": "[parameters('WSFHttpQueueLengthEvaluationPeriods')]"
+          },
+          "failingPeriods": {
+            "value": "[parameters('WSFHttpQueueLengthFailingPeriods')]"
           },
           "severity": {
             "value": "[parameters('WSFHttpQueueLengthAlertSeverity')]"
