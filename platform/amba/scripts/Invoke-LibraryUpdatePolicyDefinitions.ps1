@@ -22,7 +22,7 @@
 [CmdletBinding(SupportsShouldProcess)]
 param (
     [Parameter()][String]$AlzToolsPath = "$PWD/enterprise-scale/src/Alz.Tools",
-    [Parameter()][String]$TargetPath = "$PWD/library/platform/amba-alz",
+    [Parameter()][String]$TargetPath = "$PWD/library/platform/amba",
     [Parameter()][String]$SourcePath = "$PWD/enterprise-scale",
     [Parameter()][String]$LineEnding = "unix",
     [Parameter()][Switch]$Reset,
@@ -46,13 +46,13 @@ if (!$UpdateProviderApiVersions -and (Test-Path "$AlzToolsPath/ProviderApiVersio
 }
 
 # Get a list of current Policy Definition names
-$policyDefinitionFiles = Get-ChildItem -Path "$TargetPath/platform/amba-alz/policy_definitions/"
+$policyDefinitionFiles = Get-ChildItem -Path "$TargetPath/platform/amba/policy_definitions/"
 $policyDefinitionNames = $policyDefinitionFiles | ForEach-Object {
     (Get-Content -Path $_ | ConvertFrom-Json).Name
 }
 
 # Get a list of current Policy Set Definition names
-$policySetDefinitionFiles = Get-ChildItem -Path "$TargetPath/platform/amba-alz/policy_set_definitions/"
+$policySetDefinitionFiles = Get-ChildItem -Path "$TargetPath/platform/amba/policy_set_definitions/"
 $policySetDefinitionNames = $policySetDefinitionFiles | ForEach-Object {
     (Get-Content -Path $_ | ConvertFrom-Json).Name
 }
@@ -60,7 +60,7 @@ $policySetDefinitionNames = $policySetDefinitionFiles | ForEach-Object {
 # Update the es_root archetype definition to reflect
 # the current list of Policy Definitions and Policy
 # Set Definitions
-$esRootFilePath = $TargetPath + "/platform/amba-alz/archetype_definitions/root.alz_archetype_definition.json"
+$esRootFilePath = $TargetPath + "/platform/amba/archetype_definitions/root.alz_archetype_definition.json"
 Write-Information "Loading `"root`" archetype definition." -InformationAction Continue
 $esRootConfig = Get-Content -Path $esRootFilePath | ConvertFrom-Json
 Write-Information "Updating Policy Definitions in `"root`" archetype definition." -InformationAction Continue

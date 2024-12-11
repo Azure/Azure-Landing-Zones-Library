@@ -1,5 +1,5 @@
 ---
-  name: update platform/amba-alz
+  name: update platform/amba
 
   # yamllint disable-line rule:truthy
   on:
@@ -14,10 +14,10 @@
     alz_repository: "Azure/Enterprise-Scale"
     remote_repository: "Azure/azure-monitor-baseline-alerts"
     alzlib_repository: "Azure/alzlib"
-    library_dir: "platform/amba-alz"
-    pr_title: "feat: update platform/amba-alz library (automated)"
+    library_dir: "platform/amba"
+    pr_title: "feat: update platform/amba library (automated)"
     pr_body: |-
-      This is an automated pull_request containing updates to the library templates stored in 'platform/amba-alz'.
+      This is an automated pull_request containing updates to the library templates stored in 'platform/amba'.
       Please review the files changed tab to review changes.
 
   jobs:
@@ -69,7 +69,7 @@
         - name: Create and checkout branch
           id: branch
           run: |
-            BRANCH="platform-amba-alz-${{ github.run_number }}"
+            BRANCH="platform-amba-${{ github.run_number }}"
             echo "name=$BRANCH" >> "$GITHUB_OUTPUT"
             git checkout -b "$BRANCH"
           working-directory: ${{ github.repository }}
@@ -81,7 +81,7 @@
           with:
             inlineScript: |
               Write-Information "==> Running copy policy definitions script..." -InformationAction Continue
-              ${{ github.repository }}/platform/amba-alz/scripts/Copy-PolicyDefinitions.ps1 `
+              ${{ github.repository }}/platform/amba/scripts/Copy-PolicyDefinitions.ps1 `
                 -TemplatePath "${{ github.workspace }}/${{ env.remote_repository }}/patterns/alz/templates" `
                 -TargetPath "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy" `
                 -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
@@ -114,7 +114,7 @@
           with:
             inlineScript: |
               Write-Information "==> Running policy assignments and archetypes script..." -InformationAction Continue
-              ${{ github.repository }}/platform/amba-alz/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
+              ${{ github.repository }}/platform/amba/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
                 -AlzToolsPath "${{ github.workspace }}/${{ env.alz_repository }}/src/Alz.Tools/" `
                 -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
                 -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
@@ -125,7 +125,7 @@
           with:
             inlineScript: |
               Write-Information "==> Running policy definitions in archetype definitions script..." -InformationAction Continue
-              ${{ github.repository }}/platform/amba-alz/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
+              ${{ github.repository }}/platform/amba/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
                 -AlzToolsPath "${{ github.workspace }}/${{ env.alz_repository }}/src/Alz.Tools/" `
                 -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
                 -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
@@ -167,7 +167,7 @@
         - name: close and comment out of date prs
           if: steps.git_status.outputs.changes > 0
           run: |
-            PULL_REQUESTS=$(gh pr list --search 'feat: update platform/amba-alz library (automated)' --json number,headRefName)
+            PULL_REQUESTS=$(gh pr list --search 'feat: update platform/amba library (automated)' --json number,headRefName)
             echo "$PULL_REQUESTS" | jq -r '.[] | select(.number != ${{ steps.pr.outputs.number }}) | .number' | xargs -I {} gh pr close {} --delete-branch --comment "Supersceeded by #${{ steps.pr.outputs.pull-request-number }}"
           working-directory: ${{ github.repository }}
           env:

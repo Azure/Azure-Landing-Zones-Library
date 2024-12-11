@@ -100,7 +100,7 @@ $parameters = @{
 $finalPolicyAssignments = New-Object 'System.Collections.Generic.Dictionary[string,System.Collections.Generic.List[string]]'
 
 $policyAssignmentSourcePath = "$SourcePath/patterns/alz/policyAssignments"
-$policyAssignmentTargetPath = "$TargetPath/platform/amba-alz/policy_assignments"
+$policyAssignmentTargetPath = "$TargetPath/platform/amba/policy_assignments"
 
 foreach ($managementGroup in $policyAssignments.Keys) {
   $managementGroupNameFinal = $managementGroupMapping[$managementGroup.Replace("defaults-", "")]
@@ -193,7 +193,7 @@ foreach ($managementGroup in $policyAssignments.Keys) {
   }
 }
 
-$archetypeTargetPath = "$TargetPath/platform/amba-alz/archetype_definitions"
+$archetypeTargetPath = "$TargetPath/platform/amba/archetype_definitions"
 
 foreach ($managementGroup in $finalPolicyAssignments.Keys) {
   $archetypeFilePath = "$archetypeTargetPath/$managementGroup.alz_archetype_definition.json"
@@ -206,7 +206,7 @@ foreach ($managementGroup in $finalPolicyAssignments.Keys) {
   $json | Edit-LineEndings -LineEnding $LineEnding | Out-File -FilePath "$archetypeFilePath" -Force
 }
 
-$policySetDefinitions = Get-ChildItem -Path "$TargetPath/platform/amba-alz/policy_set_definitions" -Filter *.alz_policy_set_definition.json -Recurse
+$policySetDefinitions = Get-ChildItem -Path "$TargetPath/platform/amba/policy_set_definitions" -Filter *.alz_policy_set_definition.json -Recurse
 
 foreach ($policySetDefinition in $policySetDefinitions) {
   $policySetDefinitionJson = Get-Content $policySetDefinition.FullName -Raw | ConvertFrom-Json

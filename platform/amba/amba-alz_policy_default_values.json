@@ -3,6 +3,7 @@
   "defaults": [
     {
       "default_name": "amba_alz_management_subscription_id",
+      "description": "The subscription id where the user assigned managed identity will be created.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -26,6 +27,7 @@
     },
     {
       "default_name": "amba_alz_resource_group_name",
+      "description": "The name of the resource group for Azure Monitor Baseline Alerts.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -91,6 +93,7 @@
     },
     {
       "default_name": "amba_alz_resource_group_tags",
+      "description": "The tags for the resource group for Azure Monitor Baseline Alerts.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -156,6 +159,7 @@
     },
     {
       "default_name": "amba_alz_resource_group_location",
+      "description": "The region short name (e.g. `westus`) of the resource group that will be used for Azure Monitor Baseline Alerts.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -221,6 +225,7 @@
     },
     {
       "default_name": "amba_alz_user_assigned_managed_identity_name",
+      "description": "The name of the user assigned managed identity for monitoring purposes.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -244,6 +249,7 @@
     },
     {
       "default_name": "amba_alz_disable_tag_name",
+      "description": "Tag name used to disable monitoring at the resource level.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -309,6 +315,7 @@
     },
     {
       "default_name": "amba_alz_disable_tag_values",
+      "description": "Tag value(s) used to disable monitoring at the resource level.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -374,6 +381,7 @@
     },
     {
       "default_name": "amba_alz_action_group_email",
+      "description": "The email address(es) in the action group for alert notifications.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -391,6 +399,7 @@
     },
     {
       "default_name": "amba_alz_arm_role_id",
+      "description": "The ARM role id(s) in the action group for alert notifications.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -408,6 +417,7 @@
     },
     {
       "default_name": "amba_alz_webhook_service_uri",
+      "description": "The service uri(s) of the webhook used for monitoring.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -425,6 +435,7 @@
     },
     {
       "default_name": "amba_alz_event_hub_resource_id",
+      "description": "The resource id of the event hub used for monitoring.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -442,6 +453,7 @@
     },
     {
       "default_name": "amba_alz_function_resource_id",
+      "description": "The resource id of the function used for monitoring.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -459,6 +471,7 @@
     },
     {
       "default_name": "amba_alz_function_trigger_url",
+      "description": "The trigger url of the function used for monitoring.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -476,6 +489,7 @@
     },
     {
       "default_name": "amba_alz_logicapp_resource_id",
+      "description": "The resource id of the logic app used for monitoring.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -493,6 +507,7 @@
     },
     {
       "default_name": "amba_alz_logicapp_callback_url",
+      "description": "The callback url of the logic app used for monitoring.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -510,6 +525,7 @@
     },
     {
       "default_name": "amba_alz_byo_user_assigned_managed_identity_id",
+      "description": "The resource id of the user assigned managed identity, required if you intend to use an existing user assigned managed identity for monitoring purposes.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -533,6 +549,7 @@
     },
     {
       "default_name": "amba_alz_byo_alert_processing_rule",
+      "description": "The resource id of the alert processing rule, required if you intend to use an existing alert processing rule for monitoring purposes.",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -550,6 +567,7 @@
     },
     {
       "default_name": "amba_alz_byo_action_group",
+      "description": "The resource id of the action group, required if you intend to use an existing action group for monitoring purposes.",
       "policy_assignments": [
         {
           "parameter_names": [
