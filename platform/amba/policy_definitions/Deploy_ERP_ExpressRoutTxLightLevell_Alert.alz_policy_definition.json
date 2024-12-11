@@ -4,10 +4,10 @@
     "description": "Policy to audit/deploy ER Direct TxLightLevel High Alert",
     "displayName": "Deploy ER Direct ExpressRoute TxLightLevel High Alert",
     "metadata": {
-      "Category": "Networking",
       "_deployed_by_amba": "True",
+      "category": "Networking",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.2.1"
     },
     "mode": "All",
     "parameters": {

@@ -4,10 +4,10 @@
     "description": "Policy to audit/deploy App Service Plan Memory Percentage  Alert",
     "displayName": "Deploy App Service Plan Memory Percentage Alert",
     "metadata": {
-      "Category": "Web Services",
       "_deployed_by_amba": "True",
+      "category": "Web Services",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.2.1"
     },
     "mode": "All",
     "parameters": {
