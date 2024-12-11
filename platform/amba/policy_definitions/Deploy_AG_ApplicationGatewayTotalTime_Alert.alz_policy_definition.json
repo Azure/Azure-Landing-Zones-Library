@@ -4,10 +4,10 @@
     "description": "Policy to audit/deploy Azure Application Gateway ApplicationGatewayTotalTime Alert",
     "displayName": "Deploy AGW ApplicationGatewayTotalTime Alert",
     "metadata": {
-      "Category": "Networking",
       "_deployed_by_amba": "True",
+      "category": "Networking",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.0"
+      "version": "1.4.1"
     },
     "mode": "All",
     "parameters": {

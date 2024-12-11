@@ -4,10 +4,10 @@
     "description": "Policy to audit/deploy FrontDoor Origin Health Percentage Alert",
     "displayName": "Deploy FrontDoor CDN Profile Origin Health Percentage Alert",
     "metadata": {
-      "Category": "Networking",
       "_deployed_by_amba": "True",
+      "category": "Networking",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.1"
+      "version": "1.2.2"
     },
     "mode": "All",
     "parameters": {
