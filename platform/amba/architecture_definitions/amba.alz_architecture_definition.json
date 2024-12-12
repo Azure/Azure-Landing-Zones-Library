@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/architecture_definition.json",
+  "name": "amba",
+  "management_groups": [
+    {
+      "archetypes": [
+        "amba_root"
+      ],
+      "display_name": "AMBA root",
+      "exists": true,
+      "id": "ambaroot",
+      "parent_id": null
+    },
+    {
+      "archetypes": [
+        "amba_platform"
+      ],
+      "display_name": "Platform",
+      "exists": true,
+      "id": "amba-platform",
+      "parent_id": "ambaroot"
+    },
+    {
+      "archetypes": [
+        "amba_landing_zones"
+      ],
+      "display_name": "Landing zones",
+      "exists": true,
+      "id": "amba-landingzones",
+      "parent_id": "ambaroot"
+    },
+    {
+      "archetypes": [
+        "amba_management"
+      ],
+      "display_name": "Management",
+      "exists": true,
+      "id": "amba-management",
+      "parent_id": "amba-platform"
+    },
+    {
+      "archetypes": [
+        "amba_connectivity"
+      ],
+      "display_name": "Connectivity",
+      "exists": true,
+      "id": "amba-connectivity",
+      "parent_id": "amba-platform"
+    },
+    {
+      "archetypes": [
+        "amba_identity"
+      ],
+      "display_name": "Identity",
+      "exists": true,
+      "id": "amba-identity",
+      "parent_id": "amba-platform"
+    }
+  ]
+}

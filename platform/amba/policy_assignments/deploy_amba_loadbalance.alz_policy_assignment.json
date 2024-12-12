@@ -1,0 +1,111 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2020-09-01",
+  "name": "Deploy-AMBA-LoadBalance",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Load Balancing Services such as Load Balancer, Application Gateway, Traffic Manager, and Azure Front Door.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Load Balancing",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-LoadBalancing",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Alerting {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "parameters": {
+      "AGWApplicationGatewayTotalTimePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "AGWBackendLastByteResponseTimePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "AGWCPUUtilPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "AGWCapacityUnitsPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "AGWComputeUnitsPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "AGWFailedRequestsPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "AGWResponseStatusPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "AGWUnhealthyHostCountPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "CDNPOriginHealthPercentagePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "CDNPOriginLatencyPolicyEffect": {
+        "value": "disabled"
+      },
+      "CDNPPercentage4XXPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "CDNPPercentage5XXPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "FDBackendHealthPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "FDBackendRequestLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "LBDatapathAvailabilityPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "LBGlobalBackendAvailabilityPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "LBHealthProbeStatusPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "LBUsedSNATPortsPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "PIPBytesInDDoSPolicyEffect": {
+        "value": "disabled"
+      },
+      "PIPDDoSAttackPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "PIPPacketsInDDoSPolicyEffect": {
+        "value": "disabled"
+      },
+      "PIPVIPAvailabilityPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "TMEndpointHealthPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VNETDDOSAttackPolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
+    "metadata": {
+      "_deployed_by_amba": true
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
+  }
+}
