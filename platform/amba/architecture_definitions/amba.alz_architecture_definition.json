@@ -7,7 +7,7 @@
         "amba_root"
       ],
       "display_name": "AMBA root",
-      "exists": false,
+      "exists": true,
       "id": "ambaroot",
       "parent_id": null
     },
@@ -16,7 +16,7 @@
         "amba_platform"
       ],
       "display_name": "Platform",
-      "exists": false,
+      "exists": true,
       "id": "amba-platform",
       "parent_id": "ambaroot"
     },
@@ -25,7 +25,7 @@
         "amba_landing_zones"
       ],
       "display_name": "Landing zones",
-      "exists": false,
+      "exists": true,
       "id": "amba-landingzones",
       "parent_id": "ambaroot"
     },
@@ -34,7 +34,7 @@
         "amba_management"
       ],
       "display_name": "Management",
-      "exists": false,
+      "exists": true,
       "id": "amba-management",
       "parent_id": "amba-platform"
     },
@@ -43,7 +43,7 @@
         "amba_connectivity"
       ],
       "display_name": "Connectivity",
-      "exists": false,
+      "exists": true,
       "id": "amba-connectivity",
       "parent_id": "amba-platform"
     },
@@ -52,7 +52,7 @@
         "amba_identity"
       ],
       "display_name": "Identity",
-      "exists": false,
+      "exists": true,
       "id": "amba-identity",
       "parent_id": "amba-platform"
     }
