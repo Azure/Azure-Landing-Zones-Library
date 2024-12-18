@@ -2042,7 +2042,7 @@
           "evaluationFrequency": {
             "value": "[parameters('AGWApplicationGatewayTotalTimeEvaluationFrequency')]"
           },
-          "evaluationperiods": {
+          "evaluationPeriods": {
             "value": "[parameters('AGWApplicationGatewayTotalTimeEvaluationPeriods')]"
           },
           "failingPeriods": {
@@ -2078,7 +2078,7 @@
           "evaluationFrequency": {
             "value": "[parameters('AGWBackendLastByteResponseTimeEvaluationFrequency')]"
           },
-          "evaluationperiods": {
+          "evaluationPeriods": {
             "value": "[parameters('AGWBackendLastByteResponseTimeEvaluationPeriods')]"
           },
           "failingPeriods": {
@@ -2195,7 +2195,7 @@
           "evaluationFrequency": {
             "value": "[parameters('AGWFailedRequestsEvaluationFrequency')]"
           },
-          "evaluationperiods": {
+          "evaluationPeriods": {
             "value": "[parameters('AGWFailedRequestsEvaluationPeriods')]"
           },
           "failingPeriods": {
@@ -2231,7 +2231,7 @@
           "evaluationFrequency": {
             "value": "[parameters('AGWResponseStatusEvaluationFrequency')]"
           },
-          "evaluationperiods": {
+          "evaluationPeriods": {
             "value": "[parameters('AGWResponseStatusEvaluationPeriods')]"
           },
           "failingPeriods": {
@@ -2426,7 +2426,7 @@
           "evaluationFrequency": {
             "value": "[parameters('CDNPOriginLatencyEvaluationFrequency')]"
           },
-          "evaluationperiods": {
+          "evaluationPeriods": {
             "value": "[parameters('CDNPOriginLatencyEvaluationPeriods')]"
           },
           "failingPeriods": {
@@ -2459,7 +2459,7 @@
           "evaluationFrequency": {
             "value": "[parameters('CDNPPercentage4XXEvaluationFrequency')]"
           },
-          "evaluationperiods": {
+          "evaluationPeriods": {
             "value": "[parameters('CDNPPercentage4XXEvaluationPeriods')]"
           },
           "failingPeriods": {
@@ -2492,7 +2492,7 @@
           "evaluationFrequency": {
             "value": "[parameters('CDNPPercentage5XXEvaluationFrequency')]"
           },
-          "evaluationperiods": {
+          "evaluationPeriods": {
             "value": "[parameters('CDNPPercentage5XXEvaluationPeriods')]"
           },
           "failingPeriods": {
