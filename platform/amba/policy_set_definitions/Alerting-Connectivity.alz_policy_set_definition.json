@@ -3655,7 +3655,7 @@
           "evaluationFrequency": {
             "value": "[parameters('ERCIRQoSDropBitsinPerSecEvaluationFrequency')]"
           },
-          "evaluationperiods": {
+          "evaluationPeriods": {
             "value": "[parameters('ERCIRQoSDropBitsinPerSecEvaluationPeriods')]"
           },
           "failingPeriods": {
