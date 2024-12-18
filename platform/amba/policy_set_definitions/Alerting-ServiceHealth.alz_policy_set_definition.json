@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.5.1"
+      "version": "1.5.2"
     },
     "parameters": {
       "ALZArmRoleId": {
@@ -290,7 +290,7 @@
             "value": "[parameters('ALZMonitorDisableTagValues')]"
           }
         },
-        "policyDefinitionId": "[concat('/providers/Microsoft.Management/managementGroups/contoso', '/providers/Microsoft.Authorization/policyDefinitions/Deploy_ServiceHealth_ActionGroups')]",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_ServiceHealth_ActionGroups",
         "policyDefinitionReferenceId": "ALZ_ServiceHealth_ActionGroups"
       },
       {
