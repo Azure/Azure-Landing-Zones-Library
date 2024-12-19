@@ -1,0 +1,74 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2020-09-01",
+  "name": "Deploy-AMBA-Identity",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "Initiative to deploy AMBA alerts relevant to the ALZ Identity management group",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Identity",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-Identity",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Alerting {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "parameters": {
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_alz_monitor": true
+        }
+      },
+      "HSMsAvailabilityPolicyEffect": {
+        "value": "disabled"
+      },
+      "HSMsLatencyAvailabilityPolicyEffect": {
+        "value": "disabled"
+      },
+      "KVCapacityPolicyEffect": {
+        "value": "disabled"
+      },
+      "KVRequestPolicyEffect": {
+        "value": "disabled"
+      },
+      "KvAvailabilityPolicyEffect": {
+        "value": "disabled"
+      },
+      "KvLatencyAvailabilityPolicyEffect": {
+        "value": "disabled"
+      },
+      "activityHSMsDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "activityKVDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
+    "metadata": {
+      "_deployed_by_amba": true
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
+  }
+}

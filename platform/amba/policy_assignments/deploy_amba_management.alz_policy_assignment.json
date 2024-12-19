@@ -1,0 +1,83 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2020-09-01",
+  "name": "Deploy-AMBA-Management",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "Initiative to deploy AMBA alerts relevant to the ALZ Management management group",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Management",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-Management",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Alerting {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "parameters": {
+      "AATotalJobAlertPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ALZManagementSubscriptionId": {
+        "value": ""
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_alz_monitor": true
+        }
+      },
+      "ALZUserAssignedManagedIdentityName": {
+        "value": "id-amba-alz-arg-reader-prod-001"
+      },
+      "BYOUserAssignedManagedIdentityResourceId": {
+        "value": ""
+      },
+      "LAWDailyCapLimitPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "RVASRHealthMonitorPolicyEffect": {
+        "value": "modify"
+      },
+      "RVBackupHealthMonitorPolicyEffect": {
+        "value": "modify"
+      },
+      "StorageAccountAvailabilityPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "StorageAccountDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "activityLAWDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "activityLAWKeyRegenPolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
+    "metadata": {
+      "_deployed_by_amba": true
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
+  }
+}

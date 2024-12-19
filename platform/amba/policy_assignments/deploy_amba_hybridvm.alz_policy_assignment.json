@@ -1,0 +1,95 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2020-09-01",
+  "name": "Deploy-AMBA-HybridVM",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Azure Arc-enabled Servers.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Hybrid VMs",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-HybridVM",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Alerting {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "parameters": {
+      "ALZManagementSubscriptionId": {
+        "value": ""
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_alz_monitor": true
+        }
+      },
+      "ALZUserAssignedManagedIdentityName": {
+        "value": "id-amba-alz-arg-reader-prod-001"
+      },
+      "BYOUserAssignedManagedIdentityResourceId": {
+        "value": ""
+      },
+      "HybridVMDataDiskReadLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMDataDiskSpacePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMDataDiskWriteLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMDisconnectedAlertPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMHeartBeatRGPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMNetworkInPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMNetworkOutPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMOSDiskReadLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMOSDiskSpacePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMOSDiskWriteLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMPercentCPUPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "HybridVMPercentMemoryPolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
+    "metadata": {
+      "_deployed_by_amba": true
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
+  }
+}

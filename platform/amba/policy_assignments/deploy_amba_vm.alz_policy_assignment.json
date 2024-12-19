@@ -1,0 +1,92 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2020-09-01",
+  "name": "Deploy-AMBA-VM",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Azure Virtual Machines.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Virtual Machines",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-VM",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Alerting {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "parameters": {
+      "ALZManagementSubscriptionId": {
+        "value": ""
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_alz_monitor": true
+        }
+      },
+      "ALZUserAssignedManagedIdentityName": {
+        "value": "id-amba-alz-arg-reader-prod-001"
+      },
+      "BYOUserAssignedManagedIdentityResourceId": {
+        "value": ""
+      },
+      "VMDataDiskReadLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMDataDiskSpacePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMDataDiskWriteLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMHeartBeatRGPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMNetworkInPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMNetworkOutPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMOSDiskReadLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMOSDiskSpacePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMOSDiskWriteLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMPercentCPUPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMPercentMemoryPolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
+    "metadata": {
+      "_deployed_by_amba": true
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
+  }
+}
