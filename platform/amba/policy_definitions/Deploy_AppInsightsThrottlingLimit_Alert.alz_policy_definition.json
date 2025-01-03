@@ -1,0 +1,482 @@
+{
+  "name": "Deploy_AppInsightsThrottlingLimit_Alert",
+  "properties": {
+    "description": "Policy to audit/deploy Application Insights Throttling Limit Reached Alert",
+    "displayName": "Deploy Application Insights Throttling Limit Reached Alert (Preview)",
+    "metadata": {
+      "_deployed_by_amba": "True",
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Monitoring",
+      "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "MonitorDisableTagName": {
+        "defaultValue": "MonitorDisable",
+        "metadata": {
+          "description": "Tag name used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag name"
+        },
+        "type": "String"
+      },
+      "MonitorDisableTagValues": {
+        "defaultValue": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ],
+        "metadata": {
+          "description": "Tag value(s) used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag values(s)"
+        },
+        "type": "Array"
+      },
+      "UAMIResourceId": {
+        "defaultValue": "",
+        "metadata": {
+          "description": "The resource Id of the user assigned managed identity.",
+          "displayName": "User Assigned managed Identity resource Id."
+        },
+        "type": "string"
+      },
+      "autoMitigate": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Auto Mitigate for the alert",
+          "displayName": "Auto Mitigate"
+        },
+        "type": "String"
+      },
+      "effect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Effect of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "enabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Alert State"
+        },
+        "type": "String"
+      },
+      "evaluationFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT10M",
+          "PT15M",
+          "PT30M",
+          "PT45M",
+          "PT1H",
+          "PT2H",
+          "PT3H",
+          "PT4H",
+          "PT5H",
+          "PT6H",
+          "P1D"
+        ],
+        "defaultValue": "PT1H",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "Evaluation Frequency"
+        },
+        "type": "String"
+      },
+      "evaluationPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "The number of aggregated lookback points.",
+          "displayName": "Evaluation Periods"
+        },
+        "type": "String"
+      },
+      "failingPeriods": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Number of failing periods before alert is fired",
+          "displayName": "Failing Periods"
+        },
+        "type": "String"
+      },
+      "operator": {
+        "allowedValues": [
+          "GreaterThan",
+          "GreaterThanOrEqual"
+        ],
+        "defaultValue": "GreaterThan",
+        "metadata": {
+          "displayName": "Operator"
+        },
+        "type": "String"
+      },
+      "severity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "2",
+        "metadata": {
+          "description": "Severity of the Alert",
+          "displayName": "Severity"
+        },
+        "type": "String"
+      },
+      "threshold": {
+        "defaultValue": "32000",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "Threshold"
+        },
+        "type": "String"
+      },
+      "timeAggregation": {
+        "allowedValues": [
+          "Count"
+        ],
+        "defaultValue": "Count",
+        "metadata": {
+          "displayName": "TimeAggregation"
+        },
+        "type": "String"
+      },
+      "windowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT10M",
+          "PT15M",
+          "PT30M",
+          "PT45M",
+          "PT1H",
+          "PT2H",
+          "PT3H",
+          "PT4H",
+          "PT5H",
+          "PT6H",
+          "P1D"
+        ],
+        "defaultValue": "P1D",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "Window Size"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Insights/components",
+            "field": "type"
+          },
+          {
+            "field": "[concat('tags[', parameters('MonitorDisableTagName'), ']')]",
+            "notIn": "[parameters('MonitorDisableTagValues')]"
+          }
+        ]
+      },
+      "then": {
+        "details": {
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "parameters": {
+                "MonitorDisableTagName": {
+                  "value": "[parameters('MonitorDisableTagName')]"
+                },
+                "MonitorDisableTagValues": {
+                  "value": "[parameters('MonitorDisableTagValues')]"
+                },
+                "UAMIResourceId": {
+                  "value": "[parameters('UAMIResourceId')]"
+                },
+                "autoMitigate": {
+                  "value": "[parameters('autoMitigate')]"
+                },
+                "enabled": {
+                  "value": "[parameters('enabled')]"
+                },
+                "evaluationFrequency": {
+                  "value": "[parameters('evaluationFrequency')]"
+                },
+                "evaluationPeriods": {
+                  "value": "[parameters('evaluationPeriods')]"
+                },
+                "failingPeriods": {
+                  "value": "[parameters('failingPeriods')]"
+                },
+                "operator": {
+                  "value": "[parameters('operator')]"
+                },
+                "resourceId": {
+                  "value": "[field('id')]"
+                },
+                "resourceLocation": {
+                  "value": "[field('location')]"
+                },
+                "resourceName": {
+                  "value": "[field('name')]"
+                },
+                "severity": {
+                  "value": "[parameters('severity')]"
+                },
+                "threshold": {
+                  "value": "[parameters('threshold')]"
+                },
+                "timeAggregation": {
+                  "value": "[parameters('timeAggregation')]"
+                },
+                "windowSize": {
+                  "value": "[parameters('windowSize')]"
+                }
+              },
+              "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "MonitorDisableTagName": {
+                    "type": "String"
+                  },
+                  "MonitorDisableTagValues": {
+                    "type": "Array"
+                  },
+                  "UAMIResourceId": {
+                    "type": "string"
+                  },
+                  "autoMitigate": {
+                    "type": "String"
+                  },
+                  "enabled": {
+                    "type": "String"
+                  },
+                  "evaluationFrequency": {
+                    "type": "String"
+                  },
+                  "evaluationPeriods": {
+                    "type": "String"
+                  },
+                  "failingPeriods": {
+                    "type": "String"
+                  },
+                  "operator": {
+                    "type": "String"
+                  },
+                  "resourceId": {
+                    "metadata": {
+                      "description": "Resource ID of the resource emitting the metric that will be used for the comparison",
+                      "displayName": "resourceId"
+                    },
+                    "type": "String"
+                  },
+                  "resourceLocation": {
+                    "metadata": {
+                      "description": "Location of the resource",
+                      "displayName": "resourceLocation"
+                    },
+                    "type": "String"
+                  },
+                  "resourceName": {
+                    "metadata": {
+                      "description": "Name of the resource",
+                      "displayName": "resourceName"
+                    },
+                    "type": "String"
+                  },
+                  "severity": {
+                    "type": "String"
+                  },
+                  "threshold": {
+                    "type": "String"
+                  },
+                  "timeAggregation": {
+                    "type": "String"
+                  },
+                  "windowSize": {
+                    "type": "String"
+                  }
+                },
+                "resources": [
+                  {
+                    "apiVersion": "2022-08-01-preview",
+                    "identity": {
+                      "type": "UserAssigned",
+                      "userAssignedIdentities": {
+                        "[parameters('UAMIResourceId')]": {}
+                      }
+                    },
+                    "location": "[parameters('resourceLocation')]",
+                    "name": "[concat(parameters('resourceName'), '-ApplicationInsightsThrottlingLimitReachedAlert')]",
+                    "properties": {
+                      "autoMitigate": "[parameters('autoMitigate')]",
+                      "criteria": {
+                        "allOf": [
+                          {
+                            "dimensions": [
+                              {
+                                "name": "name",
+                                "operator": "Include",
+                                "values": [
+                                  "*"
+                                ]
+                              }
+                            ],
+                            "failingPeriods": {
+                              "minFailingPeriodsToAlert": "[parameters('failingPeriods')]",
+                              "numberOfEvaluationPeriods": "[parameters('evaluationPeriods')]"
+                            },
+                            "operator": "[parameters('operator')]",
+                            "query": "[format('let policyThresholdString = \"{2}\"; let overridenResource = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | project _ResourceId = tolower(id), tags | where tags contains \"_amba-Throttling-threshold-override_\"); let excludedResources = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | where parse_json(tostring(tags.[\"{0}\"])) in~ (\"{1}\") | project _ResourceId = tolower(id)); let appInsightsResources = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | project _ResourceId = tolower(id), name); AppSystemEvents | where _ResourceId =~ \"{3}\" | where _ResourceId !in~ (excludedResources) | summarize numOfEvents = sum(toint(Measurements[\"BillingTelemetryCount\"])) by _ResourceId, Type, bin(TimeGenerated, 1h) | join hint.remote=left kind=leftouter overridenResource on _ResourceId | project-away _ResourceId1 | extend appliedThresholdString = iif(tags contains \"_amba-Throttling-threshold-override_\", tags.[\"_amba-Throttling-threshold-override_\"], policyThresholdString) | extend appliedThreshold = toint(appliedThresholdString) | where numOfEvents \u003e appliedThreshold | join hint.remote=left kind=inner appInsightsResources on _ResourceId | project TimeGenerated, _ResourceId, name, numOfEvents', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), parameters('threshold'), parameters('resourceId'))]",
+                            "resourceIdColumn": "_ResourceId",
+                            "threshold": 0,
+                            "timeAggregation": "[parameters('timeAggregation')]"
+                          }
+                        ]
+                      },
+                      "description": "Log Alert for Application Insights Throttling Limit Reached",
+                      "displayName": "[concat(parameters('resourceName'), '-Application Insights Throttling Limit Reached (Preview)')]",
+                      "enabled": "[parameters('enabled')]",
+                      "evaluationFrequency": "[parameters('evaluationFrequency')]",
+                      "parameters": {
+                        "MonitorDisableTagName": {
+                          "value": "[parameters('MonitorDisableTagName')]"
+                        },
+                        "MonitorDisableTagValues": {
+                          "value": "[parameters('MonitorDisableTagValues')]"
+                        },
+                        "UAMIResourceId": {
+                          "value": "[parameters('UAMIResourceId')]"
+                        },
+                        "autoMitigate": {
+                          "value": "[parameters('autoMitigate')]"
+                        },
+                        "enabled": {
+                          "value": "[parameters('enabled')]"
+                        },
+                        "evaluationFrequency": {
+                          "value": "[parameters('evaluationFrequency')]"
+                        },
+                        "evaluationPeriods": {
+                          "value": "[parameters('evaluationPeriods')]"
+                        },
+                        "failingPeriods": {
+                          "value": "[parameters('failingPeriods')]"
+                        },
+                        "operator": {
+                          "value": "[parameters('operator')]"
+                        },
+                        "severity": {
+                          "value": "[parameters('severity')]"
+                        },
+                        "threshold": {
+                          "value": "[parameters('threshold')]"
+                        },
+                        "timeAggregation": {
+                          "value": "[parameters('timeAggregation')]"
+                        },
+                        "windowSize": {
+                          "value": "[parameters('windowSize')]"
+                        }
+                      },
+                      "scopes": [
+                        "[reference(parameters('resourceId'),'2020-02-02').WorkspaceResourceId]"
+                      ],
+                      "severity": "[parameters('severity')]",
+                      "windowSize": "[parameters('windowSize')]"
+                    },
+                    "tags": {
+                      "_deployed_by_amba": true
+                    },
+                    "type": "Microsoft.Insights/scheduledQueryRules"
+                  }
+                ],
+                "variables": {}
+              }
+            }
+          },
+          "existenceCondition": {
+            "allOf": [
+              {
+                "equals": "[parameters('enabled')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/enabled"
+              },
+              {
+                "equals": "[parameters('evaluationFrequency')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/evaluationFrequency"
+              },
+              {
+                "equals": "[parameters('windowSize')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/windowSize"
+              },
+              {
+                "equals": "[parameters('severity')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/severity"
+              },
+              {
+                "equals": "[parameters('autoMitigate')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/autoMitigate"
+              },
+              {
+                "equals": 0,
+                "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].threshold"
+              },
+              {
+                "equals": "[parameters('operator')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].operator"
+              },
+              {
+                "equals": "[parameters('timeAggregation')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].timeAggregation"
+              },
+              {
+                "equals": "[parameters('evaluationPeriods')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].failingPeriods.numberOfEvaluationPeriods"
+              },
+              {
+                "equals": "[parameters('failingPeriods')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].failingPeriods.minFailingPeriodsToAlert"
+              },
+              {
+                "equals": "[format('let policyThresholdString = \"{2}\"; let overridenResource = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | project _ResourceId = tolower(id), tags | where tags contains \"_amba-Throttling-threshold-override_\"); let excludedResources = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | where parse_json(tostring(tags.[\"{0}\"])) in~ (\"{1}\") | project _ResourceId = tolower(id)); let appInsightsResources = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | project _ResourceId = tolower(id), name); AppSystemEvents | where _ResourceId =~ \"{3}\" | where _ResourceId !in~ (excludedResources) | summarize numOfEvents = sum(toint(Measurements[\"BillingTelemetryCount\"])) by _ResourceId, Type, bin(TimeGenerated, 1h) | join hint.remote=left kind=leftouter overridenResource on _ResourceId | project-away _ResourceId1 | extend appliedThresholdString = iif(tags contains \"_amba-Throttling-threshold-override_\", tags.[\"_amba-Throttling-threshold-override_\"], policyThresholdString) | extend appliedThreshold = toint(appliedThresholdString) | where numOfEvents \u003e appliedThreshold | join hint.remote=left kind=inner appInsightsResources on _ResourceId | project TimeGenerated, _ResourceId, name, numOfEvents', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), parameters('threshold'), field('id'))]",
+                "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].query"
+              },
+              {
+                "containsKey": "[parameters('UAMIResourceId')]",
+                "field": "identity.userAssignedIdentities"
+              }
+            ]
+          },
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/b24988ac-6180-42a0-ab88-20f7382dd24c"
+          ],
+          "type": "Microsoft.Insights/scheduledQueryRules"
+        },
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}
