@@ -26,7 +26,7 @@ The following architectures are available in this library, please note that the 
   
 ```mermaid
 flowchart TD
-  alzroot["ALZ root
+  alzroot["Azure Landing Zones
 (root)"]
   alzroot --> decommissioned
   decommissioned["Decommissioned
