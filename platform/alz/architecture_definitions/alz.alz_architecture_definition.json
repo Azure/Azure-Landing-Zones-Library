@@ -6,7 +6,7 @@
       "archetypes": [
         "root"
       ],
-      "display_name": "ALZ root",
+      "display_name": "Azure Landing Zones",
       "exists": false,
       "id": "alzroot",
       "parent_id": null
