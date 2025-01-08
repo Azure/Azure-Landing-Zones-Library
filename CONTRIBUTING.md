@@ -26,3 +26,9 @@ Run the following command to build the docs:
 ```bash
 make docs
 ```
+
+To just build the docs for one library, run:
+
+```bash
+make docs LIB=alz
+```
