@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 lib=$1
 
-echo "==> checking docs with alzlibtool $lib..."
+echo "==> checking library with alzlibtool $lib..."
 libraries=$(ls ./platform)
 for library in $libraries; do
     if [ ! -z "$lib" ] && [ "$lib" != "$library" ]; then
