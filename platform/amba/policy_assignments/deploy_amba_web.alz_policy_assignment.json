@@ -18,6 +18,9 @@
       }
     ],
     "parameters": {
+      "ALZManagementSubscriptionId": {
+        "value": ""
+      },
       "ALZMonitorDisableTagName": {
         "value": "MonitorDisable"
       },
@@ -29,6 +32,26 @@
           "Sandbox"
         ]
       },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_alz_monitor": true
+        }
+      },
+      "ALZUserAssignedManagedIdentityName": {
+        "value": "id-amba-alz-arg-reader-prod-001"
+      },
+      "AppInsightsThrottlingLimitPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "BYOUserAssignedManagedIdentityResourceId": {
+        "value": ""
+      },
       "WSFCPUPercentagePolicyEffect": {
         "value": "deployIfNotExists"
       },
@@ -39,6 +62,9 @@
         "value": "deployIfNotExists"
       },
       "WSFMemoryPercentagePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "activityAppInsightsDeletePolicyEffect": {
         "value": "deployIfNotExists"
       }
     },
