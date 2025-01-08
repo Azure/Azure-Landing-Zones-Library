@@ -1,4 +1,4 @@
-ALZ_LIB_TOOL_VERSION := "0.24.0"
+ALZ_LIB_TOOL_VERSION := v0.24.0
 
 .PHONY: server tools docs docs-check lib-check
 server:
@@ -7,7 +7,7 @@ server:
 
 tools:
 	@echo "==> installing required tooling..."
-	curl -L https://github.com/Azure/alzlib/releases/download/$(ALZ_LIB_TOOL_VERSION)/alzlibtool_linux_amd64.tar.gz | tar -xvz
+	curl -L https://github.com/Azure/alzlib/releases/download/$(ALZ_LIB_TOOL_VERSION)/alzlibtool_linux_amd64.tar.gz | tar -xvz alzlibtool
 
 
 docs:
