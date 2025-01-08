@@ -7,7 +7,7 @@ for library in $libraries; do
     if [ ! -z "$lib" ] && [ "$lib" != "$library" ]; then
         continue
     fi
-    
+
     echo "==> checking docs for $library..."
     dir="./platform/$library"
     cd $dir
@@ -18,6 +18,6 @@ for library in $libraries; do
         cd ../..
 		exit 1
 	fi
-	rm -f "$dir/README-generated.md"
+
     cd ../..
 done
