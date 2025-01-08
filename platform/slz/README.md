@@ -492,46 +492,64 @@ The following policy default values are available in this library:
   
 ### default name `allowedLocationsForConfidentialComputing`
   
-|       ASSIGNMENT       |    PARAMETER NAMES     |
-|------------------------|------------------------|
-| Enforce-Sovereign-Conf | listOfAllowedLocations |
+#### assignment `Enforce-Sovereign-Conf`
+  
+<details><summary>1 parameter names</summary>
 
+- listOfAllowedLocations
+</details>
   
 ### default name `ddos_protection_plan_effect`
   
-|    ASSIGNMENT    | PARAMETER NAMES |
-|------------------|-----------------|
-| Enable-DDoS-VNET | effect          |
+#### assignment `Enable-DDoS-VNET`
+  
+<details><summary>1 parameter names</summary>
 
+- effect
+</details>
   
 ### default name `ddos_protection_plan_id`
   
-|    ASSIGNMENT    | PARAMETER NAMES |
-|------------------|-----------------|
-| Enable-DDoS-VNET | ddosPlan        |
+#### assignment `Enable-DDoS-VNET`
+  
+<details><summary>1 parameter names</summary>
 
+- ddosPlan
+</details>
   
 ### default name `emailSecurityContact`
   
-|       ASSIGNMENT        |   PARAMETER NAMES    |
-|-------------------------|----------------------|
-| Deploy-MDFC-Config-H224 | emailSecurityContact |
+#### assignment `Deploy-MDFC-Config-H224`
+  
+<details><summary>1 parameter names</summary>
 
+- emailSecurityContact
+</details>
   
 ### default name `listOfAllowedLocations`
   
-|        ASSIGNMENT        |    PARAMETER NAMES     |
-|--------------------------|------------------------|
-| Enforce-Sovereign-Global | listOfAllowedLocations |
+#### assignment `Enforce-Sovereign-Global`
+  
+<details><summary>1 parameter names</summary>
 
+- listOfAllowedLocations
+</details>
   
 ### default name `policyEffect`
   
-|        ASSIGNMENT        | PARAMETER NAMES |
-|--------------------------|-----------------|
-| Enforce-Sovereign-Conf   | effect          |
-| Enforce-Sovereign-Global | effect          |
+#### assignment `Enforce-Sovereign-Conf`
+  
+<details><summary>1 parameter names</summary>
 
+- effect
+</details>
+  
+#### assignment `Enforce-Sovereign-Global`
+  
+<details><summary>1 parameter names</summary>
+
+- effect
+</details>
   
 ---
 ## Contents
