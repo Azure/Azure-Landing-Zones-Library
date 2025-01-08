@@ -26,12 +26,12 @@ The following architectures are available in this library, please note that the 
   
 ```mermaid
 flowchart TD
-  alzroot["Azure Landing Zones
+  alz["Azure Landing Zones
 (root)"]
-  alzroot --> decommissioned
+  alz --> decommissioned
   decommissioned["Decommissioned
 (decommissioned)"]
-  alzroot --> landingzones
+  alz --> landingzones
   landingzones["Landing zones
 (landing_zones)"]
   landingzones --> corp
@@ -40,7 +40,7 @@ flowchart TD
   landingzones --> online
   online["Online
 (online)"]
-  alzroot --> platform
+  alz --> platform
   platform["Platform
 (platform)"]
   platform --> connectivity
@@ -52,7 +52,7 @@ flowchart TD
   platform --> management
   management["Management
 (management)"]
-  alzroot --> sandboxes
+  alz --> sandboxes
   sandboxes["Sandboxes
 (sandboxes)"]
 

@@ -1,4 +1,4 @@
-.PHONY: server tools docs
+.PHONY: server tools docs docs-check lib-check
 server:
 	@echo "Starting Hugo docs server..."
 	cd docs && hugo server && cd ..
