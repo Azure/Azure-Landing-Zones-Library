@@ -13,48 +13,16 @@ on:
   workflow_dispatch:
 
 jobs:
-  libschanged:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-        with:
-          fetch-depth: 0
-
-      - name: Get list of changed libs
-        id: libs
-        run: |
-          DIFF="$(git diff --name-only origin/${{ github.base_ref }} | xargs dirname | sort | uniq)"
-          LIBDIFF="$(echo "${DIFF}" | grep '^platform/' || true)"
-          if [ -z "${LIBDIFF}" ]; then
-            echo "No libraries changed"
-            echo "list=[]" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          LIBS=$(echo "${LIBDIFF}" | cut -d'/' -f2 | sort | uniq)
-          JSONARRAY=$(echo "${LIBS}" | jq -R -s -c 'split("\n")'[:-1])
-          echo "list=${JSONARRAY}" >> "$GITHUB_OUTPUT"
-        shell: bash
-
-    outputs:
-      list: ${{ steps.libs.outputs.list }}
-
   checklib:
-    needs: libschanged
-    if: ${{ needs.libschanged.outputs.list != '[]' }}
     runs-on: ubuntu-latest
     environment: test
-    strategy:
-      matrix:
-        lib: ${{ fromJson(needs.libschanged.outputs.list) }}
     steps:
-      - name: Install alzlibtool
-        run: |
-          curl -L https://github.com/Azure/alzlib/releases/download/${{ vars.ALZLIBTOOL_VERSION }}/alzlibtool_linux_amd64.tar.gz | tar -xvz
-          sudo cp alzlibtool /usr/local/bin
-
       - name: Checkout code
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+
+      - name: Install alzlibtool
+        run: |
+          make tools
 
       - name: Azure login
         uses: azure/login@6c251865b4e6290e7b78be643ea2d005bc51f69a # v2.1.1
@@ -65,23 +33,10 @@ jobs:
 
       - name: Check README
         run: |
-          alzlibtool document library . > README.md
-          if [ -z "$(git status -suno)" ]; then
-            echo "README.md is up to date"
-          else
-            echo "README.md is out of date, generate using 'alzlibtool document library . >README.md'"
-            git --no-pager diff
-            exit 1
-          fi
+          make docs-check
         shell: bash
-        working-directory: platform/${{ matrix.lib }}
-        env:
-          LIBRARY_PATH: platform/${{ matrix.lib }}
 
       - name: Check lib
         run: |
-          alzlibtool check library .
+          make lib-check
         shell: bash
-        working-directory: platform/${{ matrix.lib }}
-        env:
-          LIBRARY_PATH: platform/${{ matrix.lib }}
