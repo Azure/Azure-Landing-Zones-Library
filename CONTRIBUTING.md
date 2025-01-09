@@ -21,14 +21,14 @@ Run the following command to install the tools required to build the project:
 make tools
 ```
 
-Run the following command to build the docs:
+Run the following command to build the docs for a specific library:
 
 ```bash
-make docs
+make docs LIB=platform/<library>
 ```
 
-To just build the docs for one library, run:
+Where `<library>` is the name of the library you want to build the docs for. For example, to build the docs for the `alz` library, run the following command:
 
-```bash
-make docs LIB=alz
+ ```bash
+make docs LIB=platform/alz
 ```
