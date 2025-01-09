@@ -18,7 +18,7 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 Run the following command to install the tools required to build the project:
 
 ```bash
-sudo make tools
+make tools
 ```
 
 Run the following command to build the docs for a specific library:
