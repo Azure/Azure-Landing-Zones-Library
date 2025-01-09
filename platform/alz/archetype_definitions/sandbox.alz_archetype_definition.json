@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/archetype_definition.json",
-  "name": "sandboxes",
+  "name": "sandbox",
   "policy_assignments": [
     "Enforce-ALZ-Sandbox"
   ],

@@ -49,11 +49,11 @@
     },
     {
       "archetypes": [
-        "sandboxes"
+        "sandbox"
       ],
-      "display_name": "Sandboxes",
+      "display_name": "Sandbox",
       "exists": false,
-      "id": "sandboxes",
+      "id": "sandbox",
       "parent_id": "alz"
     },
     {

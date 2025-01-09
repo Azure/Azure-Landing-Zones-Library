@@ -64,11 +64,11 @@ jobs:
 
       - name: Check README
         run: |
-          make docs-check LIB=${{ matrix.lib }}
+          make docs-check LIB="platform/${{ matrix.lib }}"
         shell: bash
 
 
       - name: Check lib
         run: |
-          make lib-check LIB=${{ matrix.lib }}
+          make lib-check LIB="platform/${{ matrix.lib }}"
         shell: bash

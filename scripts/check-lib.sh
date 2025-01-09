@@ -1,16 +1,23 @@
 #!/usr/bin/env bash
-lib=$1
 
-echo "==> checking library with alzlibtool $lib..."
-libraries=$(ls ./platform)
-for library in $libraries; do
-    if [ ! -z "$lib" ] && [ "$lib" != "$library" ]; then
-        continue
-    fi
+set -eo pipefail
 
-    echo "==> checking $library..."
-    dir="./platform/$library"
-    cd $dir
-    ../../alzlibtool check library .
-    cd ../..
-done
+# The first argument passed to the script, representing the library directory
+LIB="$1"
+
+echo "==> building docs with alzlibtool \"$LIB\"..."
+# Check if alzlibtool is installed
+if ! command -v alzlibtool &> /dev/null; then
+    echo "alzlibtool could not be found. Please install it and ensure it is in your PATH."
+    exit 1
+fi
+
+echo "==> checking library with alzlibtool \"$LIB\"..."
+# does the $LIB directory exist?
+if [ ! -d "$LIB" ]; then
+    echo "==> \"$LIB\" does not exist. Exiting..."
+    exit 1
+fi
+
+# check library
+alzlibtool check library "$LIB"

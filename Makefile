@@ -7,8 +7,7 @@ server:
 
 tools:
 	@echo "==> installing required tooling..."
-	curl -L https://github.com/Azure/alzlib/releases/download/$(ALZ_LIB_TOOL_VERSION)/alzlibtool_linux_amd64.tar.gz | tar -xvz alzlibtool
-
+	curl -L https://github.com/Azure/alzlib/releases/download/$(ALZ_LIB_TOOL_VERSION)/alzlibtool_linux_amd64.tar.gz | sudo tar -C /usr/local/bin -xvz alzlibtool
 
 docs:
 	@echo "==> building docs $(LIB)..."
