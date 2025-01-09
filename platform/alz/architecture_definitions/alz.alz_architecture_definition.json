@@ -8,7 +8,7 @@
       ],
       "display_name": "Azure Landing Zones",
       "exists": false,
-      "id": "alzroot",
+      "id": "alz",
       "parent_id": null
     },
     {
@@ -18,7 +18,7 @@
       "display_name": "Platform",
       "exists": false,
       "id": "platform",
-      "parent_id": "alzroot"
+      "parent_id": "alz"
     },
     {
       "archetypes": [
@@ -27,7 +27,7 @@
       "display_name": "Landing zones",
       "exists": false,
       "id": "landingzones",
-      "parent_id": "alzroot"
+      "parent_id": "alz"
     },
     {
       "archetypes": [
@@ -49,12 +49,12 @@
     },
     {
       "archetypes": [
-        "sandboxes"
+        "sandbox"
       ],
-      "display_name": "Sandboxes",
+      "display_name": "Sandbox",
       "exists": false,
-      "id": "sandboxes",
-      "parent_id": "alzroot"
+      "id": "sandbox",
+      "parent_id": "alz"
     },
     {
       "archetypes": [
@@ -90,7 +90,7 @@
       "display_name": "Decommissioned",
       "exists": false,
       "id": "decommissioned",
-      "parent_id": "alzroot"
+      "parent_id": "alz"
     }
   ]
 }

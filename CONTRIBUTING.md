@@ -12,3 +12,23 @@ instructions provided by the bot. You will only need to do this once across all 
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/)
 or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
+
+# Setup and build
+
+Run the following command to install the tools required to build the project:
+
+```bash
+make tools
+```
+
+Run the following command to build the docs:
+
+```bash
+make docs
+```
+
+To just build the docs for one library, run:
+
+```bash
+make docs LIB=alz
+```

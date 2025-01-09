@@ -73,7 +73,7 @@ $managementGroupMapping = @{
   "corp"           = "corp"
   "landingzones"   = "landing_zones"
   "decommissioned" = "decommissioned"
-  "sandboxes"      = "sandboxes"
+  "sandboxes"      = "sandbox"
   "identity"       = "identity"
   "platform"       = "platform"
 }
