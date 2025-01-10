@@ -10,10 +10,24 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.0"
+      "version": "1.5.0"
     },
     "mode": "All",
     "parameters": {
+      "ALZAlertSeverity": {
+        "defaultValue": [
+          "Sev0",
+          "Sev1",
+          "Sev2",
+          "Sev3",
+          "Sev4"
+        ],
+        "metadata": {
+          "description": "Severity of the alerts to apply action groups. Will apply to all severities if not specified.",
+          "displayName": "Alert Severities for Alert Processing Rule"
+        },
+        "type": "Array"
+      },
       "ALZArmRoleId": {
         "defaultValue": [],
         "metadata": {
@@ -96,6 +110,14 @@
         },
         "type": "Object"
       },
+      "ALZNotificationAssetSuffix": {
+        "defaultValue": "-001",
+        "metadata": {
+          "description": "Suffix for Alert Processing Rule and Action Group names",
+          "displayName": "Notification Asset Name Suffix"
+        },
+        "type": "String"
+      },
       "ALZWebhookServiceUri": {
         "defaultValue": [],
         "metadata": {
@@ -166,6 +188,9 @@
             "properties": {
               "mode": "incremental",
               "parameters": {
+                "ALZAlertSeverity": {
+                  "value": "[parameters('ALZAlertSeverity')]"
+                },
                 "ALZArmRoleId": {
                   "value": "[parameters('ALZArmRoleId')]"
                 },
@@ -196,6 +221,9 @@
                 "ALZMonitorResourceGroupTags": {
                   "value": "[parameters('ALZMonitorResourceGroupTags')]"
                 },
+                "ALZNotificationAssetSuffix": {
+                  "value": "[parameters('ALZNotificationAssetSuffix')]"
+                },
                 "ALZWebhookServiceUri": {
                   "value": "[parameters('ALZWebhookServiceUri')]"
                 },
@@ -210,6 +238,9 @@
                 "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
                 "contentVersion": "1.0.0.0",
                 "parameters": {
+                  "ALZAlertSeverity": {
+                    "type": "Array"
+                  },
                   "ALZArmRoleId": {
                     "type": "array"
                   },
@@ -240,6 +271,9 @@
                   "ALZMonitorResourceGroupTags": {
                     "type": "object"
                   },
+                  "ALZNotificationAssetSuffix": {
+                    "type": "string"
+                  },
                   "ALZWebhookServiceUri": {
                     "type": "Array"
                   },
@@ -267,6 +301,9 @@
                     "properties": {
                       "mode": "Incremental",
                       "parameters": {
+                        "ALZAlertSeverity": {
+                          "value": "[parameters('ALZAlertSeverity')]"
+                        },
                         "ALZArmRoleId": {
                           "value": "[parameters('ALZArmRoleId')]"
                         },
@@ -291,6 +328,9 @@
                         "ALZMonitorResourceGroupName": {
                           "value": "[parameters('ALZMonitorResourceGroupName')]"
                         },
+                        "ALZNotificationAssetSuffix": {
+                          "value": "[parameters('ALZNotificationAssetSuffix')]"
+                        },
                         "ALZWebhookServiceUri": {
                           "value": "[parameters('ALZWebhookServiceUri')]"
                         },
@@ -305,6 +345,9 @@
                         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
                         "contentVersion": "1.0.0.0",
                         "parameters": {
+                          "ALZAlertSeverity": {
+                            "type": "Array"
+                          },
                           "ALZArmRoleId": {
                             "type": "array"
                           },
@@ -329,6 +372,9 @@
                           "ALZMonitorResourceGroupName": {
                             "type": "string"
                           },
+                          "ALZNotificationAssetSuffix": {
+                            "type": "string"
+                          },
                           "ALZWebhookServiceUri": {
                             "type": "Array"
                           },
@@ -344,7 +390,7 @@
                             "apiVersion": "2023-01-01",
                             "condition": "[and(empty(parameters('BYOActionGroup')), empty(parameters('BYOAlertProcessingRule')))]",
                             "location": "Global",
-                            "name": "[concat('ag-AMBA-', subscription().displayName, '-001')]",
+                            "name": "[concat('ag-AMBA-', subscription().displayName, parameters('ALZNotificationAssetSuffix'))]",
                             "properties": {
                               "armRoleReceivers": "[if(empty(parameters('ALZArmRoleId')), null(), variables('varArmRoleReceivers'))]",
                               "azureFunctionReceivers": "[if(empty(parameters('ALZFunctionResourceId')), null(), variables('varAzureFunctionReceivers'))]",
@@ -364,18 +410,25 @@
                             "apiVersion": "2021-08-08",
                             "condition": "[empty(parameters('BYOAlertProcessingRule'))]",
                             "dependsOn": [
-                              "[concat('ag-AMBA-', subscription().displayName, '-001')]"
+                              "[concat('ag-AMBA-', subscription().displayName, parameters('ALZNotificationAssetSuffix'))]"
                             ],
                             "location": "Global",
-                            "name": "[concat('apr-AMBA-',subscription().displayName, '-001')]",
+                            "name": "[concat('apr-AMBA-',subscription().displayName, parameters('ALZNotificationAssetSuffix'))]",
                             "properties": {
                               "actions": [
                                 {
                                   "actionType": "AddActionGroups",
-                                  "actiongroupIds": "[if(empty(parameters('BYOActionGroup')), array(concat(subscription().Id, '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/microsoft.insights/actionGroups/', 'ag-AMBA-', subscription().displayName, '-001')), variables('varAGIds'))]"
+                                  "actiongroupIds": "[if(empty(parameters('BYOActionGroup')), array(concat(subscription().Id, '/resourceGroups/', parameters('ALZMonitorResourceGroupName'), '/providers/microsoft.insights/actionGroups/', 'ag-AMBA-', subscription().displayName, parameters('ALZNotificationAssetSuffix'))), variables('varAGIds'))]"
                                 }
                               ],
-                              "description": "AMBA Notification Assets - Alert Processing Rule for Subscription",
+                              "conditions": [
+                                {
+                                  "field": "severity",
+                                  "operator": "Equals",
+                                  "values": "[parameters('ALZAlertSeverity')]"
+                                }
+                              ],
+                              "description": "[concat('AMBA Notification Assets - Alert Processing Rule for Subscription', parameters('ALZNotificationAssetSuffix'))]",
                               "enabled": true,
                               "scopes": [
                                 "[subscription().Id]"
@@ -401,7 +454,7 @@
                       "input": {
                         "emailAddress": "[trim(parameters('ALZMonitorActionGroupEmail')[copyIndex('varEmailReceivers')])]",
                         "name": "[concat('AlzMail-', indexOf(parameters('ALZMonitorActionGroupEmail'), parameters('ALZMonitorActionGroupEmail')[copyIndex('varEmailReceivers')]))]",
-                        "useCommonAlertSchema": true
+                        "useCommonAlertSchema": false
                       },
                       "mode": "serial",
                       "name": "varEmailReceivers"
@@ -476,7 +529,7 @@
           "existenceCondition": {
             "allOf": [
               {
-                "equals": "AMBA Notification Assets - Alert Processing Rule for Subscription",
+                "equals": "[concat('AMBA Notification Assets - Alert Processing Rule for Subscription', parameters('ALZNotificationAssetSuffix'))]",
                 "field": "Microsoft.AlertsManagement/actionRules/description"
               }
             ]
