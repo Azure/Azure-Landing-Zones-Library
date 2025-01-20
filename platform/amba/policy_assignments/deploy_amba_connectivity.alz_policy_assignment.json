@@ -184,6 +184,12 @@
       "activityNSGDeletePolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "activityUDRDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "activityUDRRoutesDeletePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
       "activityUDRUpdatePolicyEffect": {
         "value": "deployIfNotExists"
       },
