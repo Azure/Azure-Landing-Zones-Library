@@ -1,8 +1,8 @@
 {
   "name": "Deploy_VM_dataDiskReadLatency_Alert",
   "properties": {
-    "description": "Policy to audit/deploy VM dataDiskReadLatency Alert",
-    "displayName": "Deploy VM Data Disk Read Latency Alert",
+    "description": "Policy to audit/deploy Azure VM dataDiskReadLatency Alert",
+    "displayName": "Deploy Azure VM Data Disk Read Latency Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Compute",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.5.0"
+      "version": "1.6.0"
     },
     "mode": "All",
     "parameters": {
@@ -448,7 +448,7 @@
                                       "numberOfEvaluationPeriods": "[parameters('evaluationPeriods')]"
                                     },
                                     "operator": "[parameters('operator')]",
-                                    "query": "[format('let policyThresholdString = \"{2}\"; let excludedResources = (arg(\"\").resources | where type =~ \"Microsoft.Compute/virtualMachines\" | project _ResourceId = id, tags | where parse_json(tostring(tags.[\"{0}\"])) in~ (\"{1}\")); let excludedVMSSNodes = (arg(\"\").resources | where type =~ \"Microsoft.Compute/virtualMachines\" | extend isVMSS = isnotempty(properties.virtualMachineScaleSet) | where isVMSS | project id, name); let overridenResource = (arg(\"\").resources | where type =~ \"Microsoft.Compute/virtualMachines\" | project _ResourceId = tolower(id), tags | where tags contains \"_amba-ReadLatencyMs-Data-threshold-Override_\"); InsightsMetrics | where _ResourceId has \"Microsoft.Compute/virtualMachines\" | where _ResourceId !in~ (excludedResources) | where _ResourceId !in~ (excludedVMSSNodes) | where Origin == \"vm.azm.ms\" | where Namespace == \"LogicalDisk\" and Name == \"ReadLatencyMs\" | extend Disk=tostring(todynamic(Tags)[\"vm.azm.ms/mountId\"]) | where Disk !in (\"C:\", \"/\") | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk | join hint.remote=left kind=leftouter overridenResource on _ResourceId | project-away _ResourceId1 | extend appliedThresholdString = iif(tags contains \"_amba-ReadLatencyMs-Data-threshold-Override_\", tostring(tags.[\"_amba-ReadLatencyMs-Data-threshold-Override_\"]), policyThresholdString) | extend appliedThreshold = toint(appliedThresholdString) | where AggregatedValue \u003e appliedThreshold | project TimeGenerated, Computer, _ResourceId, Disk, AggregatedValue', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), parameters('threshold'))]",
+                                    "query": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.Compute/virtualMachines\" | where isempty(properties.virtualMachineScaleSet) | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags); InsightsMetrics | where _ResourceId has \"Microsoft.Compute/virtualMachines\" | where Origin == \"vm.azm.ms\" | where Namespace == \"LogicalDisk\" and Name == \"ReadLatencyMs\" | extend Disk=tostring(todynamic(Tags)[\"vm.azm.ms/mountId\"]) | where Disk !in (\"C:\", \"/\") | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk | join hint.remote=left kind=inner (resourceTagging ) on _ResourceId | project-away _ResourceId1 | extend newThresholdString = tostring(resourceTags.[\"{3}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where AggregatedValue \u003e appliedThreshold | project TimeGenerated, Computer, _ResourceId, Disk, AggregatedValue, appliedThreshold', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), '_amba-ReadLatencyMs-Data-threshold-Override_')]",
                                     "resourceIdColumn": "_ResourceId",
                                     "threshold": 0,
                                     "timeAggregation": "[parameters('timeAggregation')]"
@@ -587,7 +587,7 @@
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].failingPeriods.minFailingPeriodsToAlert"
               },
               {
-                "equals": "[format('let policyThresholdString = \"{2}\"; let excludedResources = (arg(\"\").resources | where type =~ \"Microsoft.Compute/virtualMachines\" | project _ResourceId = id, tags | where parse_json(tostring(tags.[\"{0}\"])) in~ (\"{1}\")); let excludedVMSSNodes = (arg(\"\").resources | where type =~ \"Microsoft.Compute/virtualMachines\" | extend isVMSS = isnotempty(properties.virtualMachineScaleSet) | where isVMSS | project id, name); let overridenResource = (arg(\"\").resources | where type =~ \"Microsoft.Compute/virtualMachines\" | project _ResourceId = tolower(id), tags | where tags contains \"_amba-ReadLatencyMs-Data-threshold-Override_\"); InsightsMetrics | where _ResourceId has \"Microsoft.Compute/virtualMachines\" | where _ResourceId !in~ (excludedResources) | where _ResourceId !in~ (excludedVMSSNodes) | where Origin == \"vm.azm.ms\" | where Namespace == \"LogicalDisk\" and Name == \"ReadLatencyMs\" | extend Disk=tostring(todynamic(Tags)[\"vm.azm.ms/mountId\"]) | where Disk !in (\"C:\", \"/\") | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk | join hint.remote=left kind=leftouter overridenResource on _ResourceId | project-away _ResourceId1 | extend appliedThresholdString = iif(tags contains \"_amba-ReadLatencyMs-Data-threshold-Override_\", tostring(tags.[\"_amba-ReadLatencyMs-Data-threshold-Override_\"]), policyThresholdString) | extend appliedThreshold = toint(appliedThresholdString) | where AggregatedValue \u003e appliedThreshold | project TimeGenerated, Computer, _ResourceId, Disk, AggregatedValue', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), parameters('threshold'))]",
+                "equals": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.Compute/virtualMachines\" | where isempty(properties.virtualMachineScaleSet) | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags); InsightsMetrics | where _ResourceId has \"Microsoft.Compute/virtualMachines\" | where Origin == \"vm.azm.ms\" | where Namespace == \"LogicalDisk\" and Name == \"ReadLatencyMs\" | extend Disk=tostring(todynamic(Tags)[\"vm.azm.ms/mountId\"]) | where Disk !in (\"C:\", \"/\") | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk | join hint.remote=left kind=inner (resourceTagging ) on _ResourceId | project-away _ResourceId1 | extend newThresholdString = tostring(resourceTags.[\"{3}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where AggregatedValue \u003e appliedThreshold | project TimeGenerated, Computer, _ResourceId, Disk, AggregatedValue, appliedThreshold', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), '_amba-ReadLatencyMs-Data-threshold-Override_')]",
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].query"
               },
               {
