@@ -133,7 +133,7 @@ flowchart TD
 - Enforce-ASR
 - Enforce-GR-KeyVault
 - Enforce-Subnet-Private
-- Enforce-TLS-SSL-H224
+- Enforce-TLS-SSL-Q225
 </details>
   
 ### archetype `platform`
@@ -160,7 +160,7 @@ flowchart TD
   
 #### root policy definitions
   
-<details><summary>158 policy definitions</summary>
+<details><summary>160 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -173,6 +173,8 @@ flowchart TD
 - Audit-PrivateLinkDnsZones
 - Audit-PublicIpAddresses-UnusedResourcesCostOptimization
 - Audit-ServerFarms-UnusedResourcesCostOptimization
+- Audit-Tags-Mandatory
+- Audit-Tags-Mandatory-Rg
 - Deny-AA-child-resources
 - Deny-APIM-TLS
 - Deny-AppGW-Without-WAF
@@ -324,7 +326,7 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>46 policy set definitions</summary>
+<details><summary>47 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -344,6 +346,7 @@ flowchart TD
 - Enforce-Backup
 - Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
+- Enforce-EncryptTransit_20241211
 - Enforce-Encryption-CMK
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
@@ -526,7 +529,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy definitions
   
-<details><summary>158 policy definitions</summary>
+<details><summary>160 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -539,6 +542,8 @@ The subscription id that hosts the private link DNS zones.
 - Audit-PrivateLinkDnsZones
 - Audit-PublicIpAddresses-UnusedResourcesCostOptimization
 - Audit-ServerFarms-UnusedResourcesCostOptimization
+- Audit-Tags-Mandatory
+- Audit-Tags-Mandatory-Rg
 - Deny-AA-child-resources
 - Deny-APIM-TLS
 - Deny-AppGW-Without-WAF
@@ -690,7 +695,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy set definitions
   
-<details><summary>46 policy set definitions</summary>
+<details><summary>47 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -710,6 +715,7 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-Backup
 - Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
+- Enforce-EncryptTransit_20241211
 - Enforce-Encryption-CMK
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
@@ -742,7 +748,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy assignments
   
-<details><summary>49 policy assignments</summary>
+<details><summary>50 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -793,6 +799,7 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-GR-KeyVault
 - Enforce-Subnet-Private
 - Enforce-TLS-SSL-H224
+- Enforce-TLS-SSL-Q225
 </details>
   
 ### all role definitions

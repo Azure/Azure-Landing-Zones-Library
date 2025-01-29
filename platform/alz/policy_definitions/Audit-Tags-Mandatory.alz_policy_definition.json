@@ -1,0 +1,64 @@
+{
+  "name": "Audit-Tags-Mandatory",
+  "properties": {
+    "description": "Audits resources to ensure they have required tags based on tag array. Does not apply to resource groups.",
+    "displayName": "Audit for mandatory tags on resources",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud",
+        "AzureChinaCloud",
+        "AzureUSGovernment"
+      ],
+      "category": "Tags",
+      "source": "https://github.com/Azure/Enterprise-Scale/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "Audit",
+          "Deny",
+          "Disabled"
+        ],
+        "defaultValue": "Audit",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "mandatoryTags": {
+        "defaultValue": [
+          "owner",
+          "costcenter"
+        ],
+        "metadata": {
+          "description": "Array of mandatory tags that must be present on the resource group. The array should contain semicolon separated list of the tag names.",
+          "displayName": "Array of mandatory tags"
+        },
+        "type": "Array"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "not": {
+          "count": {
+            "name": "tagcount",
+            "value": "[parameters('mandatoryTags')]",
+            "where": {
+              "containsKey": "[current('tagcount')]",
+              "field": "tags"
+            }
+          },
+          "equals": "[length(parameters('mandatoryTags'))]"
+        }
+      },
+      "then": {
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}

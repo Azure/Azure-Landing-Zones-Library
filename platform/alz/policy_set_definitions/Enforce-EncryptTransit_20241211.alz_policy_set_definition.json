@@ -1,8 +1,8 @@
 {
-  "name": "Enforce-EncryptTransit_20240509",
+  "name": "Enforce-EncryptTransit_20241211",
   "properties": {
-    "description": "Choose either Deploy if not exist and append in combination with audit or Select Deny in the Policy effect. Deny polices shift left. Deploy if not exist and append enforce but can be changed, and because missing existence condition require then the combination of Audit. Superseded by https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Enforce-EncryptTransit_20241211.html ",
-    "displayName": "[Deprecated]: Deny or Deploy and append TLS requirements and SSL enforcement on resources without Encryption in transit",
+    "description": "Choose either Deploy if not exist and append in combination with audit or Select Deny in the Policy effect. Deny polices shift left. Deploy if not exist and append enforce but can be changed, and because missing existence condition require then the combination of Audit.",
+    "displayName": "Deny or Deploy and append TLS requirements and SSL enforcement on resources without Encryption in transit",
     "metadata": {
       "alzCloudEnvironments": [
         "AzureCloud",
@@ -10,11 +10,9 @@
         "AzureUSGovernment"
       ],
       "category": "Encryption",
-      "deprecated": true,
-      "replacesPolicy": "Enforce-EncryptTransit",
+      "replacesPolicy": "Enforce-EncryptTransit_20240509",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "supersededBy": "Enforce-EncryptTransit_20241211",
-      "version": "1.0.0-deprecated"
+      "version": "1.2.0"
     },
     "parameters": {
       "AKSIngressHttpsOnlyEffect": {
@@ -416,15 +414,6 @@
         "type": "string"
       },
       "appServiceTls": {
-        "allowedValues": [
-          "Audit",
-          "Deny",
-          "Disabled"
-        ],
-        "defaultValue": "Deny",
-        "type": "string"
-      },
-      "containerAppsHttps": {
         "allowedValues": [
           "Audit",
           "Deny",
@@ -869,16 +858,6 @@
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/ae1b9a8c-dfce-4605-bd91-69213b4a26fc",
         "policyDefinitionReferenceId": "Deny-AppService-Slots-Https"
-      },
-      {
-        "groupNames": [],
-        "parameters": {
-          "effect": {
-            "value": "[parameters('containerAppsHttps')]"
-          }
-        },
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/0e80e269-43a4-4ae9-b5bc-178126b8a5cb",
-        "policyDefinitionReferenceId": "Deny-ContainerApps-Https"
       },
       {
         "groupNames": [],

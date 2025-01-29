@@ -9,7 +9,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "5.1.0"
+      "version": "5.2.0"
     },
     "parameters": {
       "ACRPublicIpDenyEffect": {
