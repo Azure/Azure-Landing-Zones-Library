@@ -10,7 +10,7 @@
       "category": "Security Center",
       "replacesPolicy": "Deploy-MDFC-Config",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "2.1.0"
+      "version": "2.2.0"
     },
     "parameters": {
       "ascExportResourceGroupLocation": {
@@ -179,6 +179,18 @@
         "type": "String"
       },
       "enableAscForStorage": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "enableTvmCheck": {
         "allowedValues": [
           "DeployIfNotExists",
           "Disabled"
@@ -405,7 +417,11 @@
       },
       {
         "groupNames": [],
-        "parameters": {},
+        "parameters": {
+          "effect": {
+            "value": "[parameters('enableTvmCheck')]"
+          }
+        },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/766e621d-ba95-4e43-a6f2-e945db3d7888",
         "policyDefinitionReferenceId": "migrateToMdeTvm"
       }

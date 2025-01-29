@@ -11,7 +11,7 @@
       ],
       "category": "Key Vault",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "2.1.0"
+      "version": "2.2.0"
     },
     "parameters": {
       "effectKvCertLifetime": {
@@ -26,7 +26,7 @@
         "defaultValue": "Audit",
         "metadata": {
           "description": "Enable or disable the execution of the policy",
-          "displayName": "Effect"
+          "displayName": "Effect - KV Certificate Lifetime"
         },
         "type": "String"
       },
@@ -39,7 +39,7 @@
         "defaultValue": "Audit",
         "metadata": {
           "description": "Enable or disable the execution of the policy",
-          "displayName": "Effect"
+          "displayName": "Effect - KV Firewall Enabled"
         },
         "type": "String"
       },
@@ -52,7 +52,7 @@
         "defaultValue": "Audit",
         "metadata": {
           "description": "Enable or disable the execution of the policy",
-          "displayName": "Effect"
+          "displayName": "Effect - KV Keys Expiry"
         },
         "type": "String"
       },
@@ -65,7 +65,7 @@
         "defaultValue": "Audit",
         "metadata": {
           "description": "Enable or disable the execution of the policy",
-          "displayName": "Effect"
+          "displayName": "Effect - KV Keys Lifetime"
         },
         "type": "String"
       },
@@ -78,7 +78,7 @@
         "defaultValue": "Deny",
         "metadata": {
           "description": "Enable or disable the execution of the policy",
-          "displayName": "Effect"
+          "displayName": "Effect - KV Purge Protection"
         },
         "type": "String"
       },
@@ -91,7 +91,7 @@
         "defaultValue": "Audit",
         "metadata": {
           "description": "Enable or disable the execution of the policy",
-          "displayName": "Effect"
+          "displayName": "Effect - KV Secrets Expiry"
         },
         "type": "String"
       },
@@ -104,7 +104,7 @@
         "defaultValue": "Audit",
         "metadata": {
           "description": "Enable or disable the execution of the policy",
-          "displayName": "Effect"
+          "displayName": "Effect - KV Secrets Lifetime"
         },
         "type": "String"
       },
@@ -117,7 +117,7 @@
         "defaultValue": "Deny",
         "metadata": {
           "description": "Enable or disable the execution of the policy",
-          "displayName": "Effect"
+          "displayName": "Effect - KV Soft Delete"
         },
         "type": "String"
       },
