@@ -1,7 +1,7 @@
 {
   "name": "Deploy_Hybrid_VM_Disconnected_Alert",
   "properties": {
-    "description": "Policy to Deploy Hybrid VM Disconnected Alert",
+    "description": "Policy to audit/deploy Hybrid VM Disconnected Alert",
     "displayName": "Deploy Hybrid VM Disconnected Alert",
     "metadata": {
       "_deployed_by_amba": "True",
@@ -10,7 +10,7 @@
       ],
       "category": "Hybrid Compute",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.5.0"
+      "version": "1.6.0"
     },
     "mode": "All",
     "parameters": {
@@ -410,7 +410,7 @@
                                       "numberOfEvaluationPeriods": "[parameters('evaluationPeriods')]"
                                     },
                                     "operator": "[parameters('operator')]",
-                                    "query": "[format('let policyThresholdString = \"{2}\"; arg(\"\").resources | where type == \"microsoft.hybridcompute/machines\" | where parse_json(tostring(tags.[\"{0}\"])) !in~ (\"{1}\") | where tostring(properties.status) == \"Disconnected\" | extend lastContactedDate = todatetime(properties.lastStatusChange) | where lastContactedDate \u003c= ago(totimespan(policyThresholdString)) | extend status = tostring(properties.status) | project id, Computer=name, status, lastContactedDate', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), parameters('threshold'))]",
+                                    "query": "[format('let policyThresholdString = \"{0}\"; arg(\"\").resources | where type == \"microsoft.hybridcompute/machines\" | where tostring(tags.[\"{1}\"]) !in~ (\"{2}\") | where tostring(properties.status) == \"Disconnected\" | extend lastContactedDate = todatetime(properties.lastStatusChange) | where lastContactedDate \u003c= ago(totimespan(policyThresholdString)) | extend status = tostring(properties.status) | project id, Computer=name, status, lastContactedDate', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'))]",
                                     "resourceIdColumn": "id",
                                     "threshold": 0,
                                     "timeAggregation": "[parameters('timeAggregation')]"
@@ -536,7 +536,7 @@
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].failingPeriods.minFailingPeriodsToAlert"
               },
               {
-                "equals": "[format('let policyThresholdString = \"{2}\"; arg(\"\").resources | where type == \"microsoft.hybridcompute/machines\" | where parse_json(tostring(tags.[\"{0}\"])) !in~ (\"{1}\") | where tostring(properties.status) == \"Disconnected\" | extend lastContactedDate = todatetime(properties.lastStatusChange) | where lastContactedDate \u003c= ago(totimespan(policyThresholdString)) | extend status = tostring(properties.status) | project id, Computer=name, status, lastContactedDate', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), parameters('threshold'))]",
+                "equals": "[format('let policyThresholdString = \"{0}\"; arg(\"\").resources | where type == \"microsoft.hybridcompute/machines\" | where tostring(tags.[\"{1}\"]) !in~ (\"{2}\") | where tostring(properties.status) == \"Disconnected\" | extend lastContactedDate = todatetime(properties.lastStatusChange) | where lastContactedDate \u003c= ago(totimespan(policyThresholdString)) | extend status = tostring(properties.status) | project id, Computer=name, status, lastContactedDate', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'))]",
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].query"
               },
               {
