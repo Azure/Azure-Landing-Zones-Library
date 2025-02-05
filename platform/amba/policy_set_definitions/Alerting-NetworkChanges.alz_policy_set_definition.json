@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.1"
+      "version": "1.1.1"
     },
     "parameters": {
       "ALZMonitorDisableTagName": {
@@ -80,6 +80,46 @@
         },
         "type": "string"
       },
+      "activityUDRDeleteAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Activity UDR Delete Alert State"
+        },
+        "type": "string"
+      },
+      "activityUDRDeletePolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "Activity UDR Delete Policy Effect"
+        },
+        "type": "string"
+      },
+      "activityUDRRoutesDeleteAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Activity UDR Routes Delete Alert State"
+        },
+        "type": "string"
+      },
+      "activityUDRRoutesDeletePolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "Activity UDR Routes Delete Policy Effect"
+        },
+        "type": "string"
+      },
       "activityUDRUpdateAlertState": {
         "defaultValue": "true",
         "metadata": {
@@ -128,6 +168,60 @@
         },
         "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_activitylog_NSG_Delete",
         "policyDefinitionReferenceId": "ALZ_activityNSGDelete"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "effect": {
+            "value": "[parameters('activityUDRRoutesDeletePolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('activityUDRRoutesDeleteAlertState')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_activitylog_RouteTable_Routes_Delete",
+        "policyDefinitionReferenceId": "ALZ_activityUDRRoutesDelete"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "effect": {
+            "value": "[parameters('activityUDRDeletePolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('activityUDRDeleteAlertState')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_activitylog_RouteTable_Delete",
+        "policyDefinitionReferenceId": "ALZ_activityUDRDelete"
       },
       {
         "parameters": {
