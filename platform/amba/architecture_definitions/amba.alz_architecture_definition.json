@@ -6,9 +6,9 @@
       "archetypes": [
         "amba_root"
       ],
-      "display_name": "AMBA root",
+      "display_name": "Azure Landing Zones",
       "exists": true,
-      "id": "ambaroot",
+      "id": "alz",
       "parent_id": null
     },
     {
@@ -17,8 +17,8 @@
       ],
       "display_name": "Platform",
       "exists": true,
-      "id": "amba-platform",
-      "parent_id": "ambaroot"
+      "id": "platform",
+      "parent_id": "alz"
     },
     {
       "archetypes": [
@@ -26,8 +26,8 @@
       ],
       "display_name": "Landing zones",
       "exists": true,
-      "id": "amba-landingzones",
-      "parent_id": "ambaroot"
+      "id": "landingzones",
+      "parent_id": "alz"
     },
     {
       "archetypes": [
@@ -35,8 +35,8 @@
       ],
       "display_name": "Management",
       "exists": true,
-      "id": "amba-management",
-      "parent_id": "amba-platform"
+      "id": "management",
+      "parent_id": "platform"
     },
     {
       "archetypes": [
@@ -44,8 +44,8 @@
       ],
       "display_name": "Connectivity",
       "exists": true,
-      "id": "amba-connectivity",
-      "parent_id": "amba-platform"
+      "id": "connectivity",
+      "parent_id": "platform"
     },
     {
       "archetypes": [
@@ -53,8 +53,8 @@
       ],
       "display_name": "Identity",
       "exists": true,
-      "id": "amba-identity",
-      "parent_id": "amba-platform"
+      "id": "identity",
+      "parent_id": "platform"
     }
   ]
 }
