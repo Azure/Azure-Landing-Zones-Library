@@ -140,7 +140,7 @@
                             "apiVersion": "2021-08-08",
                             "dependsOn": [],
                             "location": "Global",
-                            "name": "[concat('apr-AMBA-',subscription().displayName, '-002')]",
+                            "name": "[concat('apr-AMBA-',subscription().displayName, '-S001')]",
                             "properties": {
                               "actions": [
                                 {
