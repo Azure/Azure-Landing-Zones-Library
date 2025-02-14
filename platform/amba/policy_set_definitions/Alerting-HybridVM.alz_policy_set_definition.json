@@ -2,7 +2,7 @@
   "name": "Alerting-HybridVM",
   "properties": {
     "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Azure Arc-enabled Servers.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Hybrid VMs",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Hybrid Virtual Machines",
     "metadata": {
       "_deployed_by_amba": true,
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.1"
+      "version": "1.1.2"
     },
     "parameters": {
       "ALZManagementSubscriptionId": {

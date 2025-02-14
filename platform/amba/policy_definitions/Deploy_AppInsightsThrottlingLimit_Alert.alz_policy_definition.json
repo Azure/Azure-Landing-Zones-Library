@@ -1,8 +1,8 @@
 {
-  "name": "Deploy_LAWorkspace_DailyCapLimitReached_Alert",
+  "name": "Deploy_AppInsightsThrottlingLimit_Alert",
   "properties": {
-    "description": "Policy to audit/deploy LA Workspace Daily Cap Limit Reached Alert",
-    "displayName": "Deploy LA Workspace Daily Cap Limit Reached Alert",
+    "description": "Policy to audit/deploy Application Insights Throttling Limit Reached Alert",
+    "displayName": "Deploy Application Insights Throttling Limit Reached Alert (Preview)",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.1.0"
     },
     "mode": "All",
     "parameters": {
@@ -144,7 +144,7 @@
         "type": "String"
       },
       "threshold": {
-        "defaultValue": "0",
+        "defaultValue": "32000",
         "metadata": {
           "description": "Threshold for the alert",
           "displayName": "Threshold"
@@ -189,7 +189,7 @@
       "if": {
         "allOf": [
           {
-            "equals": "Microsoft.OperationalInsights/workspaces",
+            "equals": "Microsoft.Insights/components",
             "field": "type"
           },
           {
@@ -328,7 +328,7 @@
                       }
                     },
                     "location": "[parameters('resourceLocation')]",
-                    "name": "[concat(parameters('resourceName'), '-DailyCapLimitReachedAlert')]",
+                    "name": "[concat(parameters('resourceName'), '-ApplicationInsightsThrottlingLimitReachedAlert')]",
                     "properties": {
                       "autoMitigate": "[parameters('autoMitigate')]",
                       "criteria": {
@@ -336,7 +336,7 @@
                           {
                             "dimensions": [
                               {
-                                "name": "workspaceName",
+                                "name": "name",
                                 "operator": "Include",
                                 "values": [
                                   "*"
@@ -348,15 +348,15 @@
                               "numberOfEvaluationPeriods": "[parameters('evaluationPeriods')]"
                             },
                             "operator": "[parameters('operator')]",
-                            "query": "[format('let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.OperationalInsights/workspaces\" | where tags.[\"{0}\"] !in~ (\"{1}\") | project id, resourceTags = tags, customerId = tostring(properties.customerId), workspaceName = tostring(name)); Operation | where OperationCategory == \"Data Collection Status\" | where Detail has_any(\"RespectQuota\", \"OverQuota\") | summarize arg_max(TimeGenerated, *) by TenantId | where Detail has \"OverQuota\" | join hint.remote=left kind=inner resourceTagging on $left.TenantId == $right.customerId | project TimeGenerated, id, workspaceName, workspaceId = TenantId, Detail', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'))]",
-                            "resourceIdColumn": "id",
-                            "threshold": "[parameters('threshold')]",
+                            "query": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags, name); AppSystemEvents | where _ResourceId =~ \"{3}\" | summarize numOfEvents = sum(toint(Measurements[\"BillingTelemetryCount\"])) by _ResourceId, Type, bin(TimeGenerated, 1h) | join hint.remote=left kind=inner resourceTagging on _ResourceId | project-away _ResourceId1 | extend newThresholdString = tostring(resourceTags.[\"{4}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where numOfEvents \u003e appliedThreshold | project TimeGenerated, _ResourceId, name, numOfEvents', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), parameters('resourceId'), '_amba-Throttling-threshold-override_')]",
+                            "resourceIdColumn": "_ResourceId",
+                            "threshold": 0,
                             "timeAggregation": "[parameters('timeAggregation')]"
                           }
                         ]
                       },
-                      "description": "Log Alert for Daily Cap Limit Reached",
-                      "displayName": "[concat(parameters('resourceName'), '-DailyCapLimitReachedAlert')]",
+                      "description": "Log Alert for Application Insights Throttling Limit Reached",
+                      "displayName": "[concat(parameters('resourceName'), '-Application Insights Throttling Limit Reached (Preview)')]",
                       "enabled": "[parameters('enabled')]",
                       "evaluationFrequency": "[parameters('evaluationFrequency')]",
                       "parameters": {
@@ -401,7 +401,7 @@
                         }
                       },
                       "scopes": [
-                        "[parameters('resourceId')]"
+                        "[reference(parameters('resourceId'),'2020-02-02').WorkspaceResourceId]"
                       ],
                       "severity": "[parameters('severity')]",
                       "windowSize": "[parameters('windowSize')]"
@@ -418,10 +418,6 @@
           },
           "existenceCondition": {
             "allOf": [
-              {
-                "equals": "[concat(subscription().id, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.OperationalInsights/workspaces/', field('fullName'))]",
-                "field": "Microsoft.Insights/scheduledQueryRules/scopes[*]"
-              },
               {
                 "equals": "[parameters('enabled')]",
                 "field": "Microsoft.Insights/scheduledQueryRules/enabled"
@@ -443,7 +439,7 @@
                 "field": "Microsoft.Insights/scheduledQueryRules/autoMitigate"
               },
               {
-                "equals": "[parameters('threshold')]",
+                "equals": 0,
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].threshold"
               },
               {
@@ -463,7 +459,7 @@
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].failingPeriods.minFailingPeriodsToAlert"
               },
               {
-                "equals": "[format('let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.OperationalInsights/workspaces\" | where tags.[\"{0}\"] !in~ (\"{1}\") | project id, resourceTags = tags, customerId = tostring(properties.customerId), workspaceName = tostring(name)); Operation | where OperationCategory == \"Data Collection Status\" | where Detail has_any(\"RespectQuota\", \"OverQuota\") | summarize arg_max(TimeGenerated, *) by TenantId | where Detail has \"OverQuota\" | join hint.remote=left kind=inner resourceTagging on $left.TenantId == $right.customerId | project TimeGenerated, id, workspaceName, workspaceId = TenantId, Detail', parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'))]",
+                "equals": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags, name); AppSystemEvents | where _ResourceId =~ \"{3}\" | summarize numOfEvents = sum(toint(Measurements[\"BillingTelemetryCount\"])) by _ResourceId, Type, bin(TimeGenerated, 1h) | join hint.remote=left kind=inner resourceTagging on _ResourceId | project-away _ResourceId1 | extend newThresholdString = tostring(resourceTags.[\"{4}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where numOfEvents \u003e appliedThreshold | project TimeGenerated, _ResourceId, name, numOfEvents', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), field('id'), '_amba-Throttling-threshold-override_')]",
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].query"
               },
               {

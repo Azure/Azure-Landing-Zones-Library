@@ -10,9 +10,23 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.3.1"
+      "version": "1.4.1"
     },
     "parameters": {
+      "ALZAlertSeverity": {
+        "defaultValue": [
+          "Sev0",
+          "Sev1",
+          "Sev2",
+          "Sev3",
+          "Sev4"
+        ],
+        "metadata": {
+          "description": "Severity of the alerts to apply action groups. Will apply to all severities if not specified.",
+          "displayName": "Alert Severities for Alert Processing Rule"
+        },
+        "type": "Array"
+      },
       "ALZArmRoleId": {
         "defaultValue": [],
         "metadata": {
@@ -116,6 +130,14 @@
         },
         "type": "Object"
       },
+      "ALZNotificationAssetSuffix": {
+        "defaultValue": "-001",
+        "metadata": {
+          "description": "Suffix for Alert Processing Rule and Action Group names",
+          "displayName": "Notification Asset Name Suffix"
+        },
+        "type": "String"
+      },
       "ALZWebhookServiceUri": {
         "defaultValue": [],
         "metadata": {
@@ -144,6 +166,9 @@
     "policyDefinitions": [
       {
         "parameters": {
+          "ALZAlertSeverity": {
+            "value": "[parameters('ALZAlertSeverity')]"
+          },
           "ALZArmRoleId": {
             "value": "[parameters('ALZArmRoleId')]"
           },
@@ -173,6 +198,9 @@
           },
           "ALZMonitorResourceGroupTags": {
             "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "ALZNotificationAssetSuffix": {
+            "value": "[parameters('ALZNotificationAssetSuffix')]"
           },
           "ALZWebhookServiceUri": {
             "value": "[parameters('ALZWebhookServiceUri')]"

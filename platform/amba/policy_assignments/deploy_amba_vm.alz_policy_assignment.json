@@ -9,7 +9,7 @@
   },
   "properties": {
     "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Azure Virtual Machines.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Virtual Machines",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Azure Virtual Machines",
     "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-VM",
     "enforcementMode": "Default",
     "nonComplianceMessages": [

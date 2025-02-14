@@ -2,7 +2,7 @@
   "name": "Alerting-VM",
   "properties": {
     "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Azure Virtual Machines.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Virtual Machines",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Azure Virtual Machines",
     "metadata": {
       "_deployed_by_amba": true,
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.1"
+      "version": "1.0.2"
     },
     "parameters": {
       "ALZManagementSubscriptionId": {
