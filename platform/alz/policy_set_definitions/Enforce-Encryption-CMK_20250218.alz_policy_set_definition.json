@@ -1,5 +1,5 @@
 {
-  "name": "Enforce-Encryption-CMK",
+  "name": "Enforce-Encryption-CMK_20250218",
   "properties": {
     "description": "Deny or Audit resources without Encryption with a customer-managed key (CMK)",
     "displayName": "Deny or Audit resources without Encryption with a customer-managed key (CMK)",
@@ -8,8 +8,9 @@
         "AzureCloud"
       ],
       "category": "Encryption",
+      "replacesPolicy": "Enforce-Encryption-CMK",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "3.2.0"
+      "version": "1.0.0"
     },
     "parameters": {
       "ACRCmkEffect": {
@@ -252,11 +253,10 @@
       },
       "cognitiveSearchCmk": {
         "allowedValues": [
-          "Audit",
-          "Deny",
+          "AuditIfNotExists",
           "Disabled"
         ],
-        "defaultValue": "Deny",
+        "defaultValue": "AuditIfNotExists",
         "type": "string"
       },
       "containerInstanceCmk": {
