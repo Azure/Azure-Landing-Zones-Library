@@ -347,7 +347,6 @@ flowchart TD
 - Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
 - Enforce-EncryptTransit_20241211
-- Enforce-Encryption-CMK
 - Enforce-Encryption-CMK_20250218
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
