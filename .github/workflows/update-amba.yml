@@ -23,6 +23,8 @@ env:
 jobs:
   update-lib:
     name: update
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     environment: libupdate
     steps:
