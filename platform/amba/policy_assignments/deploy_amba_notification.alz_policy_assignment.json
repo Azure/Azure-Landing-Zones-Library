@@ -61,6 +61,9 @@
           "_deployed_by_alz_monitor": true
         }
       },
+      "ALZNotificationAssetSuffix": {
+        "value": "-001"
+      },
       "ALZWebhookServiceUri": {
         "value": []
       },
