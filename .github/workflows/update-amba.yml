@@ -1,180 +1,176 @@
 ---
-  name: update platform/amba
+name: update platform/amba
 
-  # yamllint disable-line rule:truthy
-  on:
-    schedule:
-      - cron: "0 8 * * 1-5"
-    workflow_dispatch: {}
+# yamllint disable-line rule:truthy
+on:
+  schedule:
+    - cron: "0 8 * * 1"
+  workflow_dispatch: {}
 
-  permissions:
-    contents: write
+permissions:
+  contents: write
 
-  env:
-    alz_repository: "Azure/Enterprise-Scale"
-    remote_repository: "Azure/azure-monitor-baseline-alerts"
-    alzlib_repository: "Azure/alzlib"
-    library_dir: "platform/amba"
-    pr_title: "feat: update platform/amba library (automated)"
-    pr_body: |-
-      This is an automated pull_request containing updates to the library templates stored in 'platform/amba'.
-      Please review the files changed tab to review changes.
+env:
+  alz_repository: "Azure/Enterprise-Scale"
+  remote_repository: "Azure/azure-monitor-baseline-alerts"
+  alzlib_repository: "Azure/alzlib"
+  library_dir: "platform/amba"
+  pr_title: "feat: update platform/amba library (automated)"
+  pr_body: |-
+    This is an automated pull_request containing updates to the library templates stored in 'platform/amba'.
+    Please review the files changed tab to review changes.
 
-  jobs:
-    update-lib:
-      name: update
-      runs-on: ubuntu-latest
-      environment: libupdate
-      steps:
-        - name: Local repository checkout
-          uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-          with:
-            path: ${{ github.repository }}
-            fetch-depth: 0
+jobs:
+  update-lib:
+    name: update
+    runs-on: ubuntu-latest
+    environment: libupdate
+    steps:
+      - name: local repository checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          path: ${{ github.repository }}
+          fetch-depth: 0
 
-        - name: Remote repository checkout
-          uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-          with:
-            repository: ${{ env.remote_repository }}
-            path: ${{ env.remote_repository }}
-            ref: main
+      - name: install tools
+        run: make tools
+        working-directory: ${{ github.workspace }}/${{ github.repository }}
 
-        - name: Alz repository checkout
-          uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
-          with:
-            repository: ${{ env.alz_repository }}
-            path: ${{ env.alz_repository }}
-            ref: main
+      - name: remote repository checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          repository: ${{ env.remote_repository }}
+          path: ${{ env.remote_repository }}
+          ref: main
 
-        - name: setup go
-          uses: actions/setup-go@cdcb36043654635271a94b9a6d1392de5bb323a7 # v5.0.1
-          with:
-            go-version: 'stable'
+      - name: alz repository checkout
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
+        with:
+          repository: ${{ env.alz_repository }}
+          path: ${{ env.alz_repository }}
+          ref: main
 
-        - name: install alzlibtool
-          run: go install github.com/Azure/alzlib/cmd/alzlibtool@v0.18.0
+      - uses: actions/create-github-app-token@c1a285145b9d317df6ced56c09f525b5c2b6f755 # v1.11.1
+        id: generate-token
+        with:
+          app-id: ${{ secrets.TOKEN_APP_ID }}
+          private-key: ${{ secrets.TOKEN_APP_PRIVATE_KEY }}
 
-        - uses: tibdex/github-app-token@3beb63f4bd073e61482598c45c71c1019b59b73a # v2.1.0
-          id: generate-token
-          with:
-            app_id: ${{ secrets.TOKEN_APP_ID }}
-            private_key: ${{ secrets.TOKEN_APP_PRIVATE_KEY }}
+      - name: configure local git
+        run: |
+          git config user.name github-actions
+          git config user.email action@github.com
+        working-directory: ${{ github.repository }}
 
-        - name: Configure local git
-          run: |
-            git config user.name github-actions
-            git config user.email action@github.com
-          working-directory: ${{ github.repository }}
+      - name: create and checkout branch
+        id: branch
+        run: |
+          BRANCH="platform-amba-${{ github.run_number }}"
+          echo "name=$BRANCH" >> "$GITHUB_OUTPUT"
+          git checkout -b "$BRANCH"
+        working-directory: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
 
-        - name: Create and checkout branch
-          id: branch
-          run: |
-            BRANCH="platform-amba-${{ github.run_number }}"
-            echo "name=$BRANCH" >> "$GITHUB_OUTPUT"
-            git checkout -b "$BRANCH"
-          working-directory: ${{ github.repository }}
-          env:
-            GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+      - name: copy policy definitions
+        uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
+        with:
+          inlineScript: |
+            Write-Information "==> Running copy policy definitions script..." -InformationAction Continue
+            ${{ github.repository }}/platform/amba/scripts/Copy-PolicyDefinitions.ps1 `
+              -TemplatePath "${{ github.workspace }}/${{ env.remote_repository }}/patterns/alz/templates" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy" `
+              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+          azPSVersion: "latest"
 
-        - name: Copy policy definitions
-          uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
-          with:
-            inlineScript: |
-              Write-Information "==> Running copy policy definitions script..." -InformationAction Continue
-              ${{ github.repository }}/platform/amba/scripts/Copy-PolicyDefinitions.ps1 `
-                -TemplatePath "${{ github.workspace }}/${{ env.remote_repository }}/patterns/alz/templates" `
-                -TargetPath "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy" `
-                -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
-            azPSVersion: "latest"
+      - name: update library policy definitions
+        run: |
+          alzlibtool convert policydefinition -o \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions"
 
-        - name: Update library policy definitions
-          run: |
-            alzlibtool convert policydefinition -o \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions"
+      - name: update library policy set definitions
+        run: |
+          alzlibtool convert policysetdefinition -o \
+            "${{ github.workspace }}/${{ env.remote_repository }}/patterns/alz/policySetDefinitions" \
+            "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions"
 
-        - name: Update library policy set definitions
-          run: |
-            alzlibtool convert policysetdefinition -o \
-              "${{ github.workspace }}/${{ env.remote_repository }}/patterns/alz/policySetDefinitions" \
-              "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions"
+      - name: clean up copied policy definitions
+        run: |
+          rm -rf "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
+        working-directory: ${{ github.workspace }}
 
-        - name: Clean up copied policy definitions
-          run: |
-            rm -rf "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions_copy"
-          working-directory: ${{ github.workspace }}
+      - name: remove deprecated policy definitions
+        run: |
+          rm -rf "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions/Alerting-LandingZone.alz_policy_set_definition.json"
+        working-directory: ${{ github.workspace }}
 
-        - name: Remove deprecated policy definitions
-          run: |
-            rm -rf "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions/Alerting-LandingZone.alz_policy_set_definition.json"
-          working-directory: ${{ github.workspace }}
+      - name: update library policy assignments and archetypes
+        uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
+        with:
+          inlineScript: |
+            Write-Information "==> Running policy assignments and archetypes script..." -InformationAction Continue
+            ${{ github.repository }}/platform/amba/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
+              -AlzToolsPath "${{ github.workspace }}/${{ env.alz_repository }}/src/Alz.Tools/" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+          azPSVersion: "latest"
 
-        - name: Update library policy assignments and archetypes
-          uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
-          with:
-            inlineScript: |
-              Write-Information "==> Running policy assignments and archetypes script..." -InformationAction Continue
-              ${{ github.repository }}/platform/amba/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
-                -AlzToolsPath "${{ github.workspace }}/${{ env.alz_repository }}/src/Alz.Tools/" `
-                -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
-                -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
-            azPSVersion: "latest"
+      - name: update library policy definitions in archetype definitions
+        uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
+        with:
+          inlineScript: |
+            Write-Information "==> Running policy definitions in archetype definitions script..." -InformationAction Continue
+            ${{ github.repository }}/platform/amba/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
+              -AlzToolsPath "${{ github.workspace }}/${{ env.alz_repository }}/src/Alz.Tools/" `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+          azPSVersion: "latest"
 
-        - name: Update library policy definitions in archetype definitions
-          uses: azure/powershell@53dd145408794f7e80f97cfcca04155c85234709 # v2.0.0
-          with:
-            inlineScript: |
-              Write-Information "==> Running policy definitions in archetype definitions script..." -InformationAction Continue
-              ${{ github.repository }}/platform/amba/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
-                -AlzToolsPath "${{ github.workspace }}/${{ env.alz_repository }}/src/Alz.Tools/" `
-                -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
-                -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
-            azPSVersion: "latest"
+      - name: check for changes
+        id: git_status
+        run: |
+          mapfile -t "CHECK_GIT_STATUS" < <(git status -s ${{ env.library_dir }})
+          printf "%s\n" "${CHECK_GIT_STATUS[@]}"
+          echo "changes=${#CHECK_GIT_STATUS[@]}" >> "$GITHUB_OUTPUT"
+        working-directory: ${{ github.workspace }}/${{ github.repository }}
 
-        - name: Check for changes
-          id: git_status
-          run: |
-            mapfile -t "CHECK_GIT_STATUS" < <(git status -s ${{ env.library_dir }})
-            printf "%s\n" "${CHECK_GIT_STATUS[@]}"
-            echo "changes=${#CHECK_GIT_STATUS[@]}" >> "$GITHUB_OUTPUT"
-          working-directory: ${{ github.workspace }}/${{ github.repository }}
+      - name: generate README.md
+        if: steps.git_status.outputs.changes > 0
+        run: |
+          make docs LIB="${{ env.library_dir }}"
+        working-directory: ${{ github.workspace }}/${{ github.repository }}
 
-        - name: generate README.md
-          if: steps.git_status.outputs.changes > 0
-          run: |
-            make docs LIB="${{ env.library_dir }}"
-          working-directory: ${{ github.workspace }}/${{ github.repository }}
+      - name: add files, commit and push
+        if: steps.git_status.outputs.changes > 0
+        run: |
+          echo "pushing changes to origin..."
+          git add ${{ env.library_dir }}
+          git commit -m '${{ env.pr_title }}'
+          git push origin ${{ steps.branch.outputs.name }}
+        working-directory: ${{ github.repository }}
 
-        - name: Add files, commit and push
-          if: steps.git_status.outputs.changes > 0
-          run: |
-            echo "Pushing changes to origin..."
-            git add ${{ env.library_dir }}
-            git commit -m '${{ env.pr_title }}'
-            git push origin ${{ steps.branch.outputs.name }}
-          working-directory: ${{ github.repository }}
+      - name: create pull request
+        if: steps.git_status.outputs.changes > 0
+        id: pr
+        run: |
+          PR="$(gh pr create \
+            --title "${{ env.pr_title }}" \
+            --body "${{ env.pr_body }}" \
+            --base "${{ github.ref }}" \
+            --head "${{ steps.branch.outputs.name }}" \
+            --draft)"
+            echo "Created new PR: $CHECK_PULL_REQUEST_URL"
+            echo number=$(gh pr view $PR_URL --json number | jq -r '.number') >> "$GITHUB_OUTPUT"
+        working-directory: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
 
-        - name: Create pull request
-          if: steps.git_status.outputs.changes > 0
-          id: pr
-          run: |
-            PR="$(gh pr create \
-              --title "${{ env.pr_title }}" \
-              --body "${{ env.pr_body }}" \
-              --base "${{ github.ref }}" \
-              --head "${{ steps.branch.outputs.name }}" \
-              --draft)"
-              echo "Created new PR: $CHECK_PULL_REQUEST_URL"
-              echo number=$(gh pr view $PR_URL --json number | jq -r '.number') >> "$GITHUB_OUTPUT"
-          working-directory: ${{ github.repository }}
-          env:
-            GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
-
-        - name: close and comment out of date prs
-          if: steps.git_status.outputs.changes > 0
-          run: |
-            PULL_REQUESTS=$(gh pr list --search 'feat: update platform/amba library (automated)' --json number,headRefName)
-            echo "$PULL_REQUESTS" | jq -r '.[] | select(.number != ${{ steps.pr.outputs.number }}) | .number' | xargs -I {} gh pr close {} --delete-branch --comment "Supersceeded by #${{ steps.pr.outputs.pull-request-number }}"
-          working-directory: ${{ github.repository }}
-          env:
-            GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+      - name: close and comment out of date prs
+        if: steps.git_status.outputs.changes > 0
+        run: |
+          PULL_REQUESTS=$(gh pr list --search '${{ env.pr_title }}' --json number,headRefName)
+          echo "$PULL_REQUESTS" | jq -r '.[] | select(.number != ${{ steps.pr.outputs.number }}) | .number' | xargs -I {} gh pr close {} --delete-branch --comment "Supersceeded by #${{ steps.pr.outputs.pull-request-number }}"
+        working-directory: ${{ github.repository }}
+        env:
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
