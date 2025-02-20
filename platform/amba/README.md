@@ -105,7 +105,7 @@ flowchart TD
   
 #### amba_root policy definitions
   
-<details><summary>116 policy definitions</summary>
+<details><summary>120 policy definitions</summary>
 
 - Deploy_AA_TotalJob_Alert
 - Deploy_AFW_FirewallHealth_Alert
@@ -122,8 +122,10 @@ flowchart TD
 - Deploy_ALB_GlobalBackendAvailability_Alert
 - Deploy_ALB_HealthProbeStatus_Alert
 - Deploy_ALB_UsedSNATPorts_Alert
+- Deploy_ActivityLog_AppInsights_Delete
 - Deploy_ActivityLog_ManagedHSMs_Delete
 - Deploy_AlertProcessing_Rule
+- Deploy_AppInsightsThrottlingLimit_Alert
 - Deploy_DNSZ_RegistrationCapacityUtil_Alert
 - Deploy_ERCIR_ArpAvailability_Alert
 - Deploy_ERCIR_BgpAvailability_Alert
@@ -216,6 +218,8 @@ flowchart TD
 - Deploy_activitylog_LAWorkspace_KeyRegen
 - Deploy_activitylog_NSG_Delete
 - Deploy_activitylog_ResourceHealth_Unhealthy_Alert
+- Deploy_activitylog_RouteTable_Delete
+- Deploy_activitylog_RouteTable_Routes_Delete
 - Deploy_activitylog_RouteTable_Update
 - Deploy_activitylog_ServiceHealth_HealthAdvisory
 - Deploy_activitylog_ServiceHealth_Incident
@@ -484,7 +488,7 @@ The service uri(s) of the webhook used for monitoring.
   
 ### all policy definitions
   
-<details><summary>116 policy definitions</summary>
+<details><summary>120 policy definitions</summary>
 
 - Deploy_AA_TotalJob_Alert
 - Deploy_AFW_FirewallHealth_Alert
@@ -501,8 +505,10 @@ The service uri(s) of the webhook used for monitoring.
 - Deploy_ALB_GlobalBackendAvailability_Alert
 - Deploy_ALB_HealthProbeStatus_Alert
 - Deploy_ALB_UsedSNATPorts_Alert
+- Deploy_ActivityLog_AppInsights_Delete
 - Deploy_ActivityLog_ManagedHSMs_Delete
 - Deploy_AlertProcessing_Rule
+- Deploy_AppInsightsThrottlingLimit_Alert
 - Deploy_DNSZ_RegistrationCapacityUtil_Alert
 - Deploy_ERCIR_ArpAvailability_Alert
 - Deploy_ERCIR_BgpAvailability_Alert
@@ -595,6 +601,8 @@ The service uri(s) of the webhook used for monitoring.
 - Deploy_activitylog_LAWorkspace_KeyRegen
 - Deploy_activitylog_NSG_Delete
 - Deploy_activitylog_ResourceHealth_Unhealthy_Alert
+- Deploy_activitylog_RouteTable_Delete
+- Deploy_activitylog_RouteTable_Routes_Delete
 - Deploy_activitylog_RouteTable_Update
 - Deploy_activitylog_ServiceHealth_HealthAdvisory
 - Deploy_activitylog_ServiceHealth_Incident
