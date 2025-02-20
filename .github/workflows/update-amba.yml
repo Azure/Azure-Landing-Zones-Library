@@ -139,6 +139,12 @@
             echo "changes=${#CHECK_GIT_STATUS[@]}" >> "$GITHUB_OUTPUT"
           working-directory: ${{ github.workspace }}/${{ github.repository }}
 
+        - name: generate README.md
+          if: steps.git_status.outputs.changes > 0
+          run: |
+            make docs LIB="${{ env.library_dir }}"
+          working-directory: ${{ github.workspace }}/${{ github.repository }}
+
         - name: Add files, commit and push
           if: steps.git_status.outputs.changes > 0
           run: |
