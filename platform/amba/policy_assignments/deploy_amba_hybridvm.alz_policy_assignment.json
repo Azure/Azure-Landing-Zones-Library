@@ -9,7 +9,7 @@
   },
   "properties": {
     "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Azure Arc-enabled Servers.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Hybrid VMs",
+    "displayName": "Deploy Azure Monitor Baseline Alerts for Hybrid Virtual Machines",
     "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-HybridVM",
     "enforcementMode": "Default",
     "nonComplianceMessages": [
