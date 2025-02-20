@@ -8,7 +8,7 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: write
+  contents: read
 
 env:
   alz_repository: "Azure/Enterprise-Scale"
