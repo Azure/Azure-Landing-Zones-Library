@@ -26,22 +26,22 @@ The following architectures are available in this library, please note that the 
   
 ```mermaid
 flowchart TD
-  ambaroot["AMBA root
+  alz["Azure Landing Zones
 (amba_root)"]
-  ambaroot --> amba-landingzones
-  amba-landingzones["Landing zones
+  alz --> landingzones
+  landingzones["Landing zones
 (amba_landing_zones)"]
-  ambaroot --> amba-platform
-  amba-platform["Platform
+  alz --> platform
+  platform["Platform
 (amba_platform)"]
-  amba-platform --> amba-connectivity
-  amba-connectivity["Connectivity
+  platform --> connectivity
+  connectivity["Connectivity
 (amba_connectivity)"]
-  amba-platform --> amba-identity
-  amba-identity["Identity
+  platform --> identity
+  identity["Identity
 (amba_identity)"]
-  amba-platform --> amba-management
-  amba-management["Management
+  platform --> management
+  management["Management
 (amba_management)"]
 
 ```
