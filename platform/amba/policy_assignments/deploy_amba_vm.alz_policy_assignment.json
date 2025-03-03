@@ -52,35 +52,68 @@
       "VMDataDiskReadLatencyPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "VMDataDiskReadLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "VMDataDiskSpacePolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "VMDataDiskSpacecheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
       },
       "VMDataDiskWriteLatencyPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "VMDataDiskWriteLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "true"
+      },
       "VMHeartBeatRGPolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "VMHeartBeatRGcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
       },
       "VMNetworkInPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "VMNetworkIncheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "VMNetworkOutPolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "VMNetworkOutcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
       },
       "VMOSDiskReadLatencyPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "VMOSDiskReadLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "VMOSDiskSpacePolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "VMOSDiskSpacecheckWorkspaceAlertsStorageConfigured": {
+        "value": "true"
       },
       "VMOSDiskWriteLatencyPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "VMOSDiskWriteLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "VMPercentCPUPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "VMPercentCPUcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "VMPercentMemoryPolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "VMPercentMemorycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
       }
     },
     "metadata": {

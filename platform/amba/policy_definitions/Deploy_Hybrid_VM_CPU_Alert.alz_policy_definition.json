@@ -10,7 +10,7 @@
       ],
       "category": "Hybrid Compute",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.0"
+      "version": "1.5.0"
     },
     "mode": "All",
     "parameters": {
@@ -98,6 +98,18 @@
         "metadata": {
           "description": "Auto Resolve time for the alert in ISO 8601 format",
           "displayName": "Auto Resolve"
+        },
+        "type": "String"
+      },
+      "checkWorkspaceAlertsStorageConfigured": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "Require a workspace linked storage"
         },
         "type": "String"
       },
@@ -263,6 +275,9 @@
                 "autoResolveTime": {
                   "value": "[parameters('autoResolveTime')]"
                 },
+                "checkWorkspaceAlertsStorageConfigured": {
+                  "value": "[parameters('checkWorkspaceAlertsStorageConfigured')]"
+                },
                 "enabled": {
                   "value": "[parameters('enabled')]"
                 },
@@ -320,6 +335,9 @@
                     "type": "String"
                   },
                   "autoResolveTime": {
+                    "type": "String"
+                  },
+                  "checkWorkspaceAlertsStorageConfigured": {
                     "type": "String"
                   },
                   "enabled": {
@@ -410,6 +428,7 @@
                             "name": "[concat(subscription().displayName, '-HybridVMHighCPUAlert')]",
                             "properties": {
                               "autoMitigate": "[parameters('autoMitigate')]",
+                              "checkWorkspaceAlertsStorageConfigured": "[parameters('checkWorkspaceAlertsStorageConfigured')]",
                               "criteria": {
                                 "allOf": [
                                   {
@@ -462,6 +481,9 @@
                                 },
                                 "autoResolveTime": {
                                   "value": "[parameters('autoResolveTime')]"
+                                },
+                                "checkWorkspaceAlertsStorageConfigured": {
+                                  "value": "[parameters('checkWorkspaceAlertsStorageConfigured')]"
                                 },
                                 "enabled": {
                                   "value": "[parameters('enabled')]"
@@ -545,6 +567,10 @@
               {
                 "equals": "[parameters('autoMitigate')]",
                 "field": "Microsoft.Insights/scheduledQueryRules/autoMitigate"
+              },
+              {
+                "equals": "[parameters('checkWorkspaceAlertsStorageConfigured')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/checkWorkspaceAlertsStorageConfigured"
               },
               {
                 "equals": "[parameters('operator')]",

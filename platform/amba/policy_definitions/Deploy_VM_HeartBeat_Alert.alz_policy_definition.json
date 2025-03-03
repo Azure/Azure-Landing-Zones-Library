@@ -10,7 +10,7 @@
       ],
       "category": "Compute",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.6.0"
+      "version": "1.7.0"
     },
     "mode": "All",
     "parameters": {
@@ -101,15 +101,17 @@
         },
         "type": "String"
       },
-      "computersToInclude": {
-        "defaultValue": [
-          "*"
+      "checkWorkspaceAlertsStorageConfigured": {
+        "allowedValues": [
+          "true",
+          "false"
         ],
+        "defaultValue": "false",
         "metadata": {
-          "description": "Array of Computer to be monitored",
-          "displayName": "Computers to be included to be monitored"
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "Require a workspace linked storage"
         },
-        "type": "array"
+        "type": "String"
       },
       "effect": {
         "allowedValues": [
@@ -273,8 +275,8 @@
                 "autoResolveTime": {
                   "value": "[parameters('autoResolveTime')]"
                 },
-                "computersToInclude": {
-                  "value": "[parameters('computersToInclude')]"
+                "checkWorkspaceAlertsStorageConfigured": {
+                  "value": "[parameters('checkWorkspaceAlertsStorageConfigured')]"
                 },
                 "enabled": {
                   "value": "[parameters('enabled')]"
@@ -335,8 +337,8 @@
                   "autoResolveTime": {
                     "type": "String"
                   },
-                  "computersToInclude": {
-                    "type": "array"
+                  "checkWorkspaceAlertsStorageConfigured": {
+                    "type": "String"
                   },
                   "enabled": {
                     "type": "String"
@@ -426,6 +428,7 @@
                             "name": "[concat(subscription().displayName, '-VMHeartBeatAlert')]",
                             "properties": {
                               "autoMitigate": "[parameters('autoMitigate')]",
+                              "checkWorkspaceAlertsStorageConfigured": "[parameters('checkWorkspaceAlertsStorageConfigured')]",
                               "criteria": {
                                 "allOf": [
                                   {
@@ -433,7 +436,9 @@
                                       {
                                         "name": "Computer",
                                         "operator": "Include",
-                                        "values": "[parameters('computersToInclude')]"
+                                        "values": [
+                                          "*"
+                                        ]
                                       }
                                     ],
                                     "failingPeriods": {
@@ -477,8 +482,8 @@
                                 "autoResolveTime": {
                                   "value": "[parameters('autoResolveTime')]"
                                 },
-                                "computersToInclude": {
-                                  "value": "[parameters('computersToInclude')]"
+                                "checkWorkspaceAlertsStorageConfigured": {
+                                  "value": "[parameters('checkWorkspaceAlertsStorageConfigured')]"
                                 },
                                 "enabled": {
                                   "value": "[parameters('enabled')]"
@@ -562,6 +567,10 @@
               {
                 "equals": "[parameters('autoMitigate')]",
                 "field": "Microsoft.Insights/scheduledQueryRules/autoMitigate"
+              },
+              {
+                "equals": "[parameters('checkWorkspaceAlertsStorageConfigured')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/checkWorkspaceAlertsStorageConfigured"
               },
               {
                 "equals": "[parameters('operator')]",

@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     "mode": "All",
     "parameters": {
@@ -52,6 +52,18 @@
         "metadata": {
           "description": "Auto Mitigate for the alert",
           "displayName": "Auto Mitigate"
+        },
+        "type": "String"
+      },
+      "checkWorkspaceAlertsStorageConfigured": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "Require a workspace linked storage"
         },
         "type": "String"
       },
@@ -216,6 +228,9 @@
                 "autoMitigate": {
                   "value": "[parameters('autoMitigate')]"
                 },
+                "checkWorkspaceAlertsStorageConfigured": {
+                  "value": "[parameters('checkWorkspaceAlertsStorageConfigured')]"
+                },
                 "enabled": {
                   "value": "[parameters('enabled')]"
                 },
@@ -267,6 +282,9 @@
                     "type": "string"
                   },
                   "autoMitigate": {
+                    "type": "String"
+                  },
+                  "checkWorkspaceAlertsStorageConfigured": {
                     "type": "String"
                   },
                   "enabled": {
@@ -331,6 +349,7 @@
                     "name": "[concat(parameters('resourceName'), '-ApplicationInsightsThrottlingLimitReachedAlert')]",
                     "properties": {
                       "autoMitigate": "[parameters('autoMitigate')]",
+                      "checkWorkspaceAlertsStorageConfigured": "[parameters('checkWorkspaceAlertsStorageConfigured')]",
                       "criteria": {
                         "allOf": [
                           {
@@ -371,6 +390,9 @@
                         },
                         "autoMitigate": {
                           "value": "[parameters('autoMitigate')]"
+                        },
+                        "checkWorkspaceAlertsStorageConfigured": {
+                          "value": "[parameters('checkWorkspaceAlertsStorageConfigured')]"
                         },
                         "enabled": {
                           "value": "[parameters('enabled')]"
@@ -437,6 +459,10 @@
               {
                 "equals": "[parameters('autoMitigate')]",
                 "field": "Microsoft.Insights/scheduledQueryRules/autoMitigate"
+              },
+              {
+                "equals": "[parameters('checkWorkspaceAlertsStorageConfigured')]",
+                "field": "Microsoft.Insights/scheduledQueryRules/checkWorkspaceAlertsStorageConfigured"
               },
               {
                 "equals": 0,
