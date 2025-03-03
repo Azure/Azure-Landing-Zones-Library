@@ -326,7 +326,7 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>47 policy set definitions</summary>
+<details><summary>48 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -347,6 +347,7 @@ flowchart TD
 - Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
 - Enforce-EncryptTransit_20241211
+- Enforce-Encryption-CMK
 - Enforce-Encryption-CMK_20250218
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
@@ -695,7 +696,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy set definitions
   
-<details><summary>47 policy set definitions</summary>
+<details><summary>48 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -716,6 +717,7 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
 - Enforce-EncryptTransit_20241211
+- Enforce-Encryption-CMK
 - Enforce-Encryption-CMK_20250218
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
