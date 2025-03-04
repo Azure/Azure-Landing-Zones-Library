@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.2"
+      "version": "1.1.0"
     },
     "parameters": {
       "ALZManagementSubscriptionId": {
@@ -130,16 +130,6 @@
         },
         "type": "string"
       },
-      "VMDataDiskReadLatencyComputersToInclude": {
-        "defaultValue": [
-          "*"
-        ],
-        "metadata": {
-          "description": "Computers To Include for the alert",
-          "displayName": "VM Data Disk Read Latency Computers To Include"
-        },
-        "type": "array"
-      },
       "VMDataDiskReadLatencyEvaluationFrequency": {
         "allowedValues": [
           "PT1M",
@@ -231,6 +221,14 @@
         },
         "type": "string"
       },
+      "VMDataDiskReadLatencycheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM Data Disk Read Latency Require a workspace linked storage"
+        },
+        "type": "string"
+      },
       "VMDataDiskSpaceAlertSeverity": {
         "allowedValues": [
           "0",
@@ -277,16 +275,6 @@
           "displayName": "VM Data Disk Space Auto Resolve Time"
         },
         "type": "string"
-      },
-      "VMDataDiskSpaceComputersToInclude": {
-        "defaultValue": [
-          "*"
-        ],
-        "metadata": {
-          "description": "Computers To Include for the alert",
-          "displayName": "VM Data Disk Space Computers To Include"
-        },
-        "type": "array"
       },
       "VMDataDiskSpaceEvaluationFrequency": {
         "allowedValues": [
@@ -379,6 +367,14 @@
         },
         "type": "string"
       },
+      "VMDataDiskSpacecheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM Data Disk Space Require a workspace linked storage"
+        },
+        "type": "string"
+      },
       "VMDataDiskWriteLatencyAlertSeverity": {
         "allowedValues": [
           "0",
@@ -425,16 +421,6 @@
           "displayName": "VM Data Disk Write Latency Auto Resolve Time"
         },
         "type": "string"
-      },
-      "VMDataDiskWriteLatencyComputersToInclude": {
-        "defaultValue": [
-          "*"
-        ],
-        "metadata": {
-          "description": "Computers To Include for the alert",
-          "displayName": "VM Data Disk Write Latency Computers To Include"
-        },
-        "type": "array"
       },
       "VMDataDiskWriteLatencyEvaluationFrequency": {
         "allowedValues": [
@@ -527,6 +513,14 @@
         },
         "type": "string"
       },
+      "VMDataDiskWriteLatencycheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM Data Disk Write Latency Require a workspace linked storage"
+        },
+        "type": "string"
+      },
       "VMHeartBeatRGAlertSeverity": {
         "allowedValues": [
           "0",
@@ -573,16 +567,6 @@
           "displayName": "VM Heart Beat RG Auto Resolve Time"
         },
         "type": "string"
-      },
-      "VMHeartBeatRGComputersToInclude": {
-        "defaultValue": [
-          "*"
-        ],
-        "metadata": {
-          "description": "Computers To Include for the alert",
-          "displayName": "VM Heart Beat RG Computers To Include"
-        },
-        "type": "array"
       },
       "VMHeartBeatRGEvaluationFrequency": {
         "allowedValues": [
@@ -667,6 +651,14 @@
         },
         "type": "string"
       },
+      "VMHeartBeatRGcheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM Heart Beat Require a workspace linked storage"
+        },
+        "type": "string"
+      },
       "VMNetworkInAlertSeverity": {
         "allowedValues": [
           "0",
@@ -713,16 +705,6 @@
           "displayName": "VM Network In Auto Resolve Time"
         },
         "type": "string"
-      },
-      "VMNetworkInComputersToInclude": {
-        "defaultValue": [
-          "*"
-        ],
-        "metadata": {
-          "description": "Computers To Include for the alert",
-          "displayName": "VM Network In Computers To Include"
-        },
-        "type": "array"
       },
       "VMNetworkInEvaluationFrequency": {
         "allowedValues": [
@@ -815,6 +797,14 @@
         },
         "type": "string"
       },
+      "VMNetworkIncheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM Network In Require a workspace linked storage"
+        },
+        "type": "string"
+      },
       "VMNetworkOutAlertSeverity": {
         "allowedValues": [
           "0",
@@ -861,16 +851,6 @@
           "displayName": "VM Network Out Auto Resolve Time"
         },
         "type": "string"
-      },
-      "VMNetworkOutComputersToInclude": {
-        "defaultValue": [
-          "*"
-        ],
-        "metadata": {
-          "description": "Computers To Include for the alert",
-          "displayName": "VM Network Out Computers To Include"
-        },
-        "type": "array"
       },
       "VMNetworkOutEvaluationFrequency": {
         "allowedValues": [
@@ -963,6 +943,14 @@
         },
         "type": "string"
       },
+      "VMNetworkOutcheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM Network Out Require a workspace linked storage"
+        },
+        "type": "string"
+      },
       "VMOSDiskReadLatencyAlertSeverity": {
         "allowedValues": [
           "0",
@@ -1009,16 +997,6 @@
           "displayName": "VM OS Disk Read Latency Auto Resolve Time"
         },
         "type": "string"
-      },
-      "VMOSDiskReadLatencyComputersToInclude": {
-        "defaultValue": [
-          "*"
-        ],
-        "metadata": {
-          "description": "Computers To Include for the alert",
-          "displayName": "VM OS Disk Read Latency Computers To Include"
-        },
-        "type": "array"
       },
       "VMOSDiskReadLatencyEvaluationFrequency": {
         "allowedValues": [
@@ -1111,6 +1089,14 @@
         },
         "type": "string"
       },
+      "VMOSDiskReadLatencycheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM OS Disk Read Latency Require a workspace linked storage"
+        },
+        "type": "string"
+      },
       "VMOSDiskSpaceAlertSeverity": {
         "allowedValues": [
           "0",
@@ -1157,16 +1143,6 @@
           "displayName": "VM OS Disk Space Auto Resolve Time"
         },
         "type": "string"
-      },
-      "VMOSDiskSpaceComputersToInclude": {
-        "defaultValue": [
-          "*"
-        ],
-        "metadata": {
-          "description": "Computers To Include for the alert",
-          "displayName": "VM OS Disk Space Computers To Include"
-        },
-        "type": "array"
       },
       "VMOSDiskSpaceEvaluationFrequency": {
         "allowedValues": [
@@ -1259,6 +1235,14 @@
         },
         "type": "string"
       },
+      "VMOSDiskSpacecheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM OS Disk Space Require a workspace linked storage"
+        },
+        "type": "string"
+      },
       "VMOSDiskWriteLatencyAlertSeverity": {
         "allowedValues": [
           "0",
@@ -1305,16 +1289,6 @@
           "displayName": "VM OS Disk Write Latency Auto Resolve Time"
         },
         "type": "string"
-      },
-      "VMOSDiskWriteLatencyComputersToInclude": {
-        "defaultValue": [
-          "*"
-        ],
-        "metadata": {
-          "description": "Computers To Include for the alert",
-          "displayName": "VM OS Disk Write Latency Computers To Include"
-        },
-        "type": "array"
       },
       "VMOSDiskWriteLatencyEvaluationFrequency": {
         "allowedValues": [
@@ -1404,6 +1378,14 @@
         "metadata": {
           "description": "Window size for the alert",
           "displayName": "VM OS Disk Write Latency Window Size"
+        },
+        "type": "string"
+      },
+      "VMOSDiskWriteLatencycheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM OS Disk Write Latency Require a workspace linked storage"
         },
         "type": "string"
       },
@@ -1541,6 +1523,14 @@
         },
         "type": "string"
       },
+      "VMPercentCPUcheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM Percent CPU Require a workspace linked storage"
+        },
+        "type": "string"
+      },
       "VMPercentMemoryAlertSeverity": {
         "allowedValues": [
           "0",
@@ -1670,6 +1660,14 @@
           "displayName": "VM Percent Memory Window Size"
         },
         "type": "string"
+      },
+      "VMPercentMemorycheckWorkspaceAlertsStorageConfigured": {
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "VM Percent Memory Require a workspace linked storage"
+        },
+        "type": "string"
       }
     },
     "policyDefinitions": [
@@ -1702,8 +1700,8 @@
           "autoResolveTime": {
             "value": "[parameters('VMHeartBeatRGAutoResolveTime')]"
           },
-          "computersToInclude": {
-            "value": "[parameters('VMHeartBeatRGComputersToInclude')]"
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMHeartBeatRGcheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('VMHeartBeatRGPolicyEffect')]"
@@ -1765,8 +1763,8 @@
           "autoResolveTime": {
             "value": "[parameters('VMNetworkInAutoResolveTime')]"
           },
-          "computersToInclude": {
-            "value": "[parameters('VMNetworkInComputersToInclude')]"
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMNetworkIncheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('VMNetworkInPolicyEffect')]"
@@ -1831,8 +1829,8 @@
           "autoResolveTime": {
             "value": "[parameters('VMNetworkOutAutoResolveTime')]"
           },
-          "computersToInclude": {
-            "value": "[parameters('VMNetworkOutComputersToInclude')]"
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMNetworkOutcheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('VMNetworkOutPolicyEffect')]"
@@ -1897,8 +1895,8 @@
           "autoResolveTime": {
             "value": "[parameters('VMOSDiskReadLatencyAutoResolveTime')]"
           },
-          "computersToInclude": {
-            "value": "[parameters('VMOSDiskReadLatencyComputersToInclude')]"
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMOSDiskReadLatencycheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('VMOSDiskReadLatencyPolicyEffect')]"
@@ -1963,8 +1961,8 @@
           "autoResolveTime": {
             "value": "[parameters('VMOSDiskWriteLatencyAutoResolveTime')]"
           },
-          "computersToInclude": {
-            "value": "[parameters('VMOSDiskWriteLatencyComputersToInclude')]"
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMOSDiskWriteLatencycheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('VMOSDiskWriteLatencyPolicyEffect')]"
@@ -2029,8 +2027,8 @@
           "autoResolveTime": {
             "value": "[parameters('VMOSDiskSpaceAutoResolveTime')]"
           },
-          "computersToInclude": {
-            "value": "[parameters('VMOSDiskSpaceComputersToInclude')]"
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMOSDiskSpacecheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('VMOSDiskSpacePolicyEffect')]"
@@ -2095,6 +2093,9 @@
           "autoResolveTime": {
             "value": "[parameters('VMPercentCPUAutoResolveTime')]"
           },
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMPercentCPUcheckWorkspaceAlertsStorageConfigured')]"
+          },
           "effect": {
             "value": "[parameters('VMPercentCPUPolicyEffect')]"
           },
@@ -2154,6 +2155,9 @@
           },
           "autoResolveTime": {
             "value": "[parameters('VMPercentMemoryAutoResolveTime')]"
+          },
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMPercentMemorycheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('VMPercentMemoryPolicyEffect')]"
@@ -2215,8 +2219,8 @@
           "autoResolveTime": {
             "value": "[parameters('VMDataDiskSpaceAutoResolveTime')]"
           },
-          "computersToInclude": {
-            "value": "[parameters('VMDataDiskSpaceComputersToInclude')]"
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMDataDiskSpacecheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('VMDataDiskSpacePolicyEffect')]"
@@ -2281,8 +2285,8 @@
           "autoResolveTime": {
             "value": "[parameters('VMDataDiskReadLatencyAutoResolveTime')]"
           },
-          "computersToInclude": {
-            "value": "[parameters('VMDataDiskReadLatencyComputersToInclude')]"
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMDataDiskReadLatencycheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('VMDataDiskReadLatencyPolicyEffect')]"
@@ -2347,8 +2351,8 @@
           "autoResolveTime": {
             "value": "[parameters('VMDataDiskWriteLatencyAutoResolveTime')]"
           },
-          "computersToInclude": {
-            "value": "[parameters('VMDataDiskWriteLatencyComputersToInclude')]"
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('VMDataDiskWriteLatencycheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('VMDataDiskWriteLatencyPolicyEffect')]"

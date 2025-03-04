@@ -55,6 +55,9 @@
       "LAWDailyCapLimitPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "LAWDailyCapLimitcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "RVASRHealthMonitorPolicyEffect": {
         "value": "modify"
       },

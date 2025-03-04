@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.3.1"
+      "version": "1.4.0"
     },
     "parameters": {
       "AATotalJobAlertAlertState": {
@@ -296,6 +296,18 @@
         },
         "type": "String"
       },
+      "LAWDailyCapLimitcheckWorkspaceAlertsStorageConfigured": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Don't create the alert rule if the Log Analytics workspace doesn't have a configured linked storage account (relevant if you're using Customer Managed Keys).",
+          "displayName": "Log Analytics Workspace Daily Cap Limit Reached Alert Require a workspace linked storage"
+        },
+        "type": "String"
+      },
       "RVASRHealthMonitorPolicyEffect": {
         "allowedValues": [
           "modify",
@@ -527,6 +539,9 @@
           },
           "autoMitigate": {
             "value": "[parameters('LAWDailyCapLimitAutoMitigate')]"
+          },
+          "checkWorkspaceAlertsStorageConfigured": {
+            "value": "[parameters('LAWDailyCapLimitcheckWorkspaceAlertsStorageConfigured')]"
           },
           "effect": {
             "value": "[parameters('LAWDailyCapLimitPolicyEffect')]"

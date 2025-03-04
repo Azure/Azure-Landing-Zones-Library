@@ -52,38 +52,74 @@
       "HybridVMDataDiskReadLatencyPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "HybridVMDataDiskReadLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "HybridVMDataDiskSpacePolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "HybridVMDataDiskSpacecheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
       },
       "HybridVMDataDiskWriteLatencyPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "HybridVMDataDiskWriteLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "HybridVMDisconnectedAlertPolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "HybridVMDisconnectedAlertcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
       },
       "HybridVMHeartBeatRGPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "HybridVMHeartBeatRGcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "HybridVMNetworkInPolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "HybridVMNetworkIncheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
       },
       "HybridVMNetworkOutPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "HybridVMNetworkOutcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "HybridVMOSDiskReadLatencyPolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "HybridVMOSDiskReadLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
       },
       "HybridVMOSDiskSpacePolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "HybridVMOSDiskSpacecheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "HybridVMOSDiskWriteLatencyPolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "HybridVMOSDiskWriteLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
       },
       "HybridVMPercentCPUPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "HybridVMPercentCPUcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "HybridVMPercentMemoryPolicyEffect": {
         "value": "deployIfNotExists"
+      },
+      "HybridVMPercentMemorycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
       }
     },
     "metadata": {
