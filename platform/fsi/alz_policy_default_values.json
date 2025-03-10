@@ -1,7 +1,7 @@
 {
   "defaults": [
     {
-      "default_name": "allowedLocationsForConfidentialComputing",
+      "default_name": "allowed_locations_for_confidential_computing",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "default_name": "allowedLocations",
+      "default_name": "allowed_locations",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "default_name": "policyEffect",
+      "default_name": "fsi_policy_effect",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -34,18 +34,7 @@
       ]
     },
     {
-      "default_name": "ddosProtectionPlanId",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "ddosPlan"
-          ],
-          "policy_assignment_name": "Enable-DDoS-VNET"
-        }
-      ]
-    },
-    {
-      "default_name": "ddosProtectionPlanEffect",
+      "default_name": "ddos_protection_plan_effect",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -56,7 +45,7 @@
       ]
     },
     {
-      "default_name": "emailSecurityContact",
+      "default_name": "email_security_contact",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -67,19 +56,13 @@
       ]
     },
     {
-      "default_name": "logAnalyticsWorkspaceId",
+      "default_name": "tr_01_log_analytics_workspace_id",
       "policy_assignments": [
         {
           "parameter_names": [
             "logAnalytics"
           ],
           "policy_assignment_name": "TR-01-Logging"
-        },
-        {
-          "parameter_names": [
-            "logAnalytics"
-          ],
-          "policy_assignment_name": "Deploy-Diag-Logs"
         }
       ]
     }
