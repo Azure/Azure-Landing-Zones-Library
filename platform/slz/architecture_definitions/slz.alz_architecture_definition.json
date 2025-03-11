@@ -72,7 +72,7 @@
       "parent_id": "mcfs-landingzones"
     },
     {
-      "archetypes": ["sandboxes"],
+      "archetypes": ["sandbox"],
       "display_name": "Sandbox",
       "exists": false,
       "id": "mcfs-sandbox",
