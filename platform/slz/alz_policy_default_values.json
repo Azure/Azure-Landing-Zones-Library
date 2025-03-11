@@ -1,7 +1,7 @@
 {
   "defaults": [
     {
-      "default_name": "allowedLocationsForConfidentialComputing",
+      "default_name": "allowed_locations_for_confidential_computing",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -12,7 +12,7 @@
       ]
     },
     {
-      "default_name": "listOfAllowedLocations",
+      "default_name": "list_of_allowed_locations",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -23,7 +23,7 @@
       ]
     },
     {
-      "default_name": "policyEffect",
+      "default_name": "slz_policy_effect",
       "policy_assignments": [
         {
           "parameter_names": [
@@ -40,17 +40,6 @@
       ]
     },
     {
-      "default_name": "ddos_protection_plan_id",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "ddosPlan"
-          ],
-          "policy_assignment_name": "Enable-DDoS-VNET"
-        }
-      ]
-    },
-    {
       "default_name": "ddos_protection_plan_effect",
       "policy_assignments": [
         {
@@ -62,7 +51,7 @@
       ]
     },
     {
-      "default_name": "emailSecurityContact",
+      "default_name": "email_security_contact",
       "policy_assignments": [
         {
           "parameter_names": [
