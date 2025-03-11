@@ -4,7 +4,7 @@ This library provides the reference set of Financial Services Industry (FSI) pol
   
 ## Dependencies
   
-- platform/alz@2024.07.4
+- platform/alz@2025.02.0
   
 ## Usage
   
@@ -30,12 +30,12 @@ The following architectures are available in this library, please note that the 
   
 ```mermaid
 flowchart TD
-  alzroot["ALZ root
+  alz["Azure Landing Zones
 (root)"]
-  alzroot --> decommissioned
+  alz --> decommissioned
   decommissioned["Decommissioned
 (decommissioned)"]
-  alzroot --> landingzones
+  alz --> landingzones
   landingzones["Landing zones
 (landing_zones)"]
   landingzones --> corp
@@ -44,7 +44,7 @@ flowchart TD
   landingzones --> online
   online["Online
 (online)"]
-  alzroot --> platform
+  alz --> platform
   platform["Platform
 (platform)"]
   platform --> connectivity
@@ -56,9 +56,9 @@ flowchart TD
   platform --> management
   management["Management
 (management)"]
-  alzroot --> sandboxes
-  sandboxes["Sandboxes
-(sandboxes)"]
+  alz --> sandbox
+  sandbox["Sandbox
+(sandbox)"]
 
 ```
   
@@ -70,7 +70,7 @@ flowchart TD
 ```mermaid
 flowchart TD
   fsi["FSI Landing Zone
-(fsi_root, root)"]
+(fsi_root, re_01_zonal_residency, root, so_01_data_residency, so_04_cmk, tr_01_logging)"]
   fsi --> fsi-decommissioned
   fsi-decommissioned["Decommissioned
 (decommissioned)"]
@@ -103,7 +103,7 @@ flowchart TD
 (management)"]
   fsi --> fsi-sandbox
   fsi-sandbox["Sandbox
-(sandboxes)"]
+(sandbox)"]
 
 ```
   
@@ -184,7 +184,6 @@ flowchart TD
 - Deny-Privileged-AKS
 - Deny-Storage-http
 - Deny-Subnet-Without-Nsg
-- Deploy-AKS-Policy
 - Deploy-AzSqlDb-Auditing
 - Deploy-MDFC-DefSQL-AMA
 - Deploy-SQL-TDE
@@ -201,23 +200,15 @@ flowchart TD
 - Enforce-AKS-HTTPS
 - Enforce-ASR
 - Enforce-GR-KeyVault
-- Enforce-TLS-SSL-H224
-</details>
-  
-### archetype `management`
-  
-#### management policy assignments
-  
-<details><summary>1 policy assignments</summary>
-
-- Deploy-Log-Analytics
+- Enforce-Subnet-Private
+- Enforce-TLS-SSL-Q225
 </details>
   
 ### archetype `platform`
   
 #### platform policy assignments
   
-<details><summary>11 policy assignments</summary>
+<details><summary>12 policy assignments</summary>
 
 - DenyAction-DeleteUAMIAMA
 - Deploy-MDFC-DefSQL-AMA
@@ -230,6 +221,7 @@ flowchart TD
 - Enable-AUM-CheckUpdates
 - Enforce-ASR
 - Enforce-GR-KeyVault
+- Enforce-Subnet-Private
 </details>
   
 ### archetype `re_01_zonal_residency`
@@ -245,7 +237,7 @@ flowchart TD
   
 #### root policy definitions
   
-<details><summary>158 policy definitions</summary>
+<details><summary>160 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -258,6 +250,8 @@ flowchart TD
 - Audit-PrivateLinkDnsZones
 - Audit-PublicIpAddresses-UnusedResourcesCostOptimization
 - Audit-ServerFarms-UnusedResourcesCostOptimization
+- Audit-Tags-Mandatory
+- Audit-Tags-Mandatory-Rg
 - Deny-AA-child-resources
 - Deny-APIM-TLS
 - Deny-AppGW-Without-WAF
@@ -409,7 +403,7 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>45 policy set definitions</summary>
+<details><summary>47 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -429,10 +423,12 @@ flowchart TD
 - Enforce-Backup
 - Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
-- Enforce-Encryption-CMK
+- Enforce-EncryptTransit_20241211
+- Enforce-Encryption-CMK_20250218
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
 - Enforce-Guardrails-Automation
+- Enforce-Guardrails-BotService
 - Enforce-Guardrails-CognitiveServices
 - Enforce-Guardrails-Compute
 - Enforce-Guardrails-ContainerApps
@@ -470,7 +466,7 @@ flowchart TD
 - Deny-UnmanagedDisk
 - Deploy-ASC-Monitoring
 - Deploy-AzActivity-Log
-- Deploy-Diag-Logs
+- Deploy-Diag-LogsCat
 - Deploy-MDEndpoints
 - Deploy-MDEndpointsAMA
 - Deploy-MDFC-Config-H224
@@ -490,9 +486,9 @@ flowchart TD
 - Subscription-Owner
 </details>
   
-### archetype `sandboxes`
+### archetype `sandbox`
   
-#### sandboxes policy assignments
+#### sandbox policy assignments
   
 <details><summary>1 policy assignments</summary>
 
@@ -530,54 +526,148 @@ flowchart TD
   
 The following policy default values are available in this library:
   
-### default name `allowedLocations`
+### default name `allowed_locations`
   
 |      ASSIGNMENT      |     PARAMETER NAMES      |
 |----------------------|--------------------------|
 | SO-01-Data-Residency | listOfAllowedLocations-1 |
 
   
-### default name `allowedLocationsForConfidentialComputing`
+### default name `allowed_locations_for_confidential_computing`
   
 |    ASSIGNMENT    |    PARAMETER NAMES     |
 |------------------|------------------------|
 | Enforce-Fsi-Conf | listOfAllowedLocations |
 
   
-### default name `ddosProtectionPlanEffect`
+### default name `ama_change_tracking_data_collection_rule_id`
+  
+The data collection rule id that should be used for the change tracking deployment.
+  
+|        ASSIGNMENT        | PARAMETER NAMES |
+|--------------------------|-----------------|
+| Deploy-VM-ChangeTrack    | dcrResourceId   |
+| Deploy-VMSS-ChangeTrack  | dcrResourceId   |
+| Deploy-vmArc-ChangeTrack | dcrResourceId   |
+
+  
+### default name `ama_mdfc_sql_data_collection_rule_id`
+  
+The data collection rule id that should be used for the SQL MDFC deployment.
+  
+|       ASSIGNMENT       | PARAMETER NAMES |
+|------------------------|-----------------|
+| Deploy-MDFC-DefSQL-AMA | dcrResourceId   |
+
+  
+### default name `ama_user_assigned_managed_identity_id`
+  
+The user assigned managed identity id that should be used for the AMA deployment.
+  
+|       ASSIGNMENT        |        PARAMETER NAMES         |
+|-------------------------|--------------------------------|
+| Deploy-MDFC-DefSQL-AMA  | userAssignedIdentityResourceId |
+| Deploy-VM-ChangeTrack   | userAssignedIdentityResourceId |
+| Deploy-VM-Monitoring    | userAssignedIdentityResourceId |
+| Deploy-VMSS-ChangeTrack | userAssignedIdentityResourceId |
+| Deploy-VMSS-Monitoring  | userAssignedIdentityResourceId |
+
+  
+### default name `ama_user_assigned_managed_identity_name`
+  
+The user assigned managed identity name that is used for the deny action policy to prevent the accidental deletion of the AMA identity.
+  
+|        ASSIGNMENT        | PARAMETER NAMES |
+|--------------------------|-----------------|
+| DenyAction-DeleteUAMIAMA | resourceName    |
+
+  
+### default name `ama_vm_insights_data_collection_rule_id`
+  
+The data collection rule id that should be used for the VM Insights deployment.
+  
+|        ASSIGNMENT        | PARAMETER NAMES |
+|--------------------------|-----------------|
+| Deploy-VM-Monitoring     | dcrResourceId   |
+| Deploy-VMSS-Monitoring   | dcrResourceId   |
+| Deploy-vmHybr-Monitoring | dcrResourceId   |
+
+  
+### default name `ddos_protection_plan_effect`
   
 |    ASSIGNMENT    | PARAMETER NAMES |
 |------------------|-----------------|
 | Enable-DDoS-VNET | effect          |
 
   
-### default name `ddosProtectionPlanId`
+### default name `ddos_protection_plan_id`
+  
+The DDoS protection plan id that should be used for the DDoS protection plan deployment. If this is invalid or you do not use DDoS protection, make sure to change the enforcement mode of the Enable-DDoS-VNET policy to 'DoNotEnforce'.
   
 |    ASSIGNMENT    | PARAMETER NAMES |
 |------------------|-----------------|
 | Enable-DDoS-VNET | ddosPlan        |
 
   
-### default name `emailSecurityContact`
+### default name `email_security_contact`
   
 |       ASSIGNMENT        |   PARAMETER NAMES    |
 |-------------------------|----------------------|
 | Deploy-MDFC-Config-H224 | emailSecurityContact |
 
   
-### default name `logAnalyticsWorkspaceId`
-  
-|    ASSIGNMENT    | PARAMETER NAMES |
-|------------------|-----------------|
-| Deploy-Diag-Logs | logAnalytics    |
-| TR-01-Logging    | logAnalytics    |
-
-  
-### default name `policyEffect`
+### default name `fsi_policy_effect`
   
 |    ASSIGNMENT    | PARAMETER NAMES |
 |------------------|-----------------|
 | Enforce-Fsi-Conf | effect          |
+
+  
+### default name `log_analytics_workspace_id`
+  
+The Log Analytics workspace id that should be used for centralized log collection.
+  
+|       ASSIGNMENT        |     PARAMETER NAMES     |
+|-------------------------|-------------------------|
+| Deploy-AzActivity-Log   | logAnalytics            |
+| Deploy-AzSqlDb-Auditing | logAnalyticsWorkspaceId |
+| Deploy-Diag-LogsCat     | logAnalytics            |
+| Deploy-MDFC-Config-H224 | logAnalytics            |
+| Deploy-MDFC-DefSQL-AMA  | userWorkspaceResourceId |
+
+  
+### default name `private_dns_zone_region`
+  
+The region short name (e.g. `westus`) that should be used for the region specific private link DNS zones.
+  
+|        ASSIGNMENT        | PARAMETER NAMES |
+|--------------------------|-----------------|
+| Deploy-Private-DNS-Zones | dnsZoneRegion   |
+
+  
+### default name `private_dns_zone_resource_group_name`
+  
+The resource group name that hosts the private link DNS zones.
+  
+|        ASSIGNMENT        |     PARAMETER NAMES      |
+|--------------------------|--------------------------|
+| Deploy-Private-DNS-Zones | dnsZoneResourceGroupName |
+
+  
+### default name `private_dns_zone_subscription_id`
+  
+The subscription id that hosts the private link DNS zones.
+  
+|        ASSIGNMENT        |    PARAMETER NAMES    |
+|--------------------------|-----------------------|
+| Deploy-Private-DNS-Zones | dnsZoneSubscriptionId |
+
+  
+### default name `tr_01_log_analytics_workspace_id`
+  
+|  ASSIGNMENT   | PARAMETER NAMES |
+|---------------|-----------------|
+| TR-01-Logging | logAnalytics    |
 
   
 ---
@@ -585,7 +675,7 @@ The following policy default values are available in this library:
   
 ### all policy definitions
   
-<details><summary>158 policy definitions</summary>
+<details><summary>160 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -598,6 +688,8 @@ The following policy default values are available in this library:
 - Audit-PrivateLinkDnsZones
 - Audit-PublicIpAddresses-UnusedResourcesCostOptimization
 - Audit-ServerFarms-UnusedResourcesCostOptimization
+- Audit-Tags-Mandatory
+- Audit-Tags-Mandatory-Rg
 - Deny-AA-child-resources
 - Deny-APIM-TLS
 - Deny-AppGW-Without-WAF
@@ -749,7 +841,7 @@ The following policy default values are available in this library:
   
 ### all policy set definitions
   
-<details><summary>47 policy set definitions</summary>
+<details><summary>49 policy set definitions</summary>
 
 - 50e4abe0-fc74-4546-9bd4-070ad748670b
 - Audit-TrustedLaunch
@@ -770,10 +862,12 @@ The following policy default values are available in this library:
 - Enforce-Backup
 - Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
-- Enforce-Encryption-CMK
+- Enforce-EncryptTransit_20241211
+- Enforce-Encryption-CMK_20250218
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
 - Enforce-Guardrails-Automation
+- Enforce-Guardrails-BotService
 - Enforce-Guardrails-CognitiveServices
 - Enforce-Guardrails-Compute
 - Enforce-Guardrails-ContainerApps
@@ -802,7 +896,7 @@ The following policy default values are available in this library:
   
 ### all policy assignments
   
-<details><summary>74 policy assignments</summary>
+<details><summary>55 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -810,50 +904,32 @@ The following policy default values are available in this library:
 - Audit-TrustedLaunch
 - Audit-UnusedResources
 - Audit-ZoneResiliency
-- Deny-AppGW-Without-WAF
 - Deny-Classic-Resources
-- Deny-DataB-Pip
-- Deny-DataB-Sku
-- Deny-DataB-Vnet
 - Deny-HybridNetworking
 - Deny-IP-forwarding
 - Deny-MgmtPorts-Internet
 - Deny-Priv-Esc-AKS
-- Deny-Private-DNS-Zones
 - Deny-Privileged-AKS
 - Deny-Public-Endpoints
 - Deny-Public-IP
 - Deny-Public-IP-On-NIC
-- Deny-RDP-From-Internet
-- Deny-RSG-Locations
-- Deny-Resource-Locations
-- Deny-Resource-Types
 - Deny-Storage-http
 - Deny-Subnet-Without-Nsg
-- Deny-Subnet-Without-Udr
 - Deny-UnmanagedDisk
 - DenyAction-DeleteUAMIAMA
-- Deploy-AKS-Policy
 - Deploy-ASC-Monitoring
 - Deploy-AzActivity-Log
 - Deploy-AzSqlDb-Auditing
-- Deploy-Diag-Logs
-- Deploy-Log-Analytics
+- Deploy-Diag-LogsCat
 - Deploy-MDEndpoints
 - Deploy-MDEndpointsAMA
-- Deploy-MDFC-Config
 - Deploy-MDFC-Config-H224
 - Deploy-MDFC-DefSQL-AMA
-- Deploy-MDFC-DefenSQL-AMA
 - Deploy-MDFC-OssDb
 - Deploy-MDFC-SqlAtp
 - Deploy-Private-DNS-Zones
-- Deploy-Resource-Diag
-- Deploy-SQL-DB-Auditing
-- Deploy-SQL-Security
 - Deploy-SQL-TDE
 - Deploy-SQL-Threat
-- Deploy-UAMI-VMInsights
 - Deploy-VM-Backup
 - Deploy-VM-ChangeTrack
 - Deploy-VM-Monitoring
@@ -862,8 +938,6 @@ The following policy default values are available in this library:
 - Deploy-vmArc-ChangeTrack
 - Deploy-vmHybr-Monitoring
 - Enable-AUM-CheckUpdates
-- Enable-AUM-VM-Windows
-- Enable-AUM-VMHyb-Windows
 - Enable-DDoS-VNET
 - Enforce-ACSB
 - Enforce-AKS-HTTPS
@@ -872,8 +946,9 @@ The following policy default values are available in this library:
 - Enforce-ASR
 - Enforce-Fsi-Conf
 - Enforce-GR-KeyVault
-- Enforce-TLS-SSL
+- Enforce-Subnet-Private
 - Enforce-TLS-SSL-H224
+- Enforce-TLS-SSL-Q225
 - RE-01-Zonal-Residency
 - SO-01-Data-Residency
 - SO-04-CMK

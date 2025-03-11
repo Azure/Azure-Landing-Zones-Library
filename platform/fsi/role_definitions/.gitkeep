@@ -1,0 +1,6 @@
+# adding .gitignore to maintain lib folder structure, remove after adding files to the folder
+# Ignore all files in this dir...
+*
+
+# ... except for this one.
+!.gitignore

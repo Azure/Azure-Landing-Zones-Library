@@ -2,7 +2,7 @@
   "name": "fsi",
   "management_groups": [
     {
-      "archetypes": ["fsi_root", "root"],
+      "archetypes": ["fsi_root", "root", "tr_01_logging", "so_04_cmk", "so_01_data_residency", "re_01_zonal_residency"],
       "display_name": "FSI Landing Zone",
       "exists": false,
       "id": "fsi",
@@ -72,7 +72,7 @@
       "parent_id": "fsi-landingzones"
     },
     {
-      "archetypes": ["sandboxes"],
+      "archetypes": ["sandbox"],
       "display_name": "Sandbox",
       "exists": false,
       "id": "fsi-sandbox",
