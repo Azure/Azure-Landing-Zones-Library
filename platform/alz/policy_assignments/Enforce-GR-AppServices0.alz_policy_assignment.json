@@ -1,0 +1,24 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Enforce-GR-AppServices0",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative assignment enables additional ALZ guardrails for App Services.",
+    "displayName": "Enforce recommended guardrails for App Services",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Guardrails-AppServices",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Recommended guardrails {enforcementMode} be enforced for App Services."
+      }
+    ],
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": [],
+    "parameters": {}
+  }
+}
