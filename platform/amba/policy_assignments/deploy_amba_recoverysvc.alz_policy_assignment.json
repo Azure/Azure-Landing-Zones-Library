@@ -17,6 +17,7 @@
         "message": "Alerting {enforcementMode} be deployed to Azure services."
       }
     ],
+    "notScopes": [],
     "parameters": {
       "ALZMonitorDisableTagName": {
         "value": "MonitorDisable"
@@ -39,7 +40,6 @@
     "metadata": {
       "_deployed_by_amba": true
     },
-    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
-    "notScopes": []
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder"
   }
 }
