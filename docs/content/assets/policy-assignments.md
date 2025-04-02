@@ -8,12 +8,10 @@ geekdocAnchor: true
 Filename patterns:
 
 - `*.alz_policy_assignment.json`
-- `*.alz_policy_assignment.yaml`
-- `*.alz_policy_assignment.yml`
 
 These files represent Azure Policy assignments.
 They are files that represent the resource definition as per the schema.
-Although the Azure Resource Manager APIs use JSON, the library supports both JSON and YAML formats.
+The file type is JSON.
 Any keys that are not part of the schema should be ignored.
 
 Within the resource definition, there are several values that specific to the scope of the deployed resource and must be modified when the assignment is deployed in an architecture.
