@@ -192,6 +192,54 @@
           "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
         }
       ]
+    },
+    {
+      "default_name": "ama_mdfc_sql_workspace_region",
+      "description": "The region short name (e.g. `westus`) that should be used for the Log Analytics workspace for the SQL MDFC deployment.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "workspaceRegion"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
+        }
+      ]
+    },
+    {
+      "default_name": "mdfc_email_security_contact",
+      "description": "Email address for Microsoft Defender for Cloud alerts.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "emailSecurityContact"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-Config-H224"
+        }
+      ]
+    },
+    {
+      "default_name": "mdfc_export_resource_group_name",
+      "description": "Resource Group name for the export to Log Analytics workspace configuration",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ascExportResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-Config-H224"
+        }
+      ]
+    },
+    {
+      "default_name": "mdfc_export_resource_group_location",
+      "description": "RResource Group location for the export to Log Analytics workspace configuration",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ascExportResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-Config-H224"
+        }
+      ]
     }
   ]
 }
