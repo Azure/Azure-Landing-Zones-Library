@@ -1,8 +1,8 @@
 {
   "name": "Deploy_activitylog_Firewall_Delete",
   "properties": {
-    "description": "Policy to Deploy Activity Log Azure Firewall Delete Alert",
-    "displayName": "Deploy Activity Log Azure FireWall Delete Alert",
+    "description": "Policy to audit/deploy Activity Log Azure Firewall Delete Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Activity Log Azure FireWall Delete Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.0"
+      "version": "1.1.1"
     },
     "mode": "All",
     "parameters": {

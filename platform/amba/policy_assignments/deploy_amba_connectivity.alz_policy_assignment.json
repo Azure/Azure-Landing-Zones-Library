@@ -8,8 +8,8 @@
     "type": "SystemAssigned"
   },
   "properties": {
-    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Network components such as Azure Firewalls, ExpressRoute, VPN, and Private DNS Zones.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Connectivity",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Network components such as Azure Firewalls, ExpressRoute, VPN, and Private DNS Zones.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Connectivity",
     "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-Connectivity",
     "enforcementMode": "Default",
     "nonComplianceMessages": [

@@ -2,7 +2,7 @@
   "name": "Deploy_Hybrid_VM_Memory_Alert",
   "properties": {
     "description": "Policy to audit/deploy Hybrid VM Memory Alert",
-    "displayName": "Deploy Hybrid VM Memory Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Hybrid VM Memory Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Hybrid Compute",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.5.1"
+      "version": "1.5.2"
     },
     "mode": "All",
     "parameters": {

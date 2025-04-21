@@ -2,7 +2,7 @@
   "name": "Deploy_VM_dataDiskSpace_Alert",
   "properties": {
     "description": "Policy to audit/deploy Azure VM data Disk Space Alert",
-    "displayName": "Deploy Azure VM Data Disk Space Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Azure VM Data Disk Space Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Compute",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.8.1"
+      "version": "1.8.2"
     },
     "mode": "All",
     "parameters": {

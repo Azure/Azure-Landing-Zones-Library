@@ -2,12 +2,12 @@
   "name": "Deploy_FD_BackendHealth_Alert",
   "properties": {
     "description": "Policy to audit/deploy FrontDoor Backend Health Percentage  Alert",
-    "displayName": "Deploy Frontdoor Backend Health Percentage Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Frontdoor Backend Health Percentage Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "category": "Networking",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.1"
+      "version": "1.1.2"
     },
     "mode": "All",
     "parameters": {
