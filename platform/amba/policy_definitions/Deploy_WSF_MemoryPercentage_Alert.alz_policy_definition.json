@@ -2,12 +2,12 @@
   "name": "Deploy_WSF_MemoryPercentage_Alert",
   "properties": {
     "description": "Policy to audit/deploy App Service Plan Memory Percentage  Alert",
-    "displayName": "Deploy App Service Plan Memory Percentage Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - App Service Plan Memory Percentage Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "category": "Web Services",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.1"
+      "version": "1.2.2"
     },
     "mode": "All",
     "parameters": {

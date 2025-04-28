@@ -8,8 +8,8 @@
     "type": "SystemAssigned"
   },
   "properties": {
-    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Service Health Events such as Service issues, Planned maintenance, Health advisories, Security advisories, and Resource health.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Service Health",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Service Health Events such as Service issues, Planned maintenance, Health advisories, Security advisories, and Resource health.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Service Health",
     "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-ServiceHealth",
     "enforcementMode": "Default",
     "nonComplianceMessages": [

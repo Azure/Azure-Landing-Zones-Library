@@ -2,7 +2,7 @@
   "name": "Deploy_Suppression_AlertProcessing_Rule",
   "properties": {
     "description": "Policy to deploy empty and disabled suppression Alert Processing Rule for all AMBA alerts",
-    "displayName": "Deploy AMBA Notification Suppression Asset",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Notification Suppression Assets",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.0"
+      "version": "1.1.1"
     },
     "mode": "All",
     "parameters": {

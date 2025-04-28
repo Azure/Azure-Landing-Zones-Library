@@ -1,8 +1,8 @@
 {
   "name": "Deploy_ServiceHealth_ActionGroups",
   "properties": {
-    "description": "Policy to deploy action group for Service Health alerts",
-    "displayName": "Deploy Service Health Action Group",
+    "description": "Policy to audit/deploy action group for Service Health alerts",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Service Health Action Group",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.0"
+      "version": "1.4.1"
     },
     "mode": "All",
     "parameters": {

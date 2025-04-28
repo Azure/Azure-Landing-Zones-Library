@@ -2,7 +2,7 @@
   "name": "Deploy_KeyVault_Availability_Alert",
   "properties": {
     "description": "Policy to audit/deploy KeyVault Availability Alert",
-    "displayName": "Deploy Key Vault Availability Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Key Vault Availability Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Key Vault",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.2.1"
     },
     "mode": "All",
     "parameters": {
