@@ -1,8 +1,8 @@
 {
   "name": "Alerting-Identity",
   "properties": {
-    "description": "Initiative to deploy AMBA alerts relevant to the ALZ Identity management group",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Identity",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor identity components.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Identity",
     "metadata": {
       "_deployed_by_amba": true,
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.1"
+      "version": "1.1.2"
     },
     "parameters": {
       "ALZMonitorDisableTagName": {

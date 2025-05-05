@@ -8,8 +8,8 @@
     "type": "SystemAssigned"
   },
   "properties": {
-    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Web Services such as App Services.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Web",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Web Services such as App Services.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Web",
     "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-Web",
     "enforcementMode": "Default",
     "nonComplianceMessages": [

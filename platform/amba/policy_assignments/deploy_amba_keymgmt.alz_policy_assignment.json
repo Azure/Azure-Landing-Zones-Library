@@ -8,8 +8,8 @@
     "type": "SystemAssigned"
   },
   "properties": {
-    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Key Management Services such as Azure Key Vault, and Managed HSM.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Key Management",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Key Management Services such as Azure Key Vault, and Managed HSM.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Key Management",
     "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-KeyManagement",
     "enforcementMode": "Default",
     "nonComplianceMessages": [

@@ -1,8 +1,8 @@
 {
   "name": "Deploy_activitylog_StorageAccount_Delete",
   "properties": {
-    "description": "Policy to Deploy Activity Log Storage Account Delete Alert",
-    "displayName": "Deploy Activity Log Storage Account Delete Alert",
+    "description": "Policy to audit/deploy Activity Log Storage Account Delete Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Activity Log Storage Account Delete Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.2.1"
     },
     "mode": "All",
     "parameters": {

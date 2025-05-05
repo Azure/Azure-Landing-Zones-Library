@@ -2,7 +2,7 @@
   "name": "Deploy_VPNGw_TunnelIngressPacketDropMismatch_Alert",
   "properties": {
     "description": "Policy to audit/deploy VPN Gateway Ingress Packet Drop Mismatch Alert",
-    "displayName": "Deploy VPNG Ingress Packet Drop Mismatch Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - VPNG Ingress Packet Drop Mismatch Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.3.0"
+      "version": "1.3.1"
     },
     "mode": "All",
     "parameters": {

@@ -2,7 +2,7 @@
   "name": "Deploy_AA_TotalJob_Alert",
   "properties": {
     "description": "Policy to audit/deploy Automation Account TotalJob Alert",
-    "displayName": "Deploy Automation Account TotalJob Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Automation Account TotalJob Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Automation",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.1"
+      "version": "1.2.2"
     },
     "mode": "All",
     "parameters": {

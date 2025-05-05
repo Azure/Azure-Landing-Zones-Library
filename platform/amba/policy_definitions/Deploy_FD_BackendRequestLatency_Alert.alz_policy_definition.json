@@ -2,7 +2,7 @@
   "name": "Deploy_FD_BackendRequestLatency_Alert",
   "properties": {
     "description": "Policy to audit/deploy Frontdoor Backend Request Latency Alert",
-    "displayName": "Deploy Frontdoor Backend Request Latency Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Frontdoor Backend Request Latency Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Networking",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.2.1"
     },
     "mode": "All",
     "parameters": {
