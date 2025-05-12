@@ -2,7 +2,7 @@
   "name": "Deploy_ManagedHSMs_Availability_Alert",
   "properties": {
     "description": "Policy to audit/deploy Managed HSMs Availability Alert",
-    "displayName": "Deploy Managed HSMs Availability Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Managed HSMs Availability Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Key Vault",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
     "mode": "All",
     "parameters": {

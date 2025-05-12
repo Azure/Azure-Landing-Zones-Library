@@ -2,7 +2,7 @@
   "name": "Deploy_VnetGw_ExpressRouteCpuUtil_Alert",
   "properties": {
     "description": "Policy to audit/deploy Virtual Network Gateway Express Route CPU Utilization Alert",
-    "displayName": "Deploy VNetG ExpressRoute CPU Utilization Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - VNetG ExpressRoute CPU Utilization Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.1"
+      "version": "1.2.2"
     },
     "mode": "All",
     "parameters": {
