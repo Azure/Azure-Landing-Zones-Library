@@ -2,12 +2,12 @@
   "name": "Deploy_AG_UnhealthyHostCount_Alert",
   "properties": {
     "description": "Policy to audit/deploy Azure Application Gateway Unhealthy Host Count Alert",
-    "displayName": "Deploy AGW Unhealthy Host Count Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - AGW Unhealthy Host Count Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "category": "Networking",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.1"
+      "version": "1.2.2"
     },
     "mode": "All",
     "parameters": {

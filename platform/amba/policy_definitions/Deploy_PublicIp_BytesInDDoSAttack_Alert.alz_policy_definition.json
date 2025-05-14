@@ -2,7 +2,7 @@
   "name": "Deploy_PublicIp_BytesInDDoSAttack_Alert",
   "properties": {
     "description": "Policy to audit/deploy PIP Bytes in DDoS Attack Alert",
-    "displayName": "Deploy PIP Bytes in DDoS Attack Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - PIP Bytes in DDoS Attack Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.2.1"
     },
     "mode": "All",
     "parameters": {

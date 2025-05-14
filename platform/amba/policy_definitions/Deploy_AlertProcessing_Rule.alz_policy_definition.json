@@ -2,7 +2,7 @@
   "name": "Deploy_AlertProcessing_Rule",
   "properties": {
     "description": "Policy to deploy Action Group and Alert Processing Rule for all AMBA alerts",
-    "displayName": "Deploy AMBA Notification Assets",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Notification Assets",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.5.0"
+      "version": "1.5.1"
     },
     "mode": "All",
     "parameters": {

@@ -2,7 +2,7 @@
   "name": "Deploy_AppInsightsThrottlingLimit_Alert",
   "properties": {
     "description": "Policy to audit/deploy Application Insights Throttling Limit Reached Alert",
-    "displayName": "Deploy Application Insights Throttling Limit Reached Alert (Preview)",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Application Insights Throttling Limit Reached Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.2.2"
     },
     "mode": "All",
     "parameters": {
@@ -375,7 +375,7 @@
                         ]
                       },
                       "description": "Log Alert for Application Insights Throttling Limit Reached",
-                      "displayName": "[concat(parameters('resourceName'), '-Application Insights Throttling Limit Reached (Preview)')]",
+                      "displayName": "[concat(parameters('resourceName'), '-Application Insights Throttling Limit Reached')]",
                       "enabled": "[parameters('enabled')]",
                       "evaluationFrequency": "[parameters('evaluationFrequency')]",
                       "parameters": {

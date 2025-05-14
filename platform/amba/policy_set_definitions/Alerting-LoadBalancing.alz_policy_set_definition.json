@@ -1,8 +1,8 @@
 {
   "name": "Alerting-LoadBalancing",
   "properties": {
-    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Load Balancing Services such as Load Balancer, Application Gateway, Traffic Manager, and Azure Front Door.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Load Balancing",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Load Balancing Services such as Load Balancer, Application Gateway, Traffic Manager, and Azure Front Door.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Load Balancing",
     "metadata": {
       "_deployed_by_amba": true,
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.1"
+      "version": "1.1.2"
     },
     "parameters": {
       "AGWApplicationGatewayTotalTimeAlertSensitivity": {

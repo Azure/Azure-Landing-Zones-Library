@@ -1,8 +1,8 @@
 {
   "name": "Alerting-Web",
   "properties": {
-    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Web Services such as App Services.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Web",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Web Services such as App Services.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Web",
     "metadata": {
       "_deployed_by_amba": true,
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.3.0"
+      "version": "1.3.1"
     },
     "parameters": {
       "ALZManagementSubscriptionId": {
