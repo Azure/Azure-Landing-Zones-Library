@@ -2,12 +2,12 @@
   "name": "Deploy_AG_CapacityUnits_Alert",
   "properties": {
     "description": "Policy to audit/deploy Azure Application Gateway CapacityUnits Alert",
-    "displayName": "Deploy AGW Capacity Units Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - AGW Capacity Units Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "category": "Networking",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.1"
+      "version": "1.2.2"
     },
     "mode": "All",
     "parameters": {

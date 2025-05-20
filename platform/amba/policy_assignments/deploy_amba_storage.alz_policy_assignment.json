@@ -8,8 +8,8 @@
     "type": "SystemAssigned"
   },
   "properties": {
-    "description": "This initiative deploys Azure Monitor Baseline Alerts to monitor Storage Services such as Storage accounts.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Storage",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Storage Services such as Storage accounts.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Storage",
     "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-Storage",
     "enforcementMode": "Default",
     "nonComplianceMessages": [

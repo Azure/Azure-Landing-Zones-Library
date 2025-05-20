@@ -2,7 +2,7 @@
   "name": "Deploy_VPNGw_BandwidthUtil_Alert",
   "properties": {
     "description": "Policy to audit/deploy VPN Gateway Bandwidth Utilization Alert",
-    "displayName": "Deploy VPNG Bandwidth Utilization Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - VPNG Bandwidth Utilization Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.2.2"
     },
     "mode": "All",
     "parameters": {

@@ -2,7 +2,7 @@
   "name": "Alerting-NetworkChanges",
   "properties": {
     "description": "This initiative implements Azure Monitor Baseline Alerts to monitor alterations in Network Routing and Security, such as modifications to Route Tables and the removal of Network Security Groups.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts for Changes in Network Routing and Security",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Changes in Network Routing and Security",
     "metadata": {
       "_deployed_by_amba": true,
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.1"
+      "version": "1.1.2"
     },
     "parameters": {
       "ALZMonitorDisableTagName": {
