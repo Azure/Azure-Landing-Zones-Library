@@ -49,6 +49,18 @@ $enforcementModeLookup = New-Object 'System.Collections.Generic.Dictionary[Tuple
 
 $policyAssignments = New-Object 'System.Collections.Generic.Dictionary[string,System.Collections.Generic.List[string]]'
 
+$managementGroupMapping = @{
+  "defaults"       = "root"
+  "management"     = "management"
+  "connectivity"   = "connectivity"
+  "corp"           = "corp"
+  "landingzones"   = "landing_zones"
+  "decommissioned" = "decommissioned"
+  "sandboxes"      = "sandbox"
+  "identity"       = "identity"
+  "platform"       = "platform"
+}
+
 foreach ($resource in $eslzArm) {
   $scope = $resource.scope
   $policyAssignment = $resource.properties.templateLink.uri
@@ -71,18 +83,6 @@ foreach ($resource in $eslzArm) {
           $managementGroupMapping[$managementGroup], $policyAssignmentFileName)) = $resource.properties.enforcementMode
     }
   }
-}
-
-$managementGroupMapping = @{
-  "defaults"       = "root"
-  "management"     = "management"
-  "connectivity"   = "connectivity"
-  "corp"           = "corp"
-  "landingzones"   = "landing_zones"
-  "decommissioned" = "decommissioned"
-  "sandboxes"      = "sandbox"
-  "identity"       = "identity"
-  "platform"       = "platform"
 }
 
 $logAnalyticsWorkspaceIdPlaceholder = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder/providers/Microsoft.OperationalInsights/workspaces/placeholder-la"
