@@ -43,6 +43,10 @@ $eslzArmParametersSourcePath = "$SourcePath/eslzArm/eslzArm.terraform-sync.param
 
 $eslzArm = & $parser "-s $eslzArmSourcePath" "-f $eslzArmParametersSourcePath" "-a" | Out-String | ConvertFrom-Json
 
+# create a dictionary of policy assignment names to a string for enforcement mode
+# ...
+$enforcementModeLookup = New-Object 'System.Collections.Generic.Dictionary[Tuple[string,string],string]'
+
 $policyAssignments = New-Object 'System.Collections.Generic.Dictionary[string,System.Collections.Generic.List[string]]'
 
 foreach ($resource in $eslzArm) {
@@ -62,6 +66,9 @@ foreach ($resource in $eslzArm) {
       else {
         $policyAssignments[$managementGroup].Add($policyAssignmentFileName)
       }
+      # Add enforcement mode to the lookup dictionary
+      $enforcementModeLookup.([Tuple]::Create(
+          $managementGroupMapping[$managementGroup], $policyAssignmentFileName)) = $resource.properties.enforcementMode
     }
   }
 }
@@ -160,6 +167,7 @@ foreach ($managementGroup in $policyAssignments.Keys) {
 
     $defaultParameterFormatted = $defaultParameters.GetEnumerator().ForEach({ "-p $($_.Name)=$($_.Value)" })
 
+    # Create a temporary file here based on the out
     $parsedAssignmentArray = & $parser "-s $policyAssignmentSourcePath/$policyAssignmentFile" $defaultParameterFormatted "-a" | Out-String | ConvertFrom-Json
 
     foreach ($parsedAssignment in $parsedAssignmentArray) {
@@ -189,6 +197,17 @@ foreach ($managementGroup in $policyAssignments.Keys) {
 
       if (!(Get-Member -InputObject $parsedAssignment -Name "location" -MemberType Properties)) {
         $parsedAssignment | Add-Member -MemberType NoteProperty -Name "location" -Value "uksouth"
+      }
+
+      $enforcementMode = $enforcementModeLookup.([Tuple]::Create($managementGroupNameFinal, $policyAssignmentName))
+      if ($null -ne $enforcementMode) {
+        Write-Verbose "Setting enforcement mode for $policyAssignmentName to $enforcementMode"
+        if (!(Get-Member -InputObject $parsedAssignment.properties -Name "enforcementMode" -MemberType Properties)) {
+          $parsedAssignment.properties | Add-Member -MemberType NoteProperty -Name "enforcementMode" -Value $enforcementMode
+        }
+        else {
+          $parsedAssignment.properties.enforcementMode = $enforcementMode
+        }
       }
 
       if ($parsedAssignment.properties.policyDefinitionId.StartsWith("/providers/Microsoft.Management/managementGroups/`${temp}")) {
