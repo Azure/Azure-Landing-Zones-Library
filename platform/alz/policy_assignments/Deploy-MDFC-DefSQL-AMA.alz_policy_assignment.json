@@ -12,7 +12,7 @@
     "displayName": "Enable Defender for SQL on SQL VMs and Arc-enabled SQL Servers",
     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/de01d381-bae9-4670-8870-786f89f49e26",
     "definitionVersion": "1.*.*",
-    "enforcementMode": "Default",
+    "enforcementMode": "DoNotEnforce",
     "nonComplianceMessages": [
       {
         "message": "Microsoft Defender for SQL {enforcementMode} be deployed."

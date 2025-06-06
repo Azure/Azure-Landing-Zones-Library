@@ -8,7 +8,7 @@
     "displayName": "Kubernetes clusters should be accessible only over HTTPS",
     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1a5b4dca-0b6f-4cf5-907c-56316bc1bf3d",
     "definitionVersion": "8.*.*",
-    "enforcementMode": "Default",
+    "enforcementMode": "DoNotEnforce",
     "parameters": {
       "effect": {
         "value": "deny"
