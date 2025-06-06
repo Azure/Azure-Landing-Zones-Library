@@ -12,7 +12,7 @@
     "displayName": "Configure SQL servers to have auditing enabled to Log Analytics workspace",
     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/25da7dfb-0666-4a15-a8f5-402127efd8bb",
     "definitionVersion": "1.*.*",
-    "enforcementMode": "Default",
+    "enforcementMode": "DoNotEnforce",
     "nonComplianceMessages": [
       {
         "message": "SQL servers {enforcementMode} have auditing enabled to Log Analytics workspace."

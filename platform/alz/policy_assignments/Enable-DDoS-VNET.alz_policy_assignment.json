@@ -12,7 +12,7 @@
     "displayName": "Virtual networks should be protected by Azure DDoS Network Protection",
     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/94de2ad3-e0c1-4caf-ad78-5d47bbc83d3d",
     "definitionVersion": "1.*.*",
-    "enforcementMode": "Default",
+    "enforcementMode": "DoNotEnforce",
     "parameters": {
       "ddosPlan": {
         "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/ddosProtectionPlans/placeholder"

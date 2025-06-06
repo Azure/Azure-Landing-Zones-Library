@@ -8,7 +8,7 @@
     "displayName": "Secure transfer to storage accounts should be enabled",
     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/404c3081-a854-4457-ae30-26a93ef643f9",
     "definitionVersion": "2.*.*",
-    "enforcementMode": "Default",
+    "enforcementMode": "DoNotEnforce",
     "nonComplianceMessages": [
       {
         "message": "Secure transfer to storage accounts {enforcementMode} be enabled."

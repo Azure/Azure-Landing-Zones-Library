@@ -12,7 +12,7 @@
     "displayName": "Enable Azure Monitor for Hybrid Virtual Machines",
     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/2b00397d-c309-49c4-aa5a-f0b2c5bc6321",
     "definitionVersion": "1.*.*",
-    "enforcementMode": "Default",
+    "enforcementMode": "DoNotEnforce",
     "nonComplianceMessages": [
       {
         "message": "Azure Monitor {enforcementMode} be enabled for Hybrid Virtual Machines."

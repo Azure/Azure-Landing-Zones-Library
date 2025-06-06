@@ -12,7 +12,7 @@
     "displayName": "Enable ChangeTracking and Inventory for virtual machine scale sets",
     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/c4a70814-96be-461c-889f-2b27429120dc",
     "definitionVersion": "1.*.*-preview",
-    "enforcementMode": "Default",
+    "enforcementMode": "DoNotEnforce",
     "nonComplianceMessages": [
       {
         "message": "Change Tracking {enforcementMode} be enabled for Virtual Machines Scales Sets."
