@@ -44,7 +44,6 @@ $eslzArmParametersSourcePath = "$SourcePath/eslzArm/eslzArm.terraform-sync.param
 $eslzArm = & $parser "-s $eslzArmSourcePath" "-f $eslzArmParametersSourcePath" "-a" | Out-String | ConvertFrom-Json
 
 # create a dictionary of policy assignment names to a string for enforcement mode
-# ...
 $enforcementModeLookup = New-Object 'System.Collections.Generic.Dictionary[Tuple[string,string],string]'
 
 $policyAssignments = New-Object 'System.Collections.Generic.Dictionary[string,System.Collections.Generic.List[string]]'
@@ -80,8 +79,9 @@ foreach ($resource in $eslzArm) {
       }
       $enforcementMode = $resource.properties.parameters.enforcementMode.value
       # Add enforcement mode to the lookup dictionary
-      $enforcementModeLookup[[Tuple]::Create(
-        $managementGroupMapping[$managementGroup], $policyAssignmentFileName)] = $enforcementMode
+      $newMg = $managementGroupMapping[$managementGroup.Replace("defaults-", "")]
+      Write-Verbose "Adding enforcement mode for $newMg - ${policyAssignmentFileName}: $enforcementMode"
+      $enforcementModeLookup[[Tuple]::Create($newMg, $policyAssignmentFileName)] = $enforcementMode
     }
   }
 }
