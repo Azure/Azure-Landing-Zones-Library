@@ -11,9 +11,9 @@
       ],
       "category": "Tags",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
-    "mode": "Indexed",
+    "mode": "All",
     "parameters": {
       "effect": {
         "allowedValues": [

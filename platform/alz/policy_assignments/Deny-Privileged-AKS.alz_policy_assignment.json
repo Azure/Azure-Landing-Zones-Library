@@ -8,7 +8,7 @@
     "displayName": "Kubernetes cluster should not allow privileged containers",
     "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/95edb821-ddaf-4404-9732-666045e056b4",
     "definitionVersion": "9.*.*",
-    "enforcementMode": "Default",
+    "enforcementMode": "DoNotEnforce",
     "parameters": {
       "effect": {
         "value": "deny"

@@ -12,7 +12,7 @@
     "displayName": "Enable Azure Monitor for VMs",
     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/924bfe3a-762f-40e7-86dd-5c8b95eb09e6",
     "definitionVersion": "1.*.*",
-    "enforcementMode": "Default",
+    "enforcementMode": "DoNotEnforce",
     "nonComplianceMessages": [
       {
         "message": "Azure Monitor {enforcementMode} be enabled for Virtual Machines."
