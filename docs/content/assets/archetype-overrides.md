@@ -42,3 +42,24 @@ policy_set_definitions_to_remove: []
 role_definitions_to_add: []
 role_definitions_to_remove: []
 ```
+
+## Updating the Architecture Definition
+
+When an archetype override is used, the architecture definition must be updated to reference the new name:
+
+```yaml
+name: my architecture
+management_groups:
+  - id: my-mg
+    display_name: My Management Group
+    archetypes:
+      - root
+    parent_id: null
+    exists: false
+  - id: my-mg-child
+    display_name: My Management Group Child
+    archetypes:
+      - landing_zones_override # Set this to the name of the override archetype
+    parent_id: my-mg
+    exists: false
+```

@@ -43,7 +43,22 @@ $eslzArmParametersSourcePath = "$SourcePath/eslzArm/eslzArm.terraform-sync.param
 
 $eslzArm = & $parser "-s $eslzArmSourcePath" "-f $eslzArmParametersSourcePath" "-a" | Out-String | ConvertFrom-Json
 
+# create a dictionary of policy assignment names to a string for enforcement mode
+$enforcementModeLookup = New-Object 'System.Collections.Generic.Dictionary[Tuple[string,string],string]'
+
 $policyAssignments = New-Object 'System.Collections.Generic.Dictionary[string,System.Collections.Generic.List[string]]'
+
+$managementGroupMapping = @{
+  "defaults"       = "root"
+  "management"     = "management"
+  "connectivity"   = "connectivity"
+  "corp"           = "corp"
+  "landingzones"   = "landing_zones"
+  "decommissioned" = "decommissioned"
+  "sandboxes"      = "sandbox"
+  "identity"       = "identity"
+  "platform"       = "platform"
+}
 
 foreach ($resource in $eslzArm) {
   $scope = $resource.scope
@@ -62,20 +77,13 @@ foreach ($resource in $eslzArm) {
       else {
         $policyAssignments[$managementGroup].Add($policyAssignmentFileName)
       }
+      $enforcementMode = $resource.properties.parameters.enforcementMode.value
+      # Add enforcement mode to the lookup dictionary
+      $newMg = $managementGroupMapping[$managementGroup.Replace("defaults-", "")]
+      Write-Verbose "Adding enforcement mode for $newMg - ${policyAssignmentFileName}: $enforcementMode"
+      $enforcementModeLookup[[Tuple]::Create($newMg, $policyAssignmentFileName)] = $enforcementMode
     }
   }
-}
-
-$managementGroupMapping = @{
-  "defaults"       = "root"
-  "management"     = "management"
-  "connectivity"   = "connectivity"
-  "corp"           = "corp"
-  "landingzones"   = "landing_zones"
-  "decommissioned" = "decommissioned"
-  "sandboxes"      = "sandbox"
-  "identity"       = "identity"
-  "platform"       = "platform"
 }
 
 $logAnalyticsWorkspaceIdPlaceholder = "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/placeholder/providers/Microsoft.OperationalInsights/workspaces/placeholder-la"
@@ -160,6 +168,7 @@ foreach ($managementGroup in $policyAssignments.Keys) {
 
     $defaultParameterFormatted = $defaultParameters.GetEnumerator().ForEach({ "-p $($_.Name)=$($_.Value)" })
 
+    # Create a temporary file here based on the out
     $parsedAssignmentArray = & $parser "-s $policyAssignmentSourcePath/$policyAssignmentFile" $defaultParameterFormatted "-a" | Out-String | ConvertFrom-Json
 
     foreach ($parsedAssignment in $parsedAssignmentArray) {
@@ -189,6 +198,17 @@ foreach ($managementGroup in $policyAssignments.Keys) {
 
       if (!(Get-Member -InputObject $parsedAssignment -Name "location" -MemberType Properties)) {
         $parsedAssignment | Add-Member -MemberType NoteProperty -Name "location" -Value "uksouth"
+      }
+
+      $enforcementMode = $enforcementModeLookup[[Tuple]::Create($managementGroupNameFinal, $policyAssignmentFile)]
+      if ($null -ne $enforcementMode) {
+        Write-Verbose "Setting enforcement mode for $policyAssignmentName to $enforcementMode"
+        if (!(Get-Member -InputObject $parsedAssignment.properties -Name "enforcementMode" -MemberType Properties)) {
+          $parsedAssignment.properties | Add-Member -MemberType NoteProperty -Name "enforcementMode" -Value $enforcementMode
+        }
+        else {
+          $parsedAssignment.properties.enforcementMode = $enforcementMode
+        }
       }
 
       if ($parsedAssignment.properties.policyDefinitionId.StartsWith("/providers/Microsoft.Management/managementGroups/`${temp}")) {
