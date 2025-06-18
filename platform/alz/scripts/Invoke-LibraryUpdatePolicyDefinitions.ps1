@@ -30,6 +30,12 @@ param (
 
 $ErrorActionPreference = "Stop"
 
+$removedPolicySetDefinitions = @(
+  "Enforce-Encryption-CMK.alz_policy_set_definition.json"
+)
+
+$removedPolicyDefinitions = @()
+
 # If the -Reset parameter is set, delete all existing
 # artefacts (by resource type) from the library
 if ($Reset) {
@@ -37,6 +43,25 @@ if ($Reset) {
   Remove-Item -Path "$TargetPath/platform/alz/policy_definitions/" -Recurse -Force
   Write-Information "Deleting existing Policy Set Definitions from library." -InformationAction Continue
   Remove-Item -Path "$TargetPath/platform/alz/policy_set_definitions/" -Recurse -Force
+}
+
+# Remove any Policy Set Definitions that are no longer
+# present in the source repository
+Get-ChildItem -Path "$TargetPath/platform/alz/policy_set_definitions/" -File | ForEach-Object {
+  if ($removedPolicySetDefinitions -contains $_.Name) {
+    Write-Information "Removing obsolete Policy Set Definition: $($_.Name)" -InformationAction Continue
+    Remove-Item -Path $_.FullName -Force
+  }
+}
+
+# Remove any Policy Definitions that are no longer
+# present in the source repository
+Get-ChildItem -Path "$TargetPath/platform/alz/policy_definitions/" -File
+| ForEach-Object {
+  if ($removedPolicyDefinitions -contains $_.Name) {
+    Write-Information "Removing obsolete Policy Definition: $($_.Name)" -InformationAction Continue
+    Remove-Item -Path $_.FullName -Force
+  }
 }
 
 # Get a list of current Policy Definition names
