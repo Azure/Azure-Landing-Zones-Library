@@ -1,0 +1,24 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Enforce-GR-KeyVaultSup0",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative assignment enables additional ALZ guardrails for Key Vault Supplementary.",
+    "displayName": "Enforce recommended guardrails for Key Vault Supplementary",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Guardrails-KeyVault-Sup",
+    "enforcementMode": "DoNotEnforce",
+    "nonComplianceMessages": [
+      {
+        "message": "Recommended guardrails {enforcementMode} be enforced for Key Vault Supplementary."
+      }
+    ],
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": [],
+    "parameters": {}
+  }
+}
