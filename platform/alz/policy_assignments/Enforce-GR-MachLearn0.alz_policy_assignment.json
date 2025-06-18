@@ -1,0 +1,24 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2022-06-01",
+  "name": "Enforce-GR-MachLearn0",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative assignment enables additional ALZ guardrails for Machine Learning.",
+    "displayName": "Enforce recommended guardrails for Machine Learning",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Enforce-Guardrails-MachineLearning",
+    "enforcementMode": "DoNotEnforce",
+    "nonComplianceMessages": [
+      {
+        "message": "Recommended guardrails {enforcementMode} be enforced for Machine Learning."
+      }
+    ],
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": [],
+    "parameters": {}
+  }
+}
