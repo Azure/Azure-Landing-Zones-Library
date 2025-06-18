@@ -291,7 +291,7 @@
           "parameter_names": [
             "ALZMonitorDisableTagName"
           ],
-          "policy_assignment_name": "Deploy-AMBA-Connectivity2"
+          "policy_assignment_name": "Deploy-AMBAConnectivity2"
         },
         {
           "parameter_names": [
@@ -369,7 +369,7 @@
           "parameter_names": [
             "ALZMonitorDisableTagValues"
           ],
-          "policy_assignment_name": "Deploy-AMBA-Connectivity2"
+          "policy_assignment_name": "Deploy-AMBAConnectivity2"
         },
         {
           "parameter_names": [
