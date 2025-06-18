@@ -316,40 +316,40 @@ The resource id of the user assigned managed identity, required if you intend to
   
 Tag name used to disable monitoring at the resource level.
   
-|        ASSIGNMENT         |     PARAMETER NAMES      |
-|---------------------------|--------------------------|
-| Deploy-AMBA-Connectivity  | ALZMonitorDisableTagName |
-| Deploy-AMBA-Connectivity2 | ALZMonitorDisableTagName |
-| Deploy-AMBA-HybridVM      | ALZMonitorDisableTagName |
-| Deploy-AMBA-Identity      | ALZMonitorDisableTagName |
-| Deploy-AMBA-KeyMgmt       | ALZMonitorDisableTagName |
-| Deploy-AMBA-Management    | ALZMonitorDisableTagName |
-| Deploy-AMBA-NetworkChang  | ALZMonitorDisableTagName |
-| Deploy-AMBA-Notification  | ALZMonitorDisableTagName |
-| Deploy-AMBA-Storage       | ALZMonitorDisableTagName |
-| Deploy-AMBA-SvcHealth     | ALZMonitorDisableTagName |
-| Deploy-AMBA-VM            | ALZMonitorDisableTagName |
-| Deploy-AMBA-Web           | ALZMonitorDisableTagName |
+|        ASSIGNMENT        |     PARAMETER NAMES      |
+|--------------------------|--------------------------|
+| Deploy-AMBA-Connectivity | ALZMonitorDisableTagName |
+| Deploy-AMBA-HybridVM     | ALZMonitorDisableTagName |
+| Deploy-AMBA-Identity     | ALZMonitorDisableTagName |
+| Deploy-AMBA-KeyMgmt      | ALZMonitorDisableTagName |
+| Deploy-AMBA-Management   | ALZMonitorDisableTagName |
+| Deploy-AMBA-NetworkChang | ALZMonitorDisableTagName |
+| Deploy-AMBA-Notification | ALZMonitorDisableTagName |
+| Deploy-AMBA-Storage      | ALZMonitorDisableTagName |
+| Deploy-AMBA-SvcHealth    | ALZMonitorDisableTagName |
+| Deploy-AMBA-VM           | ALZMonitorDisableTagName |
+| Deploy-AMBA-Web          | ALZMonitorDisableTagName |
+| Deploy-AMBAConnectivity2 | ALZMonitorDisableTagName |
 
   
 ### default name `amba_alz_disable_tag_values`
   
 Tag value(s) used to disable monitoring at the resource level.
   
-|        ASSIGNMENT         |      PARAMETER NAMES       |
-|---------------------------|----------------------------|
-| Deploy-AMBA-Connectivity  | ALZMonitorDisableTagValues |
-| Deploy-AMBA-Connectivity2 | ALZMonitorDisableTagValues |
-| Deploy-AMBA-HybridVM      | ALZMonitorDisableTagValues |
-| Deploy-AMBA-Identity      | ALZMonitorDisableTagValues |
-| Deploy-AMBA-KeyMgmt       | ALZMonitorDisableTagValues |
-| Deploy-AMBA-Management    | ALZMonitorDisableTagValues |
-| Deploy-AMBA-NetworkChang  | ALZMonitorDisableTagValues |
-| Deploy-AMBA-Notification  | ALZMonitorDisableTagValues |
-| Deploy-AMBA-Storage       | ALZMonitorDisableTagValues |
-| Deploy-AMBA-SvcHealth     | ALZMonitorDisableTagValues |
-| Deploy-AMBA-VM            | ALZMonitorDisableTagValues |
-| Deploy-AMBA-Web           | ALZMonitorDisableTagValues |
+|        ASSIGNMENT        |      PARAMETER NAMES       |
+|--------------------------|----------------------------|
+| Deploy-AMBA-Connectivity | ALZMonitorDisableTagValues |
+| Deploy-AMBA-HybridVM     | ALZMonitorDisableTagValues |
+| Deploy-AMBA-Identity     | ALZMonitorDisableTagValues |
+| Deploy-AMBA-KeyMgmt      | ALZMonitorDisableTagValues |
+| Deploy-AMBA-Management   | ALZMonitorDisableTagValues |
+| Deploy-AMBA-NetworkChang | ALZMonitorDisableTagValues |
+| Deploy-AMBA-Notification | ALZMonitorDisableTagValues |
+| Deploy-AMBA-Storage      | ALZMonitorDisableTagValues |
+| Deploy-AMBA-SvcHealth    | ALZMonitorDisableTagValues |
+| Deploy-AMBA-VM           | ALZMonitorDisableTagValues |
+| Deploy-AMBA-Web          | ALZMonitorDisableTagValues |
+| Deploy-AMBAConnectivity2 | ALZMonitorDisableTagValues |
 
   
 ### default name `amba_alz_event_hub_resource_id`
