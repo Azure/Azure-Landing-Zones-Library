@@ -59,6 +59,9 @@
       "LAWDailyCapLimitPolicyEffect": {
         "value": "deployIfNotExists"
       },
+      "LAWDailyCapLimitcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
       "WSFCPUPercentagePolicyEffect": {
         "value": "deployIfNotExists"
       },

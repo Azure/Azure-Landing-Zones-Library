@@ -2,7 +2,7 @@
   "name": "Alerting-Connectivity",
   "properties": {
     "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Network components such as Azure Firewalls, ExpressRoute, VPN, and Private DNS Zones.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Connectivity",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Connectivity - Part #1",
     "metadata": {
       "_deployed_by_amba": true,
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.3"
+      "version": "1.4.4"
     },
     "parameters": {
       "AFWSNATPortUtilizationAlertSeverity": {

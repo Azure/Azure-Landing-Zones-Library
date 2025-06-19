@@ -1,0 +1,1295 @@
+{
+  "name": "Alerting-Connectivity-2",
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Network components such as Azure Firewalls, ExpressRoute, p2svpngateways and virtualhubs.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Connectivity - Part #2",
+    "metadata": {
+      "_deployed_by_amba": true,
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Monitoring",
+      "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "AFWApplicationRuleHitAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "AFW Application Rule Hit Alert Severity"
+        },
+        "type": "String"
+      },
+      "AFWApplicationRuleHitAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "AFW Application Rule Hit Alert State"
+        },
+        "type": "string"
+      },
+      "AFWApplicationRuleHitFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "AFW Application Rule Hit Frequency"
+        },
+        "type": "string"
+      },
+      "AFWApplicationRuleHitPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "AFW Application Rule Hit Policy Effect"
+        },
+        "type": "string"
+      },
+      "AFWApplicationRuleHitThreshold": {
+        "defaultValue": "50",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "AFW Application Rule Hit Threshold"
+        },
+        "type": "string"
+      },
+      "AFWApplicationRuleHitWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "AFW Application Rule Hit Window Size"
+        },
+        "type": "string"
+      },
+      "AFWNetworkRuleHitAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "AFW Network Rule Hit Alert Severity"
+        },
+        "type": "String"
+      },
+      "AFWNetworkRuleHitAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "AFW Network Rule Hit Alert State"
+        },
+        "type": "string"
+      },
+      "AFWNetworkRuleHitFrequency": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "AFW Network Rule Hit Frequency"
+        },
+        "type": "string"
+      },
+      "AFWNetworkRuleHitPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert.",
+          "displayName": "AFW Network Rule Hit Policy Effect"
+        },
+        "type": "string"
+      },
+      "AFWNetworkRuleHitThreshold": {
+        "defaultValue": "50",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "AFW Network Rule Hit Threshold"
+        },
+        "type": "string"
+      },
+      "AFWNetworkRuleHitWindowSize": {
+        "allowedValues": [
+          "PT1M",
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "AFW Network Rule Hit Window Size"
+        },
+        "type": "string"
+      },
+      "ALZMonitorDisableTagName": {
+        "defaultValue": "MonitorDisableTagName",
+        "metadata": {
+          "description": "Tag name used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag name"
+        },
+        "type": "String"
+      },
+      "ALZMonitorDisableTagValues": {
+        "defaultValue": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ],
+        "metadata": {
+          "description": "Tag value(s) used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag values(s)"
+        },
+        "type": "Array"
+      },
+      "ERGwExpressRouteGatewayActiveFlowsAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "0",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "Express Route Gateway Active Flows Alert Severity"
+        },
+        "type": "String"
+      },
+      "ERGwExpressRouteGatewayActiveFlowsAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Express Route Gateway Active Flows Alert State"
+        },
+        "type": "string"
+      },
+      "ERGwExpressRouteGatewayActiveFlowsEvaluationFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "Express Route Gateway Active Flows Evaluation Frequency"
+        },
+        "type": "string"
+      },
+      "ERGwExpressRouteGatewayActiveFlowsPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "disabled",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "Express Route Gateway Active Flows Policy Effect"
+        },
+        "type": "string"
+      },
+      "ERGwExpressRouteGatewayActiveFlowsThreshold": {
+        "defaultValue": "200000",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "Express Route Gateway Active Flows Threshold"
+        },
+        "type": "string"
+      },
+      "ERGwExpressRouteGatewayActiveFlowsWindowSize": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "Express Route Gateway Active Flows Window Size"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysP2SBandwidthAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "P2S VPN Gateways P2S Bandwidth Alert Severity"
+        },
+        "type": "String"
+      },
+      "P2SVPNGatewaysP2SBandwidthAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "P2S VPN Gateways P2S Bandwidth Alert State"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysP2SBandwidthFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "P2S VPN Gateways P2S Bandwidth Frequency"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysP2SBandwidthPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "P2S VPN Gateways P2S Bandwidth Policy Effect"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysP2SBandwidthThreshold": {
+        "defaultValue": "9900",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "P2S VPN Gateways P2S Bandwidth Threshold"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysP2SBandwidthWindowSize": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "P2S VPN Gateways P2S Bandwidth Window Size"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysP2SConnectionCountAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "P2S Connection Count Alert Severity"
+        },
+        "type": "String"
+      },
+      "P2SVPNGatewaysP2SConnectionCountAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "P2S VPN Gateways P2S Connection Count Alert State"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysP2SConnectionCountFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "P2S VPN Gateways P2S Connection Count Frequency"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysP2SConnectionCountPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "P2S VPN Gateways P2S Connection Count Policy Effect"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysP2SConnectionCountThreshold": {
+        "defaultValue": "99000",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "P2S VPN Gateways P2S Connection Count Threshold"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysP2SConnectionCountWindowSize": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "P2S Connection Count Window Size"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysUserVpnRouteCountAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "User Vpn Route Count Alert Severity"
+        },
+        "type": "String"
+      },
+      "P2SVPNGatewaysUserVpnRouteCountAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "P2S VPN Gateways User Vpn Route Count Alert State"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysUserVpnRouteCountFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "P2S VPN Gateways User Vpn Route Count Frequency"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysUserVpnRouteCountPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "P2S VPN Gateways User Vpn Route Count Policy Effect"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysUserVpnRouteCountThreshold": {
+        "defaultValue": "9900",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "P2S VPN Gateways User Vpn Route Count Threshold"
+        },
+        "type": "string"
+      },
+      "P2SVPNGatewaysUserVpnRouteCountWindowSize": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "User Vpn Route Count Window Size"
+        },
+        "type": "string"
+      },
+      "VirtualHubsBgpPeerStatusAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "Virtual Hubs Bgp Peer Status Alert Severity"
+        },
+        "type": "String"
+      },
+      "VirtualHubsBgpPeerStatusAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Virtual Hubs Bgp Peer Status Alert State"
+        },
+        "type": "string"
+      },
+      "VirtualHubsBgpPeerStatusFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "Virtual Hubs Bgp Peer Status Frequency"
+        },
+        "type": "string"
+      },
+      "VirtualHubsBgpPeerStatusPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "Virtual Hubs Bgp Peer Status Policy Effect"
+        },
+        "type": "string"
+      },
+      "VirtualHubsBgpPeerStatusThreshold": {
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "Virtual Hubs Bgp Peer Status Threshold"
+        },
+        "type": "string"
+      },
+      "VirtualHubsBgpPeerStatusWindowSize": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "Virtual Hubs Bgp Peer Status Window Size"
+        },
+        "type": "string"
+      },
+      "VirtualHubsCountOfRoutesAdvertisedToPeerAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "Virtual Hubs Count Of Routes Advertised To Peer Alert Severity"
+        },
+        "type": "String"
+      },
+      "VirtualHubsCountOfRoutesAdvertisedToPeerAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Virtual Hubs Count Of Routes Advertised To Peer Alert State"
+        },
+        "type": "string"
+      },
+      "VirtualHubsCountOfRoutesAdvertisedToPeerFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "Virtual Hubs Count Of Routes Advertised To Peer Frequency"
+        },
+        "type": "string"
+      },
+      "VirtualHubsCountOfRoutesAdvertisedToPeerPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "Virtual Hubs Count Of Routes Advertised To Peer Policy Effect"
+        },
+        "type": "string"
+      },
+      "VirtualHubsCountOfRoutesAdvertisedToPeerThreshold": {
+        "defaultValue": "1000",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "Virtual Hubs Count Of Routes Advertised To Peer Threshold"
+        },
+        "type": "string"
+      },
+      "VirtualHubsCountOfRoutesAdvertisedToPeerWindowSize": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "Virtual Hubs Count Of Routes Advertised To Peer Window Size"
+        },
+        "type": "string"
+      },
+      "VirtualHubsCountOfRoutesLearnedFromPeerAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "Virtual Hubs Count Of Routes Learned From Peer Alert Severity"
+        },
+        "type": "String"
+      },
+      "VirtualHubsCountOfRoutesLearnedFromPeerAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Virtual Hubs Count Of Routes Learned From Peer Alert State"
+        },
+        "type": "string"
+      },
+      "VirtualHubsCountOfRoutesLearnedFromPeerFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "Virtual Hubs Count Of Routes Learned From Peer Frequency"
+        },
+        "type": "string"
+      },
+      "VirtualHubsCountOfRoutesLearnedFromPeerPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "Virtual Hubs Count Of Routes Learned From Peer Policy Effect"
+        },
+        "type": "string"
+      },
+      "VirtualHubsCountOfRoutesLearnedFromPeerThreshold": {
+        "defaultValue": "1000",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "Virtual Hubs Count Of Routes Learned From Peer Threshold"
+        },
+        "type": "string"
+      },
+      "VirtualHubsCountOfRoutesLearnedFromPeerWindowSize": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "Virtual Hubs Count Of Routes Learned From Peer Window Size"
+        },
+        "type": "string"
+      },
+      "VirtualHubsRoutingInfrastructureUnitsAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "Virtual Hubs Routing Infrastructure Units Alert Severity"
+        },
+        "type": "String"
+      },
+      "VirtualHubsRoutingInfrastructureUnitsAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Virtual Hubs Routing Infrastructure Units Alert State"
+        },
+        "type": "string"
+      },
+      "VirtualHubsRoutingInfrastructureUnitsFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "Virtual Hubs Routing Infrastructure Units Frequency"
+        },
+        "type": "string"
+      },
+      "VirtualHubsRoutingInfrastructureUnitsPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "Virtual Hubs Routing Infrastructure Units Policy Effect"
+        },
+        "type": "string"
+      },
+      "VirtualHubsRoutingInfrastructureUnitsThreshold": {
+        "defaultValue": "30",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "Virtual Hubs Routing Infrastructure Units Threshold"
+        },
+        "type": "string"
+      },
+      "VirtualHubsRoutingInfrastructureUnitsWindowSize": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "Virtual Hubs Routing Infrastructure Units Window Size"
+        },
+        "type": "string"
+      },
+      "VirtualHubsSpokeVMUtilizationAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "Virtual Hubs Spoke VM Utilization Alert Severity"
+        },
+        "type": "String"
+      },
+      "VirtualHubsSpokeVMUtilizationAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Virtual HubsSpoke VM Utilization Alert State"
+        },
+        "type": "string"
+      },
+      "VirtualHubsSpokeVMUtilizationFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "Virtual HubsSpoke VM Utilization Frequency"
+        },
+        "type": "string"
+      },
+      "VirtualHubsSpokeVMUtilizationPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "Virtual HubsSpoke VM Utilization Policy Effect"
+        },
+        "type": "string"
+      },
+      "VirtualHubsSpokeVMUtilizationThreshold": {
+        "defaultValue": "90",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "Virtual HubsSpoke VM Utilization Threshold"
+        },
+        "type": "string"
+      },
+      "VirtualHubsSpokeVMUtilizationWindowSize": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "Virtual HubsSpoke VM Utilization Window Size"
+        },
+        "type": "string"
+      },
+      "VirtualHubsVirtualHubDataProcessedAlertSeverity": {
+        "allowedValues": [
+          "0",
+          "1",
+          "2",
+          "3",
+          "4"
+        ],
+        "defaultValue": "1",
+        "metadata": {
+          "description": "Severity of the alert",
+          "displayName": "Virtual HubsVirtual Hub Data Processed Alert Severity"
+        },
+        "type": "String"
+      },
+      "VirtualHubsVirtualHubDataProcessedAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Alert state for the alert",
+          "displayName": "Virtual HubsVirtual Hub Data Processed Alert State"
+        },
+        "type": "string"
+      },
+      "VirtualHubsVirtualHubDataProcessedFrequency": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Evaluation frequency for the alert",
+          "displayName": "Virtual HubsVirtual Hub Data Processed Frequency"
+        },
+        "type": "string"
+      },
+      "VirtualHubsVirtualHubDataProcessedPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
+          "displayName": "Virtual HubsVirtual Hub Data Processed Policy Effect"
+        },
+        "type": "string"
+      },
+      "VirtualHubsVirtualHubDataProcessedThreshold": {
+        "defaultValue": "5000",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "Virtual HubsVirtual Hub Data Processed Threshold"
+        },
+        "type": "string"
+      },
+      "VirtualHubsVirtualHubDataProcessedWindowSize": {
+        "allowedValues": [
+          "PT5M",
+          "PT15M",
+          "PT30M",
+          "PT1H",
+          "PT6H",
+          "PT12H",
+          "P1D"
+        ],
+        "defaultValue": "PT5M",
+        "metadata": {
+          "description": "Window size for the alert",
+          "displayName": "Virtual HubsVirtual Hub Data Processed Window Size"
+        },
+        "type": "string"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('P2SVPNGatewaysP2SBandwidthPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('P2SVPNGatewaysP2SBandwidthAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('P2SVPNGatewaysP2SBandwidthFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('P2SVPNGatewaysP2SBandwidthAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('P2SVPNGatewaysP2SBandwidthThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('P2SVPNGatewaysP2SBandwidthWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-P2SVPNGateways-P2SBandwidth-Alert",
+        "policyDefinitionReferenceId": "ALZ_P2SVPNGatewaysP2SBandwidth"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('P2SVPNGatewaysP2SConnectionCountPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('P2SVPNGatewaysP2SConnectionCountAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('P2SVPNGatewaysP2SConnectionCountFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('P2SVPNGatewaysP2SConnectionCountAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('P2SVPNGatewaysP2SConnectionCountThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('P2SVPNGatewaysP2SConnectionCountWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-P2SVPNGateways-P2SConnectionCount-Alert",
+        "policyDefinitionReferenceId": "ALZ_P2SVPNGatewaysP2SConnectionCount"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('P2SVPNGatewaysUserVpnRouteCountPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('P2SVPNGatewaysUserVpnRouteCountAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('P2SVPNGatewaysUserVpnRouteCountFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('P2SVPNGatewaysUserVpnRouteCountAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('P2SVPNGatewaysUserVpnRouteCountThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('P2SVPNGatewaysUserVpnRouteCountWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-P2SVPNGateways-UserVpnRouteCount-Alert",
+        "policyDefinitionReferenceId": "ALZ_P2SVPNGatewaysUserVpnRouteCount"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('VirtualHubsBgpPeerStatusPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VirtualHubsBgpPeerStatusAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VirtualHubsBgpPeerStatusFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('VirtualHubsBgpPeerStatusAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VirtualHubsBgpPeerStatusThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VirtualHubsBgpPeerStatusWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-VirtualHubs-BgpPeerStatus-Alert",
+        "policyDefinitionReferenceId": "ALZ_VirtualHubsBgpPeerStatus"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('VirtualHubsCountOfRoutesLearnedFromPeerPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VirtualHubsCountOfRoutesLearnedFromPeerAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VirtualHubsCountOfRoutesLearnedFromPeerFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('VirtualHubsCountOfRoutesLearnedFromPeerAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VirtualHubsCountOfRoutesLearnedFromPeerThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VirtualHubsCountOfRoutesLearnedFromPeerWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-VirtualHubs-CountOfRoutesLearnedFromPeer-Alert",
+        "policyDefinitionReferenceId": "ALZ_VirtualHubsCountOfRoutesLearnedFromPeer"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('VirtualHubsCountOfRoutesAdvertisedToPeerPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VirtualHubsCountOfRoutesAdvertisedToPeerAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VirtualHubsCountOfRoutesAdvertisedToPeerFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('VirtualHubsCountOfRoutesAdvertisedToPeerAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VirtualHubsCountOfRoutesAdvertisedToPeerThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VirtualHubsCountOfRoutesAdvertisedToPeerWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-VirtualHubs-CountOfRoutesAdvertisedToPeer-Alert",
+        "policyDefinitionReferenceId": "ALZ_VirtualHubsCountOfRoutesAdvertisedToPeer"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('VirtualHubsSpokeVMUtilizationPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VirtualHubsSpokeVMUtilizationAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VirtualHubsSpokeVMUtilizationFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('VirtualHubsSpokeVMUtilizationAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VirtualHubsSpokeVMUtilizationThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VirtualHubsSpokeVMUtilizationWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-VirtualHubs-SpokeVMUtilization-Alert",
+        "policyDefinitionReferenceId": "ALZ_VirtualHubsSpokeVMUtilization"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('VirtualHubsRoutingInfrastructureUnitsPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VirtualHubsRoutingInfrastructureUnitsAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VirtualHubsRoutingInfrastructureUnitsFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('VirtualHubsRoutingInfrastructureUnitsAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VirtualHubsRoutingInfrastructureUnitsThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VirtualHubsRoutingInfrastructureUnitsWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-VirtualHubs-RoutingInfrastructureUnits-Alert",
+        "policyDefinitionReferenceId": "ALZ_VirtualHubsRoutingInfrastructureUnits"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('VirtualHubsVirtualHubDataProcessedPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('VirtualHubsVirtualHubDataProcessedAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('VirtualHubsVirtualHubDataProcessedFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('VirtualHubsVirtualHubDataProcessedAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('VirtualHubsVirtualHubDataProcessedThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('VirtualHubsVirtualHubDataProcessedWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy-VirtualHubs-VirtualHubDataProcessed-Alert",
+        "policyDefinitionReferenceId": "ALZ_VirtualHubsVirtualHubDataProcessed"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('AFWApplicationRuleHitPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('AFWApplicationRuleHitAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('AFWApplicationRuleHitFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('AFWApplicationRuleHitAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('AFWApplicationRuleHitThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('AFWApplicationRuleHitWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_AFW_ApplicationRuleHit_Alert",
+        "policyDefinitionReferenceId": "ALZ_AFWApplicationRuleHit"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('ERGwExpressRouteGatewayActiveFlowsPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('ERGwExpressRouteGatewayActiveFlowsAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('ERGwExpressRouteGatewayActiveFlowsEvaluationFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('ERGwExpressRouteGatewayActiveFlowsAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('ERGwExpressRouteGatewayActiveFlowsThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('ERGwExpressRouteGatewayActiveFlowsWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_ERGw_ExpressRouteGatewayActiveFlows_Alert",
+        "policyDefinitionReferenceId": "ALZ_ERGwExpressRouteGatewayActiveFlows"
+      },
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "effect": {
+            "value": "[parameters('AFWNetworkRuleHitPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('AFWNetworkRuleHitAlertState')]"
+          },
+          "evaluationFrequency": {
+            "value": "[parameters('AFWNetworkRuleHitFrequency')]"
+          },
+          "severity": {
+            "value": "[parameters('AFWNetworkRuleHitAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('AFWNetworkRuleHitThreshold')]"
+          },
+          "windowSize": {
+            "value": "[parameters('AFWNetworkRuleHitWindowSize')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_AFW_NetworkRuleHit_Alert",
+        "policyDefinitionReferenceId": "ALZ_AFWNetworkRuleHit"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

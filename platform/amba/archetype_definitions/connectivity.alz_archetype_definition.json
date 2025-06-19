@@ -2,7 +2,8 @@
   "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/archetype_definition.json",
   "name": "amba_connectivity",
   "policy_assignments": [
-    "Deploy-AMBA-Connectivity"
+    "Deploy-AMBA-Connectivity",
+    "Deploy-AMBAConnectivity2"
   ],
   "policy_definitions": [],
   "policy_set_definitions": [],

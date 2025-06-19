@@ -52,9 +52,10 @@ flowchart TD
   
 #### amba_connectivity policy assignments
   
-<details><summary>1 policy assignments</summary>
+<details><summary>2 policy assignments</summary>
 
 - Deploy-AMBA-Connectivity
+- Deploy-AMBAConnectivity2
 </details>
   
 ### archetype `amba_identity`
@@ -105,10 +106,21 @@ flowchart TD
   
 #### amba_root policy definitions
   
-<details><summary>120 policy definitions</summary>
+<details><summary>132 policy definitions</summary>
 
+- Deploy-P2SVPNGateways-P2SBandwidth-Alert
+- Deploy-P2SVPNGateways-P2SConnectionCount-Alert
+- Deploy-P2SVPNGateways-UserVpnRouteCount-Alert
+- Deploy-VirtualHubs-BgpPeerStatus-Alert
+- Deploy-VirtualHubs-CountOfRoutesAdvertisedToPeer-Alert
+- Deploy-VirtualHubs-CountOfRoutesLearnedFromPeer-Alert
+- Deploy-VirtualHubs-RoutingInfrastructureUnits-Alert
+- Deploy-VirtualHubs-SpokeVMUtilization-Alert
+- Deploy-VirtualHubs-VirtualHubDataProcessed-Alert
 - Deploy_AA_TotalJob_Alert
+- Deploy_AFW_ApplicationRuleHit_Alert
 - Deploy_AFW_FirewallHealth_Alert
+- Deploy_AFW_NetworkRuleHit_Alert
 - Deploy_AFW_SNATPortUtilization_Alert
 - Deploy_AG_ApplicationGatewayTotalTime_Alert
 - Deploy_AG_BackendLastByteResponseTime_Alert
@@ -134,6 +146,7 @@ flowchart TD
 - Deploy_ERGw_ExpressRouteBitsIn_Alert
 - Deploy_ERGw_ExpressRouteBitsOut_Alert
 - Deploy_ERGw_ExpressRouteCpuUtil_Alert
+- Deploy_ERGw_ExpressRouteGatewayActiveFlows_Alert
 - Deploy_ERP_ExpressRoutLineProtocol_Alert
 - Deploy_ERP_ExpressRoutRxLightLevel_Alert
 - Deploy_ERP_ExpressRoutRxLightLevellow_Alert
@@ -231,9 +244,10 @@ flowchart TD
   
 #### amba_root policy set definitions
   
-<details><summary>13 policy set definitions</summary>
+<details><summary>14 policy set definitions</summary>
 
 - Alerting-Connectivity
+- Alerting-Connectivity-2
 - Alerting-HybridVM
 - Alerting-Identity
 - Alerting-KeyManagement
@@ -498,10 +512,21 @@ The service uri(s) of the webhook used for monitoring.
   
 ### all policy definitions
   
-<details><summary>120 policy definitions</summary>
+<details><summary>132 policy definitions</summary>
 
+- Deploy-P2SVPNGateways-P2SBandwidth-Alert
+- Deploy-P2SVPNGateways-P2SConnectionCount-Alert
+- Deploy-P2SVPNGateways-UserVpnRouteCount-Alert
+- Deploy-VirtualHubs-BgpPeerStatus-Alert
+- Deploy-VirtualHubs-CountOfRoutesAdvertisedToPeer-Alert
+- Deploy-VirtualHubs-CountOfRoutesLearnedFromPeer-Alert
+- Deploy-VirtualHubs-RoutingInfrastructureUnits-Alert
+- Deploy-VirtualHubs-SpokeVMUtilization-Alert
+- Deploy-VirtualHubs-VirtualHubDataProcessed-Alert
 - Deploy_AA_TotalJob_Alert
+- Deploy_AFW_ApplicationRuleHit_Alert
 - Deploy_AFW_FirewallHealth_Alert
+- Deploy_AFW_NetworkRuleHit_Alert
 - Deploy_AFW_SNATPortUtilization_Alert
 - Deploy_AG_ApplicationGatewayTotalTime_Alert
 - Deploy_AG_BackendLastByteResponseTime_Alert
@@ -527,6 +552,7 @@ The service uri(s) of the webhook used for monitoring.
 - Deploy_ERGw_ExpressRouteBitsIn_Alert
 - Deploy_ERGw_ExpressRouteBitsOut_Alert
 - Deploy_ERGw_ExpressRouteCpuUtil_Alert
+- Deploy_ERGw_ExpressRouteGatewayActiveFlows_Alert
 - Deploy_ERP_ExpressRoutLineProtocol_Alert
 - Deploy_ERP_ExpressRoutRxLightLevel_Alert
 - Deploy_ERP_ExpressRoutRxLightLevellow_Alert
@@ -624,9 +650,10 @@ The service uri(s) of the webhook used for monitoring.
   
 ### all policy set definitions
   
-<details><summary>13 policy set definitions</summary>
+<details><summary>14 policy set definitions</summary>
 
 - Alerting-Connectivity
+- Alerting-Connectivity-2
 - Alerting-HybridVM
 - Alerting-Identity
 - Alerting-KeyManagement
@@ -643,7 +670,7 @@ The service uri(s) of the webhook used for monitoring.
   
 ### all policy assignments
   
-<details><summary>13 policy assignments</summary>
+<details><summary>14 policy assignments</summary>
 
 - Deploy-AMBA-Connectivity
 - Deploy-AMBA-HybridVM
@@ -658,5 +685,6 @@ The service uri(s) of the webhook used for monitoring.
 - Deploy-AMBA-SvcHealth
 - Deploy-AMBA-VM
 - Deploy-AMBA-Web
+- Deploy-AMBAConnectivity2
 </details>
   

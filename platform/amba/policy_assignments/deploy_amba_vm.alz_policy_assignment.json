@@ -66,7 +66,7 @@
         "value": "deployIfNotExists"
       },
       "VMDataDiskWriteLatencycheckWorkspaceAlertsStorageConfigured": {
-        "value": "true"
+        "value": "false"
       },
       "VMHeartBeatRGPolicyEffect": {
         "value": "deployIfNotExists"
@@ -96,7 +96,7 @@
         "value": "deployIfNotExists"
       },
       "VMOSDiskSpacecheckWorkspaceAlertsStorageConfigured": {
-        "value": "true"
+        "value": "false"
       },
       "VMOSDiskWriteLatencyPolicyEffect": {
         "value": "deployIfNotExists"

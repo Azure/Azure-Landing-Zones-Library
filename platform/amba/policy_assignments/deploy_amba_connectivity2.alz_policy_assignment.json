@@ -1,0 +1,75 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2020-09-01",
+  "name": "Deploy-AMBAConnectivity2",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Network components such as Azure Firewalls, ExpressRoute, VPN, and Private DNS Zones.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Connectivity- Part #2",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-Connectivity-2",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Alerting {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "notScopes": [],
+    "parameters": {
+      "AFWApplicationRuleHitPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "AFWNetworkRuleHitPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ERGwExpressRouteGatewayActiveFlowsPolicyEffect": {
+        "value": "disabled"
+      },
+      "P2SVPNGatewaysP2SBandwidthPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "P2SVPNGatewaysP2SConnectionCountPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "P2SVPNGatewaysUserVpnRouteCountPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VirtualHubsBgpPeerStatusPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VirtualHubsCountOfRoutesAdvertisedToPeerPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VirtualHubsCountOfRoutesLearnedFromPeerPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VirtualHubsRoutingInfrastructureUnitsPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VirtualHubsSpokeVMUtilizationPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VirtualHubsVirtualHubDataProcessedPolicyEffect": {
+        "value": "deployIfNotExists"
+      }
+    },
+    "metadata": {
+      "_deployed_by_amba": true
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder"
+  }
+}

@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.2"
+      "version": "1.2.0"
     },
     "parameters": {
       "AGWApplicationGatewayTotalTimeAlertSensitivity": {
@@ -652,6 +652,14 @@
         "metadata": {
           "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist, disabled will not deploy the alert",
           "displayName": "AGW Unhealthy Host Count Policy Effect"
+        },
+        "type": "string"
+      },
+      "AGWUnhealthyHostCountThreshold": {
+        "defaultValue": "20",
+        "metadata": {
+          "description": "Threshold for the alert",
+          "displayName": "AGW Unhealthy Host Count Threshold"
         },
         "type": "string"
       },
@@ -2266,6 +2274,9 @@
           },
           "severity": {
             "value": "[parameters('AGWUnhealthyHostCountAlertSeverity')]"
+          },
+          "threshold": {
+            "value": "[parameters('AGWUnhealthyHostCountThreshold')]"
           },
           "windowSize": {
             "value": "[parameters('AGWUnhealthyHostCountWindowSize')]"
