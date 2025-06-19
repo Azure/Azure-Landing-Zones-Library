@@ -173,7 +173,7 @@ foreach ($managementGroup in $policyAssignments.Keys) {
         }
       }
 
-      $targetPolicyAssignmentFileName = "$($policyAssignmentName.ToLower() -replace "-", "_").alz_policy_assignment.json"
+      $targetPolicyAssignmentFileName = "$($policyAssignmentName.ToLower() -replace "-", "_" -replace "ambaconnectivity2", "amba_connectivity2").alz_policy_assignment.json"
 
       Write-Information "Writing $targetPolicyAssignmentFileName" -InformationAction Continue
       $json = $parsedAssignment | ConvertTo-Json -Depth 10
@@ -210,7 +210,7 @@ $policySetDefinitions = Get-ChildItem -Path "$TargetPath/platform/amba/policy_se
 
 foreach ($policySetDefinition in $policySetDefinitions) {
   $policySetDefinitionJson = Get-Content $policySetDefinition.FullName -Raw | ConvertFrom-Json
-  $policyAssignmentJson = Get-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth").Replace("Connectivity","connectivity").Replace("Identity","identity").Replace("Storage","storage").Replace("Management","management").Replace("Web","web").Replace("VM","vm").Replace("HybridVM","hybridvm").Replace("Hybridvm","hybridvm") -Raw | ConvertFrom-Json
+  $policyAssignmentJson = Get-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-", "deploy_amba_").Replace("Notification-Assets", "deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement", "keymgmt").Replace("LoadBalancing", "loadbalance").Replace("NetworkChanges", "networkchang").Replace("RecoveryServices", "recoverysvc").Replace("ServiceHealth", "svchealth").Replace("Connectivity", "connectivity").Replace("Identity", "identity").Replace("Storage", "storage").Replace("Management", "management").Replace("Web", "web").Replace("VM", "vm").Replace("HybridVM", "hybridvm").Replace("Hybridvm", "hybridvm").Replace("connectivity-2", "connectivity2") -Raw | ConvertFrom-Json
 
   $policySetDefinitionJson.properties.parameters = $policySetDefinitionJson.properties.parameters | Select-Object * -ExcludeProperty *WindowSize, *EvaluationFrequency, *AlertState, *AlertSeverity, *Threshold, *Frequency, *Severity, *AutoMitigate, *AutoResolve, *AutoResolveTime, *ComputersToInclude, *EvaluationPeriods, *FailingPeriods, *Operator, *TimeAggregation, *AlertSensitivity
 
@@ -231,5 +231,5 @@ foreach ($policySetDefinition in $policySetDefinitions) {
 
   $policyAssignmentJson.properties.parameters = $newParameters
 
-  $policyAssignmentJson | ConvertTo-Json -Depth 100 | Set-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-","deploy_amba_").Replace("Notification-Assets","deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement","keymgmt").Replace("LoadBalancing","loadbalance").Replace("NetworkChanges","networkchang").Replace("RecoveryServices","recoverysvc").Replace("ServiceHealth","svchealth").Replace("Connectivity","connectivity").Replace("Identity","identity").Replace("Storage","storage").Replace("Management","management").Replace("Web","web").Replace("VM","vm").Replace("Hybridvm","hybridvm")
+  $policyAssignmentJson | ConvertTo-Json -Depth 100 | Set-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-", "deploy_amba_").Replace("Notification-Assets", "deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement", "keymgmt").Replace("LoadBalancing", "loadbalance").Replace("NetworkChanges", "networkchang").Replace("RecoveryServices", "recoverysvc").Replace("ServiceHealth", "svchealth").Replace("Connectivity", "connectivity").Replace("Identity", "identity").Replace("Storage", "storage").Replace("Management", "management").Replace("Web", "web").Replace("VM", "vm").Replace("Hybridvm", "hybridvm").Replace("connectivity-2", "connectivity2")
 }

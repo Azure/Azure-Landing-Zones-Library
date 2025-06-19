@@ -22,6 +22,12 @@
             "ALZManagementSubscriptionId"
           ],
           "policy_assignment_name": "Deploy-AMBA-VM"
+        },
+        {
+          "parameter_names": [
+            "ALZManagementSubscriptionId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Web"
         }
       ]
     },
@@ -88,6 +94,12 @@
             "ALZMonitorResourceGroupName"
           ],
           "policy_assignment_name": "Deploy-AMBA-VM"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Web"
         }
       ]
     },
@@ -154,6 +166,12 @@
             "ALZMonitorResourceGroupTags"
           ],
           "policy_assignment_name": "Deploy-AMBA-VM"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupTags"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Web"
         }
       ]
     },
@@ -220,6 +238,12 @@
             "ALZMonitorResourceGroupLocation"
           ],
           "policy_assignment_name": "Deploy-AMBA-VM"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Web"
         }
       ]
     },
@@ -244,6 +268,12 @@
             "ALZUserAssignedManagedIdentityName"
           ],
           "policy_assignment_name": "Deploy-AMBA-VM"
+        },
+        {
+          "parameter_names": [
+            "ALZUserAssignedManagedIdentityName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Web"
         }
       ]
     },
@@ -261,6 +291,12 @@
           "parameter_names": [
             "ALZMonitorDisableTagName"
           ],
+          "policy_assignment_name": "Deploy-AMBAConnectivity2"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
           "policy_assignment_name": "Deploy-AMBA-HybridVM"
         },
         {
@@ -310,6 +346,12 @@
             "ALZMonitorDisableTagName"
           ],
           "policy_assignment_name": "Deploy-AMBA-VM"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagName"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Web"
         }
       ]
     },
@@ -327,6 +369,12 @@
           "parameter_names": [
             "ALZMonitorDisableTagValues"
           ],
+          "policy_assignment_name": "Deploy-AMBAConnectivity2"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
           "policy_assignment_name": "Deploy-AMBA-HybridVM"
         },
         {
@@ -376,6 +424,12 @@
             "ALZMonitorDisableTagValues"
           ],
           "policy_assignment_name": "Deploy-AMBA-VM"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorDisableTagValues"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Web"
         }
       ]
     },
@@ -544,6 +598,12 @@
             "BYOUserAssignedManagedIdentityResourceId"
           ],
           "policy_assignment_name": "Deploy-AMBA-VM"
+        },
+        {
+          "parameter_names": [
+            "BYOUserAssignedManagedIdentityResourceId"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-Web"
         }
       ]
     },
