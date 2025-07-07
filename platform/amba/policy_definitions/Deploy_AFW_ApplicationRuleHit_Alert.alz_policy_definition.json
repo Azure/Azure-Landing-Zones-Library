@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.0-preview"
+      "version": "1.1.0-preview"
     },
     "mode": "All",
     "parameters": {
@@ -225,7 +225,7 @@
                             "name": "ApplicationRuleHit",
                             "operator": "GreaterThan",
                             "threshold": "[parameters('threshold')]",
-                            "timeAggregation": "Sum"
+                            "timeAggregation": "Total"
                           }
                         ],
                         "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
@@ -304,7 +304,7 @@
                 "field": "Microsoft.Insights/metricAlerts/autoMitigate"
               },
               {
-                "equals": "Sum",
+                "equals": "Total",
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-SingleResourceMultipleMetricCriteria.allOf[*].timeAggregation"
               },
               {
