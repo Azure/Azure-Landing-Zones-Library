@@ -12,7 +12,7 @@
       "category": "Encryption",
       "replacesPolicy": "Enforce-EncryptTransit_20240509",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.2.0"
+      "version": "1.2.1"
     },
     "parameters": {
       "AKSIngressHttpsOnlyEffect": {
@@ -866,8 +866,8 @@
             "value": "[parameters('eventHubMinTls')]"
           }
         },
-        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deny-EH-minTLS",
-        "policyDefinitionReferenceId": "Deny-EH-minTLS"
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deny-EH-MINTLS",
+        "policyDefinitionReferenceId": "Deny-EH-MINTLS"
       },
       {
         "groupNames": [],
