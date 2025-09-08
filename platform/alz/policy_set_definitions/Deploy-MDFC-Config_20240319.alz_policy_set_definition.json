@@ -10,7 +10,7 @@
       "category": "Security Center",
       "replacesPolicy": "Deploy-MDFC-Config",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "2.2.0"
+      "version": "2.3.0"
     },
     "parameters": {
       "ascExportResourceGroupLocation": {
@@ -24,6 +24,170 @@
         "metadata": {
           "description": "The resource group name where the export to Log Analytics workspace configuration is created. If you enter a name for a resource group that doesn't exist, it'll be created in the subscription. Note that each resource group can only have one export to Log Analytics workspace configured.",
           "displayName": "Resource Group name for the export to Log Analytics workspace configuration"
+        },
+        "type": "String"
+      },
+      "ascForAIIsAIPromptEvidenceEnabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Enable or disable the AI Prompt Evidence add-on feature",
+          "displayName": "AI Prompt Evidence Enabled"
+        },
+        "type": "String"
+      },
+      "ascForArmSubPlan": {
+        "allowedValues": [
+          "PerSubscription",
+          "PerApiCall"
+        ],
+        "defaultValue": "PerApiCall",
+        "metadata": {
+          "description": "Select a Defender for Resource Manager plan",
+          "displayName": "Defender for Resource Manager plans"
+        },
+        "type": "String"
+      },
+      "ascForCspmIsAgentlessDiscoveryForKubernetesEnabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Enable or disable the Agentless Discovery for Kubernetes add-on feature",
+          "displayName": "Agentless Discovery for Kubernetes Enabled"
+        },
+        "type": "String"
+      },
+      "ascForCspmIsAgentlessVmScanningEnabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Enable or disable the Agentless VM Scanning add-on feature",
+          "displayName": "Agentless VM Scanning Enabled"
+        },
+        "type": "String"
+      },
+      "ascForCspmIsContainerRegistriesVulnerabilityAssessmentsEnabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Enable or disable the Container Registries Vulnerability Assessments add-on feature",
+          "displayName": "Container Registries Vulnerability Assessments Enabled"
+        },
+        "type": "String"
+      },
+      "ascForCspmIsEntraPermissionsManagementEnabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Enable or disable the Permissions Management add-on feature",
+          "displayName": "Permissions Management Enabled"
+        },
+        "type": "String"
+      },
+      "ascForCspmIsSensitiveDataDiscoveryEnabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Enable or disable the Sensitive Data Discovery add-on feature",
+          "displayName": "Sensitive Data Discovery Enabled"
+        },
+        "type": "String"
+      },
+      "ascForKeyVaultSubPlan": {
+        "allowedValues": [
+          "PerTransaction",
+          "PerKeyVault"
+        ],
+        "defaultValue": "PerTransaction",
+        "metadata": {
+          "description": "Select a Defender for Key Vault plan",
+          "displayName": "Key Vaults bundle's sub plan"
+        },
+        "type": "String"
+      },
+      "ascForServersIsAgentlessVmScanningEnabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Enable or disable the Agentless VM Scanning add-on feature",
+          "displayName": "Agentless VM Scanning Enabled"
+        },
+        "type": "String"
+      },
+      "ascForServersIsMdeDesignatedSubscriptionEnabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "false",
+        "metadata": {
+          "description": "Enable or disable the MDE Designated Subscription add-on feature",
+          "displayName": "MDE Designated Subscription Enabled"
+        },
+        "type": "String"
+      },
+      "ascForServersSubPlan": {
+        "allowedValues": [
+          "P1",
+          "P2"
+        ],
+        "defaultValue": "P2",
+        "metadata": {
+          "description": "Select a Defender for Servers plan",
+          "displayName": "Defender for Servers plans"
+        },
+        "type": "String"
+      },
+      "ascForStorageCapGBPerMonthPerStorageAccount": {
+        "defaultValue": 5000,
+        "metadata": {
+          "description": "Limit the GB scanned per month for each storage account within the subscription. Value must be an integer, 10GB or higher. Set to -1 for unlimited scanning",
+          "displayName": "Cap GB Per Month Per Storage Account"
+        },
+        "type": "Integer"
+      },
+      "ascForStorageIsOnUploadMalwareScanningEnabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Enable or disable the Malware Scanning add-on feature",
+          "displayName": "Malware Scanning Enabled"
+        },
+        "type": "String"
+      },
+      "ascForStorageIsSensitiveDataDiscoveryEnabled": {
+        "allowedValues": [
+          "true",
+          "false"
+        ],
+        "defaultValue": "true",
+        "metadata": {
+          "description": "Enable or disable the Sensitive Data Threat Detection add-on feature",
+          "displayName": "Sensitive Data Threat Detection Enabled"
         },
         "type": "String"
       },
@@ -45,6 +209,18 @@
           "displayName": "Security contacts email address"
         },
         "type": "string"
+      },
+      "enableAscForAI": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
       },
       "enableAscForAppServices": {
         "allowedValues": [
@@ -252,9 +428,18 @@
         "parameters": {
           "effect": {
             "value": "[parameters('enableAscForServers')]"
+          },
+          "isAgentlessVmScanningEnabled": {
+            "value": "[parameters('ascForServersIsAgentlessVmScanningEnabled')]"
+          },
+          "isMdeDesignatedSubscriptionEnabled": {
+            "value": "[parameters('ascForServersIsMdeDesignatedSubscriptionEnabled')]"
+          },
+          "subPlan": {
+            "value": "[parameters('ascForServersSubPlan')]"
           }
         },
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/8e86a5b6-b9bd-49d1-8e21-4bb8a0862222",
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/5eb6d64a-4086-4d7a-92da-ec51aed0332d",
         "policyDefinitionReferenceId": "defenderForVM"
       },
       {
@@ -293,8 +478,17 @@
       {
         "groupNames": [],
         "parameters": {
+          "capGBPerMonthPerStorageAccount": {
+            "value": "[parameters('ascForStorageCapGBPerMonthPerStorageAccount')]"
+          },
           "effect": {
             "value": "[parameters('enableAscForStorage')]"
+          },
+          "isOnUploadMalwareScanningEnabled": {
+            "value": "[parameters('ascForStorageIsOnUploadMalwareScanningEnabled')]"
+          },
+          "isSensitiveDataDiscoveryEnabled": {
+            "value": "[parameters('ascForStorageIsSensitiveDataDiscoveryEnabled')]"
           }
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/cfdc5972-75b3-4418-8ae1-7f5c36839390",
@@ -338,6 +532,9 @@
         "parameters": {
           "effect": {
             "value": "[parameters('enableAscForKeyVault')]"
+          },
+          "subPlan": {
+            "value": "[parameters('ascForKeyVaultSubPlan')]"
           }
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1f725891-01c0-420a-9059-4fa46cb770b7",
@@ -348,6 +545,9 @@
         "parameters": {
           "effect": {
             "value": "[parameters('enableAscForArm')]"
+          },
+          "subPlan": {
+            "value": "[parameters('ascForArmSubPlan')]"
           }
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/b7021b2b-08fd-4dc0-9de7-3c6ece09faf9",
@@ -377,7 +577,35 @@
         "groupNames": [],
         "parameters": {
           "effect": {
+            "value": "[parameters('enableAscForAI')]"
+          },
+          "isAIPromptEvidenceEnabled": {
+            "value": "[parameters('ascForAIIsAIPromptEvidenceEnabled')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/359a48a3-351a-4618-bb32-f1628645694b",
+        "policyDefinitionReferenceId": "defenderForAI"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
             "value": "[parameters('enableAscForCspm')]"
+          },
+          "isAgentlessDiscoveryForKubernetesEnabled": {
+            "value": "[parameters('ascForCspmIsAgentlessDiscoveryForKubernetesEnabled')]"
+          },
+          "isAgentlessVmScanningEnabled": {
+            "value": "[parameters('ascForCspmIsAgentlessVmScanningEnabled')]"
+          },
+          "isContainerRegistriesVulnerabilityAssessmentsEnabled": {
+            "value": "[parameters('ascForCspmIsContainerRegistriesVulnerabilityAssessmentsEnabled')]"
+          },
+          "isEntraPermissionsManagementEnabled": {
+            "value": "[parameters('ascForCspmIsEntraPermissionsManagementEnabled')]"
+          },
+          "isSensitiveDataDiscoveryEnabled": {
+            "value": "[parameters('ascForCspmIsSensitiveDataDiscoveryEnabled')]"
           }
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/72f8cee7-2937-403d-84a1-a4e3e57f3c21",
