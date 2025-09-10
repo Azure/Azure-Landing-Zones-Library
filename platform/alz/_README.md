@@ -52,6 +52,9 @@ flowchart TD
   platform --> management
   management["Management
 (management)"]
+  platform --> security
+  security["Security
+(security)"]
   alz --> sandbox
   sandbox["Sandbox
 (sandbox)"]
@@ -107,7 +110,7 @@ flowchart TD
   
 #### landing_zones policy assignments
   
-<details><summary>25 policy assignments</summary>
+<details><summary>52 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Deny-IP-forwarding
@@ -131,16 +134,43 @@ flowchart TD
 - Enable-DDoS-VNET
 - Enforce-AKS-HTTPS
 - Enforce-ASR
+- Enforce-Encrypt-CMK0
+- Enforce-GR-APIM0
+- Enforce-GR-AppServices0
+- Enforce-GR-Automation0
+- Enforce-GR-BotService0
+- Enforce-GR-CogServ0
+- Enforce-GR-Compute0
+- Enforce-GR-ContApps0
+- Enforce-GR-ContInst0
+- Enforce-GR-ContReg0
+- Enforce-GR-CosmosDb0
+- Enforce-GR-DataExpl0
+- Enforce-GR-DataFactory0
+- Enforce-GR-EventGrid0
+- Enforce-GR-EventHub0
 - Enforce-GR-KeyVault
+- Enforce-GR-KeyVaultSup0
+- Enforce-GR-Kubernetes0
+- Enforce-GR-MachLearn0
+- Enforce-GR-MySQL0
+- Enforce-GR-Network0
+- Enforce-GR-OpenAI0
+- Enforce-GR-PostgreSQL0
+- Enforce-GR-SQL0
+- Enforce-GR-ServiceBus0
+- Enforce-GR-Storage0
+- Enforce-GR-Synapse0
+- Enforce-GR-VirtualDesk0
 - Enforce-Subnet-Private
-- Enforce-TLS-SSL-H224
+- Enforce-TLS-SSL-Q225
 </details>
   
 ### archetype `platform`
   
 #### platform policy assignments
   
-<details><summary>12 policy assignments</summary>
+<details><summary>39 policy assignments</summary>
 
 - DenyAction-DeleteUAMIAMA
 - Deploy-MDFC-DefSQL-AMA
@@ -152,7 +182,34 @@ flowchart TD
 - Deploy-vmHybr-Monitoring
 - Enable-AUM-CheckUpdates
 - Enforce-ASR
+- Enforce-Encrypt-CMK0
+- Enforce-GR-APIM0
+- Enforce-GR-AppServices0
+- Enforce-GR-Automation0
+- Enforce-GR-BotService0
+- Enforce-GR-CogServ0
+- Enforce-GR-Compute0
+- Enforce-GR-ContApps0
+- Enforce-GR-ContInst0
+- Enforce-GR-ContReg0
+- Enforce-GR-CosmosDb0
+- Enforce-GR-DataExpl0
+- Enforce-GR-DataFactory0
+- Enforce-GR-EventGrid0
+- Enforce-GR-EventHub0
 - Enforce-GR-KeyVault
+- Enforce-GR-KeyVaultSup0
+- Enforce-GR-Kubernetes0
+- Enforce-GR-MachLearn0
+- Enforce-GR-MySQL0
+- Enforce-GR-Network0
+- Enforce-GR-OpenAI0
+- Enforce-GR-PostgreSQL0
+- Enforce-GR-SQL0
+- Enforce-GR-ServiceBus0
+- Enforce-GR-Storage0
+- Enforce-GR-Synapse0
+- Enforce-GR-VirtualDesk0
 - Enforce-Subnet-Private
 </details>
   
@@ -160,7 +217,7 @@ flowchart TD
   
 #### root policy definitions
   
-<details><summary>158 policy definitions</summary>
+<details><summary>160 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -173,6 +230,8 @@ flowchart TD
 - Audit-PrivateLinkDnsZones
 - Audit-PublicIpAddresses-UnusedResourcesCostOptimization
 - Audit-ServerFarms-UnusedResourcesCostOptimization
+- Audit-Tags-Mandatory
+- Audit-Tags-Mandatory-Rg
 - Deny-AA-child-resources
 - Deny-APIM-TLS
 - Deny-AppGW-Without-WAF
@@ -324,7 +383,7 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>46 policy set definitions</summary>
+<details><summary>47 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -344,7 +403,8 @@ flowchart TD
 - Enforce-Backup
 - Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
-- Enforce-Encryption-CMK
+- Enforce-EncryptTransit_20241211
+- Enforce-Encryption-CMK_20250218
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
 - Enforce-Guardrails-Automation
@@ -526,7 +586,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy definitions
   
-<details><summary>158 policy definitions</summary>
+<details><summary>160 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -539,6 +599,8 @@ The subscription id that hosts the private link DNS zones.
 - Audit-PrivateLinkDnsZones
 - Audit-PublicIpAddresses-UnusedResourcesCostOptimization
 - Audit-ServerFarms-UnusedResourcesCostOptimization
+- Audit-Tags-Mandatory
+- Audit-Tags-Mandatory-Rg
 - Deny-AA-child-resources
 - Deny-APIM-TLS
 - Deny-AppGW-Without-WAF
@@ -690,7 +752,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy set definitions
   
-<details><summary>46 policy set definitions</summary>
+<details><summary>47 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -710,7 +772,8 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-Backup
 - Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
-- Enforce-Encryption-CMK
+- Enforce-EncryptTransit_20241211
+- Enforce-Encryption-CMK_20250218
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
 - Enforce-Guardrails-Automation
@@ -742,7 +805,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy assignments
   
-<details><summary>49 policy assignments</summary>
+<details><summary>77 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -790,9 +853,37 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-ALZ-Decomm
 - Enforce-ALZ-Sandbox
 - Enforce-ASR
+- Enforce-Encrypt-CMK0
+- Enforce-GR-APIM0
+- Enforce-GR-AppServices0
+- Enforce-GR-Automation0
+- Enforce-GR-BotService0
+- Enforce-GR-CogServ0
+- Enforce-GR-Compute0
+- Enforce-GR-ContApps0
+- Enforce-GR-ContInst0
+- Enforce-GR-ContReg0
+- Enforce-GR-CosmosDb0
+- Enforce-GR-DataExpl0
+- Enforce-GR-DataFactory0
+- Enforce-GR-EventGrid0
+- Enforce-GR-EventHub0
 - Enforce-GR-KeyVault
+- Enforce-GR-KeyVaultSup0
+- Enforce-GR-Kubernetes0
+- Enforce-GR-MachLearn0
+- Enforce-GR-MySQL0
+- Enforce-GR-Network0
+- Enforce-GR-OpenAI0
+- Enforce-GR-PostgreSQL0
+- Enforce-GR-SQL0
+- Enforce-GR-ServiceBus0
+- Enforce-GR-Storage0
+- Enforce-GR-Synapse0
+- Enforce-GR-VirtualDesk0
 - Enforce-Subnet-Private
 - Enforce-TLS-SSL-H224
+- Enforce-TLS-SSL-Q225
 </details>
   
 ### all role definitions

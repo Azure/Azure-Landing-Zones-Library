@@ -52,6 +52,9 @@ flowchart TD
   platform --> management
   management["Management
 (management)"]
+  platform --> security
+  security["Security
+(security)"]
   alz --> sandbox
   sandbox["Sandbox
 (sandbox)"]
