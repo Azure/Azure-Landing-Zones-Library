@@ -212,6 +212,11 @@ foreach ($managementGroup in $policyAssignments.Keys) {
         }
       }
 
+      # Sanity check enforcement mode is not empty, if it is set to Default
+      if ($parsedAssignment.properties.enforcementMode -eq "") {
+        $parsedAssignment.properties.enforcementMode = "Default"
+      }
+
       if ($parsedAssignment.properties.policyDefinitionId.StartsWith("/providers/Microsoft.Management/managementGroups/`${temp}")) {
         $parsedAssignment.properties.policyDefinitionId = $parsedAssignment.properties.policyDefinitionId.Replace("/providers/Microsoft.Management/managementGroups/`${temp}", "/providers/Microsoft.Management/managementGroups/placeholder")
       }
