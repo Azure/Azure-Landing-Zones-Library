@@ -33,6 +33,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "2.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -43,6 +44,7 @@
         "policyDefinitionReferenceId": "Modify-KV-PublicNetworkAccess"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

@@ -26,6 +26,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

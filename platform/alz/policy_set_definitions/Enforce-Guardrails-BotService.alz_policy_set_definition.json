@@ -58,6 +58,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -68,6 +69,7 @@
         "policyDefinitionReferenceId": "Deny-BotService-Valid-Uri"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -78,6 +80,7 @@
         "policyDefinitionReferenceId": "Deny-BotService-Isolated-Mode"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -88,6 +91,7 @@
         "policyDefinitionReferenceId": "Deny-BotService-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

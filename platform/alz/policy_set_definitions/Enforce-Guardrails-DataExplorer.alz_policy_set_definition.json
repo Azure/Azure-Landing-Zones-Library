@@ -52,6 +52,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -62,6 +63,7 @@
         "policyDefinitionReferenceId": "Deny-ADX-Sku-without-PL-Support"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -72,6 +74,7 @@
         "policyDefinitionReferenceId": "Deny-ADX-Double-Encryption"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -82,6 +85,7 @@
         "policyDefinitionReferenceId": "Deny-ADX-Encryption"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

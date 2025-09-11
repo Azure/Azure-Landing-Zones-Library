@@ -175,6 +175,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -185,6 +186,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Windows-Container-Administrator"
       },
       {
+        "definitionVersion": "5.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -195,6 +197,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Shared-Host-Process-Namespace"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -205,6 +208,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Naked-Pods"
       },
       {
+        "definitionVersion": "4.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -215,6 +219,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Default-Namespace"
       },
       {
+        "definitionVersion": "8.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -225,6 +230,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Internal-Lb"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -235,6 +241,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Temp-Disk-Encryption"
       },
       {
+        "definitionVersion": "6.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -245,6 +252,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Allowed-Capabilities"
       },
       {
+        "definitionVersion": "7.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -255,6 +263,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Priv-Escalation"
       },
       {
+        "definitionVersion": "9.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -265,6 +274,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Priv-Containers"
       },
       {
+        "definitionVersion": "3.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -275,6 +285,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-ReadinessOrLiveness-Probes"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -285,6 +296,7 @@
         "policyDefinitionReferenceId": "Dine-Aks-Command-Invoke"
       },
       {
+        "definitionVersion": "4.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -295,6 +307,7 @@
         "policyDefinitionReferenceId": "Dine-Aks-Policy"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -305,6 +318,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Private-Cluster"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -315,6 +329,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -325,6 +340,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Kms"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

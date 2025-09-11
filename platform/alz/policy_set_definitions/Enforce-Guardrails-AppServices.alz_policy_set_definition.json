@@ -168,6 +168,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -178,6 +179,7 @@
         "policyDefinitionReferenceId": "Deny-AppService-Byoc"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -188,6 +190,7 @@
         "policyDefinitionReferenceId": "Dine-AppService-Apps-Remote-Debugging"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -198,6 +201,7 @@
         "policyDefinitionReferenceId": "Deny-AppService-Slots-Remote-Debugging"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -208,6 +212,7 @@
         "policyDefinitionReferenceId": "Deny-AppService-Latest-Version"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -218,6 +223,7 @@
         "policyDefinitionReferenceId": "Deny-AppService-Vnet-Routing"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -228,6 +234,7 @@
         "policyDefinitionReferenceId": "Deny-AppService-Rfc"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -238,6 +245,7 @@
         "policyDefinitionReferenceId": "Deny-AppServiceApps-Rfc"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -248,6 +256,7 @@
         "policyDefinitionReferenceId": "DINE-FuncApp-Debugging"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -258,6 +267,7 @@
         "policyDefinitionReferenceId": "DINE-AppService-ScmAuth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -268,6 +278,7 @@
         "policyDefinitionReferenceId": "Deny-AppServ-Routing"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -278,6 +289,7 @@
         "policyDefinitionReferenceId": "Deny-AppServ-FtpAuth"
       },
       {
+        "definitionVersion": "4.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -288,6 +300,7 @@
         "policyDefinitionReferenceId": "Deny-AppServ-SkuPl"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -298,6 +311,7 @@
         "policyDefinitionReferenceId": "DINE-AppService-LocalAuth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -308,6 +322,7 @@
         "policyDefinitionReferenceId": "DINE-AppService-Debugging"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -318,6 +333,7 @@
         "policyDefinitionReferenceId": "Modify-Function-Apps-Slots-Https"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -328,6 +344,7 @@
         "policyDefinitionReferenceId": "Modify-AppService-Https"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -338,6 +355,7 @@
         "policyDefinitionReferenceId": "Modify-Function-Apps-Slots-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -348,6 +366,7 @@
         "policyDefinitionReferenceId": "Modify-AppService-Apps-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
