@@ -9,7 +9,7 @@ provider "alz" {
   library_references = [
     {
       path = "platform/alz"
-      tag  = "0000.00.0" # Replace with the desired version
+      ref  = "0000.00.0" # Replace with the desired version
     }
   ]
 }
@@ -52,6 +52,9 @@ flowchart TD
   platform --> management
   management["Management
 (management)"]
+  platform --> security
+  security["Security
+(security)"]
   alz --> sandbox
   sandbox["Sandbox
 (sandbox)"]
@@ -107,7 +110,7 @@ flowchart TD
   
 #### landing_zones policy assignments
   
-<details><summary>52 policy assignments</summary>
+<details><summary>53 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Deny-IP-forwarding
@@ -117,6 +120,7 @@ flowchart TD
 - Deny-Storage-http
 - Deny-Subnet-Without-Nsg
 - Deploy-AzSqlDb-Auditing
+- Deploy-GuestAttest
 - Deploy-MDFC-DefSQL-AMA
 - Deploy-SQL-TDE
 - Deploy-SQL-Threat
@@ -167,9 +171,10 @@ flowchart TD
   
 #### platform policy assignments
   
-<details><summary>39 policy assignments</summary>
+<details><summary>40 policy assignments</summary>
 
 - DenyAction-DeleteUAMIAMA
+- Deploy-GuestAttest
 - Deploy-MDFC-DefSQL-AMA
 - Deploy-VM-ChangeTrack
 - Deploy-VM-Monitoring
@@ -380,7 +385,7 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>47 policy set definitions</summary>
+<details><summary>48 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -422,6 +427,7 @@ flowchart TD
 - Enforce-Guardrails-MachineLearning
 - Enforce-Guardrails-MySQL
 - Enforce-Guardrails-Network
+- Enforce-Guardrails-Network_20250326
 - Enforce-Guardrails-OpenAI
 - Enforce-Guardrails-PostgreSQL
 - Enforce-Guardrails-SQL
@@ -433,7 +439,7 @@ flowchart TD
   
 #### root policy assignments
   
-<details><summary>15 policy assignments</summary>
+<details><summary>16 policy assignments</summary>
 
 - Audit-ResourceRGLocation
 - Audit-TrustedLaunch
@@ -449,6 +455,7 @@ flowchart TD
 - Deploy-MDFC-Config-H224
 - Deploy-MDFC-OssDb
 - Deploy-MDFC-SqlAtp
+- Deploy-SvcHealth-BuiltIn
 - Enforce-ACSB
 </details>
   
@@ -749,7 +756,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy set definitions
   
-<details><summary>47 policy set definitions</summary>
+<details><summary>48 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -791,6 +798,7 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-Guardrails-MachineLearning
 - Enforce-Guardrails-MySQL
 - Enforce-Guardrails-Network
+- Enforce-Guardrails-Network_20250326
 - Enforce-Guardrails-OpenAI
 - Enforce-Guardrails-PostgreSQL
 - Enforce-Guardrails-SQL
@@ -802,7 +810,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy assignments
   
-<details><summary>77 policy assignments</summary>
+<details><summary>79 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -827,6 +835,7 @@ The subscription id that hosts the private link DNS zones.
 - Deploy-AzActivity-Log
 - Deploy-AzSqlDb-Auditing
 - Deploy-Diag-LogsCat
+- Deploy-GuestAttest
 - Deploy-MDEndpoints
 - Deploy-MDEndpointsAMA
 - Deploy-MDFC-Config-H224
@@ -836,6 +845,7 @@ The subscription id that hosts the private link DNS zones.
 - Deploy-Private-DNS-Zones
 - Deploy-SQL-TDE
 - Deploy-SQL-Threat
+- Deploy-SvcHealth-BuiltIn
 - Deploy-VM-Backup
 - Deploy-VM-ChangeTrack
 - Deploy-VM-Monitoring

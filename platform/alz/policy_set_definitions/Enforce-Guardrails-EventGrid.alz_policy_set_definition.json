@@ -84,6 +84,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -94,6 +95,7 @@
         "policyDefinitionReferenceId": "Modify-EventGrid-Partner-Namespace-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -104,6 +106,7 @@
         "policyDefinitionReferenceId": "Modify-EventGrid-Domain-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -114,6 +117,7 @@
         "policyDefinitionReferenceId": "Deny-EventGrid-Topic-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -124,6 +128,7 @@
         "policyDefinitionReferenceId": "Modify-EventGrid-Topic-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -134,6 +139,7 @@
         "policyDefinitionReferenceId": "Deny-EventGrid-Partner-Namespace-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -144,6 +150,7 @@
         "policyDefinitionReferenceId": "Deny-EventGrid-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -154,6 +161,7 @@
         "policyDefinitionReferenceId": "Modify-EventGrid-Domain-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

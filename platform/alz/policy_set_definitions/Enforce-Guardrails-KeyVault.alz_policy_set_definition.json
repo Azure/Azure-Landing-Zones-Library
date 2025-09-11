@@ -445,6 +445,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "3.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -455,6 +456,7 @@
         "policyDefinitionReferenceId": "KvSoftDelete"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -465,6 +467,7 @@
         "policyDefinitionReferenceId": "KvPurgeProtection"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -475,6 +478,7 @@
         "policyDefinitionReferenceId": "KvSecretsExpire"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -485,6 +489,7 @@
         "policyDefinitionReferenceId": "KvKeysExpire"
       },
       {
+        "definitionVersion": "3.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -495,6 +500,7 @@
         "policyDefinitionReferenceId": "KvFirewallEnabled"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -511,6 +517,7 @@
         "policyDefinitionReferenceId": "KvCertLifetime"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -524,6 +531,7 @@
         "policyDefinitionReferenceId": "KvKeysLifetime"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -537,6 +545,7 @@
         "policyDefinitionReferenceId": "KvSecretsLifetime"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -550,6 +559,7 @@
         "policyDefinitionReferenceId": "Deny-KV-RSA-Keys-without-MinCertSize"
       },
       {
+        "definitionVersion": "1.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -563,6 +573,7 @@
         "policyDefinitionReferenceId": "Deny-keyVaultManagedHsm-RSA-Keys-without-MinKeySize"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -576,6 +587,7 @@
         "policyDefinitionReferenceId": "Deny-KV-RSA-Keys-without-MinKeySize"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -586,6 +598,7 @@
         "policyDefinitionReferenceId": "Deny-KV-without-ArmRbac"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -596,6 +609,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Hms-PurgeProtection"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -609,6 +623,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Cert-Period"
       },
       {
+        "definitionVersion": "1.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -619,6 +634,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Hms-Key-Expire"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -632,6 +648,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Keys-Expire"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -645,6 +662,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Secrets-ValidityDays"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -655,6 +673,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Key-Types"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -665,6 +684,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Elliptic-Curve"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -675,6 +695,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Cryptographic-Type"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -688,6 +709,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Key-Active"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -698,6 +720,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Curve-Names"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -711,6 +734,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Secret-ActiveDays"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -721,6 +745,7 @@
         "policyDefinitionReferenceId": "Deny-Kv-Secret-Content-Type"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "caCommonName": {
@@ -734,6 +759,7 @@
         "policyDefinitionReferenceId": "Deny-Kv-Non-Integrated-Ca"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "allowedCAs": {
@@ -747,6 +773,7 @@
         "policyDefinitionReferenceId": "Deny-Kv-Integrated-Ca"
       },
       {
+        "definitionVersion": "1.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -760,6 +787,7 @@
         "policyDefinitionReferenceId": "Deny-Kv-Hsm-MinimumDays-Before-Expiration"
       },
       {
+        "definitionVersion": "1.*.*-preview",
         "groupNames": [],
         "parameters": {
           "allowedECNames": {
@@ -773,6 +801,7 @@
         "policyDefinitionReferenceId": "Deny-Kv-Hsm-Curve-Names"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "daysToExpire": {

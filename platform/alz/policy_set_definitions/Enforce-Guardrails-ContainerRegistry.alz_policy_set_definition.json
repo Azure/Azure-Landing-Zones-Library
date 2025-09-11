@@ -120,6 +120,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -130,6 +131,7 @@
         "policyDefinitionReferenceId": "Modify-ContainerRegistry-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -140,6 +142,7 @@
         "policyDefinitionReferenceId": "Modify-ContainerRegistry-Repo-Token"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -150,6 +153,7 @@
         "policyDefinitionReferenceId": "Deny-ContainerRegistry-Arm-Audience"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -160,6 +164,7 @@
         "policyDefinitionReferenceId": "Modify-ContainerRegistry-Arm-Audience"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -170,6 +175,7 @@
         "policyDefinitionReferenceId": "Deny-ContainerRegistry-Sku-PrivateLink"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -180,6 +186,7 @@
         "policyDefinitionReferenceId": "Modify-ContainerRegistry-Anonymous-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -190,6 +197,7 @@
         "policyDefinitionReferenceId": "Deny-ContainerRegistry-Anonymous-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -200,6 +208,7 @@
         "policyDefinitionReferenceId": "Deny-ContainerRegistry-Exports"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -210,6 +219,7 @@
         "policyDefinitionReferenceId": "Deny-ContainerRegistry-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -220,6 +230,7 @@
         "policyDefinitionReferenceId": "Deny-ContainerRegistry-Repo-Token"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -230,6 +241,7 @@
         "policyDefinitionReferenceId": "Deny-ContainerRegistry-Unrestricted-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

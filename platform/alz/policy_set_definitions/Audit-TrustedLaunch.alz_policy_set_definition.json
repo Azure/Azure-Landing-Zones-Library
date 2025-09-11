@@ -29,6 +29,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -39,6 +40,7 @@
         "policyDefinitionReferenceId": "AuditDisksOsTrustedLaunch"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -49,7 +51,8 @@
         "policyDefinitionReferenceId": "AuditTrustedLaunchEnabled"
       }
     ],
-    "policyType": "Custom"
+    "policyType": "Custom",
+    "version": "1.0.0"
   },
   "type": "Microsoft.Authorization/policySetDefinitions"
 }

@@ -50,6 +50,7 @@ $policyAssignments = New-Object 'System.Collections.Generic.Dictionary[string,Sy
 
 $managementGroupMapping = @{
   "defaults"       = "root"
+  "security"       = "security"
   "management"     = "management"
   "connectivity"   = "connectivity"
   "corp"           = "corp"
@@ -201,7 +202,8 @@ foreach ($managementGroup in $policyAssignments.Keys) {
       }
 
       $enforcementMode = $enforcementModeLookup[[Tuple]::Create($managementGroupNameFinal, $policyAssignmentFile)]
-      if ($null -ne $enforcementMode) {
+      # If enforcement mode is one of: Default, DoNotEnforce, or Disabled, set it on the policy assignment
+      if ($enforcementMode -in @("Default", "DoNotEnforce", "Disabled")) {
         Write-Verbose "Setting enforcement mode for $policyAssignmentName to $enforcementMode"
         if (!(Get-Member -InputObject $parsedAssignment.properties -Name "enforcementMode" -MemberType Properties)) {
           $parsedAssignment.properties | Add-Member -MemberType NoteProperty -Name "enforcementMode" -Value $enforcementMode
@@ -209,6 +211,11 @@ foreach ($managementGroup in $policyAssignments.Keys) {
         else {
           $parsedAssignment.properties.enforcementMode = $enforcementMode
         }
+      }
+
+      # Sanity check enforcement mode is not empty, if it is set to Default
+      if ($parsedAssignment.properties.enforcementMode -eq "") {
+        $parsedAssignment.properties.enforcementMode = "Default"
       }
 
       if ($parsedAssignment.properties.policyDefinitionId.StartsWith("/providers/Microsoft.Management/managementGroups/`${temp}")) {

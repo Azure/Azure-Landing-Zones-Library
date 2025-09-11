@@ -93,6 +93,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -103,6 +104,7 @@
         "policyDefinitionReferenceId": "Deny-CognitiveSearch-SKU"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -113,6 +115,7 @@
         "policyDefinitionReferenceId": "Deny-CongitiveSearch-LocalAuth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -123,6 +126,7 @@
         "policyDefinitionReferenceId": "Modify-CogntiveSearch-LocalAuth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -133,6 +137,7 @@
         "policyDefinitionReferenceId": "Modify-CogntiveSearch-PublicEndpoint"
       },
       {
+        "definitionVersion": "3.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -143,6 +148,7 @@
         "policyDefinitionReferenceId": "Modify-Cognitive-Services-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -153,6 +159,7 @@
         "policyDefinitionReferenceId": "Deny-Cognitive-Services-Managed-Identity"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -163,6 +170,7 @@
         "policyDefinitionReferenceId": "Deny-Cognitive-Services-Customer-Storage"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -173,6 +181,7 @@
         "policyDefinitionReferenceId": "Modify-Cognitive-Services-Local-Auth"
       },
       {
+        "definitionVersion": "5.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

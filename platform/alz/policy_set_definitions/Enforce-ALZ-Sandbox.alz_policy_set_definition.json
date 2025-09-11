@@ -52,6 +52,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -65,6 +66,7 @@
         "policyDefinitionReferenceId": "SandboxNotAllowed"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

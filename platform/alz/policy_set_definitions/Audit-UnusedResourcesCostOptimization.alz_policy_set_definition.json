@@ -53,6 +53,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -63,6 +64,7 @@
         "policyDefinitionReferenceId": "AuditDisksUnusedResourcesCostOptimization"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -73,6 +75,7 @@
         "policyDefinitionReferenceId": "AuditPublicIpAddressesUnusedResourcesCostOptimization"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -83,6 +86,7 @@
         "policyDefinitionReferenceId": "AuditServerFarmsUnusedResourcesCostOptimization"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

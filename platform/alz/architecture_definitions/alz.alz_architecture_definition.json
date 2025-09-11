@@ -58,6 +58,15 @@
     },
     {
       "archetypes": [
+        "security"
+      ],
+      "display_name": "Security",
+      "exists": false,
+      "id": "security",
+      "parent_id": "platform"
+    },
+    {
+      "archetypes": [
         "management"
       ],
       "display_name": "Management",

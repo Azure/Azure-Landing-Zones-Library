@@ -7,7 +7,7 @@
     "description": "This policy provides a safeguard against accidental removal of the User Assigned Managed Identity used by AMA by blocking delete calls using deny action effect.",
     "displayName": "Do not allow deletion of the User Assigned Managed Identity used by AMA",
     "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policyDefinitions/DenyAction-DeleteResources",
-    "enforcementMode": "",
+    "enforcementMode": "Default",
     "parameters": {
       "effect": {
         "value": "DenyAction"

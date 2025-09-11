@@ -16,12 +16,14 @@
     "parameters": {},
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {},
         "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/DenyAction-DiagnosticLogs",
         "policyDefinitionReferenceId": "DenyActionDelete-DiagnosticSettings"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {},
         "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/DenyAction-ActivityLogs",
