@@ -59,6 +59,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -69,6 +70,7 @@
         "policyDefinitionReferenceId": "Modify-CosmosDb-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -79,6 +81,7 @@
         "policyDefinitionReferenceId": "Dine-CosmosDb-Atp"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -89,6 +92,7 @@
         "policyDefinitionReferenceId": "Deny-CosmosDb-Fw-Rules"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -99,12 +103,14 @@
         "policyDefinitionReferenceId": "Deny-CosmosDb-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {},
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/4750c32b-89c0-46af-bfcb-2e4541a818d5",
         "policyDefinitionReferenceId": "Append-CosmosDb-Metadata"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

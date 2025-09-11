@@ -99,6 +99,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -109,6 +110,7 @@
         "policyDefinitionReferenceId": "Dine-Synapse-Defender"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -119,6 +121,7 @@
         "policyDefinitionReferenceId": "Modify-Synapse-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -129,6 +132,7 @@
         "policyDefinitionReferenceId": "Deny-Synapse-Fw-Rules"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "allowedTenantIds": {
@@ -142,6 +146,7 @@
         "policyDefinitionReferenceId": "Deny-Synapse-Tenant-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -152,6 +157,7 @@
         "policyDefinitionReferenceId": "Deny-Synapse-Data-Traffic"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -162,6 +168,7 @@
         "policyDefinitionReferenceId": "Deny-Synapse-Managed-Vnet"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -172,6 +179,7 @@
         "policyDefinitionReferenceId": "Deny-Synapse-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -182,6 +190,7 @@
         "policyDefinitionReferenceId": "Modify-Synapse-Tls-Version"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

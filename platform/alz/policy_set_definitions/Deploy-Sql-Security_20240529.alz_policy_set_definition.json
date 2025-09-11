@@ -80,6 +80,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -90,6 +91,7 @@
         "policyDefinitionReferenceId": "SqlDbTdeDeploySqlSecurity"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -100,6 +102,7 @@
         "policyDefinitionReferenceId": "SqlDbSecurityAlertPoliciesDeploySqlSecurity"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -110,6 +113,7 @@
         "policyDefinitionReferenceId": "SqlDbAuditingSettingsDeploySqlSecurity"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

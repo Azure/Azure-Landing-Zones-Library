@@ -111,6 +111,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -121,6 +122,7 @@
         "policyDefinitionReferenceId": "Deny-OpenAi-OutboundNetworkAccess"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -131,6 +133,7 @@
         "policyDefinitionReferenceId": "Deny-OpenAi-NetworkAcls"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -141,6 +144,7 @@
         "policyDefinitionReferenceId": "Deny-Cognitive-Services-Managed-Identity"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -151,6 +155,7 @@
         "policyDefinitionReferenceId": "Deny-Cognitive-Services-Local-Auth"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -161,6 +166,7 @@
         "policyDefinitionReferenceId": "Deny-Cognitive-Services-Cust-Storage"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -171,6 +177,7 @@
         "policyDefinitionReferenceId": "Modify-Cognitive-Services-Local-Auth"
       },
       {
+        "definitionVersion": "3.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -181,6 +188,7 @@
         "policyDefinitionReferenceId": "Deny-AzureAI-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -191,6 +199,7 @@
         "policyDefinitionReferenceId": "Audit-AzureAI-Private-Link"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -201,6 +210,7 @@
         "policyDefinitionReferenceId": "Dine-AzureAI-Local-Key"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -211,6 +221,7 @@
         "policyDefinitionReferenceId": "Dine-AzureAI-Local-Key2"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
