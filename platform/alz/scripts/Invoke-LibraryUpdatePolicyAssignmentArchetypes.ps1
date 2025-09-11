@@ -50,6 +50,7 @@ $policyAssignments = New-Object 'System.Collections.Generic.Dictionary[string,Sy
 
 $managementGroupMapping = @{
   "defaults"       = "root"
+  "security"       = "security"
   "management"     = "management"
   "connectivity"   = "connectivity"
   "corp"           = "corp"
