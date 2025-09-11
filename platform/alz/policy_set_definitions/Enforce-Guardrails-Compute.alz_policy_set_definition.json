@@ -35,6 +35,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -45,6 +46,7 @@
         "policyDefinitionReferenceId": "Deny-VmAndVmss-Encryption-Host"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

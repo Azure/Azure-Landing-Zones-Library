@@ -3,6 +3,7 @@
   "name": "platform",
   "policy_assignments": [
     "DenyAction-DeleteUAMIAMA",
+    "Deploy-GuestAttest",
     "Deploy-MDFC-DefSQL-AMA",
     "Deploy-VM-ChangeTrack",
     "Deploy-VM-Monitoring",

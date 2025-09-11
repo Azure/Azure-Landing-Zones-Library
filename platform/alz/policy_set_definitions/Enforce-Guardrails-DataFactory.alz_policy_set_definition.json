@@ -61,6 +61,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -71,6 +72,7 @@
         "policyDefinitionReferenceId": "Deny-Adf-Managed-Identity"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -81,6 +83,7 @@
         "policyDefinitionReferenceId": "Deny-Adf-Git"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -91,6 +94,7 @@
         "policyDefinitionReferenceId": "Deny-Adf-Linked-Service-Key-Vault"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -101,6 +105,7 @@
         "policyDefinitionReferenceId": "Deny-Adf-Sql-Integration"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

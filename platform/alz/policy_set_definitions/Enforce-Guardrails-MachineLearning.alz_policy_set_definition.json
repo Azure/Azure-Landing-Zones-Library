@@ -133,6 +133,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effects": {
@@ -143,6 +144,7 @@
         "policyDefinitionReferenceId": "Deny-ML-Outdated-Os"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -153,6 +155,7 @@
         "policyDefinitionReferenceId": "Deny-ML-Local-Auth"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -163,6 +166,7 @@
         "policyDefinitionReferenceId": "Modify-ML-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -173,6 +177,7 @@
         "policyDefinitionReferenceId": "Deny-ML-User-Assigned-Identity"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -183,6 +188,7 @@
         "policyDefinitionReferenceId": "Modify-ML-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -193,6 +199,7 @@
         "policyDefinitionReferenceId": "Deny-ML-Idle-Shutdown"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -203,6 +210,7 @@
         "policyDefinitionReferenceId": "Audit-ML-Virtual-Network"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -213,6 +221,7 @@
         "policyDefinitionReferenceId": "Deny-ML-Legacy-Mode"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -223,6 +232,7 @@
         "policyDefinitionReferenceId": "Audit-ML-Private-Link"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -233,6 +243,7 @@
         "policyDefinitionReferenceId": "Aine-ML-Resource-Logs"
       },
       {
+        "definitionVersion": "1.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -243,6 +254,7 @@
         "policyDefinitionReferenceId": "Deny-ML-Allowed-Registry-Deploy"
       },
       {
+        "definitionVersion": "6.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -253,6 +265,7 @@
         "policyDefinitionReferenceId": "Deny-ML-Allowed-Module"
       },
       {
+        "definitionVersion": "5.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -263,6 +276,7 @@
         "policyDefinitionReferenceId": "Deny-ML-Allowed-Python"
       },
       {
+        "definitionVersion": "6.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {

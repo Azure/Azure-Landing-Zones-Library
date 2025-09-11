@@ -514,6 +514,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -524,6 +525,7 @@
         "policyDefinitionReferenceId": "CosmosDenyPaasPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -534,6 +536,7 @@
         "policyDefinitionReferenceId": "KeyVaultDenyPaasPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -544,6 +547,7 @@
         "policyDefinitionReferenceId": "SqlServerDenyPaasPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -554,6 +558,7 @@
         "policyDefinitionReferenceId": "StorageDenyPaasPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -564,6 +569,7 @@
         "policyDefinitionReferenceId": "AKSDenyPaasPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -574,6 +580,7 @@
         "policyDefinitionReferenceId": "ACRDenyPaasPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -584,6 +591,7 @@
         "policyDefinitionReferenceId": "AFSDenyPaasPublicIP"
       },
       {
+        "definitionVersion": "3.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -594,6 +602,7 @@
         "policyDefinitionReferenceId": "PostgreSQLFlexDenyPublicIP"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -604,6 +613,7 @@
         "policyDefinitionReferenceId": "Deny-PostgreSql-Public-Network-Access"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -614,6 +624,7 @@
         "policyDefinitionReferenceId": "MySQLFlexDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -624,6 +635,7 @@
         "policyDefinitionReferenceId": "BatchDenyPublicIP"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -634,6 +646,7 @@
         "policyDefinitionReferenceId": "MariaDbDenyPublicIP"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -644,6 +657,7 @@
         "policyDefinitionReferenceId": "MlDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -654,6 +668,7 @@
         "policyDefinitionReferenceId": "RedisCacheDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -664,6 +679,7 @@
         "policyDefinitionReferenceId": "BotServiceDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -674,6 +690,7 @@
         "policyDefinitionReferenceId": "AutomationDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -684,6 +701,7 @@
         "policyDefinitionReferenceId": "AppConfigDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -694,6 +712,7 @@
         "policyDefinitionReferenceId": "FunctionDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -704,6 +723,7 @@
         "policyDefinitionReferenceId": "FunctionAppSlotsDenyPublicIP"
       },
       {
+        "definitionVersion": "3.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -714,6 +734,7 @@
         "policyDefinitionReferenceId": "AseDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -724,6 +745,7 @@
         "policyDefinitionReferenceId": "AsDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -734,6 +756,7 @@
         "policyDefinitionReferenceId": "ApiManDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -744,6 +767,7 @@
         "policyDefinitionReferenceId": "ContainerAppsEnvironmentDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -754,6 +778,7 @@
         "policyDefinitionReferenceId": "Deny-ContainerApps-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -764,6 +789,7 @@
         "policyDefinitionReferenceId": "AsrVaultDenyPublicIP"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -774,6 +800,7 @@
         "policyDefinitionReferenceId": "Deny-LogicApp-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -784,6 +811,7 @@
         "policyDefinitionReferenceId": "Deny-AppSlots-Public"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -794,6 +822,7 @@
         "policyDefinitionReferenceId": "Deny-CognitiveSearch-PublicEndpoint"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -804,6 +833,7 @@
         "policyDefinitionReferenceId": "Deny-ManagedDisk-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -814,6 +844,7 @@
         "policyDefinitionReferenceId": "Deny-ADX-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -824,6 +855,7 @@
         "policyDefinitionReferenceId": "Deny-Adf-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -834,6 +866,7 @@
         "policyDefinitionReferenceId": "Deny-EventGrid-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -844,6 +877,7 @@
         "policyDefinitionReferenceId": "Deny-EventGrid-Topic-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -854,6 +888,7 @@
         "policyDefinitionReferenceId": "Deny-EH-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -864,6 +899,7 @@
         "policyDefinitionReferenceId": "Deny-KV-Hms-PublicNetwork"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -874,6 +910,7 @@
         "policyDefinitionReferenceId": "Deny-MySql-Public-Network-Access"
       },
       {
+        "definitionVersion": "3.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -884,6 +921,7 @@
         "policyDefinitionReferenceId": "Deny-Cognitive-Services-Public-Network-Access"
       },
       {
+        "definitionVersion": "3.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -894,6 +932,7 @@
         "policyDefinitionReferenceId": "Deny-Cognitive-Services-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -904,6 +943,7 @@
         "policyDefinitionReferenceId": "Deny-Sb-PublicEndpoint"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -914,6 +954,7 @@
         "policyDefinitionReferenceId": "Deny-Sql-Managed-Public-Endpoint"
       },
       {
+        "definitionVersion": "3.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -924,6 +965,7 @@
         "policyDefinitionReferenceId": "Deny-Storage-Public-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -934,6 +976,7 @@
         "policyDefinitionReferenceId": "Deny-Synapse-Public-Network-Access"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -944,6 +987,7 @@
         "policyDefinitionReferenceId": "Deny-Workspace-PublicNetworkAccess"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -954,6 +998,7 @@
         "policyDefinitionReferenceId": "Deny-Hostpool-PublicNetworkAccess"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

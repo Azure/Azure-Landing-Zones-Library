@@ -52,6 +52,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -62,6 +63,7 @@
         "policyDefinitionReferenceId": "Deny-Sb-Authz-Rules"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -72,6 +74,7 @@
         "policyDefinitionReferenceId": "Deny-Sb-Encryption"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -82,6 +85,7 @@
         "policyDefinitionReferenceId": "Deny-Sb-LocalAuth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

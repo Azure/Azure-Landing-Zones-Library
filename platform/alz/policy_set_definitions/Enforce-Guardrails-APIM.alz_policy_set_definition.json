@@ -115,6 +115,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -125,6 +126,7 @@
         "policyDefinitionReferenceId": "Deny-Apim-without-Kv"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -135,6 +137,7 @@
         "policyDefinitionReferenceId": "Deny-Apim-without-Vnet"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -145,6 +148,7 @@
         "policyDefinitionReferenceId": "Deny-APIM-TLS"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -155,6 +159,7 @@
         "policyDefinitionReferenceId": "Deny-Apim-Protocols"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -165,6 +170,7 @@
         "policyDefinitionReferenceId": "Deny-Apim-Authn"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -175,6 +181,7 @@
         "policyDefinitionReferenceId": "Deny-Apim-Direct-Endpoint"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -185,6 +192,7 @@
         "policyDefinitionReferenceId": "Deny-Apim-Cert-Validation"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -195,6 +203,7 @@
         "policyDefinitionReferenceId": "Dine-Apim-Public-NetworkAccess"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -205,6 +214,7 @@
         "policyDefinitionReferenceId": "Deny-Apim-Sku-Vnet"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -215,6 +225,7 @@
         "policyDefinitionReferenceId": "Deny-Apim-Version"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

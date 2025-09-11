@@ -51,6 +51,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -61,6 +62,7 @@
         "policyDefinitionReferenceId": "Dine-Sql-Managed-Defender"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -71,6 +73,7 @@
         "policyDefinitionReferenceId": "Deny-Sql-Aad-Only"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -81,12 +84,14 @@
         "policyDefinitionReferenceId": "Deny-Sql-Managed-Aad-Only"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {},
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6134c3db-786f-471e-87bc-8f479dc890f6",
         "policyDefinitionReferenceId": "Dine-Sql-Adv-Data"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

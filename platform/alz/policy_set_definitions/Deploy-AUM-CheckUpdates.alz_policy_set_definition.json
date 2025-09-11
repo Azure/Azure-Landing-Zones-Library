@@ -56,6 +56,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "4.*.*",
         "groupNames": [],
         "parameters": {
           "assessmentMode": {
@@ -78,6 +79,7 @@
         "policyDefinitionReferenceId": "azureUpdateManagerVmCheckUpdateWindows"
       },
       {
+        "definitionVersion": "4.*.*",
         "groupNames": [],
         "parameters": {
           "assessmentMode": {
@@ -100,6 +102,7 @@
         "policyDefinitionReferenceId": "azureUpdateManagerVmCheckUpdateLinux"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "assessmentMode": {
@@ -122,6 +125,7 @@
         "policyDefinitionReferenceId": "azureUpdateManagerVmArcCheckUpdateWindows"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "assessmentMode": {

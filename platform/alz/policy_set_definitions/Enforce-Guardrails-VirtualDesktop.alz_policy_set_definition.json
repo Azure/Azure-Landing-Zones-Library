@@ -33,6 +33,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -43,6 +44,7 @@
         "policyDefinitionReferenceId": "Modify-Workspace-PublicNetworkAccess"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

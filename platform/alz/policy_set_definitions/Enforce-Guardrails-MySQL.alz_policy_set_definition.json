@@ -34,6 +34,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -44,6 +45,7 @@
         "policyDefinitionReferenceId": "Dine-MySql-Adv-Threat-Protection"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
