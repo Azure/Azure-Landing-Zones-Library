@@ -68,6 +68,7 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -78,6 +79,7 @@
         "policyDefinitionReferenceId": "Deny-Windows-Vm-HotPatch"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -88,6 +90,7 @@
         "policyDefinitionReferenceId": "Deny-Aa-Managed-Identity"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -98,6 +101,7 @@
         "policyDefinitionReferenceId": "Deny-Aa-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -108,6 +112,7 @@
         "policyDefinitionReferenceId": "Deny-Aa-Variables-Encrypt"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
@@ -118,6 +123,7 @@
         "policyDefinitionReferenceId": "Modify-Aa-Local-Auth"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

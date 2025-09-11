@@ -39,24 +39,28 @@
     },
     "policyDefinitions": [
       {
+        "definitionVersion": "4.*.*",
         "groupNames": [],
         "parameters": {},
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/3cf2ab00-13f1-4d0c-8971-2ac904541a7e",
         "policyDefinitionReferenceId": "GcIdentity"
       },
       {
+        "definitionVersion": "3.*.*",
         "groupNames": [],
         "parameters": {},
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/331e8ea8-378a-410f-a2e5-ae22f38bb0da",
         "policyDefinitionReferenceId": "GcLinux"
       },
       {
+        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {},
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/385f5831-96d4-41db-9a3c-cd3af78aaae6",
         "policyDefinitionReferenceId": "GcWindows"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "IncludeArcMachines": {
@@ -70,6 +74,7 @@
         "policyDefinitionReferenceId": "WinAcsb"
       },
       {
+        "definitionVersion": "2.*.*",
         "groupNames": [],
         "parameters": {
           "IncludeArcMachines": {
