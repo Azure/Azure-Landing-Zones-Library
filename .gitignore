@@ -2,6 +2,9 @@
 .temp
 .alzlib
 
+# Generated README
+_README.md
+
 # Custom VSCode launch settings
 .vscode/launch.json
 alzlibtool
