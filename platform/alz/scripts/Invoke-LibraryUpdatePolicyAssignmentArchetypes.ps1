@@ -201,7 +201,8 @@ foreach ($managementGroup in $policyAssignments.Keys) {
       }
 
       $enforcementMode = $enforcementModeLookup[[Tuple]::Create($managementGroupNameFinal, $policyAssignmentFile)]
-      if ($null -ne $enforcementMode) {
+      # If enforcement mode is one of: Default, DoNotEnforce, or Disabled, set it on the policy assignment
+      if ($enforcementMode -in @("Default", "DoNotEnforce", "Disabled")) {
         Write-Verbose "Setting enforcement mode for $policyAssignmentName to $enforcementMode"
         if (!(Get-Member -InputObject $parsedAssignment.properties -Name "enforcementMode" -MemberType Properties)) {
           $parsedAssignment.properties | Add-Member -MemberType NoteProperty -Name "enforcementMode" -Value $enforcementMode
