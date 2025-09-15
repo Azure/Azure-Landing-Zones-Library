@@ -9,7 +9,7 @@ provider "alz" {
   library_references = [
     {
       path = "platform/amba"
-      tag  = "0000.00.0" # Replace with the desired version
+      ref  = "0000.00.0" # Replace with the desired version
     }
   ]
 }
