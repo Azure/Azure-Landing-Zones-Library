@@ -6777,7 +6777,7 @@
             },
             {
                 "policyDefinitionReferenceId": "AllowedHostNetworkingAndPortsInKubernetesCluster",
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/82985f06-dc18-4a48-bc1c-b9f4f0098cfe",
+                "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policyDefinitions/Audit-Kubernetes-ApprovedHostNetworkAndPorts",
                 "definitionVersion": "6.*.*",
                 "parameters": {
                     "effect": {
