@@ -8,7 +8,7 @@
     "Audit-ZoneResiliency",
     "Deny-Classic-Resources",
     "Deny-UnmanagedDisk",
-    "Deploy-ASC-Monitoring",
+    "Deploy-ASC-Monitoring-Temporary",
     "Deploy-AzActivity-Log",
     "Deploy-Diag-LogsCat",
     "Deploy-MDEndpoints",
