@@ -1,5 +1,5 @@
 {
-    "name": "Deploy-ASC-Monitoring",
+    "name": "Deploy-ASC-Monitoring-Tp",
     "properties": {
         "displayName": "Microsoft cloud security benchmark",
         "policyType": "Custom",
