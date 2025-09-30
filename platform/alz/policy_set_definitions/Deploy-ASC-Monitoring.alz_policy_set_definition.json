@@ -8,7 +8,6 @@
             "version": "57.54.0",
             "category": "Security Center"
         },
-        "version": "57.54.0",
         "parameters": {
             "useServicePrincipalToProtectSubscriptionsMonitoringEffect": {
                 "type": "String",
