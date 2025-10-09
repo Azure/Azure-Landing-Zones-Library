@@ -485,6 +485,13 @@ flowchart TD
   
 The following policy default values are available in this library:
   
+### default name `allowed_locations_for_confidential_computing`
+  
+|       ASSIGNMENT       |    PARAMETER NAMES     |
+|------------------------|------------------------|
+| Enforce-Sovereign-Conf | listOfAllowedLocations |
+
+  
 ### default name `ama_change_tracking_data_collection_rule_id`
   
 The data collection rule id that should be used for the change tracking deployment.
@@ -547,6 +554,13 @@ The DDoS protection plan id that should be used for the DDoS protection plan dep
 | Enable-DDoS-VNET | ddosPlan        |
 
   
+### default name `list_of_allowed_locations`
+  
+|        ASSIGNMENT        |    PARAMETER NAMES     |
+|--------------------------|------------------------|
+| Enforce-Sovereign-Global | listOfAllowedLocations |
+
+  
 ### default name `log_analytics_workspace_id`
   
 The Log Analytics workspace id that should be used for centralized log collection.
@@ -585,6 +599,14 @@ The subscription id that hosts the private link DNS zones.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-Private-DNS-Zones | dnsZoneSubscriptionId |
+
+  
+### default name `slz_policy_effect`
+  
+|        ASSIGNMENT        | PARAMETER NAMES |
+|--------------------------|-----------------|
+| Enforce-Sovereign-Conf   | effect          |
+| Enforce-Sovereign-Global | effect          |
 
   
 ---
@@ -814,7 +836,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy assignments
   
-<details><summary>80 policy assignments</summary>
+<details><summary>82 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -893,6 +915,8 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-GR-Storage0
 - Enforce-GR-Synapse0
 - Enforce-GR-VirtualDesk0
+- Enforce-Sovereign-Conf
+- Enforce-Sovereign-Global
 - Enforce-Subnet-Private
 - Enforce-TLS-SSL-H224
 - Enforce-TLS-SSL-Q225
