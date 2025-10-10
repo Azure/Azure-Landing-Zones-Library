@@ -485,11 +485,12 @@ flowchart TD
   
 The following policy default values are available in this library:
   
-### default name `allowed_locations_for_confidential_computing`
+### default name `allowed_locations`
   
-|       ASSIGNMENT       |    PARAMETER NAMES     |
-|------------------------|------------------------|
-| Enforce-Sovereign-Conf | listOfAllowedLocations |
+|        ASSIGNMENT        |    PARAMETER NAMES     |
+|--------------------------|------------------------|
+| Enforce-Sovereign-Conf   | listOfAllowedLocations |
+| Enforce-Sovereign-Global | listOfAllowedLocations |
 
   
 ### default name `ama_change_tracking_data_collection_rule_id`
@@ -554,13 +555,6 @@ The DDoS protection plan id that should be used for the DDoS protection plan dep
 | Enable-DDoS-VNET | ddosPlan        |
 
   
-### default name `list_of_allowed_locations`
-  
-|        ASSIGNMENT        |    PARAMETER NAMES     |
-|--------------------------|------------------------|
-| Enforce-Sovereign-Global | listOfAllowedLocations |
-
-  
 ### default name `log_analytics_workspace_id`
   
 The Log Analytics workspace id that should be used for centralized log collection.
@@ -599,14 +593,6 @@ The subscription id that hosts the private link DNS zones.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-Private-DNS-Zones | dnsZoneSubscriptionId |
-
-  
-### default name `slz_policy_effect`
-  
-|        ASSIGNMENT        | PARAMETER NAMES |
-|--------------------------|-----------------|
-| Enforce-Sovereign-Conf   | effect          |
-| Enforce-Sovereign-Global | effect          |
 
   
 ---
