@@ -192,23 +192,6 @@
           "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
         }
       ]
-    },
-    {
-      "default_name": "allowed_locations",
-      "policy_assignments": [
-        {
-          "parameter_names": [
-            "listOfAllowedLocations"
-          ],
-          "policy_assignment_name": "Enforce-Sovereign-Conf"
-        },
-        {
-          "parameter_names": [
-            "listOfAllowedLocations"
-          ],
-          "policy_assignment_name": "Enforce-Sovereign-Global"
-        }
-      ]
     }
   ]
 }

@@ -1,0 +1,9 @@
+{
+  "name": "confidential_corp",
+  "policy_assignments": [
+    "Enforce-Sovereign-Conf"
+  ],
+  "policy_definitions": [],
+  "policy_set_definitions": [],
+  "role_definitions": []
+}

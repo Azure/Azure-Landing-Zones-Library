@@ -1,6 +1,10 @@
-# ALZ (Azure Landing Zones)
+# SLZ (Azure Sovereign Landing Zones)
   
-This library provides the reference set of Azure Landing Zones (ALZ) policies, archetypes, and management group architecture.
+This library provides the reference set of Azure Sovereign Landing Zones (SLZ) policies, archetypes, and management group architecture.
+  
+## Dependencies
+  
+- platform/alz@2025.09.2
   
 ## Usage
   
@@ -8,7 +12,7 @@ This library provides the reference set of Azure Landing Zones (ALZ) policies, a
 provider "alz" {
   library_references = [
     {
-      path = "platform/alz"
+      path = "platform/slz"
       ref  = "0000.00.0" # Replace with the desired version
     }
   ]
@@ -61,7 +65,76 @@ flowchart TD
 
 ```
   
+### architecture `slz`
+  
+> [!NOTE]  
+> This hierarchy will be deployed as a child of the user-supplied root management group.
+  
+```mermaid
+flowchart TD
+  alz["Azure Sovereign Landing Zones
+(root, sovereign_root)"]
+  alz --> decommissioned
+  decommissioned["Decommissioned
+(decommissioned)"]
+  alz --> landingzones
+  landingzones["Landing zones
+(landing_zones)"]
+  landingzones --> confidential_corp
+  confidential_corp["Confidential Corp
+(confidential_corp)"]
+  landingzones --> confidential_online
+  confidential_online["Confidential Online
+(confidential_online)"]
+  landingzones --> corp
+  corp["Corp
+(corp)"]
+  landingzones --> online
+  online["Online
+(online)"]
+  landingzones --> public
+  public["Public
+(public)"]
+  alz --> platform
+  platform["Platform
+(platform)"]
+  platform --> connectivity
+  connectivity["Connectivity
+(connectivity)"]
+  platform --> identity
+  identity["Identity
+(identity)"]
+  platform --> management
+  management["Management
+(management)"]
+  platform --> security
+  security["Security
+(security)"]
+  alz --> sandbox
+  sandbox["Sandbox
+(sandbox)"]
+
+```
+  
 ## Archetypes
+  
+### archetype `confidential_corp`
+  
+#### confidential_corp policy assignments
+  
+<details><summary>1 policy assignments</summary>
+
+- Enforce-Sovereign-Conf
+</details>
+  
+### archetype `confidential_online`
+  
+#### confidential_online policy assignments
+  
+<details><summary>1 policy assignments</summary>
+
+- Enforce-Sovereign-Conf
+</details>
   
 ### archetype `connectivity`
   
@@ -481,9 +554,28 @@ flowchart TD
 - Enforce-ALZ-Sandbox
 </details>
   
+### archetype `sovereign_root`
+  
+#### sovereign_root policy assignments
+  
+<details><summary>1 policy assignments</summary>
+
+- Enforce-Sovereign-Global
+</details>
+  
 ## Policy Default Values
   
 The following policy default values are available in this library:
+  
+### default name `allowed_locations`
+  
+Allowed Azure locations for Sovereign Landing Zone policies
+  
+|        ASSIGNMENT        |    PARAMETER NAMES     |
+|--------------------------|------------------------|
+| Enforce-Sovereign-Conf   | listOfAllowedLocations |
+| Enforce-Sovereign-Global | listOfAllowedLocations |
+
   
 ### default name `ama_change_tracking_data_collection_rule_id`
   
@@ -814,7 +906,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy assignments
   
-<details><summary>80 policy assignments</summary>
+<details><summary>82 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -893,6 +985,8 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-GR-Storage0
 - Enforce-GR-Synapse0
 - Enforce-GR-VirtualDesk0
+- Enforce-Sovereign-Conf
+- Enforce-Sovereign-Global
 - Enforce-Subnet-Private
 - Enforce-TLS-SSL-H224
 - Enforce-TLS-SSL-Q225

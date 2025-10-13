@@ -1,0 +1,9 @@
+{
+  "name": "sovereign_root",
+  "policy_assignments": [
+      "Enforce-Sovereign-Global"
+  ],
+  "policy_definitions": [],
+  "policy_set_definitions": [],
+  "role_definitions": []
+}

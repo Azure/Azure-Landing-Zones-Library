@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/default_policy_values.json",
+  "defaults": [
+    {
+      "default_name": "allowed_locations",
+      "description": "Allowed Azure locations for Sovereign Landing Zone policies",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "listOfAllowedLocations"
+          ],
+          "policy_assignment_name": "Enforce-Sovereign-Conf"
+        },
+        {
+          "parameter_names": [
+            "listOfAllowedLocations"
+          ],
+          "policy_assignment_name": "Enforce-Sovereign-Global"
+        }
+      ]
+    }
+  ]
+}
