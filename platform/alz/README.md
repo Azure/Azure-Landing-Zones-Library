@@ -449,7 +449,7 @@ flowchart TD
 - Audit-ZoneResiliency
 - Deny-Classic-Resources
 - Deny-UnmanagedDisk
-- Deploy-ASC-Monitoring-Tp
+- Deploy-ASC-Monitoring
 - Deploy-AzActivity-Log
 - Deploy-Diag-LogsCat
 - Deploy-MDEndpoints
