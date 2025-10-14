@@ -1,4 +1,4 @@
-ALZ_LIB_TOOL_VERSION := v0.28.3
+ALZ_LIB_TOOL_VERSION := v0.29.0
 
 .PHONY: server tools docs docs-check lib-check
 server:
