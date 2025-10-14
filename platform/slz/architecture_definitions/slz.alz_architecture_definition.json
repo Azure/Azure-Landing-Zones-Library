@@ -19,7 +19,7 @@
       "display_name": "Platform",
       "exists": false,
       "id": "platform",
-      "parent_id": "alz"
+      "parent_id": "slz"
     },
     {
       "archetypes": [
@@ -28,7 +28,7 @@
       "display_name": "Landing zones",
       "exists": false,
       "id": "landingzones",
-      "parent_id": "alz"
+      "parent_id": "slz"
     },
     {
       "archetypes": [
@@ -82,7 +82,7 @@
       "display_name": "Sandbox",
       "exists": false,
       "id": "sandbox",
-      "parent_id": "alz"
+      "parent_id": "slz"
     },
     {
       "archetypes": [
@@ -127,7 +127,7 @@
       "display_name": "Decommissioned",
       "exists": false,
       "id": "decommissioned",
-      "parent_id": "alz"
+      "parent_id": "slz"
     }
   ]
 }
