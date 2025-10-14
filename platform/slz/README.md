@@ -1,6 +1,6 @@
-# SLZ (Azure Sovereign Landing Zones)
+# SLZ (Sovereign Landing Zone)
   
-This library provides the reference set of Azure Sovereign Landing Zones (SLZ) policies, archetypes, and management group architecture.
+This library provides the reference set of Sovereign Landing Zone (SLZ) policies, archetypes, and management group architecture.
   
 ## Dependencies
   
@@ -72,12 +72,12 @@ flowchart TD
   
 ```mermaid
 flowchart TD
-  alz["Azure Sovereign Landing Zones
+  slz["Sovereign Landing Zone
 (root, sovereign_root)"]
-  alz --> decommissioned
+  slz --> decommissioned
   decommissioned["Decommissioned
 (decommissioned)"]
-  alz --> landingzones
+  slz --> landingzones
   landingzones["Landing zones
 (landing_zones)"]
   landingzones --> confidential_corp
@@ -95,7 +95,7 @@ flowchart TD
   landingzones --> public
   public["Public
 (public)"]
-  alz --> platform
+  slz --> platform
   platform["Platform
 (platform)"]
   platform --> connectivity
@@ -110,7 +110,7 @@ flowchart TD
   platform --> security
   security["Security
 (security)"]
-  alz --> sandbox
+  slz --> sandbox
   sandbox["Sandbox
 (sandbox)"]
 
