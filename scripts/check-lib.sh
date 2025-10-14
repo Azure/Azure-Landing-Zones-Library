@@ -19,4 +19,4 @@ if [ ! -d "$LIB" ]; then
 fi
 
 # check library
-alzlibtool check library "$LIB"
+alzlibtool check library "$LIB" 2>&1
