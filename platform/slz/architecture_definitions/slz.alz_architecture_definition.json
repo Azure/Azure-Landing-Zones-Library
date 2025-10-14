@@ -9,7 +9,7 @@
       ],
       "display_name": "Azure Sovereign Landing Zones",
       "exists": false,
-      "id": "alz",
+      "id": "slz",
       "parent_id": null
     },
     {
