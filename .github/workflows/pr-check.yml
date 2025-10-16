@@ -25,7 +25,16 @@ jobs:
         id: libs
         run: |
           DIFF="$(git diff --name-only origin/${{ github.base_ref }} | xargs dirname | sort | uniq)"
-          LIBDIFF="$(echo "${DIFF}" | grep '^platform/' || true)"
+          LIBDIFFPRE="$(echo "${DIFF}" | grep '^platform/' || true)"
+
+          LIBDIFF=()
+          for folder in ${LIBDIFFPRE};
+          do
+            if [ -d "$folder" ]; then
+              LIBDIFF+=("$folder")
+            fi
+          done
+
           if [ -z "${LIBDIFF}" ]; then
             echo "No libraries changed"
             echo "list=[]" >> "$GITHUB_OUTPUT"

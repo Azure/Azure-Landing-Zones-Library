@@ -1,10 +1,10 @@
-# SLZ (Sovereign Landing Zones)
+# SLZ (Sovereign Landing Zone)
   
-This library provides the reference set of Sovereign Landing Zones (SLZ) policies, archetypes, and management group architecture.
+This library provides the reference set of Sovereign Landing Zone (SLZ) policies, archetypes, and management group architecture.
   
 ## Dependencies
   
-- platform/alz@2025.02.0
+- platform/alz@2025.09.2
   
 ## Usage
   
@@ -13,7 +13,7 @@ provider "alz" {
   library_references = [
     {
       path = "platform/slz"
-      tag  = "0000.00.0" # Replace with the desired version
+      ref  = "0000.00.0" # Replace with the desired version
     }
   ]
 }
@@ -56,6 +56,9 @@ flowchart TD
   platform --> management
   management["Management
 (management)"]
+  platform --> security
+  security["Security
+(security)"]
   alz --> sandbox
   sandbox["Sandbox
 (sandbox)"]
@@ -69,49 +72,64 @@ flowchart TD
   
 ```mermaid
 flowchart TD
-  mcfs["Sovereign Landing Zone
-(global, root)"]
-  mcfs --> mcfs-decommissioned
-  mcfs-decommissioned["Decommissioned
+  slz["Sovereign Landing Zone
+(root, sovereign_root)"]
+  slz --> decommissioned
+  decommissioned["Decommissioned
 (decommissioned)"]
-  mcfs --> mcfs-landingzones
-  mcfs-landingzones["Landing Zones
+  slz --> landingzones
+  landingzones["Landing zones
 (landing_zones)"]
-  mcfs-landingzones --> mcfs-landingzones-confidential-corp
-  mcfs-landingzones-confidential-corp["Confidential Corp
-(confidential, corp)"]
-  mcfs-landingzones --> mcfs-landingzones-confidential-online
-  mcfs-landingzones-confidential-online["Confidential Online
-(confidential, online)"]
-  mcfs-landingzones --> mcfs-landingzones-corp
-  mcfs-landingzones-corp["Corp
+  landingzones --> confidential_corp
+  confidential_corp["Confidential Corp
+(confidential_corp)"]
+  landingzones --> confidential_online
+  confidential_online["Confidential Online
+(confidential_online)"]
+  landingzones --> corp
+  corp["Corp
 (corp)"]
-  mcfs-landingzones --> mcfs-landingzones-online
-  mcfs-landingzones-online["Online
+  landingzones --> online
+  online["Online
 (online)"]
-  mcfs --> mcfs-platform
-  mcfs-platform["Platform
+  landingzones --> public
+  public["Public
+(public)"]
+  slz --> platform
+  platform["Platform
 (platform)"]
-  mcfs-platform --> mcfs-platform-connectivity
-  mcfs-platform-connectivity["Connectivity
+  platform --> connectivity
+  connectivity["Connectivity
 (connectivity)"]
-  mcfs-platform --> mcfs-platform-identity
-  mcfs-platform-identity["Identity
+  platform --> identity
+  identity["Identity
 (identity)"]
-  mcfs-platform --> mcfs-platform-management
-  mcfs-platform-management["Management
+  platform --> management
+  management["Management
 (management)"]
-  mcfs --> mcfs-sandbox
-  mcfs-sandbox["Sandbox
+  platform --> security
+  security["Security
+(security)"]
+  slz --> sandbox
+  sandbox["Sandbox
 (sandbox)"]
 
 ```
   
 ## Archetypes
   
-### archetype `confidential`
+### archetype `confidential_corp`
   
-#### confidential policy assignments
+#### confidential_corp policy assignments
+  
+<details><summary>1 policy assignments</summary>
+
+- Enforce-Sovereign-Conf
+</details>
+  
+### archetype `confidential_online`
+  
+#### confidential_online policy assignments
   
 <details><summary>1 policy assignments</summary>
 
@@ -149,15 +167,6 @@ flowchart TD
 - Enforce-ALZ-Decomm
 </details>
   
-### archetype `global`
-  
-#### global policy assignments
-  
-<details><summary>1 policy assignments</summary>
-
-- Enforce-Sovereign-Global
-</details>
-  
 ### archetype `identity`
   
 #### identity policy assignments
@@ -174,7 +183,7 @@ flowchart TD
   
 #### landing_zones policy assignments
   
-<details><summary>25 policy assignments</summary>
+<details><summary>53 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Deny-IP-forwarding
@@ -184,6 +193,7 @@ flowchart TD
 - Deny-Storage-http
 - Deny-Subnet-Without-Nsg
 - Deploy-AzSqlDb-Auditing
+- Deploy-GuestAttest
 - Deploy-MDFC-DefSQL-AMA
 - Deploy-SQL-TDE
 - Deploy-SQL-Threat
@@ -198,7 +208,34 @@ flowchart TD
 - Enable-DDoS-VNET
 - Enforce-AKS-HTTPS
 - Enforce-ASR
+- Enforce-Encrypt-CMK0
+- Enforce-GR-APIM0
+- Enforce-GR-AppServices0
+- Enforce-GR-Automation0
+- Enforce-GR-BotService0
+- Enforce-GR-CogServ0
+- Enforce-GR-Compute0
+- Enforce-GR-ContApps0
+- Enforce-GR-ContInst0
+- Enforce-GR-ContReg0
+- Enforce-GR-CosmosDb0
+- Enforce-GR-DataExpl0
+- Enforce-GR-DataFactory0
+- Enforce-GR-EventGrid0
+- Enforce-GR-EventHub0
 - Enforce-GR-KeyVault
+- Enforce-GR-KeyVaultSup0
+- Enforce-GR-Kubernetes0
+- Enforce-GR-MachLearn0
+- Enforce-GR-MySQL0
+- Enforce-GR-Network0
+- Enforce-GR-OpenAI0
+- Enforce-GR-PostgreSQL0
+- Enforce-GR-SQL0
+- Enforce-GR-ServiceBus0
+- Enforce-GR-Storage0
+- Enforce-GR-Synapse0
+- Enforce-GR-VirtualDesk0
 - Enforce-Subnet-Private
 - Enforce-TLS-SSL-Q225
 </details>
@@ -207,9 +244,10 @@ flowchart TD
   
 #### platform policy assignments
   
-<details><summary>12 policy assignments</summary>
+<details><summary>40 policy assignments</summary>
 
 - DenyAction-DeleteUAMIAMA
+- Deploy-GuestAttest
 - Deploy-MDFC-DefSQL-AMA
 - Deploy-VM-ChangeTrack
 - Deploy-VM-Monitoring
@@ -219,7 +257,34 @@ flowchart TD
 - Deploy-vmHybr-Monitoring
 - Enable-AUM-CheckUpdates
 - Enforce-ASR
+- Enforce-Encrypt-CMK0
+- Enforce-GR-APIM0
+- Enforce-GR-AppServices0
+- Enforce-GR-Automation0
+- Enforce-GR-BotService0
+- Enforce-GR-CogServ0
+- Enforce-GR-Compute0
+- Enforce-GR-ContApps0
+- Enforce-GR-ContInst0
+- Enforce-GR-ContReg0
+- Enforce-GR-CosmosDb0
+- Enforce-GR-DataExpl0
+- Enforce-GR-DataFactory0
+- Enforce-GR-EventGrid0
+- Enforce-GR-EventHub0
 - Enforce-GR-KeyVault
+- Enforce-GR-KeyVaultSup0
+- Enforce-GR-Kubernetes0
+- Enforce-GR-MachLearn0
+- Enforce-GR-MySQL0
+- Enforce-GR-Network0
+- Enforce-GR-OpenAI0
+- Enforce-GR-PostgreSQL0
+- Enforce-GR-SQL0
+- Enforce-GR-ServiceBus0
+- Enforce-GR-Storage0
+- Enforce-GR-Synapse0
+- Enforce-GR-VirtualDesk0
 - Enforce-Subnet-Private
 </details>
   
@@ -227,7 +292,7 @@ flowchart TD
   
 #### root policy definitions
   
-<details><summary>160 policy definitions</summary>
+<details><summary>161 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -236,6 +301,7 @@ flowchart TD
 - Append-Redis-sslEnforcement
 - Audit-AzureHybridBenefit
 - Audit-Disks-UnusedResourcesCostOptimization
+- Audit-Kubernetes-ApprovedHostNetworkAndPorts
 - Audit-MachineLearning-PrivateEndpointId
 - Audit-PrivateLinkDnsZones
 - Audit-PublicIpAddresses-UnusedResourcesCostOptimization
@@ -393,12 +459,13 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>47 policy set definitions</summary>
+<details><summary>49 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
 - Deny-PublicPaaSEndpoints
 - DenyAction-DeleteProtection
+- Deploy-ASC-Monitoring-Tp
 - Deploy-AUM-CheckUpdates
 - Deploy-Diagnostics-LogAnalytics
 - Deploy-MDFC-Config
@@ -435,6 +502,7 @@ flowchart TD
 - Enforce-Guardrails-MachineLearning
 - Enforce-Guardrails-MySQL
 - Enforce-Guardrails-Network
+- Enforce-Guardrails-Network_20250326
 - Enforce-Guardrails-OpenAI
 - Enforce-Guardrails-PostgreSQL
 - Enforce-Guardrails-SQL
@@ -446,7 +514,7 @@ flowchart TD
   
 #### root policy assignments
   
-<details><summary>15 policy assignments</summary>
+<details><summary>16 policy assignments</summary>
 
 - Audit-ResourceRGLocation
 - Audit-TrustedLaunch
@@ -454,7 +522,7 @@ flowchart TD
 - Audit-ZoneResiliency
 - Deny-Classic-Resources
 - Deny-UnmanagedDisk
-- Deploy-ASC-Monitoring
+- Deploy-ASC-Monitoring-Tp
 - Deploy-AzActivity-Log
 - Deploy-Diag-LogsCat
 - Deploy-MDEndpoints
@@ -462,6 +530,7 @@ flowchart TD
 - Deploy-MDFC-Config-H224
 - Deploy-MDFC-OssDb
 - Deploy-MDFC-SqlAtp
+- Deploy-SvcHealth-BuiltIn
 - Enforce-ACSB
 </details>
   
@@ -485,15 +554,27 @@ flowchart TD
 - Enforce-ALZ-Sandbox
 </details>
   
+### archetype `sovereign_root`
+  
+#### sovereign_root policy assignments
+  
+<details><summary>1 policy assignments</summary>
+
+- Enforce-Sovereign-Global
+</details>
+  
 ## Policy Default Values
   
 The following policy default values are available in this library:
   
-### default name `allowed_locations_for_confidential_computing`
+### default name `allowed_locations`
   
-|       ASSIGNMENT       |    PARAMETER NAMES     |
-|------------------------|------------------------|
-| Enforce-Sovereign-Conf | listOfAllowedLocations |
+Allowed Azure locations for Sovereign Landing Zone policies
+  
+|        ASSIGNMENT        |    PARAMETER NAMES     |
+|--------------------------|------------------------|
+| Enforce-Sovereign-Conf   | listOfAllowedLocations |
+| Enforce-Sovereign-Global | listOfAllowedLocations |
 
   
 ### default name `ama_change_tracking_data_collection_rule_id`
@@ -549,13 +630,6 @@ The data collection rule id that should be used for the VM Insights deployment.
 | Deploy-vmHybr-Monitoring | dcrResourceId   |
 
   
-### default name `ddos_protection_plan_effect`
-  
-|    ASSIGNMENT    | PARAMETER NAMES |
-|------------------|-----------------|
-| Enable-DDoS-VNET | effect          |
-
-  
 ### default name `ddos_protection_plan_id`
   
 The DDoS protection plan id that should be used for the DDoS protection plan deployment. If this is invalid or you do not use DDoS protection, make sure to change the enforcement mode of the Enable-DDoS-VNET policy to 'DoNotEnforce'.
@@ -563,20 +637,6 @@ The DDoS protection plan id that should be used for the DDoS protection plan dep
 |    ASSIGNMENT    | PARAMETER NAMES |
 |------------------|-----------------|
 | Enable-DDoS-VNET | ddosPlan        |
-
-  
-### default name `email_security_contact`
-  
-|       ASSIGNMENT        |   PARAMETER NAMES    |
-|-------------------------|----------------------|
-| Deploy-MDFC-Config-H224 | emailSecurityContact |
-
-  
-### default name `list_of_allowed_locations`
-  
-|        ASSIGNMENT        |    PARAMETER NAMES     |
-|--------------------------|------------------------|
-| Enforce-Sovereign-Global | listOfAllowedLocations |
 
   
 ### default name `log_analytics_workspace_id`
@@ -619,20 +679,12 @@ The subscription id that hosts the private link DNS zones.
 | Deploy-Private-DNS-Zones | dnsZoneSubscriptionId |
 
   
-### default name `slz_policy_effect`
-  
-|        ASSIGNMENT        | PARAMETER NAMES |
-|--------------------------|-----------------|
-| Enforce-Sovereign-Conf   | effect          |
-| Enforce-Sovereign-Global | effect          |
-
-  
 ---
 ## Contents
   
 ### all policy definitions
   
-<details><summary>160 policy definitions</summary>
+<details><summary>161 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -641,6 +693,7 @@ The subscription id that hosts the private link DNS zones.
 - Append-Redis-sslEnforcement
 - Audit-AzureHybridBenefit
 - Audit-Disks-UnusedResourcesCostOptimization
+- Audit-Kubernetes-ApprovedHostNetworkAndPorts
 - Audit-MachineLearning-PrivateEndpointId
 - Audit-PrivateLinkDnsZones
 - Audit-PublicIpAddresses-UnusedResourcesCostOptimization
@@ -798,12 +851,13 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy set definitions
   
-<details><summary>47 policy set definitions</summary>
+<details><summary>49 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
 - Deny-PublicPaaSEndpoints
 - DenyAction-DeleteProtection
+- Deploy-ASC-Monitoring-Tp
 - Deploy-AUM-CheckUpdates
 - Deploy-Diagnostics-LogAnalytics
 - Deploy-MDFC-Config
@@ -840,6 +894,7 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-Guardrails-MachineLearning
 - Enforce-Guardrails-MySQL
 - Enforce-Guardrails-Network
+- Enforce-Guardrails-Network_20250326
 - Enforce-Guardrails-OpenAI
 - Enforce-Guardrails-PostgreSQL
 - Enforce-Guardrails-SQL
@@ -851,7 +906,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy assignments
   
-<details><summary>52 policy assignments</summary>
+<details><summary>82 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -873,9 +928,11 @@ The subscription id that hosts the private link DNS zones.
 - Deny-UnmanagedDisk
 - DenyAction-DeleteUAMIAMA
 - Deploy-ASC-Monitoring
+- Deploy-ASC-Monitoring-Tp
 - Deploy-AzActivity-Log
 - Deploy-AzSqlDb-Auditing
 - Deploy-Diag-LogsCat
+- Deploy-GuestAttest
 - Deploy-MDEndpoints
 - Deploy-MDEndpointsAMA
 - Deploy-MDFC-Config-H224
@@ -885,6 +942,7 @@ The subscription id that hosts the private link DNS zones.
 - Deploy-Private-DNS-Zones
 - Deploy-SQL-TDE
 - Deploy-SQL-Threat
+- Deploy-SvcHealth-BuiltIn
 - Deploy-VM-Backup
 - Deploy-VM-ChangeTrack
 - Deploy-VM-Monitoring
@@ -899,7 +957,34 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-ALZ-Decomm
 - Enforce-ALZ-Sandbox
 - Enforce-ASR
+- Enforce-Encrypt-CMK0
+- Enforce-GR-APIM0
+- Enforce-GR-AppServices0
+- Enforce-GR-Automation0
+- Enforce-GR-BotService0
+- Enforce-GR-CogServ0
+- Enforce-GR-Compute0
+- Enforce-GR-ContApps0
+- Enforce-GR-ContInst0
+- Enforce-GR-ContReg0
+- Enforce-GR-CosmosDb0
+- Enforce-GR-DataExpl0
+- Enforce-GR-DataFactory0
+- Enforce-GR-EventGrid0
+- Enforce-GR-EventHub0
 - Enforce-GR-KeyVault
+- Enforce-GR-KeyVaultSup0
+- Enforce-GR-Kubernetes0
+- Enforce-GR-MachLearn0
+- Enforce-GR-MySQL0
+- Enforce-GR-Network0
+- Enforce-GR-OpenAI0
+- Enforce-GR-PostgreSQL0
+- Enforce-GR-SQL0
+- Enforce-GR-ServiceBus0
+- Enforce-GR-Storage0
+- Enforce-GR-Synapse0
+- Enforce-GR-VirtualDesk0
 - Enforce-Sovereign-Conf
 - Enforce-Sovereign-Global
 - Enforce-Subnet-Private

@@ -1,7 +1,7 @@
 {
-  "name": "so_01_data_residency",
+  "name": "confidential_corp",
   "policy_assignments": [
-    "SO-01-Data-Residency"
+    "Enforce-Sovereign-Conf"
   ],
   "policy_definitions": [],
   "policy_set_definitions": [],

@@ -1,7 +1,7 @@
 {
-  "name": "re_01_zonal_residency",
+  "name": "confidential_online",
   "policy_assignments": [
-    "RE-01-Zonal-Residency"
+    "Enforce-Sovereign-Conf"
   ],
   "policy_definitions": [],
   "policy_set_definitions": [],

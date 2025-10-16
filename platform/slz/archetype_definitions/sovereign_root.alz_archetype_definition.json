@@ -1,7 +1,7 @@
 {
-  "name": "confidential",
+  "name": "sovereign_root",
   "policy_assignments": [
-    "Enforce-Fsi-Conf"
+      "Enforce-Sovereign-Global"
   ],
   "policy_definitions": [],
   "policy_set_definitions": [],

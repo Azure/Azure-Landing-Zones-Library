@@ -1,89 +1,133 @@
 {
+  "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/architecture_definition.json",
   "name": "slz",
   "management_groups": [
     {
-      "archetypes": ["global", "root"],
+      "archetypes": [
+        "root",
+        "sovereign_root"
+      ],
       "display_name": "Sovereign Landing Zone",
       "exists": false,
-      "id": "mcfs",
+      "id": "slz",
       "parent_id": null
     },
     {
-      "archetypes": ["landing_zones"],
-      "display_name": "Landing Zones",
-      "exists": false,
-      "id": "mcfs-landingzones",
-      "parent_id": "mcfs"
-    },
-    {
-      "archetypes": ["platform"],
+      "archetypes": [
+        "platform"
+      ],
       "display_name": "Platform",
       "exists": false,
-      "id": "mcfs-platform",
-      "parent_id": "mcfs"
+      "id": "platform",
+      "parent_id": "slz"
     },
     {
-      "archetypes": ["identity"],
-      "display_name": "Identity",
+      "archetypes": [
+        "landing_zones"
+      ],
+      "display_name": "Landing zones",
       "exists": false,
-      "id": "mcfs-platform-identity",
-      "parent_id": "mcfs-platform"
+      "id": "landingzones",
+      "parent_id": "slz"
     },
     {
-      "archetypes": ["connectivity"],
-      "display_name": "Connectivity",
+      "archetypes": [
+        "public"
+      ],
+      "display_name": "Public",
       "exists": false,
-      "id": "mcfs-platform-connectivity",
-      "parent_id": "mcfs-platform"
+      "id": "public",
+      "parent_id": "landingzones"
     },
     {
-      "archetypes": ["management"],
-      "display_name": "Management",
-      "exists": false,
-      "id": "mcfs-platform-management",
-      "parent_id": "mcfs-platform"
-    },
-    {
-      "archetypes": ["corp"],
+      "archetypes": [
+        "corp"
+      ],
       "display_name": "Corp",
       "exists": false,
-      "id": "mcfs-landingzones-corp",
-      "parent_id": "mcfs-landingzones"
+      "id": "corp",
+      "parent_id": "landingzones"
     },
     {
-      "archetypes": ["confidential", "corp"],
-      "display_name": "Confidential Corp",
-      "exists": false,
-      "id": "mcfs-landingzones-confidential-corp",
-      "parent_id": "mcfs-landingzones"
-    },
-    {
-      "archetypes": ["online"],
+      "archetypes": [
+        "online"
+      ],
       "display_name": "Online",
       "exists": false,
-      "id": "mcfs-landingzones-online",
-      "parent_id": "mcfs-landingzones"
+      "id": "online",
+      "parent_id": "landingzones"
     },
     {
-      "archetypes": ["confidential", "online"],
+      "archetypes": [
+        "confidential_corp"
+      ],
+      "display_name": "Confidential Corp",
+      "exists": false,
+      "id": "confidential_corp",
+      "parent_id": "landingzones"
+    },
+    {
+      "archetypes": [
+        "confidential_online"
+      ],
       "display_name": "Confidential Online",
       "exists": false,
-      "id": "mcfs-landingzones-confidential-online",
-      "parent_id": "mcfs-landingzones"
+      "id": "confidential_online",
+      "parent_id": "landingzones"
     },
     {
-      "archetypes": ["sandbox"],
+      "archetypes": [
+        "sandbox"
+      ],
       "display_name": "Sandbox",
       "exists": false,
-      "id": "mcfs-sandbox",
-      "parent_id": "mcfs"
+      "id": "sandbox",
+      "parent_id": "slz"
     },
     {
-      "archetypes": ["decommissioned"],
+      "archetypes": [
+        "security"
+      ],
+      "display_name": "Security",
+      "exists": false,
+      "id": "security",
+      "parent_id": "platform"
+    },
+    {
+      "archetypes": [
+        "management"
+      ],
+      "display_name": "Management",
+      "exists": false,
+      "id": "management",
+      "parent_id": "platform"
+    },
+    {
+      "archetypes": [
+        "connectivity"
+      ],
+      "display_name": "Connectivity",
+      "exists": false,
+      "id": "connectivity",
+      "parent_id": "platform"
+    },
+    {
+      "archetypes": [
+        "identity"
+      ],
+      "display_name": "Identity",
+      "exists": false,
+      "id": "identity",
+      "parent_id": "platform"
+    },
+    {
+      "archetypes": [
+        "decommissioned"
+      ],
       "display_name": "Decommissioned",
       "exists": false,
-      "id": "mcfs-decommissioned",
-      "parent_id": "mcfs"
+      "id": "decommissioned",
+      "parent_id": "slz"
     }
   ]
 }
