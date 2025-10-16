@@ -43,27 +43,30 @@ This process differs slightly depending on which library is being released.
 
 1. Create a release with a tag name that follows the format `platform/alz/yyyy.mm.patch`, where `yyyy` is the year, `mm` is the month, and `patch` is the patch number (e.g., `platform/alz/2025.09.2`).
     The year and month should only be updated when there is a policy refresh or major breaking change.
-2. The release title should be the same as the tag name.
-3. The release description should include a summary of the changes made in the release.
-4. For breaking changes, these must be called out in the release notes.
-5. Publish the release.
-6. Update the `platform\slz\alz_library_metadata.json` file with the new ALZ tag you just created.
-7. Raise a PR and release the `platform/slz` library following the [steps](#slz-library) below.
+1. The release title should be the same as the tag name.
+1. The release description should include a summary of the changes made in the release.
+1. For breaking changes, these must be called out in the release notes.
+1. Ensure that `Set as the latest release` is checked.
+1. Publish the release.
+1. Update the `platform\slz\alz_library_metadata.json` file with the new ALZ tag you just created.
+1. Raise a PR and release the `platform/slz` library following the [steps](#slz-library) below.
 
 ## SLZ Library
 
 1. Create a release with a tag name that follows the format `platform/slz/yyyy.mm.patch`, where `yyyy` is the year, `mm` is the month, and `patch` is the patch number (e.g., `platform/slz/2025.10.0`).
     The year and month should only be updated when there is a policy refresh or major breaking change.
-2. The release title should be the same as the tag name.
-3. The release description should include a summary of the changes made in the release.
-4. For breaking changes, these must be called out in the release notes.
-5. Publish the release.
+1. The release title should be the same as the tag name.
+1. The release description should include a summary of the changes made in the release.
+1. For breaking changes, these must be called out in the release notes.
+1. Ensure that `Set as the latest release` is unchecked.
+1. Publish the release.
 
 ## AMBA Library
 
 1. Create a release with a tag name that follows the format `platform/amba/yyyy.mm.patch`, where `yyyy` is the year, `mm` is the month, and `patch` is the patch number (e.g., `platform/amba/2024.06.0`).
     The year and month should only be updated when there is a policy refresh or major breaking change.
-2. The release title should be the same as the tag name.
-3. The release description should include a summary of the changes made in the release.
-4. For breaking changes, these must be called out in the release notes.
-5. Publish the release.
+1. The release title should be the same as the tag name.
+1. The release description should include a summary of the changes made in the release.
+1. For breaking changes, these must be called out in the release notes.
+1. Ensure that `Set as the latest release` is unchecked.
+1. Publish the release.
