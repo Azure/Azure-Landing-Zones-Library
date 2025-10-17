@@ -4,7 +4,7 @@ This library provides the reference set of Sovereign Landing Zone (SLZ) policies
   
 ## Dependencies
   
-- platform/alz@2025.09.2
+- platform/alz@2025.09.3
   
 ## Usage
   
@@ -292,7 +292,7 @@ flowchart TD
   
 #### root policy definitions
   
-<details><summary>161 policy definitions</summary>
+<details><summary>160 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -301,7 +301,6 @@ flowchart TD
 - Append-Redis-sslEnforcement
 - Audit-AzureHybridBenefit
 - Audit-Disks-UnusedResourcesCostOptimization
-- Audit-Kubernetes-ApprovedHostNetworkAndPorts
 - Audit-MachineLearning-PrivateEndpointId
 - Audit-PrivateLinkDnsZones
 - Audit-PublicIpAddresses-UnusedResourcesCostOptimization
@@ -459,13 +458,12 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>49 policy set definitions</summary>
+<details><summary>48 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
 - Deny-PublicPaaSEndpoints
 - DenyAction-DeleteProtection
-- Deploy-ASC-Monitoring-Tp
 - Deploy-AUM-CheckUpdates
 - Deploy-Diagnostics-LogAnalytics
 - Deploy-MDFC-Config
@@ -522,7 +520,7 @@ flowchart TD
 - Audit-ZoneResiliency
 - Deny-Classic-Resources
 - Deny-UnmanagedDisk
-- Deploy-ASC-Monitoring-Tp
+- Deploy-ASC-Monitoring
 - Deploy-AzActivity-Log
 - Deploy-Diag-LogsCat
 - Deploy-MDEndpoints
@@ -684,7 +682,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy definitions
   
-<details><summary>161 policy definitions</summary>
+<details><summary>160 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -693,7 +691,6 @@ The subscription id that hosts the private link DNS zones.
 - Append-Redis-sslEnforcement
 - Audit-AzureHybridBenefit
 - Audit-Disks-UnusedResourcesCostOptimization
-- Audit-Kubernetes-ApprovedHostNetworkAndPorts
 - Audit-MachineLearning-PrivateEndpointId
 - Audit-PrivateLinkDnsZones
 - Audit-PublicIpAddresses-UnusedResourcesCostOptimization
@@ -851,13 +848,12 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy set definitions
   
-<details><summary>49 policy set definitions</summary>
+<details><summary>48 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
 - Deny-PublicPaaSEndpoints
 - DenyAction-DeleteProtection
-- Deploy-ASC-Monitoring-Tp
 - Deploy-AUM-CheckUpdates
 - Deploy-Diagnostics-LogAnalytics
 - Deploy-MDFC-Config
@@ -906,7 +902,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy assignments
   
-<details><summary>82 policy assignments</summary>
+<details><summary>81 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -928,7 +924,6 @@ The subscription id that hosts the private link DNS zones.
 - Deny-UnmanagedDisk
 - DenyAction-DeleteUAMIAMA
 - Deploy-ASC-Monitoring
-- Deploy-ASC-Monitoring-Tp
 - Deploy-AzActivity-Log
 - Deploy-AzSqlDb-Auditing
 - Deploy-Diag-LogsCat
