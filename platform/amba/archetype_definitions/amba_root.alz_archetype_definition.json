@@ -3,7 +3,7 @@
   "name": "amba_root",
   "policy_assignments": [
     "Deploy-AMBA-Notification",
-    "Deploy-AMBA-SvcHealth"
+    "Deploy-AMBA-Res-SvcHlth"
   ],
   "policy_definitions": [
     "Deploy_AA_TotalJob_Alert",
@@ -149,6 +149,7 @@
     "Alerting-Management",
     "Alerting-NetworkChanges",
     "Alerting-RecoveryServices",
+    "Alerting-ResourceAndServiceHealth",
     "Alerting-ServiceHealth",
     "Alerting-Storage",
     "Alerting-VM",

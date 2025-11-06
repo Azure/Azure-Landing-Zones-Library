@@ -1,0 +1,245 @@
+{
+  "name": "Alerting-ResourceAndServiceHealth",
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Service Health and Resource Health events such as Service issues, Planned maintenance, Health advisories, Security advisories, and Resource health.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Service Health and Resource Health",
+    "metadata": {
+      "_deployed_by_amba": true,
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Monitoring",
+      "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
+      "version": "1.0.0"
+    },
+    "parameters": {
+      "ALZArmRoleId": {
+        "allowedValues": [
+          "Owner",
+          "Contributor",
+          "Reader",
+          "Monitoring Contributor",
+          "Monitoring Reader"
+        ],
+        "defaultValue": [],
+        "metadata": {
+          "description": "Arm Built-in Role Ids for action group to send alerts to",
+          "displayName": "Arm Role Ids"
+        },
+        "type": "array"
+      },
+      "ALZMonitorDisableTagName": {
+        "defaultValue": "MonitorDisable",
+        "metadata": {
+          "description": "Tag name used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag name"
+        },
+        "type": "String"
+      },
+      "ALZMonitorDisableTagValues": {
+        "defaultValue": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ],
+        "metadata": {
+          "description": "Tag value(s) used to disable monitoring at the resource level. Set to true if monitoring should be disabled.",
+          "displayName": "ALZ Monitoring disabled tag values(s)"
+        },
+        "type": "Array"
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "defaultValue": "centralus",
+        "metadata": {
+          "description": "Location of the resource group",
+          "displayName": "Resource Group Location"
+        },
+        "type": "String"
+      },
+      "ALZMonitorResourceGroupName": {
+        "defaultValue": "rg-amba-monitoring-001",
+        "metadata": {
+          "description": "Name of the resource group to deploy the alerts to",
+          "displayName": "Resource Group Name"
+        },
+        "type": "String"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "defaultValue": {
+          "_deployed_by_alz_monitor": true
+        },
+        "metadata": {
+          "description": "Tags to apply to the resource group",
+          "displayName": "Resource Group Tags"
+        },
+        "type": "Object"
+      },
+      "AlzShaActionGroupResources": {
+        "defaultValue": {
+          "actionGroupEmail": [],
+          "eventHubResourceId": [],
+          "functionResourceId": "",
+          "functionTriggerUrl": "",
+          "logicappCallbackUrl": "",
+          "logicappResourceId": "",
+          "webhookServiceUri": []
+        },
+        "metadata": {
+          "description": "Action Group resources to be used for the Service Health Advisory alert",
+          "displayName": "Service Health Action Group Resources"
+        },
+        "type": "object"
+      },
+      "BYOActionGroup": {
+        "defaultValue": [],
+        "metadata": {
+          "description": "The Resource IDs of existing Action Groups currently deployed in the environment.",
+          "displayName": "Customer defined Action Group Resource IDs"
+        },
+        "type": "array"
+      },
+      "ResHlthUnhealthyAlertState": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "State of the Resource Health Unhealthy alert",
+          "displayName": "Resource Health Unhealthy Alert State"
+        },
+        "type": "string"
+      },
+      "ResHlthUnhealthyPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "disabled"
+        ],
+        "defaultValue": "deployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "Resource Health Unhealthy Alert Policy Effect"
+        },
+        "type": "string"
+      },
+      "ShaBuiltInAlertRuleName": {
+        "defaultValue": "ServiceHealthSubscriptionAlertRule",
+        "metadata": {
+          "description": "Name of the alert rule",
+          "displayName": "Alert Rule Name"
+        },
+        "type": "string"
+      },
+      "ShaBuiltInEnableAlertRule": {
+        "defaultValue": "true",
+        "metadata": {
+          "description": "State of the Service Health Advisory alert",
+          "displayName": "Service Health Advisory Alert State"
+        },
+        "type": "string"
+      },
+      "ShaBuiltInEventTypes": {
+        "allowedValues": [
+          "Service Issues",
+          "Planned Maintenance",
+          "Health Advisories",
+          "Security Advisories"
+        ],
+        "defaultValue": [
+          "Service Issues",
+          "Planned Maintenance",
+          "Health Advisories",
+          "Security Advisories"
+        ],
+        "metadata": {
+          "description": "Event types to include in the alert rule",
+          "displayName": "Event Types"
+        },
+        "type": "Array"
+      },
+      "ShaBuiltInPolicyEffect": {
+        "allowedValues": [
+          "deployIfNotExists",
+          "DeployIfNotExists",
+          "disabled",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "Policy effect for the alert, deployIfNotExists will deploy the alert if it does not exist",
+          "displayName": "Service Health Advisory Alert Policy Effect"
+        },
+        "type": "string"
+      }
+    },
+    "policyDefinitions": [
+      {
+        "parameters": {
+          "MonitorDisableTagName": {
+            "value": "[parameters('ALZMonitorDisableTagName')]"
+          },
+          "MonitorDisableTagValues": {
+            "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "alertResourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "alertResourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          },
+          "alertResourceGroupTags": {
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
+          },
+          "effect": {
+            "value": "[parameters('ResHlthUnhealthyPolicyEffect')]"
+          },
+          "enabled": {
+            "value": "[parameters('ResHlthUnhealthyAlertState')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_activitylog_ResourceHealth_Unhealthy_Alert",
+        "policyDefinitionReferenceId": "ALZ_ResHlthUnhealthy"
+      },
+      {
+        "parameters": {
+          "actionGroupResources": {
+            "value": "[parameters('AlzShaActionGroupResources')]"
+          },
+          "actionGroupRoleIds": {
+            "value": "[parameters('ALZArmRoleId')]"
+          },
+          "actionGroups": {
+            "value": "[parameters('BYOActionGroup')]"
+          },
+          "additionalTags": {
+            "value": {
+              "_deployed_by_amba": true
+            }
+          },
+          "alertRuleName": {
+            "value": "[parameters('ShaBuiltInAlertRuleName')]"
+          },
+          "createNewActionGroup": {
+            "value": "[if(empty(parameters('BYOActionGroup')), 'true', 'false')]"
+          },
+          "effect": {
+            "value": "[parameters('ShaBuiltInPolicyEffect')]"
+          },
+          "enableAlertRule": {
+            "value": "[parameters('ShaBuiltInEnableAlertRule')]"
+          },
+          "eventTypes": {
+            "value": "[parameters('ShaBuiltInEventTypes')]"
+          },
+          "resourceGroupLocation": {
+            "value": "[parameters('ALZMonitorResourceGroupLocation')]"
+          },
+          "resourceGroupName": {
+            "value": "[parameters('ALZMonitorResourceGroupName')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/98903777-a9f6-47f5-90a9-acaf62ab01a8",
+        "policyDefinitionReferenceId": "ALZ_SHA_BuiltIn"
+      }
+    ],
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policySetDefinitions"
+}

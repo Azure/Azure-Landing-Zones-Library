@@ -2,15 +2,17 @@
   "name": "Alerting-ServiceHealth",
   "properties": {
     "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Service Health Events such as Service issues, Planned maintenance, Health advisories, Security advisories, and Resource health.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Service Health",
+    "displayName": "[Deprecated]: Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Service Health",
     "metadata": {
       "_deployed_by_amba": true,
       "alzCloudEnvironments": [
         "AzureCloud"
       ],
       "category": "Monitoring",
+      "deprecated": true,
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.5.3"
+      "supersededBy": "Alerting-ResourceAndServiceHealth",
+      "version": "1.5.3-deprecated"
     },
     "parameters": {
       "ALZArmRoleId": {
