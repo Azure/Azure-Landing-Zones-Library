@@ -244,7 +244,7 @@ flowchart TD
   
 #### amba_root policy set definitions
   
-<details><summary>14 policy set definitions</summary>
+<details><summary>15 policy set definitions</summary>
 
 - Alerting-Connectivity
 - Alerting-Connectivity-2
@@ -255,6 +255,7 @@ flowchart TD
 - Alerting-Management
 - Alerting-NetworkChanges
 - Alerting-RecoveryServices
+- Alerting-ResourceAndServiceHealth
 - Alerting-ServiceHealth
 - Alerting-Storage
 - Alerting-VM
@@ -267,7 +268,7 @@ flowchart TD
 <details><summary>2 policy assignments</summary>
 
 - Deploy-AMBA-Notification
-- Deploy-AMBA-SvcHealth
+- Deploy-AMBA-Res-SvcHlth
 </details>
   
 ## Policy Default Values
@@ -650,7 +651,7 @@ The service uri(s) of the webhook used for monitoring.
   
 ### all policy set definitions
   
-<details><summary>14 policy set definitions</summary>
+<details><summary>15 policy set definitions</summary>
 
 - Alerting-Connectivity
 - Alerting-Connectivity-2
@@ -661,6 +662,7 @@ The service uri(s) of the webhook used for monitoring.
 - Alerting-Management
 - Alerting-NetworkChanges
 - Alerting-RecoveryServices
+- Alerting-ResourceAndServiceHealth
 - Alerting-ServiceHealth
 - Alerting-Storage
 - Alerting-VM
@@ -670,7 +672,7 @@ The service uri(s) of the webhook used for monitoring.
   
 ### all policy assignments
   
-<details><summary>14 policy assignments</summary>
+<details><summary>15 policy assignments</summary>
 
 - Deploy-AMBA-Connectivity
 - Deploy-AMBA-HybridVM
@@ -681,6 +683,7 @@ The service uri(s) of the webhook used for monitoring.
 - Deploy-AMBA-NetworkChang
 - Deploy-AMBA-Notification
 - Deploy-AMBA-RecoverySvc
+- Deploy-AMBA-Res-SvcHlth
 - Deploy-AMBA-Storage
 - Deploy-AMBA-SvcHealth
 - Deploy-AMBA-VM

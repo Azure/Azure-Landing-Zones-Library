@@ -2,15 +2,17 @@
   "name": "Deploy_activitylog_ServiceHealth_SecurityAdvisory",
   "properties": {
     "description": "Policy to audit/deploy Service Health Security Advisory Alert",
-    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Service Health Security Advisory Alert",
+    "displayName": "[Deprecated]: Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Service Health Security Advisory Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
         "AzureCloud"
       ],
       "category": "Monitoring",
+      "deprecated": true,
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.5.0"
+      "supersededBy": "98903777-a9f6-47f5-90a9-acaf62ab01a8",
+      "version": "1.5.0-deprecated"
     },
     "mode": "All",
     "parameters": {

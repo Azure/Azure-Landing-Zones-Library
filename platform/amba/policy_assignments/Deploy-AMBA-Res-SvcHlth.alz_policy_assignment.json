@@ -1,0 +1,87 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2020-09-01",
+  "name": "Deploy-AMBA-Res-SvcHlth",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Service Health and Resource Health events such as Service issues, Planned maintenance, Health advisories, Security advisories, and Resource health.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Service Health and Resource Health",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-ResourceAndServiceHealth",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Alerting {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "notScopes": [],
+    "parameters": {
+      "ALZArmRoleId": {
+        "value": []
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_alz_monitor": true
+        }
+      },
+      "AlzShaActionGroupResources": {
+        "value": {
+          "actionGroupEmail": [],
+          "eventHubResourceId": [],
+          "functionResourceId": "",
+          "functionTriggerUrl": "",
+          "logicappCallbackUrl": "",
+          "logicappResourceId": "",
+          "webhookServiceUri": []
+        }
+      },
+      "BYOActionGroup": {
+        "value": []
+      },
+      "ResHlthUnhealthyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "ShaBuiltInAlertRuleName": {
+        "value": "ServiceHealthSubscriptionAlertRule"
+      },
+      "ShaBuiltInEnableAlertRule": {
+        "value": "true"
+      },
+      "ShaBuiltInEventTypes": {
+        "value": [
+          "Service Issues",
+          "Planned Maintenance",
+          "Health Advisories",
+          "Security Advisories"
+        ]
+      },
+      "ShaBuiltInPolicyEffect": {
+        "value": "DeployIfNotExists"
+      }
+    },
+    "metadata": {
+      "_deployed_by_amba": true
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder"
+  }
+}

@@ -1,8 +1,8 @@
 {
   "name": "Deploy-P2SVPNGateways-P2SConnectionCount-Alert",
   "properties": {
-    "description": "Policy to audit/deploy Count of P2S User Vpn routes learned by gateway Alert",
-    "displayName": "[Preview]: Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - User Vpn Route Count Alert",
+    "description": "Policy to audit/deploy Count of P2S Connections by gateway Alert",
+    "displayName": "[Preview]: Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - P2S Connection Count Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.0-preview"
+      "version": "1.2.0-preview"
     },
     "mode": "All",
     "parameters": {
