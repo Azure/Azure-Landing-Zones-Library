@@ -223,7 +223,7 @@
                             "name": "UserVpnRouteCount",
                             "operator": "GreaterThan",
                             "threshold": "[parameters('threshold')]",
-                            "timeAggregation": "Sum"
+                            "timeAggregation": "Total"
                           }
                         ],
                         "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
