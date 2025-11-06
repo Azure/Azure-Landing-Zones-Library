@@ -4,6 +4,17 @@ title = "Azure Landing Zones Library Documentation"
 description = "Documentation site for the Azure Landing Zones Library."
 theme = "hugo-geekdoc"
 
+[outputs]
+home = ['html', 'rss', 'TXT']
+page = ['html', 'rss', 'TXT']
+section = ['html', 'rss', 'TXT']
+
+[outputFormats]
+  [outputFormats.TXT]
+    mediaType = "text/plain"
+    baseName = "llms"
+    isPlainText = true
+
 # Required to get well formatted code blocks
 pygmentsUseClasses = true
 pygmentsCodeFences = true
