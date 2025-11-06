@@ -1,0 +1,24 @@
+# {{ .Site.Title }}
+
+Azure Landing Zones Library - Documentation - Welcome to the Azure Landing Zones Library. This library is a collection of resources to help you build and manage governance on Azure. The library is comprised of Azure Policy assets, together with a series of constructs that result in a deployable architecture.
+
+## Summary
+Welcome to the Azure Landing Zones Library. This library is a collection of resources to help you build and manage governance on Azure. The library is comprised of Azure Policy assets, together with a series of constructs that result in a deployable architecture.
+
+For an example, please see the `alz` library member in the `platform/alz` directory of the [repository](https://github.com/Azure/Azure-Landing-Zones-Library/tree/main/platform/alz).
+
+For more information on why we built this, see the Why section.
+
+{{- $baseGithubURL := "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/refs/heads/main/docs/content" -}}
+
+## Documentation Sections
+
+{{- range .Site.Sections.ByWeight }}
+{{- partial "llms-section-tree.txt" (dict "section" . "depth" 1 "base" $baseGithubURL "renderHeading" true "renderSelf" true) }}
+{{ printf "\n" }}
+{{- end }}
+
+## All Pages (Alphabetical)
+{{- range .Site.RegularPages.ByTitle }}
+- [{{ .Title }}]({{ $baseGithubURL }}/{{ .File.Path | replaceRE "^/?(.+)\\.md$" "$1.md" | replaceRE "\\\\" "/" }})
+{{- end }}
