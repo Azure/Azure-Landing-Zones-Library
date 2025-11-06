@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.0-preview"
+      "version": "1.2.0-preview"
     },
     "mode": "All",
     "parameters": {
@@ -228,7 +228,7 @@
                         ],
                         "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
                       },
-                      "description": "Metric Alert for Virtual Hubs Bgp Peer Status",
+                      "description": "Metric Alert for Routing Infrastructure Units",
                       "enabled": "[parameters('enabled')]",
                       "evaluationFrequency": "[parameters('evaluationFrequency')]",
                       "parameters": {
@@ -306,7 +306,7 @@
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-SingleResourceMultipleMetricCriteria.allOf[*].timeAggregation"
               },
               {
-                "equals": "LessThan",
+                "equals": "GreaterThan",
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-SingleResourceMultipleMetricCriteria.allOf[*].operator"
               },
               {
