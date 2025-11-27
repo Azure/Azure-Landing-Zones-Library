@@ -18,4 +18,4 @@ It is agnostic and not Terraform specific.
 It uses the Go type system to represent the ALZ Library constructs and contains all the functionality needed to read the ALZ Library constructs and generate deployable resource definitions based on the supplied configuration.
 
 [`alzlibtool`](https://github.com/Azure/alzlib/tree/main/cmd/alzlibtool) is a command line tool that uses `alzlib` to expose certain functionality of the library to the command line.
-As this is written in Go, it can be used on any practically any platform.
+As this is written in Go, it can be used on practically any platform.
