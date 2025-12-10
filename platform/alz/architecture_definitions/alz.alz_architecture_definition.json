@@ -8,7 +8,7 @@
       ],
       "display_name": "Azure Landing Zones",
       "exists": false,
-      "id": "alz",
+      "id": "root",
       "parent_id": null
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "archetypes": [
-        "landing_zones"
+        "landingzones"
       ],
       "display_name": "Landing zones",
       "exists": false,

@@ -26,12 +26,12 @@ The following architectures are available in this library, please note that the 
   
 ```mermaid
 flowchart TD
-  alz["Azure Landing Zones
+  root["Azure Landing Zones
 (amba_root)"]
-  alz --> landingzones
+  root --> landingzones
   landingzones["Landing zones
 (amba_landing_zones)"]
-  alz --> platform
+  root --> platform
   platform["Platform
 (amba_platform)"]
   platform --> connectivity

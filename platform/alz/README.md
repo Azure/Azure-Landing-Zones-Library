@@ -19,28 +19,28 @@ provider "alz" {
   
 The following architectures are available in this library, please note that the diagrams denote the management group display name and, in brackets, the associated archetypes:
   
-### architecture `alz`
+### architecture `root`
   
 > [!NOTE]  
 > This hierarchy will be deployed as a child of the user-supplied root management group.
   
 ```mermaid
 flowchart TD
-  alz["Azure Landing Zones
+  root["Azure Landing Zones
 (root)"]
-  alz --> decommissioned
+  root --> decommissioned
   decommissioned["Decommissioned
 (decommissioned)"]
-  alz --> landingzones
+  root --> landingzones
   landingzones["Landing zones
-(landing_zones)"]
+(landingzones)"]
   landingzones --> corp
   corp["Corp
 (corp)"]
   landingzones --> online
   online["Online
 (online)"]
-  alz --> platform
+  root --> platform
   platform["Platform
 (platform)"]
   platform --> connectivity
@@ -55,7 +55,7 @@ flowchart TD
   platform --> security
   security["Security
 (security)"]
-  alz --> sandbox
+  root --> sandbox
   sandbox["Sandbox
 (sandbox)"]
 
@@ -106,9 +106,9 @@ flowchart TD
 - Deploy-VM-Backup
 </details>
   
-### archetype `landing_zones`
+### archetype `landingzones`
   
-#### landing_zones policy assignments
+#### landingzones policy assignments
   
 <details><summary>53 policy assignments</summary>
 
