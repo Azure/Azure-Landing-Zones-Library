@@ -87,7 +87,7 @@
           "parameter_names": [
             "ALZMonitorResourceGroupName"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         },
         {
           "parameter_names": [
@@ -159,7 +159,7 @@
           "parameter_names": [
             "ALZMonitorResourceGroupTags"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         },
         {
           "parameter_names": [
@@ -231,7 +231,7 @@
           "parameter_names": [
             "ALZMonitorResourceGroupLocation"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         },
         {
           "parameter_names": [
@@ -339,7 +339,7 @@
           "parameter_names": [
             "ALZMonitorDisableTagName"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         },
         {
           "parameter_names": [
@@ -417,7 +417,7 @@
           "parameter_names": [
             "ALZMonitorDisableTagValues"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         },
         {
           "parameter_names": [
@@ -447,7 +447,7 @@
           "parameter_names": [
             "ALZMonitorActionGroupEmail"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -465,7 +465,7 @@
           "parameter_names": [
             "ALZArmRoleId"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -483,7 +483,7 @@
           "parameter_names": [
             "ALZWebhookServiceUri"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -501,7 +501,7 @@
           "parameter_names": [
             "ALZEventHubResourceId"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -519,7 +519,7 @@
           "parameter_names": [
             "ALZFunctionResourceId"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -537,7 +537,7 @@
           "parameter_names": [
             "ALZFunctionTriggerUrl"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -555,7 +555,7 @@
           "parameter_names": [
             "ALZLogicappResourceId"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -573,7 +573,7 @@
           "parameter_names": [
             "ALZLogicappCallbackUrl"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -621,7 +621,7 @@
           "parameter_names": [
             "BYOAlertProcessingRule"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -639,7 +639,7 @@
           "parameter_names": [
             "BYOActionGroup"
           ],
-          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
+          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     }
