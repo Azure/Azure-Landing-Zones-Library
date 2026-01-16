@@ -282,7 +282,6 @@ The email address(es) in the action group for alert notifications.
 |        ASSIGNMENT        |      PARAMETER NAMES       |
 |--------------------------|----------------------------|
 | Deploy-AMBA-Notification | ALZMonitorActionGroupEmail |
-| Deploy-AMBA-Res-SvcHlth  | ALZMonitorActionGroupEmail |
 
   
 ### default name `amba_alz_arm_role_id`
@@ -312,7 +311,6 @@ The resource id of the alert processing rule, required if you intend to use an e
 |        ASSIGNMENT        |    PARAMETER NAMES     |
 |--------------------------|------------------------|
 | Deploy-AMBA-Notification | BYOAlertProcessingRule |
-| Deploy-AMBA-Res-SvcHlth  | BYOAlertProcessingRule |
 
   
 ### default name `amba_alz_byo_user_assigned_managed_identity_id`
@@ -374,7 +372,6 @@ The resource id of the event hub used for monitoring.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-AMBA-Notification | ALZEventHubResourceId |
-| Deploy-AMBA-Res-SvcHlth  | ALZEventHubResourceId |
 
   
 ### default name `amba_alz_function_resource_id`
@@ -384,7 +381,6 @@ The resource id of the function used for monitoring.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-AMBA-Notification | ALZFunctionResourceId |
-| Deploy-AMBA-Res-SvcHlth  | ALZFunctionResourceId |
 
   
 ### default name `amba_alz_function_trigger_url`
@@ -394,7 +390,6 @@ The trigger url of the function used for monitoring.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-AMBA-Notification | ALZFunctionTriggerUrl |
-| Deploy-AMBA-Res-SvcHlth  | ALZFunctionTriggerUrl |
 
   
 ### default name `amba_alz_logicapp_callback_url`
@@ -404,7 +399,6 @@ The callback url of the logic app used for monitoring.
 |        ASSIGNMENT        |    PARAMETER NAMES     |
 |--------------------------|------------------------|
 | Deploy-AMBA-Notification | ALZLogicappCallbackUrl |
-| Deploy-AMBA-Res-SvcHlth  | ALZLogicappCallbackUrl |
 
   
 ### default name `amba_alz_logicapp_resource_id`
@@ -414,7 +408,6 @@ The resource id of the logic app used for monitoring.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-AMBA-Notification | ALZLogicappResourceId |
-| Deploy-AMBA-Res-SvcHlth  | ALZLogicappResourceId |
 
   
 ### default name `amba_alz_management_subscription_id`
@@ -486,6 +479,15 @@ The tags for the resource group for Azure Monitor Baseline Alerts.
 | Deploy-AMBA-Web          | ALZMonitorResourceGroupTags |
 
   
+### default name `amba_alz_sha_action_group_resources`
+  
+Action Group resources to be used for the Service Health alerts.
+  
+|       ASSIGNMENT        |      PARAMETER NAMES       |
+|-------------------------|----------------------------|
+| Deploy-AMBA-Res-SvcHlth | AlzShaActionGroupResources |
+
+  
 ### default name `amba_alz_user_assigned_managed_identity_name`
   
 The name of the user assigned managed identity for monitoring purposes.
@@ -505,7 +507,6 @@ The service uri(s) of the webhook used for monitoring.
 |        ASSIGNMENT        |   PARAMETER NAMES    |
 |--------------------------|----------------------|
 | Deploy-AMBA-Notification | ALZWebhookServiceUri |
-| Deploy-AMBA-Res-SvcHlth  | ALZWebhookServiceUri |
 
   
 ---
