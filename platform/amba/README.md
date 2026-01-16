@@ -9,7 +9,7 @@ provider "alz" {
   library_references = [
     {
       path = "platform/amba"
-      ref  = "0000.00.0" # Replace with the desired version
+      tag  = "0000.00.0" # Replace with the desired version
     }
   ]
 }
@@ -282,7 +282,7 @@ The email address(es) in the action group for alert notifications.
 |        ASSIGNMENT        |      PARAMETER NAMES       |
 |--------------------------|----------------------------|
 | Deploy-AMBA-Notification | ALZMonitorActionGroupEmail |
-| Deploy-AMBA-SvcHealth    | ALZMonitorActionGroupEmail |
+| Deploy-AMBA-Res-SvcHlth  | ALZMonitorActionGroupEmail |
 
   
 ### default name `amba_alz_arm_role_id`
@@ -292,7 +292,7 @@ The ARM role id(s) in the action group for alert notifications.
 |        ASSIGNMENT        | PARAMETER NAMES |
 |--------------------------|-----------------|
 | Deploy-AMBA-Notification | ALZArmRoleId    |
-| Deploy-AMBA-SvcHealth    | ALZArmRoleId    |
+| Deploy-AMBA-Res-SvcHlth  | ALZArmRoleId    |
 
   
 ### default name `amba_alz_byo_action_group`
@@ -302,7 +302,7 @@ The resource id of the action group, required if you intend to use an existing a
 |        ASSIGNMENT        | PARAMETER NAMES |
 |--------------------------|-----------------|
 | Deploy-AMBA-Notification | BYOActionGroup  |
-| Deploy-AMBA-SvcHealth    | BYOActionGroup  |
+| Deploy-AMBA-Res-SvcHlth  | BYOActionGroup  |
 
   
 ### default name `amba_alz_byo_alert_processing_rule`
@@ -312,7 +312,7 @@ The resource id of the alert processing rule, required if you intend to use an e
 |        ASSIGNMENT        |    PARAMETER NAMES     |
 |--------------------------|------------------------|
 | Deploy-AMBA-Notification | BYOAlertProcessingRule |
-| Deploy-AMBA-SvcHealth    | BYOAlertProcessingRule |
+| Deploy-AMBA-Res-SvcHlth  | BYOAlertProcessingRule |
 
   
 ### default name `amba_alz_byo_user_assigned_managed_identity_id`
@@ -340,8 +340,8 @@ Tag name used to disable monitoring at the resource level.
 | Deploy-AMBA-Management   | ALZMonitorDisableTagName |
 | Deploy-AMBA-NetworkChang | ALZMonitorDisableTagName |
 | Deploy-AMBA-Notification | ALZMonitorDisableTagName |
+| Deploy-AMBA-Res-SvcHlth  | ALZMonitorDisableTagName |
 | Deploy-AMBA-Storage      | ALZMonitorDisableTagName |
-| Deploy-AMBA-SvcHealth    | ALZMonitorDisableTagName |
 | Deploy-AMBA-VM           | ALZMonitorDisableTagName |
 | Deploy-AMBA-Web          | ALZMonitorDisableTagName |
 | Deploy-AMBAConnectivity2 | ALZMonitorDisableTagName |
@@ -360,8 +360,8 @@ Tag value(s) used to disable monitoring at the resource level.
 | Deploy-AMBA-Management   | ALZMonitorDisableTagValues |
 | Deploy-AMBA-NetworkChang | ALZMonitorDisableTagValues |
 | Deploy-AMBA-Notification | ALZMonitorDisableTagValues |
+| Deploy-AMBA-Res-SvcHlth  | ALZMonitorDisableTagValues |
 | Deploy-AMBA-Storage      | ALZMonitorDisableTagValues |
-| Deploy-AMBA-SvcHealth    | ALZMonitorDisableTagValues |
 | Deploy-AMBA-VM           | ALZMonitorDisableTagValues |
 | Deploy-AMBA-Web          | ALZMonitorDisableTagValues |
 | Deploy-AMBAConnectivity2 | ALZMonitorDisableTagValues |
@@ -374,7 +374,7 @@ The resource id of the event hub used for monitoring.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-AMBA-Notification | ALZEventHubResourceId |
-| Deploy-AMBA-SvcHealth    | ALZEventHubResourceId |
+| Deploy-AMBA-Res-SvcHlth  | ALZEventHubResourceId |
 
   
 ### default name `amba_alz_function_resource_id`
@@ -384,7 +384,7 @@ The resource id of the function used for monitoring.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-AMBA-Notification | ALZFunctionResourceId |
-| Deploy-AMBA-SvcHealth    | ALZFunctionResourceId |
+| Deploy-AMBA-Res-SvcHlth  | ALZFunctionResourceId |
 
   
 ### default name `amba_alz_function_trigger_url`
@@ -394,7 +394,7 @@ The trigger url of the function used for monitoring.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-AMBA-Notification | ALZFunctionTriggerUrl |
-| Deploy-AMBA-SvcHealth    | ALZFunctionTriggerUrl |
+| Deploy-AMBA-Res-SvcHlth  | ALZFunctionTriggerUrl |
 
   
 ### default name `amba_alz_logicapp_callback_url`
@@ -404,7 +404,7 @@ The callback url of the logic app used for monitoring.
 |        ASSIGNMENT        |    PARAMETER NAMES     |
 |--------------------------|------------------------|
 | Deploy-AMBA-Notification | ALZLogicappCallbackUrl |
-| Deploy-AMBA-SvcHealth    | ALZLogicappCallbackUrl |
+| Deploy-AMBA-Res-SvcHlth  | ALZLogicappCallbackUrl |
 
   
 ### default name `amba_alz_logicapp_resource_id`
@@ -414,7 +414,7 @@ The resource id of the logic app used for monitoring.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-AMBA-Notification | ALZLogicappResourceId |
-| Deploy-AMBA-SvcHealth    | ALZLogicappResourceId |
+| Deploy-AMBA-Res-SvcHlth  | ALZLogicappResourceId |
 
   
 ### default name `amba_alz_management_subscription_id`
@@ -442,8 +442,8 @@ The region short name (e.g. `westus`) of the resource group that will be used fo
 | Deploy-AMBA-Management   | ALZMonitorResourceGroupLocation |
 | Deploy-AMBA-NetworkChang | ALZMonitorResourceGroupLocation |
 | Deploy-AMBA-Notification | ALZMonitorResourceGroupLocation |
+| Deploy-AMBA-Res-SvcHlth  | ALZMonitorResourceGroupLocation |
 | Deploy-AMBA-Storage      | ALZMonitorResourceGroupLocation |
-| Deploy-AMBA-SvcHealth    | ALZMonitorResourceGroupLocation |
 | Deploy-AMBA-VM           | ALZMonitorResourceGroupLocation |
 | Deploy-AMBA-Web          | ALZMonitorResourceGroupLocation |
 
@@ -461,8 +461,8 @@ The name of the resource group for Azure Monitor Baseline Alerts.
 | Deploy-AMBA-Management   | ALZMonitorResourceGroupName |
 | Deploy-AMBA-NetworkChang | ALZMonitorResourceGroupName |
 | Deploy-AMBA-Notification | ALZMonitorResourceGroupName |
+| Deploy-AMBA-Res-SvcHlth  | ALZMonitorResourceGroupName |
 | Deploy-AMBA-Storage      | ALZMonitorResourceGroupName |
-| Deploy-AMBA-SvcHealth    | ALZMonitorResourceGroupName |
 | Deploy-AMBA-VM           | ALZMonitorResourceGroupName |
 | Deploy-AMBA-Web          | ALZMonitorResourceGroupName |
 
@@ -480,8 +480,8 @@ The tags for the resource group for Azure Monitor Baseline Alerts.
 | Deploy-AMBA-Management   | ALZMonitorResourceGroupTags |
 | Deploy-AMBA-NetworkChang | ALZMonitorResourceGroupTags |
 | Deploy-AMBA-Notification | ALZMonitorResourceGroupTags |
+| Deploy-AMBA-Res-SvcHlth  | ALZMonitorResourceGroupTags |
 | Deploy-AMBA-Storage      | ALZMonitorResourceGroupTags |
-| Deploy-AMBA-SvcHealth    | ALZMonitorResourceGroupTags |
 | Deploy-AMBA-VM           | ALZMonitorResourceGroupTags |
 | Deploy-AMBA-Web          | ALZMonitorResourceGroupTags |
 
@@ -505,7 +505,7 @@ The service uri(s) of the webhook used for monitoring.
 |        ASSIGNMENT        |   PARAMETER NAMES    |
 |--------------------------|----------------------|
 | Deploy-AMBA-Notification | ALZWebhookServiceUri |
-| Deploy-AMBA-SvcHealth    | ALZWebhookServiceUri |
+| Deploy-AMBA-Res-SvcHlth  | ALZWebhookServiceUri |
 
   
 ---
