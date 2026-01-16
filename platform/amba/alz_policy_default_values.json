@@ -445,7 +445,7 @@
         },
         {
           "parameter_names": [
-            "ALZMonitorActionGroupEmail"
+            "AlzShaActionGroupResources.actionGroupEmail"
           ],
           "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
@@ -481,7 +481,7 @@
         },
         {
           "parameter_names": [
-            "ALZWebhookServiceUri"
+            "AlzShaActionGroupResources.webhookServiceUri"
           ],
           "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
@@ -499,7 +499,7 @@
         },
         {
           "parameter_names": [
-            "ALZEventHubResourceId"
+            "AlzShaActionGroupResources.eventHubResourceId"
           ],
           "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
@@ -517,7 +517,7 @@
         },
         {
           "parameter_names": [
-            "ALZFunctionResourceId"
+            "AlzShaActionGroupResources.functionResourceId"
           ],
           "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
@@ -535,7 +535,7 @@
         },
         {
           "parameter_names": [
-            "ALZFunctionTriggerUrl"
+            "AlzShaActionGroupResources.functionTriggerUrl"
           ],
           "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
@@ -553,7 +553,7 @@
         },
         {
           "parameter_names": [
-            "ALZLogicappResourceId"
+            "AlzShaActionGroupResources.logicAppResourceId"
           ],
           "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
@@ -571,7 +571,7 @@
         },
         {
           "parameter_names": [
-            "ALZLogicappCallbackUrl"
+            "AlzShaActionGroupResources.logicAppCallbackUrl"
           ],
           "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
@@ -616,12 +616,6 @@
             "BYOAlertProcessingRule"
           ],
           "policy_assignment_name": "Deploy-AMBA-Notification"
-        },
-        {
-          "parameter_names": [
-            "BYOAlertProcessingRule"
-          ],
-          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
