@@ -10,6 +10,7 @@ provider "alz" {
     {
       path = "platform/amba"
       tag  = "0000.00.0" # Replace with the desired version
+      tag  = "0000.00.0" # Replace with the desired version
     }
   ]
 }

@@ -442,6 +442,12 @@
             "ALZMonitorActionGroupEmail"
           ],
           "policy_assignment_name": "Deploy-AMBA-Notification"
+        },
+        {
+          "parameter_names": [
+            "ALZMonitorActionGroupEmail"
+          ],
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
         }
       ]
     },
