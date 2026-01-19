@@ -447,7 +447,7 @@
           "parameter_names": [
             "ALZMonitorActionGroupEmail"
           ],
-          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
+          "policy_assignment_name": "Deploy-AMBA-SvcHealth"
         }
       ]
     },
@@ -478,12 +478,6 @@
             "ALZWebhookServiceUri"
           ],
           "policy_assignment_name": "Deploy-AMBA-Notification"
-        },
-        {
-          "parameter_names": [
-            "ALZWebhookServiceUri"
-          ],
-          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -496,12 +490,6 @@
             "ALZEventHubResourceId"
           ],
           "policy_assignment_name": "Deploy-AMBA-Notification"
-        },
-        {
-          "parameter_names": [
-            "ALZEventHubResourceId"
-          ],
-          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -514,12 +502,6 @@
             "ALZFunctionResourceId"
           ],
           "policy_assignment_name": "Deploy-AMBA-Notification"
-        },
-        {
-          "parameter_names": [
-            "ALZFunctionResourceId"
-          ],
-          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -532,12 +514,6 @@
             "ALZFunctionTriggerUrl"
           ],
           "policy_assignment_name": "Deploy-AMBA-Notification"
-        },
-        {
-          "parameter_names": [
-            "ALZFunctionTriggerUrl"
-          ],
-          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -550,12 +526,6 @@
             "ALZLogicappResourceId"
           ],
           "policy_assignment_name": "Deploy-AMBA-Notification"
-        },
-        {
-          "parameter_names": [
-            "ALZLogicappResourceId"
-          ],
-          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
@@ -568,10 +538,16 @@
             "ALZLogicappCallbackUrl"
           ],
           "policy_assignment_name": "Deploy-AMBA-Notification"
-        },
+        }
+      ]
+    },
+    {
+      "default_name": "amba_alz_sha_action_group_resources",
+      "description": "Action Group resources to be used for the Service Health alerts.",
+      "policy_assignments": [
         {
           "parameter_names": [
-            "ALZLogicappCallbackUrl"
+            "AlzShaActionGroupResources"
           ],
           "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
@@ -616,12 +592,6 @@
             "BYOAlertProcessingRule"
           ],
           "policy_assignment_name": "Deploy-AMBA-Notification"
-        },
-        {
-          "parameter_names": [
-            "BYOAlertProcessingRule"
-          ],
-          "policy_assignment_name": "Deploy-AMBA-Res-SvcHlth"
         }
       ]
     },
