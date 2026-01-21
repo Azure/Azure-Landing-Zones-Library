@@ -93,9 +93,8 @@ jobs:
         with:
           inlineScript: |
             Write-Information "==> Running policy definitions in archetype definitions script..." -InformationAction Continue
-            ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
-              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
-              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+            ${{ github.repository }}/${{ env.library_dir }}/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}"
           azPSVersion: "latest"
 
       - name: update library policy assignments and archetypes

@@ -21,10 +21,7 @@
 
 [CmdletBinding(SupportsShouldProcess)]
 param (
-  [Parameter()][String]$TargetPath = "$PWD/library/platform/alz",
-  [Parameter()][String]$SourcePath = "$PWD/enterprise-scale",
-  [Parameter()][String]$LineEnding = "unix",
-  [Parameter()][Switch]$UpdateProviderApiVersions
+  [Parameter()][String]$TargetPath = "$PWD/library/platform/alz"  
 )
 
 # Functions
@@ -83,14 +80,14 @@ Get-ChildItem -Path (Join-Path $TargetPath "policy_definitions") -File | ForEach
 
 # Rename Policy Definition files to match naming convention
 Write-Information "=====> Checking Policy Definition file names." -InformationAction Continue
-Get-ChildItem -Path "$TargetPath/platform/alz/policy_definitions/" -File -Filter "*.json" | ForEach-Object {
+Get-ChildItem -Path (Join-Path $TargetPath "policy_definitions") -File -Filter "*.json" | ForEach-Object {
   Write-Information "==> Processing file: $($_.FullName) for versioning naming." -InformationAction Continue
   Rename-LibraryFile -File $_ -FileType "alz_policy_definition"
 }
 
 # Rename Policy Set Definition files to match naming convention
 Write-Information "=====> Checking Policy Set Definition file names." -InformationAction Continue
-Get-ChildItem -Path "$TargetPath/platform/alz/policy_set_definitions/" -File -Filter "*.json" | ForEach-Object {
+Get-ChildItem -Path (Join-Path $TargetPath "policy_set_definitions") -File -Filter "*.json" | ForEach-Object {
   Write-Information "==> Processing file: $($_.FullName) for versioning naming." -InformationAction Continue
   Rename-LibraryFile -File $_ -FileType "alz_policy_set_definition"
 }
