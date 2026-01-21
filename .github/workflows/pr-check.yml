@@ -25,7 +25,7 @@ jobs:
         id: libs
         run: |
           DIFF="$(git diff --name-only origin/${{ github.base_ref }} | xargs dirname | sort | uniq)"
-          LIBDIFFPRE="$(echo "${DIFF}" | grep '^platform/' || true)"
+          LIBDIFFPRE="$(echo "${DIFF}" | grep '^platform/' | grep -v '/scripts' || true)"
 
           LIBDIFF=()
           for folder in ${LIBDIFFPRE};
