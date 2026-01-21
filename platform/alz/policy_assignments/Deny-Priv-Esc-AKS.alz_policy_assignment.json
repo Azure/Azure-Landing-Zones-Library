@@ -11,7 +11,7 @@
     "enforcementMode": "Default",
     "parameters": {
       "effect": {
-        "value": "Deny"
+        "value": "deny"
       }
     },
     "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
