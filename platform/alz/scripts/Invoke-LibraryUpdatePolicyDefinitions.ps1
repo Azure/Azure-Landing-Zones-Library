@@ -38,7 +38,7 @@ function Rename-LibraryFile {
   $version = $content.properties.version
 
   if ($version) {
-    Write-Information "File has version: $version. Renaming..." -InformationAction Continue
+    Write-Information "File has version: $version." -InformationAction Continue
     $expectedFileName = "$name.$version.$FileType.json"
   }
   else {
@@ -46,7 +46,33 @@ function Rename-LibraryFile {
     $expectedFileName = "$name.$FileType.json"
   }
 
-  if ($File.Name -ne $expectedFileName) {
+  # Skip if file already has the correct name (no rename needed)
+  if ($File.Name -eq $expectedFileName) {
+    Write-Information "File already has correct name: $($File.Name). No rename needed." -InformationAction Continue
+    return
+  }
+
+  $targetPath = Join-Path -Path $File.DirectoryName -ChildPath $expectedFileName
+
+  # Check if target file already exists
+  if (Test-Path -Path $targetPath) {
+    Write-Information "Target file already exists: $expectedFileName" -InformationAction Continue
+    
+    # Compare file contents by parsing JSON and re-serializing to normalize formatting
+    $sourceJson = Get-Content -Path $File.FullName | ConvertFrom-Json -Depth 100 | ConvertTo-Json -Depth 100 -Compress
+    $targetJson = Get-Content -Path $targetPath | ConvertFrom-Json -Depth 100 | ConvertTo-Json -Depth 100 -Compress
+    
+    if ($sourceJson -eq $targetJson) {
+      Write-Information "Files are identical. Removing duplicate source file: $($File.Name)" -InformationAction Continue
+      Remove-Item -Path $File.FullName -Force
+    }
+    else {
+      Write-Information "Files differ. Overwriting target with source: $($File.Name) -> $expectedFileName" -InformationAction Continue
+      Remove-Item -Path $targetPath -Force
+      Rename-Item -Path $File.FullName -NewName $expectedFileName -Force
+    }
+  }
+  else {
     Write-Information "Renaming file: $($File.Name) -> $expectedFileName" -InformationAction Continue
     Rename-Item -Path $File.FullName -NewName $expectedFileName -Force
   }
