@@ -5,7 +5,12 @@ name: update platform/alz
 on:
   schedule:
     - cron: "0 8 * * 1"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      reset:
+        description: "Reset the library by deleting existing artifacts before update"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -82,7 +87,7 @@ jobs:
             Write-Information "==> Running policy definitions in archetype definitions script..." -InformationAction Continue
             ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
               -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
-              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}" ${{ inputs.reset == true && '-Reset' || '' }}
           azPSVersion: "latest"
 
       - name: update library policy assignments and archetypes

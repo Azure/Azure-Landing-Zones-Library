@@ -2,7 +2,7 @@
 
 #
 # PowerShell Script
-# - Update template library in terraform-azurerm-caf-enterprise-scale repository
+# - Update template library in azure-landing-zones-library repository
 #
 
 [CmdletBinding(SupportsShouldProcess)]
