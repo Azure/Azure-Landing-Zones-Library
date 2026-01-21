@@ -21,11 +21,7 @@
 
 [CmdletBinding(SupportsShouldProcess)]
 param (
-  [Parameter()][String]$TargetPath = "$PWD/library/platform/alz",
-  [Parameter()][String]$SourcePath = "$PWD/enterprise-scale",
-  [Parameter()][String]$LineEnding = "unix",
-  [Parameter()][Switch]$Reset,
-  [Parameter()][Switch]$UpdateProviderApiVersions
+  [Parameter()][String]$TargetPath = "$PWD/library/platform/alz"  
 )
 
 # Functions
@@ -42,7 +38,7 @@ function Rename-LibraryFile {
   $version = $content.properties.version
 
   if ($version) {
-    Write-Information "File has version: $version. Renaming..." -InformationAction Continue
+    Write-Information "File has version: $version." -InformationAction Continue
     $expectedFileName = "$name.$version.$FileType.json"
   }
   else {
@@ -50,7 +46,33 @@ function Rename-LibraryFile {
     $expectedFileName = "$name.$FileType.json"
   }
 
-  if ($File.Name -ne $expectedFileName) {
+  # Skip if file already has the correct name (no rename needed)
+  if ($File.Name -eq $expectedFileName) {
+    Write-Information "File already has correct name: $($File.Name). No rename needed." -InformationAction Continue
+    return
+  }
+
+  $targetPath = Join-Path -Path $File.DirectoryName -ChildPath $expectedFileName
+
+  # Check if target file already exists
+  if (Test-Path -Path $targetPath) {
+    Write-Information "Target file already exists: $expectedFileName" -InformationAction Continue
+    
+    # Compare file contents by parsing JSON and re-serializing to normalize formatting
+    $sourceJson = Get-Content -Path $File.FullName | ConvertFrom-Json -Depth 100 | ConvertTo-Json -Depth 100 -Compress
+    $targetJson = Get-Content -Path $targetPath | ConvertFrom-Json -Depth 100 | ConvertTo-Json -Depth 100 -Compress
+    
+    if ($sourceJson -eq $targetJson) {
+      Write-Information "Files are identical. Removing duplicate source file: $($File.Name)" -InformationAction Continue
+      Remove-Item -Path $File.FullName -Force
+    }
+    else {
+      Write-Information "Files differ. Overwriting target with source: $($File.Name) -> $expectedFileName" -InformationAction Continue
+      Remove-Item -Path $targetPath -Force
+      Rename-Item -Path $File.FullName -NewName $expectedFileName -Force
+    }
+  }
+  else {
     Write-Information "Renaming file: $($File.Name) -> $expectedFileName" -InformationAction Continue
     Rename-Item -Path $File.FullName -NewName $expectedFileName -Force
   }
@@ -64,18 +86,9 @@ $removedPolicySetDefinitions = @(
 
 $removedPolicyDefinitions = @()
 
-# If the -Reset parameter is set, delete all existing
-# artefacts (by resource type) from the library
-if ($Reset) {
-  Write-Information "=====> Deleting existing Policy Definitions from library." -InformationAction Continue
-  Remove-Item -Path "$TargetPath/platform/alz/policy_definitions/" -Recurse -Force
-  Write-Information "=====> Deleting existing Policy Set Definitions from library." -InformationAction Continue
-  Remove-Item -Path "$TargetPath/platform/alz/policy_set_definitions/" -Recurse -Force
-}
-
 # Remove any Policy Set Definitions that are no longer
 # present in the source repository
-Get-ChildItem -Path "$TargetPath/platform/alz/policy_set_definitions/" -File | ForEach-Object {
+Get-ChildItem -Path (Join-Path $TargetPath "policy_set_definitions") -File | ForEach-Object {
   if ($removedPolicySetDefinitions -contains $_.Name) {
     Write-Information "==> Removing obsolete Policy Set Definition: $($_.Name)" -InformationAction Continue
     Remove-Item -Path $_.FullName -Force
@@ -84,8 +97,7 @@ Get-ChildItem -Path "$TargetPath/platform/alz/policy_set_definitions/" -File | F
 
 # Remove any Policy Definitions that are no longer
 # present in the source repository
-Get-ChildItem -Path "$TargetPath/platform/alz/policy_definitions/" -File
-| ForEach-Object {
+Get-ChildItem -Path (Join-Path $TargetPath "policy_definitions") -File | ForEach-Object {
   if ($removedPolicyDefinitions -contains $_.Name) {
     Write-Information "==> Removing obsolete Policy Definition: $($_.Name)" -InformationAction Continue
     Remove-Item -Path $_.FullName -Force
@@ -94,26 +106,26 @@ Get-ChildItem -Path "$TargetPath/platform/alz/policy_definitions/" -File
 
 # Rename Policy Definition files to match naming convention
 Write-Information "=====> Checking Policy Definition file names." -InformationAction Continue
-Get-ChildItem -Path "$TargetPath/platform/alz/policy_definitions/" -File -Filter "*.json" | ForEach-Object {
+Get-ChildItem -Path (Join-Path $TargetPath "policy_definitions") -File -Filter "*.json" | ForEach-Object {
   Write-Information "==> Processing file: $($_.FullName) for versioning naming." -InformationAction Continue
   Rename-LibraryFile -File $_ -FileType "alz_policy_definition"
 }
 
 # Rename Policy Set Definition files to match naming convention
 Write-Information "=====> Checking Policy Set Definition file names." -InformationAction Continue
-Get-ChildItem -Path "$TargetPath/platform/alz/policy_set_definitions/" -File -Filter "*.json" | ForEach-Object {
+Get-ChildItem -Path (Join-Path $TargetPath "policy_set_definitions") -File -Filter "*.json" | ForEach-Object {
   Write-Information "==> Processing file: $($_.FullName) for versioning naming." -InformationAction Continue
   Rename-LibraryFile -File $_ -FileType "alz_policy_set_definition"
 }
 
 # Get a list of current Policy Definition names
-$policyDefinitionFiles = Get-ChildItem -Path "$TargetPath/platform/alz/policy_definitions/"
+$policyDefinitionFiles = Get-ChildItem -Path (Join-Path $TargetPath "policy_definitions") -File
 $policyDefinitionNames = $policyDefinitionFiles | ForEach-Object {
   (Get-Content -Path $_ | ConvertFrom-Json).name
 }
 
 # Get a list of current Policy Set Definition names
-$policySetDefinitionFiles = Get-ChildItem -Path "$TargetPath/platform/alz/policy_set_definitions/"
+$policySetDefinitionFiles = Get-ChildItem -Path (Join-Path $TargetPath "policy_set_definitions") -File
 $policySetDefinitionNames = $policySetDefinitionFiles | ForEach-Object {
   (Get-Content -Path $_ | ConvertFrom-Json).name
 }
@@ -121,7 +133,7 @@ $policySetDefinitionNames = $policySetDefinitionFiles | ForEach-Object {
 # Update the es_root archetype definition to reflect
 # the current list of Policy Definitions and Policy
 # Set Definitions
-$esRootFilePath = $TargetPath + "/platform/alz/archetype_definitions/root.alz_archetype_definition.json"
+$esRootFilePath = Join-Path $TargetPath "archetype_definitions/root.alz_archetype_definition.json"
 Write-Information "=====> Loading `"root`" archetype definition." -InformationAction Continue
 $esRootConfig = Get-Content -Path $esRootFilePath | ConvertFrom-Json
 Write-Information "=====> Updating Policy Definitions in `"root`" archetype definition." -InformationAction Continue
