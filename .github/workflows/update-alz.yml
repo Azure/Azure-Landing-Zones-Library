@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       reset:
-        description: "Reset the library by deleting existing policy defs and policy set defs before update"
+        description: "Reset the library by deleting existing policy files before update"
         type: boolean
         default: false
 
@@ -74,7 +74,9 @@ jobs:
           echo "Deleting existing Policy Definitions from library."
           rm -f "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions/"*.json
           echo "Deleting existing Policy Set Definitions from library."
-          rm -f "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions/"*.json
+          rm -f "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions/"*.
+          echo "Deleting existing Policy Assignments from library."
+          rm -f "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_assignments/"*.json
 
       - name: update library policy definitions
         run: |
