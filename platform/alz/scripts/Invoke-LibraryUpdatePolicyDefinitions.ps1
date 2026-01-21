@@ -24,7 +24,6 @@ param (
   [Parameter()][String]$TargetPath = "$PWD/library/platform/alz",
   [Parameter()][String]$SourcePath = "$PWD/enterprise-scale",
   [Parameter()][String]$LineEnding = "unix",
-  [Parameter()][Switch]$Reset,
   [Parameter()][Switch]$UpdateProviderApiVersions
 )
 
@@ -64,18 +63,9 @@ $removedPolicySetDefinitions = @(
 
 $removedPolicyDefinitions = @()
 
-# If the -Reset parameter is set, delete all existing
-# artefacts (by resource type) from the library
-if ($Reset) {
-  Write-Information "=====> Deleting existing Policy Definitions from library." -InformationAction Continue
-  Remove-Item -Path "$TargetPath/platform/alz/policy_definitions/" -Recurse -Force
-  Write-Information "=====> Deleting existing Policy Set Definitions from library." -InformationAction Continue
-  Remove-Item -Path "$TargetPath/platform/alz/policy_set_definitions/" -Recurse -Force
-}
-
 # Remove any Policy Set Definitions that are no longer
 # present in the source repository
-Get-ChildItem -Path "$TargetPath/platform/alz/policy_set_definitions/" -File | ForEach-Object {
+Get-ChildItem -Path (Join-Path $TargetPath "policy_set_definitions") -File | ForEach-Object {
   if ($removedPolicySetDefinitions -contains $_.Name) {
     Write-Information "==> Removing obsolete Policy Set Definition: $($_.Name)" -InformationAction Continue
     Remove-Item -Path $_.FullName -Force
@@ -84,8 +74,7 @@ Get-ChildItem -Path "$TargetPath/platform/alz/policy_set_definitions/" -File | F
 
 # Remove any Policy Definitions that are no longer
 # present in the source repository
-Get-ChildItem -Path "$TargetPath/platform/alz/policy_definitions/" -File
-| ForEach-Object {
+Get-ChildItem -Path (Join-Path $TargetPath "policy_definitions") -File | ForEach-Object {
   if ($removedPolicyDefinitions -contains $_.Name) {
     Write-Information "==> Removing obsolete Policy Definition: $($_.Name)" -InformationAction Continue
     Remove-Item -Path $_.FullName -Force
@@ -107,13 +96,13 @@ Get-ChildItem -Path "$TargetPath/platform/alz/policy_set_definitions/" -File -Fi
 }
 
 # Get a list of current Policy Definition names
-$policyDefinitionFiles = Get-ChildItem -Path "$TargetPath/platform/alz/policy_definitions/"
+$policyDefinitionFiles = Get-ChildItem -Path (Join-Path $TargetPath "policy_definitions") -File
 $policyDefinitionNames = $policyDefinitionFiles | ForEach-Object {
   (Get-Content -Path $_ | ConvertFrom-Json).name
 }
 
 # Get a list of current Policy Set Definition names
-$policySetDefinitionFiles = Get-ChildItem -Path "$TargetPath/platform/alz/policy_set_definitions/"
+$policySetDefinitionFiles = Get-ChildItem -Path (Join-Path $TargetPath "policy_set_definitions") -File
 $policySetDefinitionNames = $policySetDefinitionFiles | ForEach-Object {
   (Get-Content -Path $_ | ConvertFrom-Json).name
 }
@@ -121,7 +110,7 @@ $policySetDefinitionNames = $policySetDefinitionFiles | ForEach-Object {
 # Update the es_root archetype definition to reflect
 # the current list of Policy Definitions and Policy
 # Set Definitions
-$esRootFilePath = $TargetPath + "/platform/alz/archetype_definitions/root.alz_archetype_definition.json"
+$esRootFilePath = Join-Path $TargetPath "archetype_definitions/root.alz_archetype_definition.json"
 Write-Information "=====> Loading `"root`" archetype definition." -InformationAction Continue
 $esRootConfig = Get-Content -Path $esRootFilePath | ConvertFrom-Json
 Write-Information "=====> Updating Policy Definitions in `"root`" archetype definition." -InformationAction Continue

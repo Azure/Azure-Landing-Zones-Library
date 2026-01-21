@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
     inputs:
       reset:
-        description: "Reset the library by deleting existing artifacts before update"
+        description: "Reset the library by deleting existing policy defs and policy set defs before update"
         type: boolean
         default: false
 
@@ -68,6 +68,14 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
 
+      - name: reset library artifacts
+        if: ${{ inputs.reset == true }}
+        run: |
+          echo "Deleting existing Policy Definitions from library."
+          rm -f "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions/"*.json
+          echo "Deleting existing Policy Set Definitions from library."
+          rm -f "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions/"*.json
+
       - name: update library policy definitions
         run: |
           alzlibtool convert policydefinition -o \
@@ -87,7 +95,7 @@ jobs:
             Write-Information "==> Running policy definitions in archetype definitions script..." -InformationAction Continue
             ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyDefinitions.ps1 `
               -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
-              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}" ${{ inputs.reset == true && '-Reset' || '' }}
+              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
           azPSVersion: "latest"
 
       - name: update library policy assignments and archetypes
