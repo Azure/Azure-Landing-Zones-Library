@@ -11,7 +11,7 @@
       ],
       "category": "Storage",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "mode": "All",
     "parameters": {
@@ -50,10 +50,18 @@
             "field": "type"
           },
           {
-            "not": {
-              "contains": "[parameters('allowedSmbVersion')]",
-              "field": "Microsoft.Storage/storageAccounts/fileServices/protocolSettings.smb.versions"
-            }
+            "anyOf": [
+              {
+                "exists": false,
+                "field": "Microsoft.Storage/storageAccounts/fileServices/protocolSettings.smb.versions"
+              },
+              {
+                "not": {
+                  "contains": "[parameters('allowedSmbVersion')]",
+                  "field": "Microsoft.Storage/storageAccounts/fileServices/protocolSettings.smb.versions"
+                }
+              }
+            ]
           }
         ]
       },
