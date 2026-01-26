@@ -22,6 +22,9 @@
       "resourceGroupLocation": {
         "value": "${default_location}"
       },
+      "resourceGroupName": {
+        "value": "rg-serviceHealthAlert"
+      },
       "actionGroupResources": {
         "value": {
           "actionGroupEmail": [],
