@@ -153,7 +153,8 @@ $policyAssignmentTargetPath = "$TargetPath/platform/alz/policy_assignments"
 
 # Tempalting regex to identify any remaining tempalting values
 # Optionally, the preceeding '-?' allows for removal of any leading '-' characters
-$templatingRegex = '-?\${[^}]+}'
+# Uses negative lookahead to preserve ${default_location}
+$templatingRegex = '-?\${(?!default_location\})[^}]+}'
 
 foreach ($managementGroup in $policyAssignments.Keys) {
   $managementGroupNameFinal = $managementGroupMapping[$managementGroup.Replace("defaults-", "")]
