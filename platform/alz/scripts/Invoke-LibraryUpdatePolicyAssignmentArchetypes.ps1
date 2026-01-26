@@ -151,6 +151,11 @@ $finalPolicyAssignments = New-Object 'System.Collections.Generic.Dictionary[stri
 $policyAssignmentSourcePath = "$SourcePath/eslzArm/managementGroupTemplates/policyAssignments"
 $policyAssignmentTargetPath = "$TargetPath/platform/alz/policy_assignments"
 
+# Tempalting regex to identify any remaining tempalting values
+# Optionally, the preceeding '-?' allows for removal of any leading '-' characters
+# Uses negative lookahead to preserve ${default_location}
+$templatingRegex = '-?\${(?!default_location\})[^}]+}'
+
 foreach ($managementGroup in $policyAssignments.Keys) {
   $managementGroupNameFinal = $managementGroupMapping[$managementGroup.Replace("defaults-", "")]
   Write-Output "`nProcessing Archetype Policy Assignments for Management Group: $managementGroupNameFinal"
@@ -234,8 +239,16 @@ foreach ($managementGroup in $policyAssignments.Keys) {
           $parsedAssignment.properties.parameters.($propertyName).value = $parsedAssignment.properties.parameters.($propertyName).value.Replace("`${private_dns_zone_prefix}/providers/Microsoft.Network/privateDnsZones/", "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones/")
           # $parsedAssignment.properties.parameters.($propertyName).value = $parsedAssignment.properties.parameters.($propertyName).value.Replace("privatelink.uks.backup.windowsazure.com", "privatelink.`${connectivity_location_short}.backup.windowsazure.com")
         }
+
+        # If the parameter starts with ${temp}, replace with placeholder management group
         if ($parsedAssignment.properties.parameters.($propertyName).value.StartsWith("`${temp}")) {
           $parsedAssignment.properties.parameters.($propertyName).value = $parsedAssignment.properties.parameters.($propertyName).value.Replace("`${temp}", "/providers/Microsoft.Management/managementGroups/placeholder")
+        }
+        
+        # Remove any futher templating values
+        if ($parsedAssignment.properties.parameters.($propertyName).value -match $templatingRegex) {
+          Write-Verbose "Removing templating from parameter: $propertyName"
+          $parsedAssignment.properties.parameters.($propertyName).value = $parsedAssignment.properties.parameters.($propertyName).value -replace $templatingRegex
         }
       }
 
