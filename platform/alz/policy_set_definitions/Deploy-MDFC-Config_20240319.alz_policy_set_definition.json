@@ -10,7 +10,7 @@
       "category": "Security Center",
       "replacesPolicy": "Deploy-MDFC-Config",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "2.3.0"
+      "version": "2.4.0"
     },
     "parameters": {
       "ascExportResourceGroupLocation": {
@@ -190,6 +190,20 @@
           "displayName": "Sensitive Data Threat Detection Enabled"
         },
         "type": "String"
+      },
+      "attackPathSeverity": {
+        "allowedValues": [
+          "Critical",
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "defaultValue": "Critical",
+        "metadata": {
+          "description": "Defines the minimal attack path severity which will be sent as email notifications",
+          "displayName": "Attack path minimal severity"
+        },
+        "type": "string"
       },
       "createResourceGroup": {
         "allowedValues": [
@@ -630,6 +644,9 @@
         "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
+          "attackPathSeverity": {
+            "value": "[parameters('attackPathSeverity')]"
+          },
           "emailSecurityContact": {
             "value": "[parameters('emailSecurityContact')]"
           },
