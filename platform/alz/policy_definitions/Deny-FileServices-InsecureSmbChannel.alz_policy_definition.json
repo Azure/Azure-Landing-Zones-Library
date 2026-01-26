@@ -11,7 +11,7 @@
       ],
       "category": "Storage",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "mode": "All",
     "parameters": {
@@ -50,8 +50,16 @@
             "field": "type"
           },
           {
-            "contains": "[parameters('notAllowedChannelEncryption')]",
-            "field": "Microsoft.Storage/storageAccounts/fileServices/protocolSettings.smb.channelEncryption"
+            "anyOf": [
+              {
+                "exists": false,
+                "field": "Microsoft.Storage/storageAccounts/fileServices/protocolSettings.smb.channelEncryption"
+              },
+              {
+                "contains": "[parameters('notAllowedChannelEncryption')]",
+                "field": "Microsoft.Storage/storageAccounts/fileServices/protocolSettings.smb.channelEncryption"
+              }
+            ]
           }
         ]
       },
