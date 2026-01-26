@@ -11,10 +11,24 @@
       ],
       "category": "Security Center",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "2.0.0"
+      "version": "3.0.0"
     },
     "mode": "All",
     "parameters": {
+      "attackPathSeverity": {
+        "allowedValues": [
+          "Critical",
+          "High",
+          "Medium",
+          "Low"
+        ],
+        "defaultValue": "Critical",
+        "metadata": {
+          "description": "Defines the minimal attack path risk level which will be sent as email notifications",
+          "displayName": "Attack path severity"
+        },
+        "type": "String"
+      },
       "effect": {
         "allowedValues": [
           "DeployIfNotExists",
@@ -64,6 +78,9 @@
             "properties": {
               "mode": "incremental",
               "parameters": {
+                "attackPathSeverity": {
+                  "value": "[parameters('attackPathSeverity')]"
+                },
                 "emailSecurityContact": {
                   "value": "[parameters('emailSecurityContact')]"
                 },
@@ -76,6 +93,12 @@
                 "contentVersion": "1.0.0.0",
                 "outputs": {},
                 "parameters": {
+                  "attackPathSeverity": {
+                    "metadata": {
+                      "description": "Attack path severity level reported"
+                    },
+                    "type": "string"
+                  },
                   "emailSecurityContact": {
                     "metadata": {
                       "description": "Security contacts email address"
@@ -106,6 +129,10 @@
                         {
                           "minimalSeverity": "[parameters('minimalSeverity')]",
                           "sourceType": "Alert"
+                        },
+                        {
+                          "minimalRiskLevel": "[parameters('attackPathSeverity')]",
+                          "sourceType": "AttackPath"
                         }
                       ]
                     },
@@ -128,8 +155,40 @@
                 "field": "Microsoft.Security/securityContacts/isEnabled"
               },
               {
-                "contains": "[parameters('minimalSeverity')]",
-                "field": "Microsoft.Security/securityContacts/notificationsSources[*].Alert.minimalSeverity"
+                "count": {
+                  "field": "Microsoft.Security/securityContacts/notificationsSources[*]",
+                  "where": {
+                    "allOf": [
+                      {
+                        "equals": "Alert",
+                        "field": "Microsoft.Security/securityContacts/notificationsSources[*].sourceType"
+                      },
+                      {
+                        "equals": "[parameters('minimalSeverity')]",
+                        "field": "Microsoft.Security/securityContacts/notificationsSources[*].Alert.minimalSeverity"
+                      }
+                    ]
+                  }
+                },
+                "greaterOrEquals": 1
+              },
+              {
+                "count": {
+                  "field": "Microsoft.Security/securityContacts/notificationsSources[*]",
+                  "where": {
+                    "allOf": [
+                      {
+                        "equals": "AttackPath",
+                        "field": "Microsoft.Security/securityContacts/notificationsSources[*].sourceType"
+                      },
+                      {
+                        "equals": "[parameters('attackPathSeverity')]",
+                        "field": "Microsoft.Security/securityContacts/notificationsSources[*].AttackPath.minimalRiskLevel"
+                      }
+                    ]
+                  }
+                },
+                "greaterOrEquals": 1
               }
             ]
           },

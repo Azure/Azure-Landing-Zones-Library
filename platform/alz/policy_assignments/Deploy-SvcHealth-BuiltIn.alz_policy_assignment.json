@@ -20,7 +20,10 @@
     ],
     "parameters": {
       "resourceGroupLocation": {
-        "value": "${default_location}"
+        "value": ""
+      },
+      "resourceGroupName": {
+        "value": "rg-serviceHealthAlert"
       },
       "actionGroupResources": {
         "value": {
