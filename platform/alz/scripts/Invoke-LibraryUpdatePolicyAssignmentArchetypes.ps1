@@ -247,7 +247,7 @@ foreach ($managementGroup in $policyAssignments.Keys) {
         # Remove any futher templating values
         if ($parsedAssignment.properties.parameters.($propertyName).value -match $templatingRegex) {
           Write-Verbose "Removing templating from parameter: $propertyName"
-          $parsedAssignment.properties.($propertyName).value = $parsedAssignment.properties.($propertyName).value -replace $templatingRegex
+          $parsedAssignment.properties.parameters.($propertyName).value = $parsedAssignment.properties.parameters.($propertyName).value -replace $templatingRegex
         }
       }
 
