@@ -237,6 +237,9 @@ foreach ($managementGroup in $policyAssignments.Keys) {
         if ($parsedAssignment.properties.parameters.($propertyName).value.StartsWith("`${temp}")) {
           $parsedAssignment.properties.parameters.($propertyName).value = $parsedAssignment.properties.parameters.($propertyName).value.Replace("`${temp}", "/providers/Microsoft.Management/managementGroups/placeholder")
         }
+        if ($propertyName -eq "ascExportResourceGroupName" -and $parsedAssignment.properties.parameters.($propertyName).value.StartsWith("rg-mdfc-export-prod-${temp}")) {
+          $parsedAssignment.properties.parameters.($propertyName).value = "rg-mdfc-export-prod"
+        }
       }
 
       $targetPolicyAssignmentFileName = $policyAssignmentName + ".alz_policy_assignment.json"
