@@ -4,7 +4,7 @@ This library provides the reference set of Sovereign Landing Zone (SLZ) policies
   
 ## Dependencies
   
-- platform/alz@2025.09.3
+- platform/alz@2026.01.0
   
 ## Usage
   
@@ -292,13 +292,14 @@ flowchart TD
   
 #### root policy definitions
   
-<details><summary>160 policy definitions</summary>
+<details><summary>161 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
 - Append-KV-SoftDelete
 - Append-Redis-disableNonSslPort
 - Append-Redis-sslEnforcement
+- Audit-AKS-kubenet
 - Audit-AzureHybridBenefit
 - Audit-Disks-UnusedResourcesCostOptimization
 - Audit-MachineLearning-PrivateEndpointId
@@ -512,7 +513,7 @@ flowchart TD
   
 #### root policy assignments
   
-<details><summary>16 policy assignments</summary>
+<details><summary>17 policy assignments</summary>
 
 - Audit-ResourceRGLocation
 - Audit-TrustedLaunch
@@ -523,6 +524,7 @@ flowchart TD
 - Deploy-ASC-Monitoring
 - Deploy-AzActivity-Log
 - Deploy-Diag-LogsCat
+- Deploy-MCSB2-Monitoring
 - Deploy-MDEndpoints
 - Deploy-MDEndpointsAMA
 - Deploy-MDFC-Config-H224
@@ -682,13 +684,14 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy definitions
   
-<details><summary>160 policy definitions</summary>
+<details><summary>161 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
 - Append-KV-SoftDelete
 - Append-Redis-disableNonSslPort
 - Append-Redis-sslEnforcement
+- Audit-AKS-kubenet
 - Audit-AzureHybridBenefit
 - Audit-Disks-UnusedResourcesCostOptimization
 - Audit-MachineLearning-PrivateEndpointId
@@ -902,7 +905,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy assignments
   
-<details><summary>81 policy assignments</summary>
+<details><summary>82 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -928,6 +931,7 @@ The subscription id that hosts the private link DNS zones.
 - Deploy-AzSqlDb-Auditing
 - Deploy-Diag-LogsCat
 - Deploy-GuestAttest
+- Deploy-MCSB2-Monitoring
 - Deploy-MDEndpoints
 - Deploy-MDEndpointsAMA
 - Deploy-MDFC-Config-H224
