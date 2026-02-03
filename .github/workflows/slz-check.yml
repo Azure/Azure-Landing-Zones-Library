@@ -1,5 +1,5 @@
 ---
-name: Release
+name: Check Dependent Libraries on Release
 
 on:
   release:
@@ -12,18 +12,23 @@ on:
 
 permissions:
   contents: write
-  pull-requests: write
 
 jobs:
   release:
-    name: Generate Release
+    name: Check Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
+      - uses: actions/create-github-app-token@c1a285145b9d317df6ced56c09f525b5c2b6f755 # v1.11.1
+        id: generate-token
+        with:
+          app-id: ${{ secrets.TOKEN_APP_ID }}
+          private-key: ${{ secrets.TOKEN_APP_PRIVATE_KEY }}
+
       - name: Update ALZ Dependencies
         env:
-          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
         run: |
           $tag = "${{ inputs.release_tag || github.ref_name }}"
           $alzPath = "platform/alz"
