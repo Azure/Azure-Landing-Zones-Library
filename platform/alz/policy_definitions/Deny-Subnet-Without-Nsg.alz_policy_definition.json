@@ -11,7 +11,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     "mode": "All",
     "parameters": {
@@ -32,7 +32,8 @@
         "defaultValue": [
           "GatewaySubnet",
           "AzureFirewallSubnet",
-          "AzureFirewallManagementSubnet"
+          "AzureFirewallManagementSubnet",
+          "RouteServerSubnet"
         ],
         "metadata": {
           "description": "Array of subnet names that are excluded from this policy",
