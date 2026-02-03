@@ -21,6 +21,10 @@ jobs:
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
+      - name: install tools
+        run: make tools
+        working-directory: ${{ github.workspace }}/${{ github.repository }}
+
       - uses: actions/create-github-app-token@c1a285145b9d317df6ced56c09f525b5c2b6f755 # v1.11.1
         id: generate-token
         with:
@@ -74,6 +78,8 @@ jobs:
             Set-Content -Path $metadataFile.FullName -Value $content -NoNewline
 
             $updatedFiles += $metadataFile.FullName
+
+            make docs LIB="$($metadata.name)"
           }
 
           if ($updatedFiles.Count -eq 0) {
