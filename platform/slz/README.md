@@ -4,7 +4,7 @@ This library provides the reference set of Sovereign Landing Zone (SLZ) policies
   
 ## Dependencies
   
-- platform/alz@2026.01.0
+- platform/alz@2026.01.1
   
 ## Usage
   
@@ -459,7 +459,7 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>48 policy set definitions</summary>
+<details><summary>49 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -497,6 +497,7 @@ flowchart TD
 - Enforce-Guardrails-EventHub
 - Enforce-Guardrails-KeyVault
 - Enforce-Guardrails-KeyVault-Sup
+- Enforce-Guardrails-KeyVault_20260203
 - Enforce-Guardrails-Kubernetes
 - Enforce-Guardrails-MachineLearning
 - Enforce-Guardrails-MySQL
@@ -851,7 +852,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy set definitions
   
-<details><summary>48 policy set definitions</summary>
+<details><summary>49 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -889,6 +890,7 @@ The subscription id that hosts the private link DNS zones.
 - Enforce-Guardrails-EventHub
 - Enforce-Guardrails-KeyVault
 - Enforce-Guardrails-KeyVault-Sup
+- Enforce-Guardrails-KeyVault_20260203
 - Enforce-Guardrails-Kubernetes
 - Enforce-Guardrails-MachineLearning
 - Enforce-Guardrails-MySQL
