@@ -218,6 +218,7 @@
     "Enforce-Guardrails-DataFactory",
     "Enforce-Guardrails-EventGrid",
     "Enforce-Guardrails-EventHub",
+    "Enforce-Guardrails-KeyVault_20260203",
     "Enforce-Guardrails-KeyVault-Sup",
     "Enforce-Guardrails-KeyVault",
     "Enforce-Guardrails-Kubernetes",
