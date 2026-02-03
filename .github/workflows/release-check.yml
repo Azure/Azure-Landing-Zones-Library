@@ -80,7 +80,7 @@ jobs:
 
             $updatedFiles += $metadataFile.FullName
 
-            make docs LIB="$($metadata.name)"
+            make docs LIB="$($metadataFile.Directory.FullName)"
           }
 
           if ($updatedFiles.Count -eq 0) {
@@ -95,7 +95,7 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git checkout -b $branchName
-          
+
           git add .
           git commit -m "Update ALZ dependency to $currentALZVersion"
           git push origin $branchName
