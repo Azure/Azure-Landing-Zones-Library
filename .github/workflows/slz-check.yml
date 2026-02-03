@@ -94,11 +94,8 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git checkout -b $branchName
-
-          foreach ($file in $updatedFiles) {
-            git add $file
-          }
-
+          
+          git add .
           git commit -m "Update ALZ dependency to $currentALZVersion"
           git push origin $branchName
 
