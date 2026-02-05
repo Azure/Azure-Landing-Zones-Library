@@ -82,10 +82,10 @@ flowchart TD
 (landing_zones)"]
   landingzones --> confidential_corp
   confidential_corp["Confidential Corp
-(confidential_corp)"]
+(confidential_corp, corp)"]
   landingzones --> confidential_online
   confidential_online["Confidential Online
-(confidential_online)"]
+(confidential_online, online)"]
   landingzones --> corp
   corp["Corp
 (corp)"]
@@ -286,6 +286,15 @@ flowchart TD
 - Enforce-GR-Synapse0
 - Enforce-GR-VirtualDesk0
 - Enforce-Subnet-Private
+</details>
+  
+### archetype `public`
+  
+#### public policy assignments
+  
+<details><summary>1 policy assignments</summary>
+
+- Deny-L3-IP-Routing
 </details>
   
 ### archetype `root`
@@ -907,7 +916,7 @@ The subscription id that hosts the private link DNS zones.
   
 ### all policy assignments
   
-<details><summary>82 policy assignments</summary>
+<details><summary>83 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -918,6 +927,7 @@ The subscription id that hosts the private link DNS zones.
 - Deny-Classic-Resources
 - Deny-HybridNetworking
 - Deny-IP-forwarding
+- Deny-L3-IP-Routing
 - Deny-MgmtPorts-Internet
 - Deny-Priv-Esc-AKS
 - Deny-Privileged-AKS

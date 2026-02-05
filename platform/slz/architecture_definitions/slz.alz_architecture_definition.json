@@ -59,6 +59,7 @@
     },
     {
       "archetypes": [
+        "corp",
         "confidential_corp"
       ],
       "display_name": "Confidential Corp",
@@ -68,6 +69,7 @@
     },
     {
       "archetypes": [
+        "online",
         "confidential_online"
       ],
       "display_name": "Confidential Online",
