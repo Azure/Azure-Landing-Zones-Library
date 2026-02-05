@@ -69,7 +69,7 @@
     },
     {
       "archetypes": [
-        "oneline",
+        "online",
         "confidential_online"
       ],
       "display_name": "Confidential Online",
