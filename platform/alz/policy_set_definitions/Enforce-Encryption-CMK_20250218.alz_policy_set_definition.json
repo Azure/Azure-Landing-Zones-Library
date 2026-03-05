@@ -85,11 +85,11 @@
       },
       "CosmosCMKEffect": {
         "allowedValues": [
-          "audit",
-          "deny",
-          "disabled"
+          "Audit",
+          "Deny",
+          "Disabled"
         ],
-        "defaultValue": "deny",
+        "defaultValue": "Deny",
         "metadata": {
           "description": "Use customer-managed keys to manage the encryption at rest of your Azure Cosmos DB. By default, the data is encrypted at rest with service-managed keys, but customer-managed keys (CMK) are commonly required to meet regulatory compliance standards. CMKs enable the data to be encrypted with an Azure Key Vault key created and owned by you. You have full control and responsibility for the key lifecycle, including rotation and management. Learn more about CMK encryption at https://aka.ms/cosmosdb-cmk.",
           "displayName": "Azure Cosmos DB accounts should use customer-managed keys to encrypt data at rest"
@@ -123,10 +123,10 @@
       },
       "HealthcareAPIsCMKEffect": {
         "allowedValues": [
-          "audit",
-          "disabled"
+          "Audit",
+          "Disabled"
         ],
-        "defaultValue": "audit",
+        "defaultValue": "Audit",
         "metadata": {
           "description": "Use a customer-managed key to control the encryption at rest of the data stored in Azure API for FHIR when this is a regulatory or compliance requirement. Customer-managed keys also deliver double encryption by adding a second layer of encryption on top of the default one done with service-managed keys.",
           "displayName": "Azure API for FHIR should use a customer-managed key (CMK) to encrypt data at rest"
@@ -184,11 +184,11 @@
       },
       "StreamAnalyticsCMKEffect": {
         "allowedValues": [
-          "audit",
-          "deny",
-          "disabled"
+          "Audit",
+          "Deny",
+          "Disabled"
         ],
-        "defaultValue": "deny",
+        "defaultValue": "Deny",
         "metadata": {
           "description": "Use customer-managed keys when you want to securely store any metadata and private data assets of your Stream Analytics jobs in your storage account. This gives you total control over how your Stream Analytics data is encrypted.",
           "displayName": "Azure Stream Analytics jobs should use customer-managed keys to encrypt data"
@@ -242,11 +242,8 @@
       "botServiceCmk": {
         "allowedValues": [
           "Audit",
-          "audit",
           "Deny",
-          "deny",
-          "Disabled",
-          "disabled"
+          "Disabled"
         ],
         "defaultValue": "Deny",
         "type": "string"
