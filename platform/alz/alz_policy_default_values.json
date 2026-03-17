@@ -192,6 +192,18 @@
           "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
         }
       ]
+    },
+    {
+      "default_name": "default_location",
+      "description": "The default Azure region used for resource deployments, such as resource group locations.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "resourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-SvcHealth-BuiltIn"
+        }
+      ]
     }
   ]
 }
