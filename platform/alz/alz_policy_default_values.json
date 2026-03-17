@@ -192,6 +192,60 @@
           "policy_assignment_name": "Deploy-MDFC-DefSQL-AMA"
         }
       ]
+    },
+    {
+      "default_name": "resource_group_location",
+      "description": "The default location for resource groups. This is used for policies that create resource groups without a specified location.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ascExportResourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-Config-H224"
+        },
+        {
+          "parameter_names": [
+            "resourceGroupLocation"
+          ],
+          "policy_assignment_name": "Deploy-SvcHealth-BuiltIn"
+        }
+      ]
+    },
+    {
+      "default_name": "resource_group_name_service_health_alerts",
+      "description": "The default resource group name for service health alerts. This is used for the Deploy-SvcHealth-BuiltIn policy assignment to create the necessary resources for service health alerting.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "resourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-SvcHealth-BuiltIn"
+        }
+      ]
+    },
+    {
+      "default_name": "resource_group_name_mdfc",
+      "description": "The default resource group name for microsoft defender for cloud export. This is used for the Deploy-MDFC-Config-H224 policy assignment to create the necessary resources.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "ascExportResourceGroupName"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-Config-H224"
+        }
+      ]
+    },
+    {
+      "default_name": "email_security_contact",
+      "description": "The default email address for the security contact. This is used for the Deploy-MDFC-Config-H224 policy assignment to set up the security contact in Microsoft Defender for Cloud.",
+      "policy_assignments": [
+        {
+          "parameter_names": [
+            "emailSecurityContact"
+          ],
+          "policy_assignment_name": "Deploy-MDFC-Config-H224"
+        }
+      ]
     }
   ]
 }
