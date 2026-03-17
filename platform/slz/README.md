@@ -4,7 +4,7 @@ This library provides the reference set of Sovereign Landing Zone (SLZ) policies
   
 ## Dependencies
   
-- platform/alz@2026.01.2
+- platform/alz@2026.01.3
   
 ## Usage
   
@@ -649,6 +649,15 @@ The DDoS protection plan id that should be used for the DDoS protection plan dep
 | Enable-DDoS-VNET | ddosPlan        |
 
   
+### default name `email_security_contact`
+  
+The default email address for the security contact. This is used for the Deploy-MDFC-Config-H224 policy assignment to set up the security contact in Microsoft Defender for Cloud.
+  
+|       ASSIGNMENT        |   PARAMETER NAMES    |
+|-------------------------|----------------------|
+| Deploy-MDFC-Config-H224 | emailSecurityContact |
+
+  
 ### default name `log_analytics_workspace_id`
   
 The Log Analytics workspace id that should be used for centralized log collection.
@@ -687,6 +696,34 @@ The subscription id that hosts the private link DNS zones.
 |        ASSIGNMENT        |    PARAMETER NAMES    |
 |--------------------------|-----------------------|
 | Deploy-Private-DNS-Zones | dnsZoneSubscriptionId |
+
+  
+### default name `resource_group_location`
+  
+The default location for resource groups. This is used for policies that create resource groups without a specified location.
+  
+|        ASSIGNMENT        |        PARAMETER NAMES         |
+|--------------------------|--------------------------------|
+| Deploy-MDFC-Config-H224  | ascExportResourceGroupLocation |
+| Deploy-SvcHealth-BuiltIn | resourceGroupLocation          |
+
+  
+### default name `resource_group_name_mdfc`
+  
+The default resource group name for microsoft defender for cloud export. This is used for the Deploy-MDFC-Config-H224 policy assignment to create the necessary resources.
+  
+|       ASSIGNMENT        |      PARAMETER NAMES       |
+|-------------------------|----------------------------|
+| Deploy-MDFC-Config-H224 | ascExportResourceGroupName |
+
+  
+### default name `resource_group_name_service_health_alerts`
+  
+The default resource group name for service health alerts. This is used for the Deploy-SvcHealth-BuiltIn policy assignment to create the necessary resources for service health alerting.
+  
+|        ASSIGNMENT        |  PARAMETER NAMES  |
+|--------------------------|-------------------|
+| Deploy-SvcHealth-BuiltIn | resourceGroupName |
 
   
 ---
