@@ -219,7 +219,7 @@ flowchart TD
   
 #### root policy definitions
   
-<details><summary>161 policy definitions</summary>
+<details><summary>149 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -265,14 +265,10 @@ flowchart TD
 - Deny-MachineLearning-ComputeCluster-Scale
 - Deny-MachineLearning-HbiWorkspace
 - Deny-MachineLearning-PublicAccessWhenBehindVnet
-- Deny-MachineLearning-PublicNetworkAccess
 - Deny-MgmtPorts-From-Internet
 - Deny-MySql-http
 - Deny-PostgreSql-http
 - Deny-Private-DNS-Zones
-- Deny-PublicEndpoint-MariaDB
-- Deny-PublicIP
-- Deny-RDP-From-Internet
 - Deny-Redis-http
 - Deny-Service-Endpoints
 - Deny-Sql-minTLS
@@ -287,7 +283,6 @@ flowchart TD
 - Deny-Storage-ResourceAccessRulesTenantId
 - Deny-Storage-SFTP
 - Deny-Storage-ServicesEncryption
-- Deny-Storage-minTLS
 - Deny-StorageAccount-CustomDomain
 - Deny-Subnet-Without-Nsg
 - Deny-Subnet-Without-Penp
@@ -358,14 +353,7 @@ flowchart TD
 - Deploy-Diagnostics-iotHub
 - Deploy-FirewallPolicy
 - Deploy-LogicApp-TLS
-- Deploy-MDFC-Arc-SQL-DCR-Association
-- Deploy-MDFC-Arc-Sql-DefenderSQL-DCR
-- Deploy-MDFC-SQL-AMA
-- Deploy-MDFC-SQL-DefenderSQL
-- Deploy-MDFC-SQL-DefenderSQL-DCR
 - Deploy-MySQL-sslEnforcement
-- Deploy-Nsg-FlowLogs
-- Deploy-Nsg-FlowLogs-to-LA
 - Deploy-PostgreSQL-sslEnforcement
 - Deploy-Private-DNS-Generic
 - Deploy-SQL-minTLS
@@ -630,7 +618,7 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy definitions
   
-<details><summary>161 policy definitions</summary>
+<details><summary>149 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -676,14 +664,10 @@ The default resource group name for service health alerts. This is used for the 
 - Deny-MachineLearning-ComputeCluster-Scale
 - Deny-MachineLearning-HbiWorkspace
 - Deny-MachineLearning-PublicAccessWhenBehindVnet
-- Deny-MachineLearning-PublicNetworkAccess
 - Deny-MgmtPorts-From-Internet
 - Deny-MySql-http
 - Deny-PostgreSql-http
 - Deny-Private-DNS-Zones
-- Deny-PublicEndpoint-MariaDB
-- Deny-PublicIP
-- Deny-RDP-From-Internet
 - Deny-Redis-http
 - Deny-Service-Endpoints
 - Deny-Sql-minTLS
@@ -698,7 +682,6 @@ The default resource group name for service health alerts. This is used for the 
 - Deny-Storage-ResourceAccessRulesTenantId
 - Deny-Storage-SFTP
 - Deny-Storage-ServicesEncryption
-- Deny-Storage-minTLS
 - Deny-StorageAccount-CustomDomain
 - Deny-Subnet-Without-Nsg
 - Deny-Subnet-Without-Penp
@@ -769,14 +752,7 @@ The default resource group name for service health alerts. This is used for the 
 - Deploy-Diagnostics-iotHub
 - Deploy-FirewallPolicy
 - Deploy-LogicApp-TLS
-- Deploy-MDFC-Arc-SQL-DCR-Association
-- Deploy-MDFC-Arc-Sql-DefenderSQL-DCR
-- Deploy-MDFC-SQL-AMA
-- Deploy-MDFC-SQL-DefenderSQL
-- Deploy-MDFC-SQL-DefenderSQL-DCR
 - Deploy-MySQL-sslEnforcement
-- Deploy-Nsg-FlowLogs
-- Deploy-Nsg-FlowLogs-to-LA
 - Deploy-PostgreSQL-sslEnforcement
 - Deploy-Private-DNS-Generic
 - Deploy-SQL-minTLS
@@ -852,7 +828,7 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy assignments
   
-<details><summary>80 policy assignments</summary>
+<details><summary>79 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -932,7 +908,6 @@ The default resource group name for service health alerts. This is used for the 
 - Enforce-GR-Synapse0
 - Enforce-GR-VirtualDesk0
 - Enforce-Subnet-Private
-- Enforce-TLS-SSL-H224
 - Enforce-TLS-SSL-Q225
 </details>
   

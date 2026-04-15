@@ -10,7 +10,7 @@
       "category": "Security Center",
       "replacesPolicy": "Deploy-MDFC-Config",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "2.4.0"
+      "version": "2.4.1"
     },
     "parameters": {
       "ascExportResourceGroupLocation": {
@@ -678,6 +678,7 @@
         "policyDefinitionReferenceId": "ascExport"
       },
       {
+        "definitionVersion": "1.*.*-preview",
         "groupNames": [],
         "parameters": {
           "effect": {
