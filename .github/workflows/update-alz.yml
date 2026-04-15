@@ -74,7 +74,7 @@ jobs:
           echo "Deleting existing Policy Definitions from library."
           rm -f "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_definitions/"*.json
           echo "Deleting existing Policy Set Definitions from library."
-          rm -f "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions/"*.
+          rm -f "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_set_definitions/"*.json
           echo "Deleting existing Policy Assignments from library."
           rm -f "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/policy_assignments/"*.json
 
