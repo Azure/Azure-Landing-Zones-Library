@@ -4,7 +4,7 @@ This library provides the reference set of Sovereign Landing Zone (SLZ) policies
   
 ## Dependencies
   
-- platform/alz@2026.01.3
+- platform/alz@2026.04.0
   
 ## Usage
   
@@ -301,7 +301,7 @@ flowchart TD
   
 #### root policy definitions
   
-<details><summary>161 policy definitions</summary>
+<details><summary>149 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -347,14 +347,10 @@ flowchart TD
 - Deny-MachineLearning-ComputeCluster-Scale
 - Deny-MachineLearning-HbiWorkspace
 - Deny-MachineLearning-PublicAccessWhenBehindVnet
-- Deny-MachineLearning-PublicNetworkAccess
 - Deny-MgmtPorts-From-Internet
 - Deny-MySql-http
 - Deny-PostgreSql-http
 - Deny-Private-DNS-Zones
-- Deny-PublicEndpoint-MariaDB
-- Deny-PublicIP
-- Deny-RDP-From-Internet
 - Deny-Redis-http
 - Deny-Service-Endpoints
 - Deny-Sql-minTLS
@@ -369,7 +365,6 @@ flowchart TD
 - Deny-Storage-ResourceAccessRulesTenantId
 - Deny-Storage-SFTP
 - Deny-Storage-ServicesEncryption
-- Deny-Storage-minTLS
 - Deny-StorageAccount-CustomDomain
 - Deny-Subnet-Without-Nsg
 - Deny-Subnet-Without-Penp
@@ -440,14 +435,7 @@ flowchart TD
 - Deploy-Diagnostics-iotHub
 - Deploy-FirewallPolicy
 - Deploy-LogicApp-TLS
-- Deploy-MDFC-Arc-SQL-DCR-Association
-- Deploy-MDFC-Arc-Sql-DefenderSQL-DCR
-- Deploy-MDFC-SQL-AMA
-- Deploy-MDFC-SQL-DefenderSQL
-- Deploy-MDFC-SQL-DefenderSQL-DCR
 - Deploy-MySQL-sslEnforcement
-- Deploy-Nsg-FlowLogs
-- Deploy-Nsg-FlowLogs-to-LA
 - Deploy-PostgreSQL-sslEnforcement
 - Deploy-Private-DNS-Generic
 - Deploy-SQL-minTLS
@@ -468,25 +456,20 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>49 policy set definitions</summary>
+<details><summary>42 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
 - Deny-PublicPaaSEndpoints
 - DenyAction-DeleteProtection
 - Deploy-AUM-CheckUpdates
-- Deploy-Diagnostics-LogAnalytics
-- Deploy-MDFC-Config
 - Deploy-MDFC-Config_20240319
-- Deploy-MDFC-DefenderSQL-AMA
 - Deploy-Private-DNS-Zones
-- Deploy-Sql-Security
 - Deploy-Sql-Security_20240529
 - Enforce-ACSB
 - Enforce-ALZ-Decomm
 - Enforce-ALZ-Sandbox
 - Enforce-Backup
-- Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
 - Enforce-EncryptTransit_20241211
 - Enforce-Encryption-CMK_20250218
@@ -504,13 +487,11 @@ flowchart TD
 - Enforce-Guardrails-DataFactory
 - Enforce-Guardrails-EventGrid
 - Enforce-Guardrails-EventHub
-- Enforce-Guardrails-KeyVault
 - Enforce-Guardrails-KeyVault-Sup
 - Enforce-Guardrails-KeyVault_20260203
 - Enforce-Guardrails-Kubernetes
 - Enforce-Guardrails-MachineLearning
 - Enforce-Guardrails-MySQL
-- Enforce-Guardrails-Network
 - Enforce-Guardrails-Network_20250326
 - Enforce-Guardrails-OpenAI
 - Enforce-Guardrails-PostgreSQL
@@ -731,7 +712,7 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy definitions
   
-<details><summary>161 policy definitions</summary>
+<details><summary>149 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -777,14 +758,10 @@ The default resource group name for service health alerts. This is used for the 
 - Deny-MachineLearning-ComputeCluster-Scale
 - Deny-MachineLearning-HbiWorkspace
 - Deny-MachineLearning-PublicAccessWhenBehindVnet
-- Deny-MachineLearning-PublicNetworkAccess
 - Deny-MgmtPorts-From-Internet
 - Deny-MySql-http
 - Deny-PostgreSql-http
 - Deny-Private-DNS-Zones
-- Deny-PublicEndpoint-MariaDB
-- Deny-PublicIP
-- Deny-RDP-From-Internet
 - Deny-Redis-http
 - Deny-Service-Endpoints
 - Deny-Sql-minTLS
@@ -799,7 +776,6 @@ The default resource group name for service health alerts. This is used for the 
 - Deny-Storage-ResourceAccessRulesTenantId
 - Deny-Storage-SFTP
 - Deny-Storage-ServicesEncryption
-- Deny-Storage-minTLS
 - Deny-StorageAccount-CustomDomain
 - Deny-Subnet-Without-Nsg
 - Deny-Subnet-Without-Penp
@@ -870,14 +846,7 @@ The default resource group name for service health alerts. This is used for the 
 - Deploy-Diagnostics-iotHub
 - Deploy-FirewallPolicy
 - Deploy-LogicApp-TLS
-- Deploy-MDFC-Arc-SQL-DCR-Association
-- Deploy-MDFC-Arc-Sql-DefenderSQL-DCR
-- Deploy-MDFC-SQL-AMA
-- Deploy-MDFC-SQL-DefenderSQL
-- Deploy-MDFC-SQL-DefenderSQL-DCR
 - Deploy-MySQL-sslEnforcement
-- Deploy-Nsg-FlowLogs
-- Deploy-Nsg-FlowLogs-to-LA
 - Deploy-PostgreSQL-sslEnforcement
 - Deploy-Private-DNS-Generic
 - Deploy-SQL-minTLS
@@ -898,25 +867,20 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy set definitions
   
-<details><summary>49 policy set definitions</summary>
+<details><summary>42 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
 - Deny-PublicPaaSEndpoints
 - DenyAction-DeleteProtection
 - Deploy-AUM-CheckUpdates
-- Deploy-Diagnostics-LogAnalytics
-- Deploy-MDFC-Config
 - Deploy-MDFC-Config_20240319
-- Deploy-MDFC-DefenderSQL-AMA
 - Deploy-Private-DNS-Zones
-- Deploy-Sql-Security
 - Deploy-Sql-Security_20240529
 - Enforce-ACSB
 - Enforce-ALZ-Decomm
 - Enforce-ALZ-Sandbox
 - Enforce-Backup
-- Enforce-EncryptTransit
 - Enforce-EncryptTransit_20240509
 - Enforce-EncryptTransit_20241211
 - Enforce-Encryption-CMK_20250218
@@ -934,13 +898,11 @@ The default resource group name for service health alerts. This is used for the 
 - Enforce-Guardrails-DataFactory
 - Enforce-Guardrails-EventGrid
 - Enforce-Guardrails-EventHub
-- Enforce-Guardrails-KeyVault
 - Enforce-Guardrails-KeyVault-Sup
 - Enforce-Guardrails-KeyVault_20260203
 - Enforce-Guardrails-Kubernetes
 - Enforce-Guardrails-MachineLearning
 - Enforce-Guardrails-MySQL
-- Enforce-Guardrails-Network
 - Enforce-Guardrails-Network_20250326
 - Enforce-Guardrails-OpenAI
 - Enforce-Guardrails-PostgreSQL
@@ -953,7 +915,7 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy assignments
   
-<details><summary>83 policy assignments</summary>
+<details><summary>82 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -1036,7 +998,6 @@ The default resource group name for service health alerts. This is used for the 
 - Enforce-Sovereign-Conf
 - Enforce-Sovereign-Global
 - Enforce-Subnet-Private
-- Enforce-TLS-SSL-H224
 - Enforce-TLS-SSL-Q225
 </details>
   
