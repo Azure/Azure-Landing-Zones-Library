@@ -49,6 +49,15 @@
     },
     {
       "archetypes": [
+        "local"
+      ],
+      "display_name": "Local",
+      "exists": false,
+      "id": "local",
+      "parent_id": "landingzones"
+    },
+    {
+      "archetypes": [
         "sandbox"
       ],
       "display_name": "Sandbox",
