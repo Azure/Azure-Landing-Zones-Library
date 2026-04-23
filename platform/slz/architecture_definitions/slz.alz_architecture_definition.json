@@ -5,7 +5,7 @@
     {
       "archetypes": [
         "root",
-        "sovereign_root"
+        "sovereign_l1_controls"
       ],
       "display_name": "Sovereign Landing Zone",
       "exists": false,
@@ -41,7 +41,8 @@
     },
     {
       "archetypes": [
-        "corp"
+        "corp",
+        "sovereign_l2_controls"
       ],
       "display_name": "Corp",
       "exists": false,
@@ -50,7 +51,8 @@
     },
     {
       "archetypes": [
-        "online"
+        "online",
+        "sovereign_l2_controls"
       ],
       "display_name": "Online",
       "exists": false,
@@ -59,8 +61,18 @@
     },
     {
       "archetypes": [
+        "local"
+      ],
+      "display_name": "Local",
+      "exists": false,
+      "id": "local",
+      "parent_id": "landingzones"
+    },
+    {
+      "archetypes": [
         "corp",
-        "confidential_corp"
+        "sovereign_l2_controls",
+        "sovereign_l3_controls"
       ],
       "display_name": "Confidential Corp",
       "exists": false,
@@ -70,7 +82,8 @@
     {
       "archetypes": [
         "online",
-        "confidential_online"
+        "sovereign_l2_controls",
+        "sovereign_l3_controls"
       ],
       "display_name": "Confidential Online",
       "exists": false,
@@ -88,7 +101,8 @@
     },
     {
       "archetypes": [
-        "security"
+        "security",
+        "sovereign_l2_controls"
       ],
       "display_name": "Security",
       "exists": false,
@@ -97,7 +111,8 @@
     },
     {
       "archetypes": [
-        "management"
+        "management",
+        "sovereign_l2_controls"
       ],
       "display_name": "Management",
       "exists": false,
@@ -106,7 +121,8 @@
     },
     {
       "archetypes": [
-        "connectivity"
+        "connectivity",
+        "sovereign_l2_controls"
       ],
       "display_name": "Connectivity",
       "exists": false,
@@ -115,7 +131,8 @@
     },
     {
       "archetypes": [
-        "identity"
+        "identity",
+        "sovereign_l2_controls"
       ],
       "display_name": "Identity",
       "exists": false,
