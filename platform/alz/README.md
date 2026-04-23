@@ -37,6 +37,9 @@ flowchart TD
   landingzones --> corp
   corp["Corp
 (corp)"]
+  landingzones --> local
+  local["Local
+(local)"]
   landingzones --> online
   online["Online
 (online)"]
@@ -165,6 +168,15 @@ flowchart TD
 - Enforce-GR-VirtualDesk0
 - Enforce-Subnet-Private
 - Enforce-TLS-SSL-Q225
+</details>
+  
+### archetype `local`
+  
+#### local policy assignments
+  
+<details><summary>1 policy assignments</summary>
+
+- Enforce-ALDO-Services
 </details>
   
 ### archetype `platform`
@@ -814,7 +826,7 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy assignments
   
-<details><summary>79 policy assignments</summary>
+<details><summary>80 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -862,6 +874,7 @@ The default resource group name for service health alerts. This is used for the 
 - Enable-DDoS-VNET
 - Enforce-ACSB
 - Enforce-AKS-HTTPS
+- Enforce-ALDO-Services
 - Enforce-ALZ-Decomm
 - Enforce-ALZ-Sandbox
 - Enforce-ASR
