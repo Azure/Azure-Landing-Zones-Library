@@ -4,9 +4,6 @@
   "name": "Enforce-ALDO-Services",
   "location": "${default_location}",
   "dependsOn": [],
-  "identity": {
-    "type": "SystemAssigned"
-  },
   "properties": {
     "description": "Audit the use of Azure services to those supported in Azure Local disconnected operations.",
     "displayName": "Audit resource types to Azure services supported in Azure Local disconnected operations",
