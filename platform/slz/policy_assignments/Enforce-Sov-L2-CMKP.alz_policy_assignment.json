@@ -1,0 +1,29 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2024-04-01",
+  "name": "Enforce-Sov-L2-CMKP",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "None"
+  },
+  "properties": {
+    "description": "Help restrict and audit Azure Services to use CMK with Azure Key Vault Premium keys. Helping to enforce Level 2 - Data Protection Sovereignty Controls detailed here: https://aka.ms/sovereign/controls",
+    "displayName": "Sovereignty - Enforce Encryption-at-Rest with Customer Managed Keys (CMK) with Azure Key Vault Premium across Azure Services",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/f15f4d95-c59c-4395-9317-be6978d0743f",
+    "definitionVersion": "1.*.*-preview",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Sovereign policies {enforcementMode} be enforced."
+      }
+    ],
+    "parameters": {
+      "effect": {
+        "value": "Audit"
+      }
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
+  }
+}

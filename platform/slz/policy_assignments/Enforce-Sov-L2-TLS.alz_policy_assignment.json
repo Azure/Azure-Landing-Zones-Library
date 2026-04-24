@@ -1,0 +1,38 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2024-04-01",
+  "name": "Enforce-Sov-L2-TLS",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "None"
+  },
+  "properties": {
+    "description": "Help restrict and audit the Azure Services to use the latest TLS versions. Helping to enforce Level 2 - Data Protection Sovereignty Controls detailed here: https://aka.ms/sovereign/controls",
+    "displayName": "Sovereignty - Enforce Encryption-in-Transit across Azure Services - TLS Version",
+    "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/f1fe6a81-eee9-47b8-9f7f-80685141209e",
+    "definitionVersion": "1.*.*-preview",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Sovereign policies {enforcementMode} be enforced."
+      }
+    ],
+    "parameters": {
+      "effect_deny": {
+        "value": "Deny"
+      },
+      "effect_modify": {
+        "value": "Modify"
+      },
+      "effect_deployIfNotExists": {
+        "value": "DeployIfNotExists"
+      },
+      "effect_AuditIfNotExists": {
+        "value": "AuditIfNotExists"
+      }
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
+    "notScopes": []
+  }
+}

@@ -9,13 +9,7 @@
           "parameter_names": [
             "listOfAllowedLocations"
           ],
-          "policy_assignment_name": "Enforce-Sovereign-Conf"
-        },
-        {
-          "parameter_names": [
-            "listOfAllowedLocations"
-          ],
-          "policy_assignment_name": "Enforce-Sovereign-Global"
+          "policy_assignment_name": "Enforce-Sov-L1-Regions"
         }
       ]
     }

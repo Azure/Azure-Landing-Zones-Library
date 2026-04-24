@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/Azure/Azure-Landing-Zones-Library/main/schemas/archetype_definition.json",
+  "name": "sovereign_l2_controls",
+  "policy_assignments": [
+    "Enforce-Sov-L2-TLS",
+    "Enforce-Sov-L2-HTTPS",
+    "Enforce-Sov-L2-CMKP",
+    "Enforce-Sov-L2-CMKM"
+  ],
+  "policy_definitions": [],
+  "policy_set_definitions": [],
+  "role_definitions": []
+}

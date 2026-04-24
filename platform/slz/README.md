@@ -4,7 +4,7 @@ This library provides the reference set of Sovereign Landing Zone (SLZ) policies
   
 ## Dependencies
   
-- platform/alz@2026.04.0
+- platform/alz@2026.04.1
   
 ## Usage
   
@@ -41,6 +41,9 @@ flowchart TD
   landingzones --> corp
   corp["Corp
 (corp)"]
+  landingzones --> local
+  local["Local
+(local)"]
   landingzones --> online
   online["Online
 (online)"]
@@ -73,7 +76,7 @@ flowchart TD
 ```mermaid
 flowchart TD
   slz["Sovereign Landing Zone
-(root, sovereign_root)"]
+(root, sovereign_l1_controls)"]
   slz --> decommissioned
   decommissioned["Decommissioned
 (decommissioned)"]
@@ -82,16 +85,19 @@ flowchart TD
 (landing_zones)"]
   landingzones --> confidential_corp
   confidential_corp["Confidential Corp
-(confidential_corp, corp)"]
+(corp, sovereign_l2_controls, sovereign_l3_controls)"]
   landingzones --> confidential_online
   confidential_online["Confidential Online
-(confidential_online, online)"]
+(online, sovereign_l2_controls, sovereign_l3_controls)"]
   landingzones --> corp
   corp["Corp
-(corp)"]
+(corp, sovereign_l2_controls)"]
+  landingzones --> local
+  local["Local
+(local)"]
   landingzones --> online
   online["Online
-(online)"]
+(online, sovereign_l2_controls)"]
   landingzones --> public
   public["Public
 (public)"]
@@ -100,16 +106,16 @@ flowchart TD
 (platform)"]
   platform --> connectivity
   connectivity["Connectivity
-(connectivity)"]
+(connectivity, sovereign_l2_controls)"]
   platform --> identity
   identity["Identity
-(identity)"]
+(identity, sovereign_l2_controls)"]
   platform --> management
   management["Management
-(management)"]
+(management, sovereign_l2_controls)"]
   platform --> security
   security["Security
-(security)"]
+(security, sovereign_l2_controls)"]
   slz --> sandbox
   sandbox["Sandbox
 (sandbox)"]
@@ -117,24 +123,6 @@ flowchart TD
 ```
   
 ## Archetypes
-  
-### archetype `confidential_corp`
-  
-#### confidential_corp policy assignments
-  
-<details><summary>1 policy assignments</summary>
-
-- Enforce-Sovereign-Conf
-</details>
-  
-### archetype `confidential_online`
-  
-#### confidential_online policy assignments
-  
-<details><summary>1 policy assignments</summary>
-
-- Enforce-Sovereign-Conf
-</details>
   
 ### archetype `connectivity`
   
@@ -238,6 +226,15 @@ flowchart TD
 - Enforce-GR-VirtualDesk0
 - Enforce-Subnet-Private
 - Enforce-TLS-SSL-Q225
+</details>
+  
+### archetype `local`
+  
+#### local policy assignments
+  
+<details><summary>1 policy assignments</summary>
+
+- Enforce-ALDO-Services
 </details>
   
 ### archetype `platform`
@@ -545,13 +542,34 @@ flowchart TD
 - Enforce-ALZ-Sandbox
 </details>
   
-### archetype `sovereign_root`
+### archetype `sovereign_l1_controls`
   
-#### sovereign_root policy assignments
+#### sovereign_l1_controls policy assignments
   
 <details><summary>1 policy assignments</summary>
 
-- Enforce-Sovereign-Global
+- Enforce-Sov-L1-Regions
+</details>
+  
+### archetype `sovereign_l2_controls`
+  
+#### sovereign_l2_controls policy assignments
+  
+<details><summary>4 policy assignments</summary>
+
+- Enforce-Sov-L2-CMKM
+- Enforce-Sov-L2-CMKP
+- Enforce-Sov-L2-HTTPS
+- Enforce-Sov-L2-TLS
+</details>
+  
+### archetype `sovereign_l3_controls`
+  
+#### sovereign_l3_controls policy assignments
+  
+<details><summary>1 policy assignments</summary>
+
+- Enforce-Sov-L3-Conf
 </details>
   
 ## Policy Default Values
@@ -562,10 +580,9 @@ The following policy default values are available in this library:
   
 Allowed Azure locations for Sovereign Landing Zone policies
   
-|        ASSIGNMENT        |    PARAMETER NAMES     |
-|--------------------------|------------------------|
-| Enforce-Sovereign-Conf   | listOfAllowedLocations |
-| Enforce-Sovereign-Global | listOfAllowedLocations |
+|       ASSIGNMENT       |    PARAMETER NAMES     |
+|------------------------|------------------------|
+| Enforce-Sov-L1-Regions | listOfAllowedLocations |
 
   
 ### default name `ama_change_tracking_data_collection_rule_id`
@@ -915,7 +932,7 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy assignments
   
-<details><summary>82 policy assignments</summary>
+<details><summary>87 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -964,6 +981,7 @@ The default resource group name for service health alerts. This is used for the 
 - Enable-DDoS-VNET
 - Enforce-ACSB
 - Enforce-AKS-HTTPS
+- Enforce-ALDO-Services
 - Enforce-ALZ-Decomm
 - Enforce-ALZ-Sandbox
 - Enforce-ASR
@@ -995,8 +1013,12 @@ The default resource group name for service health alerts. This is used for the 
 - Enforce-GR-Storage0
 - Enforce-GR-Synapse0
 - Enforce-GR-VirtualDesk0
-- Enforce-Sovereign-Conf
-- Enforce-Sovereign-Global
+- Enforce-Sov-L1-Regions
+- Enforce-Sov-L2-CMKM
+- Enforce-Sov-L2-CMKP
+- Enforce-Sov-L2-HTTPS
+- Enforce-Sov-L2-TLS
+- Enforce-Sov-L3-Conf
 - Enforce-Subnet-Private
 - Enforce-TLS-SSL-Q225
 </details>
