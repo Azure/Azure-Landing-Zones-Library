@@ -932,7 +932,7 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy assignments
   
-<details><summary>88 policy assignments</summary>
+<details><summary>87 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Audit-PeDnsZones
@@ -1019,7 +1019,6 @@ The default resource group name for service health alerts. This is used for the 
 - Enforce-Sov-L2-HTTPS
 - Enforce-Sov-L2-TLS
 - Enforce-Sov-L3-Conf
-- Enforce-Sovereign-Conf
 - Enforce-Subnet-Private
 - Enforce-TLS-SSL-Q225
 </details>
