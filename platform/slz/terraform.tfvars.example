@@ -1,0 +1,9 @@
+# Root management group ID where the landing zone will be deployed
+# Replace with your actual root management group ID
+root_management_group_id = "/subscriptions/dc87e1e4-d2de-4c81-8c9d-e3b1e7f736b0/providers/Microsoft.Management/managementGroups/d3951465-ee93-4c57-afe7-a91086f167fe"
+
+# Architecture to deploy: 'slz' for Sovereign Landing Zone or 'alz' for standard Azure Landing Zone
+architecture = "slz"
+
+# Azure region for resource deployment
+location = "West Europe"
