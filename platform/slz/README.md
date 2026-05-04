@@ -10,14 +10,11 @@ This library provides the reference set of Sovereign Landing Zone (SLZ) policies
   
 ```terraform
 provider "alz" {
+  library_overwrite_enabled = true
   library_references = [
     {
       path = "platform/slz"
-      ref  = "0000.00.0" # Replace with the desired version
-    }
-  ]
-}
-```
+      ref  = "2026.04.2"
   
 ## Architectures
   

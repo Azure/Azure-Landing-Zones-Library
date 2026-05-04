@@ -1,0 +1,14 @@
+# Azure region for resource deployment
+location = "westeurope"
+
+# Email address for security alerts (used in Microsoft Defender for Cloud configuration)
+email_security_contact = "nekalayc@microsoft.com"
+
+# Map of subscription IDs for different management group placements
+# At minimum, the "management" subscription is required
+subscription_ids = {
+  "management"   = "dc87e1e4-d2de-4c81-8c9d-e3b1e7f736b0"  # Replace with your management subscription ID
+  "connectivity" = "e3970e89-e385-4b95-a50a-ba9df61da35c"  # Replace with your connectivity subscription ID
+  "identity"     = "c1e8c581-7d55-42b2-b8dc-99e92cd5fa0e"  # Replace with your identity subscription ID
+  # "security"   = "00000000-0000-0000-0000-000000000004"  # Uncomment and replace if using security subscription
+}
