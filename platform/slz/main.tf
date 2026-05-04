@@ -17,6 +17,7 @@ locals {
   log_analytics_workspace_id                  = "${local.management_resource_group_id}/providers/Microsoft.OperationalInsights/workspaces/${local.log_analytics_workspace_name}"
 }
 
+
 module "management_resources" {
   # https://registry.terraform.io/modules/Azure/avm-ptn-alz-management/azurerm/latest
   source  = "Azure/avm-ptn-alz-management/azurerm"
@@ -53,7 +54,8 @@ module "management_groups" {
 
   architecture_name  = "slz"
   location           = var.location
-  parent_resource_id = data.azapi_client_config.current.tenant_id # Tenant root group
+  parent_resource_id = data.azapi_client_config.current.tenant_id 
+  # Tenant root group
 
   #   retries            = local.default_retries
   #   timeouts           = local.default_timeouts
