@@ -5,7 +5,7 @@
   "location": "${default_location}",
   "dependsOn": [],
   "identity": {
-    "type": "None"
+    "type": "SystemAssigned"
   },
   "properties": {
     "description": "Help restrict and audit the Azure Services to use the latest TLS versions. Helping to enforce Level 2 - Data Protection Sovereignty Controls detailed here: https://aka.ms/sovereign/controls",
