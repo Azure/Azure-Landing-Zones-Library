@@ -5,7 +5,7 @@
   "location": "${default_location}",
   "dependsOn": [],
   "identity": {
-    "type": "None"
+    "type": "SystemAssigned"
   },
   "properties": {
     "description": "Help restrict and audit Azure Services to use HTTPS/SSL. Helping to enforce Level 2 - Data Protection Sovereignty Controls detailed here: https://aka.ms/sovereign/controls",
