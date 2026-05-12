@@ -59,6 +59,7 @@ $managementGroupMapping = @{
   "sandboxes"      = "sandbox"
   "identity"       = "identity"
   "platform"       = "platform"
+  "local"          = "local"
 }
 
 foreach ($resource in $eslzArm) {
@@ -206,6 +207,10 @@ foreach ($managementGroup in $policyAssignments.Keys) {
         $parsedAssignment | Add-Member -MemberType NoteProperty -Name "location" -Value "uksouth"
       }
 
+      if (Get-Member -InputObject $parsedAssignment.properties -Name "nonComplianceMessages" -MemberType Properties) {
+        $parsedAssignment.properties.nonComplianceMessages = @()
+      }
+      
       $enforcementMode = $enforcementModeLookup[[Tuple]::Create($managementGroupNameFinal, $policyAssignmentFile)]
       # If enforcement mode is one of: Default, DoNotEnforce, or Disabled, set it on the policy assignment
       if ($enforcementMode -in @("Default", "DoNotEnforce", "Disabled")) {
