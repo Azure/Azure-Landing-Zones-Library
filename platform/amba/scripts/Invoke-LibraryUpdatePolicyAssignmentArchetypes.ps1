@@ -152,6 +152,10 @@ foreach ($managementGroup in $policyAssignments.Keys) {
       #     $parsedAssignment | Add-Member -MemberType NoteProperty -Name "identity" -Value @{ type = "None" }
       # }
 
+      if (Get-Member -InputObject $parsedAssignment.properties -Name "nonComplianceMessages" -MemberType Properties) {
+        $parsedAssignment.properties.nonComplianceMessages = @()
+      }
+
       if ($parsedAssignment.properties.policyDefinitionId.StartsWith("/providers/Microsoft.Management/managementGroups/`${temp}")) {
         $parsedAssignment.properties.policyDefinitionId = $parsedAssignment.properties.policyDefinitionId.Replace("/providers/Microsoft.Management/managementGroups/`${temp}", "/providers/Microsoft.Management/managementGroups/placeholder")
       }
