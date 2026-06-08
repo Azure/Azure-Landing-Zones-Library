@@ -61,6 +61,16 @@ $policySetDefinitionNames = $policySetDefinitionFiles | ForEach-Object {
 # the current list of Policy Definitions and Policy
 # Set Definitions
 $esRootFilePath = $TargetPath + "/platform/amba/archetype_definitions/root.alz_archetype_definition.json"
+if (!(Test-Path $esRootFilePath)) {
+    $ambaEsRootFilePath = $TargetPath + "/platform/amba/archetype_definitions/amba_root.alz_archetype_definition.json"
+    if (Test-Path $ambaEsRootFilePath) {
+        $esRootFilePath = $ambaEsRootFilePath
+    }
+    else {
+        throw "Could not find root archetype definition file. Checked '$esRootFilePath' and '$ambaEsRootFilePath'."
+    }
+}
+
 Write-Information "Loading `"root`" archetype definition." -InformationAction Continue
 $esRootConfig = Get-Content -Path $esRootFilePath | ConvertFrom-Json
 Write-Information "Updating Policy Definitions in `"root`" archetype definition." -InformationAction Continue
