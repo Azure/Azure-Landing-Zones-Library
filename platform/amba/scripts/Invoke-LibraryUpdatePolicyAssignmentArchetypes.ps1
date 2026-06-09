@@ -102,6 +102,14 @@ $finalPolicyAssignments = New-Object 'System.Collections.Generic.Dictionary[stri
 $policyAssignmentSourcePath = "$SourcePath/patterns/alz/policyAssignments"
 $policyAssignmentTargetPath = "$TargetPath/platform/amba/policy_assignments"
 
+# Remove any pre-existing policy assignment files before regenerating. This
+# prevents stale files (e.g. legacy PascalCase filenames) from coexisting with
+# the freshly generated snake_case files that share the same assignment name,
+# which would otherwise cause a duplicate assignment name error in alzlib.
+if (Test-Path $policyAssignmentTargetPath) {
+  Get-ChildItem -Path $policyAssignmentTargetPath -Filter "*.alz_policy_assignment.json" -File | Remove-Item -Force
+}
+
 foreach ($managementGroup in $policyAssignments.Keys) {
   $managementGroupNameFinal = $managementGroupMapping[$managementGroup.Replace("defaults-", "")]
   $managementGroupNameFinal
