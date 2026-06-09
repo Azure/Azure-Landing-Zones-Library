@@ -9,8 +9,7 @@ provider "alz" {
   library_references = [
     {
       path = "platform/amba"
-      tag  = "0000.00.0" # Replace with the desired version
-      tag  = "0000.00.0" # Replace with the desired version
+      ref  = "0000.00.0" # Replace with the desired version
     }
   ]
 }
@@ -674,7 +673,7 @@ The service uri(s) of the webhook used for monitoring.
   
 ### all policy assignments
   
-<details><summary>15 policy assignments</summary>
+<details><summary>14 policy assignments</summary>
 
 - Deploy-AMBA-Connectivity
 - Deploy-AMBA-HybridVM
@@ -687,7 +686,6 @@ The service uri(s) of the webhook used for monitoring.
 - Deploy-AMBA-RecoverySvc
 - Deploy-AMBA-Res-SvcHlth
 - Deploy-AMBA-Storage
-- Deploy-AMBA-SvcHealth
 - Deploy-AMBA-VM
 - Deploy-AMBA-Web
 - Deploy-AMBAConnectivity2

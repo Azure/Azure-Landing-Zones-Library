@@ -102,6 +102,14 @@ $finalPolicyAssignments = New-Object 'System.Collections.Generic.Dictionary[stri
 $policyAssignmentSourcePath = "$SourcePath/patterns/alz/policyAssignments"
 $policyAssignmentTargetPath = "$TargetPath/platform/amba/policy_assignments"
 
+# Remove any pre-existing policy assignment files before regenerating. This
+# prevents stale files (e.g. legacy PascalCase filenames) from coexisting with
+# the freshly generated snake_case files that share the same assignment name,
+# which would otherwise cause a duplicate assignment name error in alzlib.
+if (Test-Path $policyAssignmentTargetPath) {
+  Get-ChildItem -Path $policyAssignmentTargetPath -Filter "*.alz_policy_assignment.json" -File | Remove-Item -Force
+}
+
 foreach ($managementGroup in $policyAssignments.Keys) {
   $managementGroupNameFinal = $managementGroupMapping[$managementGroup.Replace("defaults-", "")]
   $managementGroupNameFinal
@@ -197,6 +205,16 @@ $archetypeTargetPath = "$TargetPath/platform/amba/archetype_definitions"
 
 foreach ($managementGroup in $finalPolicyAssignments.Keys) {
   $archetypeFilePath = "$archetypeTargetPath/$managementGroup.alz_archetype_definition.json"
+  if (!(Test-Path $archetypeFilePath)) {
+    $ambaArchetypeFilePath = "$archetypeTargetPath/amba_$managementGroup.alz_archetype_definition.json"
+    if (Test-Path $ambaArchetypeFilePath) {
+      $archetypeFilePath = $ambaArchetypeFilePath
+    }
+    else {
+      throw "Could not find archetype definition file for management group '$managementGroup'. Checked '$archetypeFilePath' and '$ambaArchetypeFilePath'."
+    }
+  }
+
   $archetypeJson = Get-Content $archetypeFilePath | ConvertFrom-Json
 
   $archetypeJson.policy_assignments = @($finalPolicyAssignments[$managementGroup] | Sort-Object)
@@ -210,7 +228,17 @@ $policySetDefinitions = Get-ChildItem -Path "$TargetPath/platform/amba/policy_se
 
 foreach ($policySetDefinition in $policySetDefinitions) {
   $policySetDefinitionJson = Get-Content $policySetDefinition.FullName -Raw | ConvertFrom-Json
-  $policyAssignmentJson = Get-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-", "deploy_amba_").Replace("Notification-Assets", "deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement", "keymgmt").Replace("LoadBalancing", "loadbalance").Replace("NetworkChanges", "networkchang").Replace("RecoveryServices", "recoverysvc").Replace("ResourceAndServiceHealth", "res_svchlth").Replace("ServiceHealth", "svchealth").Replace("Connectivity", "connectivity").Replace("Identity", "identity").Replace("Storage", "storage").Replace("Management", "management").Replace("Web", "web").Replace("VM", "vm").Replace("HybridVM", "hybridvm").Replace("Hybridvm", "hybridvm").Replace("connectivity-2", "connectivity2") -Raw | ConvertFrom-Json
+
+  if ((Get-Member -InputObject $policySetDefinitionJson -Name "properties" -MemberType NoteProperty) -and
+    (Get-Member -InputObject $policySetDefinitionJson.properties -Name "metadata" -MemberType NoteProperty) -and
+    (Get-Member -InputObject $policySetDefinitionJson.properties.metadata -Name "supersededBy" -MemberType NoteProperty) -and
+    $policySetDefinitionJson.properties.metadata.supersededBy) {
+    Write-Information "Skipping superseded policy set definition '$($policySetDefinitionJson.name)' (superseded by '$($policySetDefinitionJson.properties.metadata.supersededBy)')." -InformationAction Continue
+    continue
+  }
+
+  $policyAssignmentPath = $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-", "deploy_amba_").Replace("Notification-Assets", "deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement", "keymgmt").Replace("LoadBalancing", "loadbalance").Replace("NetworkChanges", "networkchang").Replace("RecoveryServices", "recoverysvc").Replace("ResourceAndServiceHealth", "res_svchlth").Replace("ServiceHealth", "svchealth").Replace("Connectivity", "connectivity").Replace("Identity", "identity").Replace("Storage", "storage").Replace("Management", "management").Replace("Web", "web").Replace("VMSS", "vmss").Replace("VM", "vm").Replace("HybridVM", "hybridvm").Replace("Hybridvm", "hybridvm").Replace("connectivity-2", "connectivity2")
+  $policyAssignmentJson = Get-Content $policyAssignmentPath -Raw | ConvertFrom-Json
 
   $policySetDefinitionJson.properties.parameters = $policySetDefinitionJson.properties.parameters | Select-Object * -ExcludeProperty *WindowSize, *EvaluationFrequency, *AlertState, *AlertSeverity, *Threshold, *Frequency, *Severity, *AutoMitigate, *AutoResolve, *AutoResolveTime, *ComputersToInclude, *EvaluationPeriods, *FailingPeriods, *Operator, *TimeAggregation, *AlertSensitivity
 
@@ -231,5 +259,5 @@ foreach ($policySetDefinition in $policySetDefinitions) {
 
   $policyAssignmentJson.properties.parameters = $newParameters
 
-  $policyAssignmentJson | ConvertTo-Json -Depth 100 | Set-Content $policySetDefinition.FullName.Replace("policy_set_definitions", "policy_assignments").Replace("Alerting-", "deploy_amba_").Replace("Notification-Assets", "deploy_amba_notification").Replace(".alz_policy_set_definition.json", ".alz_policy_assignment.json").Replace("KeyManagement", "keymgmt").Replace("LoadBalancing", "loadbalance").Replace("NetworkChanges", "networkchang").Replace("RecoveryServices", "recoverysvc").Replace("ResourceAndServiceHealth", "res_svchlth").Replace("ServiceHealth", "svchealth").Replace("Connectivity", "connectivity").Replace("Identity", "identity").Replace("Storage", "storage").Replace("Management", "management").Replace("Web", "web").Replace("VM", "vm").Replace("Hybridvm", "hybridvm").Replace("connectivity-2", "connectivity2")
+  $policyAssignmentJson | ConvertTo-Json -Depth 100 | Set-Content $policyAssignmentPath
 }
