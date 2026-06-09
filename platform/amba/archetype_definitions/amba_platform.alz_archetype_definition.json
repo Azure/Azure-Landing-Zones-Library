@@ -3,7 +3,8 @@
   "name": "amba_platform",
   "policy_assignments": [
     "Deploy-AMBA-HybridVM",
-    "Deploy-AMBA-VM"
+    "Deploy-AMBA-VM",
+    "Deploy-AMBA-VMSS"
   ],
   "policy_definitions": [],
   "policy_set_definitions": [],

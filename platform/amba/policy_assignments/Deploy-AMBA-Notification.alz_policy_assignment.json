@@ -19,6 +19,9 @@
     ],
     "notScopes": [],
     "parameters": {
+      "ALZAlertDescriptionPrefix": {
+        "value": "AMBA-ALZ:"
+      },
       "ALZArmRoleId": {
         "value": []
       },
@@ -59,11 +62,11 @@
       },
       "ALZMonitorResourceGroupTags": {
         "value": {
-          "_deployed_by_alz_monitor": true
+          "_deployed_by_amba": true
         }
       },
       "ALZNotificationAssetSuffix": {
-        "value": "-001"
+        "value": "-ALZ-001"
       },
       "ALZWebhookServiceUri": {
         "value": []
@@ -73,6 +76,9 @@
       },
       "BYOAlertProcessingRule": {
         "value": ""
+      },
+      "includeAlzAlertsOnly": {
+        "value": "No"
       }
     },
     "metadata": {

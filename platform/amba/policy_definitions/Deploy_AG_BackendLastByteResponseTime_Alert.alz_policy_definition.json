@@ -7,7 +7,7 @@
       "_deployed_by_amba": "True",
       "category": "Networking",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.5.0"
+      "version": "1.5.1"
     },
     "mode": "All",
     "parameters": {
@@ -271,7 +271,7 @@
                         ],
                         "odata.type": "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
                       },
-                      "description": "Metric Alert for App Gateway BackendLastByteResponseTime",
+                      "description": "AMBA-ALZ: Metric Alert for App Gateway BackendLastByteResponseTime",
                       "enabled": "[parameters('enabled')]",
                       "evaluationFrequency": "[parameters('evaluationFrequency')]",
                       "parameters": {

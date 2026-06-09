@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.4"
+      "version": "1.5.0"
     },
     "parameters": {
       "AFWSNATPortUtilizationAlertSeverity": {
@@ -128,7 +128,7 @@
       },
       "ALZMonitorResourceGroupTags": {
         "defaultValue": {
-          "_deployed_by_alz_monitor": true
+          "_deployed_by_amba": true
         },
         "metadata": {
           "description": "Tags to be applied to the resource group where the ALZ Monitor resources will be deployed",

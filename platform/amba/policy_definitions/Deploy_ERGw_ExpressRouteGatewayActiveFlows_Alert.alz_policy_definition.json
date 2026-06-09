@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.1.0-preview"
+      "version": "1.2.1-preview"
     },
     "mode": "All",
     "parameters": {
@@ -164,7 +164,7 @@
                   "value": "[parameters('severity')]"
                 },
                 "threshold": {
-                  "value": "[if(contains(field('tags'), '_amba-ExpressRouteGatewayActiveFlows-threshold-Override_'), field('tags._amba-ExpressRouteGatewayActiveFlows-threshold-Override_'), parameters('threshold'))]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-ExpressRouteGatewayActiveFlows-threshold-Override_'), field('tags._amba-ExpressRouteGatewayActiveFlows-threshold-Override_'), parameters('threshold'))]"
                 },
                 "windowSize": {
                   "value": "[parameters('windowSize')]"
@@ -228,7 +228,7 @@
                         ],
                         "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
                       },
-                      "description": "Metric Alert for Express Route Gateway Active Flows",
+                      "description": "AMBA-ALZ: Metric Alert for Express Route Gateway Active Flows",
                       "enabled": "[parameters('enabled')]",
                       "evaluationFrequency": "[parameters('evaluationFrequency')]",
                       "parameters": {
@@ -310,7 +310,7 @@
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria.allOf[*].StaticThresholdCriterion.operator"
               },
               {
-                "equals": "[if(contains(field('tags'), '_amba-ExpressRouteGatewayActiveFlows-threshold-Override_'), field('tags._amba-ExpressRouteGatewayActiveFlows-threshold-Override_'), parameters('threshold'))]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-ExpressRouteGatewayActiveFlows-threshold-Override_'), field('tags._amba-ExpressRouteGatewayActiveFlows-threshold-Override_'), parameters('threshold'))]",
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria.allOf[*].StaticThresholdCriterion.threshold"
               }
             ]

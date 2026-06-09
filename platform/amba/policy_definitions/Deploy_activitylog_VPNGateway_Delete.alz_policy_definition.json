@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.2.0"
+      "version": "1.2.1"
     },
     "mode": "All",
     "parameters": {
@@ -195,7 +195,7 @@
                                   }
                                 ]
                               },
-                              "description": "Activity Log VPN Gateway Delete",
+                              "description": "AMBA-ALZ: Activity Log VPN Gateway Delete",
                               "enabled": "[parameters('enabled')]",
                               "parameters": {
                                 "enabled": {

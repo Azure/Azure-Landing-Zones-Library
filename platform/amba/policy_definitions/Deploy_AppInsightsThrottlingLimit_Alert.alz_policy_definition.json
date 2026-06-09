@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.0"
+      "version": "1.5.0"
     },
     "mode": "All",
     "parameters": {
@@ -368,14 +368,14 @@
                               "numberOfEvaluationPeriods": "[parameters('evaluationPeriods')]"
                             },
                             "operator": "[parameters('operator')]",
-                            "query": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags, name); AppSystemEvents | where _ResourceId =~ \"{3}\" | summarize numOfEvents = sum(toint(Measurements[\"BillingTelemetryCount\"])) by _ResourceId, Type, bin(TimeGenerated, 1h) | join hint.remote=left kind=inner resourceTagging on _ResourceId | project-away _ResourceId1 | extend newThresholdString = tostring(resourceTags.[\"{4}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where numOfEvents \u003e appliedThreshold | project TimeGenerated, _ResourceId, name, numOfEvents', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), parameters('resourceId'), '_amba-Throttling-threshold-override_')]",
+                            "query": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags, name); AppSystemEvents | where _ResourceId =~ \"{3}\" | summarize numOfEvents = sum(toint(Measurements[\"BillingTelemetryCount\"])) by _ResourceId, Type, bin(TimeGenerated, 1h) | lookup kind=inner (resourceTagging) on _ResourceId | extend newThresholdString = tostring(resourceTags.[\"{4}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where numOfEvents \u003e appliedThreshold | project TimeGenerated, _ResourceId, name, numOfEvents', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), parameters('resourceId'), '_amba-Throttling-threshold-override_')]",
                             "resourceIdColumn": "_ResourceId",
                             "threshold": 0,
                             "timeAggregation": "[parameters('timeAggregation')]"
                           }
                         ]
                       },
-                      "description": "Log Alert for Application Insights Throttling Limit Reached",
+                      "description": "AMBA-ALZ: Log Alert for Application Insights Throttling Limit Reached",
                       "displayName": "[concat(parameters('resourceName'), '-Application Insights Throttling Limit Reached')]",
                       "enabled": "[parameters('enabled')]",
                       "evaluationFrequency": "[parameters('evaluationFrequency')]",
@@ -486,7 +486,7 @@
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].failingPeriods.minFailingPeriodsToAlert"
               },
               {
-                "equals": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags, name); AppSystemEvents | where _ResourceId =~ \"{3}\" | summarize numOfEvents = sum(toint(Measurements[\"BillingTelemetryCount\"])) by _ResourceId, Type, bin(TimeGenerated, 1h) | join hint.remote=left kind=inner resourceTagging on _ResourceId | project-away _ResourceId1 | extend newThresholdString = tostring(resourceTags.[\"{4}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where numOfEvents \u003e appliedThreshold | project TimeGenerated, _ResourceId, name, numOfEvents', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), field('id'), '_amba-Throttling-threshold-override_')]",
+                "equals": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.Insights/components\" | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags, name); AppSystemEvents | where _ResourceId =~ \"{3}\" | summarize numOfEvents = sum(toint(Measurements[\"BillingTelemetryCount\"])) by _ResourceId, Type, bin(TimeGenerated, 1h) | lookup kind=inner (resourceTagging) on _ResourceId | extend newThresholdString = tostring(resourceTags.[\"{4}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where numOfEvents \u003e appliedThreshold | project TimeGenerated, _ResourceId, name, numOfEvents', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), field('id'), '_amba-Throttling-threshold-override_')]",
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].query"
               },
               {

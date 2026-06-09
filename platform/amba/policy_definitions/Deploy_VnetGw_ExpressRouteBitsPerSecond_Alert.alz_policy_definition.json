@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.3.0"
+      "version": "1.4.1"
     },
     "mode": "All",
     "parameters": {
@@ -170,7 +170,7 @@
                   "value": "[parameters('severity')]"
                 },
                 "threshold": {
-                  "value": "[if(contains(field('tags'), '_amba-ExpressRouteGatewayBitsPerSecond-threshold-Override_'), field('tags._amba-ExpressRouteGatewayBitsPerSecond-threshold-Override_'), parameters('threshold'))]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-ExpressRouteGatewayBitsPerSecond-threshold-Override_'), field('tags._amba-ExpressRouteGatewayBitsPerSecond-threshold-Override_'), parameters('threshold'))]"
                 },
                 "windowSize": {
                   "value": "[parameters('windowSize')]"
@@ -234,7 +234,7 @@
                         ],
                         "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria"
                       },
-                      "description": "Metric Alert for VNet Gateway Express Route Bits Per Second",
+                      "description": "AMBA-ALZ: Metric Alert for VNet Gateway Express Route Bits Per Second",
                       "enabled": "[parameters('enabled')]",
                       "evaluationFrequency": "[parameters('evaluationFrequency')]",
                       "parameters": {
@@ -316,7 +316,7 @@
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-SingleResourceMultipleMetricCriteria.allOf[*].operator"
               },
               {
-                "equals": "[if(contains(field('tags'), '_amba-ExpressRouteGatewayBitsPerSecond-threshold-Override_'), field('tags._amba-ExpressRouteGatewayBitsPerSecond-threshold-Override_'), parameters('threshold'))]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-ExpressRouteGatewayBitsPerSecond-threshold-Override_'), field('tags._amba-ExpressRouteGatewayBitsPerSecond-threshold-Override_'), parameters('threshold'))]",
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-SingleResourceMultipleMetricCriteria.allOf[*].threshold"
               }
             ]

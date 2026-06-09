@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.5.0"
+      "version": "1.6.0"
     },
     "parameters": {
       "ALZManagementSubscriptionId": {
@@ -59,7 +59,7 @@
       },
       "ALZMonitorResourceGroupTags": {
         "defaultValue": {
-          "_deployed_by_alz_monitor": true
+          "_deployed_by_amba": true
         },
         "metadata": {
           "description": "Tags to apply to the resource group",

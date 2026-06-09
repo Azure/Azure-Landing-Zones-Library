@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.5.0"
+      "version": "1.5.1"
     },
     "mode": "All",
     "parameters": {
@@ -229,7 +229,7 @@
                                   }
                                 ]
                               },
-                              "description": "Resource Health Unhealthy Alert",
+                              "description": "AMBA-ALZ: Resource Health Unhealthy Alert",
                               "enabled": "[parameters('enabled')]",
                               "parameters": {
                                 "enabled": {

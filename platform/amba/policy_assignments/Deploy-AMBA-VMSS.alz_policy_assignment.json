@@ -1,0 +1,125 @@
+{
+  "type": "Microsoft.Authorization/policyAssignments",
+  "apiVersion": "2020-09-01",
+  "name": "Deploy-AMBA-VMSS",
+  "location": "${default_location}",
+  "dependsOn": [],
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Azure Virtual Machines Scale Sets.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Azure Virtual Machines Scale Sets",
+    "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-VMSS",
+    "enforcementMode": "Default",
+    "nonComplianceMessages": [
+      {
+        "message": "Alerting {enforcementMode} be deployed to Azure services."
+      }
+    ],
+    "notScopes": [],
+    "parameters": {
+      "ALZManagementSubscriptionId": {
+        "value": ""
+      },
+      "ALZMonitorDisableTagName": {
+        "value": "MonitorDisable"
+      },
+      "ALZMonitorDisableTagValues": {
+        "value": [
+          "true",
+          "Test",
+          "Dev",
+          "Sandbox"
+        ]
+      },
+      "ALZMonitorResourceGroupLocation": {
+        "value": "eastus"
+      },
+      "ALZMonitorResourceGroupName": {
+        "value": "rg-amba-alz-prod-001"
+      },
+      "ALZMonitorResourceGroupTags": {
+        "value": {
+          "_deployed_by_amba": true
+        }
+      },
+      "ALZUserAssignedManagedIdentityName": {
+        "value": "id-amba-alz-arg-reader-prod-001"
+      },
+      "BYOUserAssignedManagedIdentityResourceId": {
+        "value": ""
+      },
+      "VMSSDataDiskReadLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSDataDiskReadLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
+      "VMSSDataDiskSpacePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSDataDiskSpacecheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
+      "VMSSDataDiskWriteLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSDataDiskWriteLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
+      "VMSSHeartBeatRGPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSHeartBeatRGcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
+      "VMSSNetworkInPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSNetworkIncheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
+      "VMSSNetworkOutPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSNetworkOutcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
+      "VMSSOSDiskReadLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSOSDiskReadLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
+      "VMSSOSDiskSpacePolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSOSDiskSpacecheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
+      "VMSSOSDiskWriteLatencyPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSOSDiskWriteLatencycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
+      "VMSSPercentCPUPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSPercentCPUcheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      },
+      "VMSSPercentMemoryPolicyEffect": {
+        "value": "deployIfNotExists"
+      },
+      "VMSSPercentMemorycheckWorkspaceAlertsStorageConfigured": {
+        "value": "false"
+      }
+    },
+    "metadata": {
+      "_deployed_by_amba": true
+    },
+    "scope": "/providers/Microsoft.Management/managementGroups/placeholder"
+  }
+}

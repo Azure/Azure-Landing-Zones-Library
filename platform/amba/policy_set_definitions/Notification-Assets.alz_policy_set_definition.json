@@ -10,9 +10,17 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.2"
+      "version": "1.6.0"
     },
     "parameters": {
+      "ALZAlertDescriptionPrefix": {
+        "defaultValue": "AMBA-ALZ:",
+        "metadata": {
+          "description": "Prefix for the alert descriptions. Used to identify alerts generated from specific pattern policies when includePatternAlertsOnly parameter is set to Yes.",
+          "displayName": "AMBA-ALZ Alert Description Prefix"
+        },
+        "type": "string"
+      },
       "ALZAlertSeverity": {
         "defaultValue": [
           "Sev0",
@@ -122,7 +130,7 @@
       },
       "ALZMonitorResourceGroupTags": {
         "defaultValue": {
-          "_deployed_by_alz_monitor": true
+          "_deployed_by_amba": true
         },
         "metadata": {
           "description": "Tags to apply to the resource group",
@@ -131,7 +139,7 @@
         "type": "Object"
       },
       "ALZNotificationAssetSuffix": {
-        "defaultValue": "-001",
+        "defaultValue": "-ALZ-001",
         "metadata": {
           "description": "Suffix for Alert Processing Rule and Action Group names",
           "displayName": "Notification Asset Name Suffix"
@@ -161,6 +169,18 @@
           "displayName": "Customer defined Alert Processing Rule Resource ID"
         },
         "type": "String"
+      },
+      "includeAlzAlertsOnly": {
+        "allowedValues": [
+          "Yes",
+          "No"
+        ],
+        "defaultValue": "No",
+        "metadata": {
+          "description": "Specify whether to only include alerts generated from AMBA-ALZ deployed policies or all alerts in the APR scope.",
+          "displayName": "Include AMBA-ALZ Alerts Only"
+        },
+        "type": "string"
       }
     },
     "policyDefinitions": [
@@ -216,6 +236,12 @@
           },
           "MonitorDisableTagValues": {
             "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "includePatternAlertsOnly": {
+            "value": "[parameters('includeAlzAlertsOnly')]"
+          },
+          "patternAlertDescriptionPrefix": {
+            "value": "[parameters('ALZAlertDescriptionPrefix')]"
           }
         },
         "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_AlertProcessing_Rule",
@@ -232,11 +258,20 @@
           "ALZMonitorResourceGroupTags": {
             "value": "[parameters('ALZMonitorResourceGroupTags')]"
           },
+          "ALZNotificationAssetSuffix": {
+            "value": "[parameters('ALZNotificationAssetSuffix')]"
+          },
           "MonitorDisableTagName": {
             "value": "[parameters('ALZMonitorDisableTagName')]"
           },
           "MonitorDisableTagValues": {
             "value": "[parameters('ALZMonitorDisableTagValues')]"
+          },
+          "includePatternAlertsOnly": {
+            "value": "[parameters('includeAlzAlertsOnly')]"
+          },
+          "patternAlertDescriptionPrefix": {
+            "value": "[parameters('ALZAlertDescriptionPrefix')]"
           }
         },
         "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/contoso/providers/Microsoft.Authorization/policyDefinitions/Deploy_Suppression_AlertProcessing_Rule",

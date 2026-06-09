@@ -10,7 +10,7 @@
       ],
       "category": "Networking",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.3.0"
+      "version": "1.3.1"
     },
     "mode": "All",
     "parameters": {
@@ -220,7 +220,7 @@
                         ],
                         "odata.type": "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
                       },
-                      "description": "Metric Alert for Frontdoor BackendRequestLatency",
+                      "description": "AMBA-ALZ: Metric Alert for Frontdoor BackendRequestLatency",
                       "enabled": "[parameters('enabled')]",
                       "evaluationFrequency": "[parameters('evaluationFrequency')]",
                       "parameters": {

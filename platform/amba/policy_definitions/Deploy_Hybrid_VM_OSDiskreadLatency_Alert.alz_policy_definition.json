@@ -1,8 +1,8 @@
 {
   "name": "Deploy_Hybrid_VM_OSDiskreadLatency_Alert",
   "properties": {
-    "description": "Policy to audit/deploy Hybrid VM OS Disk Read Latency Alert",
-    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Hybrid VM OS Disk Read Latency Alert",
+    "description": "Policy to audit/deploy Arc-enabled server OS Disk Read Latency Alert",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) - Arc-enabled server OS Disk Read Latency Alert",
     "metadata": {
       "_deployed_by_amba": "True",
       "alzCloudEnvironments": [
@@ -10,7 +10,7 @@
       ],
       "category": "Hybrid Compute",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.7.0"
+      "version": "1.8.0"
     },
     "mode": "All",
     "parameters": {
@@ -454,14 +454,14 @@
                                       "numberOfEvaluationPeriods": "[parameters('evaluationPeriods')]"
                                     },
                                     "operator": "[parameters('operator')]",
-                                    "query": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.HybridCompute/machines\" | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags); InsightsMetrics | where _ResourceId has \"Microsoft.HybridCompute/machines\" | where Origin == \"vm.azm.ms\" | where Namespace == \"LogicalDisk\" and Name == \"ReadLatencyMs\" | extend Disk=tostring(todynamic(Tags)[\"vm.azm.ms/mountId\"]) | where Disk in (\"C:\", \"/\") | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk | join hint.remote=left kind=inner (resourceTagging ) on _ResourceId | project-away _ResourceId1 | extend excludedLogicalVolumes = iif(isnotempty(resourceTags.[\"{4}\"]),resourceTags.[\"{4}\"], \"No logical volumes excluded\") | where excludedLogicalVolumes !has Disk | extend newThresholdString = tostring(resourceTags.[\"{3}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where AggregatedValue \u003e appliedThreshold | project TimeGenerated, Computer, _ResourceId, Disk, AggregatedValue, appliedThreshold, excludedLogicalVolumes', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), '_amba-ReadLatencyMs-OS-threshold-Override_', '_amba-ExcludedLogicalVolumes-ReadLatency_')]",
+                                    "query": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.HybridCompute/machines\" | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags); InsightsMetrics | where _ResourceId has \"Microsoft.HybridCompute/machines\" | where Origin == \"vm.azm.ms\" | where Namespace == \"LogicalDisk\" and Name == \"ReadLatencyMs\" | extend Disk=tostring(todynamic(Tags)[\"vm.azm.ms/mountId\"]) | where Disk in (\"C:\", \"/\") | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk | lookup kind=inner (resourceTagging) on _ResourceId | extend excludedLogicalVolumes = iif(isnotempty(resourceTags.[\"{4}\"]),resourceTags.[\"{4}\"], \"No logical volumes excluded\") | where excludedLogicalVolumes !has Disk | extend newThresholdString = tostring(resourceTags.[\"{3}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where AggregatedValue \u003e appliedThreshold | project TimeGenerated, Computer, _ResourceId, Disk, AggregatedValue, appliedThreshold, excludedLogicalVolumes', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), '_amba-ReadLatencyMs-OS-threshold-Override_', '_amba-ExcludedLogicalVolumes-ReadLatency_')]",
                                     "resourceIdColumn": "_ResourceId",
                                     "threshold": 0,
                                     "timeAggregation": "[parameters('timeAggregation')]"
                                   }
                                 ]
                               },
-                              "description": "Log Alert for Virtual Machine OSDiskreadLatency",
+                              "description": "AMBA-ALZ: Log Alert for Azure Arc-enabled server OSDiskreadLatency",
                               "displayName": "[concat(subscription().displayName, '-HybridVMHighOSDiskReadLatencyAlert')]",
                               "enabled": "[parameters('enabled')]",
                               "evaluationFrequency": "[parameters('evaluationFrequency')]",
@@ -597,7 +597,7 @@
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].failingPeriods.minFailingPeriodsToAlert"
               },
               {
-                "equals": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.HybridCompute/machines\" | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags); InsightsMetrics | where _ResourceId has \"Microsoft.HybridCompute/machines\" | where Origin == \"vm.azm.ms\" | where Namespace == \"LogicalDisk\" and Name == \"ReadLatencyMs\" | extend Disk=tostring(todynamic(Tags)[\"vm.azm.ms/mountId\"]) | where Disk in (\"C:\", \"/\") | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk | join hint.remote=left kind=inner (resourceTagging ) on _ResourceId | project-away _ResourceId1 | extend excludedLogicalVolumes = iif(isnotempty(resourceTags.[\"{4}\"]),resourceTags.[\"{4}\"], \"No logical volumes excluded\") | where excludedLogicalVolumes !has Disk | extend newThresholdString = tostring(resourceTags.[\"{3}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where AggregatedValue \u003e appliedThreshold | project TimeGenerated, Computer, _ResourceId, Disk, AggregatedValue, appliedThreshold, excludedLogicalVolumes', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), '_amba-ReadLatencyMs-OS-threshold-Override_', '_amba-ExcludedLogicalVolumes-ReadLatency_')]",
+                "equals": "[format('let policyThresholdString = \"{0}\"; let resourceTagging = (arg(\"\").resources | where type =~ \"Microsoft.HybridCompute/machines\" | where tags.[\"{1}\"] !in~ (\"{2}\") | project _ResourceId = tolower(id), resourceTags = tags); InsightsMetrics | where _ResourceId has \"Microsoft.HybridCompute/machines\" | where Origin == \"vm.azm.ms\" | where Namespace == \"LogicalDisk\" and Name == \"ReadLatencyMs\" | extend Disk=tostring(todynamic(Tags)[\"vm.azm.ms/mountId\"]) | where Disk in (\"C:\", \"/\") | summarize AggregatedValue = avg(Val) by bin(TimeGenerated, 15m), Computer, _ResourceId, Disk | lookup kind=inner (resourceTagging) on _ResourceId | extend excludedLogicalVolumes = iif(isnotempty(resourceTags.[\"{4}\"]),resourceTags.[\"{4}\"], \"No logical volumes excluded\") | where excludedLogicalVolumes !has Disk | extend newThresholdString = tostring(resourceTags.[\"{3}\"]) | extend appliedThreshold = iif(isempty(newThresholdString), toint(policyThresholdString), toint(newThresholdString)) | where AggregatedValue \u003e appliedThreshold | project TimeGenerated, Computer, _ResourceId, Disk, AggregatedValue, appliedThreshold, excludedLogicalVolumes', parameters('threshold'), parameters('MonitorDisableTagName'), join(parameters('MonitorDisableTagValues'), '\",\"'), '_amba-ReadLatencyMs-OS-threshold-Override_', '_amba-ExcludedLogicalVolumes-ReadLatency_')]",
                 "field": "Microsoft.Insights/scheduledQueryRules/criteria.allOf[*].query"
               },
               {
