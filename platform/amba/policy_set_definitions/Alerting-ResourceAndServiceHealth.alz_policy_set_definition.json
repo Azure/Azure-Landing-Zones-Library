@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.0"
+      "version": "1.1.0"
     },
     "parameters": {
       "ALZArmRoleId": {
@@ -67,7 +67,7 @@
       },
       "ALZMonitorResourceGroupTags": {
         "defaultValue": {
-          "_deployed_by_alz_monitor": true
+          "_deployed_by_amba": true
         },
         "metadata": {
           "description": "Tags to apply to the resource group",
@@ -209,9 +209,7 @@
             "value": "[parameters('BYOActionGroup')]"
           },
           "additionalTags": {
-            "value": {
-              "_deployed_by_amba": true
-            }
+            "value": "[parameters('ALZMonitorResourceGroupTags')]"
           },
           "alertRuleName": {
             "value": "[parameters('ShaBuiltInAlertRuleName')]"

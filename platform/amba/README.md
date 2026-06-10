@@ -71,7 +71,7 @@ flowchart TD
   
 #### amba_landing_zones policy assignments
   
-<details><summary>8 policy assignments</summary>
+<details><summary>9 policy assignments</summary>
 
 - Deploy-AMBA-HybridVM
 - Deploy-AMBA-KeyMgmt
@@ -80,6 +80,7 @@ flowchart TD
 - Deploy-AMBA-RecoverySvc
 - Deploy-AMBA-Storage
 - Deploy-AMBA-VM
+- Deploy-AMBA-VMSS
 - Deploy-AMBA-Web
 </details>
   
@@ -96,17 +97,18 @@ flowchart TD
   
 #### amba_platform policy assignments
   
-<details><summary>2 policy assignments</summary>
+<details><summary>3 policy assignments</summary>
 
 - Deploy-AMBA-HybridVM
 - Deploy-AMBA-VM
+- Deploy-AMBA-VMSS
 </details>
   
 ### archetype `amba_root`
   
 #### amba_root policy definitions
   
-<details><summary>132 policy definitions</summary>
+<details><summary>143 policy definitions</summary>
 
 - Deploy-P2SVPNGateways-P2SBandwidth-Alert
 - Deploy-P2SVPNGateways-P2SConnectionCount-Alert
@@ -192,6 +194,17 @@ flowchart TD
 - Deploy_StorageAccount_Availability_Alert
 - Deploy_Suppression_AlertProcessing_Rule
 - Deploy_TM_EndpointHealth_Alert
+- Deploy_VMSS_CPU_Alert
+- Deploy_VMSS_HeartBeat_Alert
+- Deploy_VMSS_Memory_Alert
+- Deploy_VMSS_NetworkIn_Alert
+- Deploy_VMSS_NetworkOut_Alert
+- Deploy_VMSS_OSDiskSpace_Alert
+- Deploy_VMSS_OSDiskreadLatency_Alert
+- Deploy_VMSS_OSDiskwriteLatency_Alert
+- Deploy_VMSS_dataDiskReadLatency_Alert
+- Deploy_VMSS_dataDiskSpace_Alert
+- Deploy_VMSS_dataDiskWriteLatency_Alert
 - Deploy_VM_CPU_Alert
 - Deploy_VM_HeartBeat_Alert
 - Deploy_VM_Memory_Alert
@@ -244,7 +257,7 @@ flowchart TD
   
 #### amba_root policy set definitions
   
-<details><summary>15 policy set definitions</summary>
+<details><summary>16 policy set definitions</summary>
 
 - Alerting-Connectivity
 - Alerting-Connectivity-2
@@ -259,6 +272,7 @@ flowchart TD
 - Alerting-ServiceHealth
 - Alerting-Storage
 - Alerting-VM
+- Alerting-VMSS
 - Alerting-Web
 - Notification-Assets
 </details>
@@ -514,7 +528,7 @@ The service uri(s) of the webhook used for monitoring.
   
 ### all policy definitions
   
-<details><summary>132 policy definitions</summary>
+<details><summary>143 policy definitions</summary>
 
 - Deploy-P2SVPNGateways-P2SBandwidth-Alert
 - Deploy-P2SVPNGateways-P2SConnectionCount-Alert
@@ -600,6 +614,17 @@ The service uri(s) of the webhook used for monitoring.
 - Deploy_StorageAccount_Availability_Alert
 - Deploy_Suppression_AlertProcessing_Rule
 - Deploy_TM_EndpointHealth_Alert
+- Deploy_VMSS_CPU_Alert
+- Deploy_VMSS_HeartBeat_Alert
+- Deploy_VMSS_Memory_Alert
+- Deploy_VMSS_NetworkIn_Alert
+- Deploy_VMSS_NetworkOut_Alert
+- Deploy_VMSS_OSDiskSpace_Alert
+- Deploy_VMSS_OSDiskreadLatency_Alert
+- Deploy_VMSS_OSDiskwriteLatency_Alert
+- Deploy_VMSS_dataDiskReadLatency_Alert
+- Deploy_VMSS_dataDiskSpace_Alert
+- Deploy_VMSS_dataDiskWriteLatency_Alert
 - Deploy_VM_CPU_Alert
 - Deploy_VM_HeartBeat_Alert
 - Deploy_VM_Memory_Alert
@@ -652,7 +677,7 @@ The service uri(s) of the webhook used for monitoring.
   
 ### all policy set definitions
   
-<details><summary>15 policy set definitions</summary>
+<details><summary>16 policy set definitions</summary>
 
 - Alerting-Connectivity
 - Alerting-Connectivity-2
@@ -667,13 +692,14 @@ The service uri(s) of the webhook used for monitoring.
 - Alerting-ServiceHealth
 - Alerting-Storage
 - Alerting-VM
+- Alerting-VMSS
 - Alerting-Web
 - Notification-Assets
 </details>
   
 ### all policy assignments
   
-<details><summary>14 policy assignments</summary>
+<details><summary>15 policy assignments</summary>
 
 - Deploy-AMBA-Connectivity
 - Deploy-AMBA-HybridVM
@@ -687,6 +713,7 @@ The service uri(s) of the webhook used for monitoring.
 - Deploy-AMBA-Res-SvcHlth
 - Deploy-AMBA-Storage
 - Deploy-AMBA-VM
+- Deploy-AMBA-VMSS
 - Deploy-AMBA-Web
 - Deploy-AMBAConnectivity2
 </details>

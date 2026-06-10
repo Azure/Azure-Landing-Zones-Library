@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.0"
+      "version": "1.4.1"
     },
     "mode": "All",
     "parameters": {
@@ -248,7 +248,7 @@
                         ],
                         "odata.type": "Microsoft.Azure.Monitor.MultipleResourceMultipleMetricCriteria"
                       },
-                      "description": "Metric Alert for ExpressRoute Circuit QosDropBitsOutPerSecond",
+                      "description": "AMBA-ALZ: Metric Alert for ExpressRoute Circuit QosDropBitsOutPerSecond",
                       "enabled": "[parameters('enabled')]",
                       "evaluationFrequency": "[parameters('evaluationFrequency')]",
                       "parameters": {

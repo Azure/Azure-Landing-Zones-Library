@@ -8,8 +8,8 @@
     "type": "SystemAssigned"
   },
   "properties": {
-    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Azure Arc-enabled Servers.",
-    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Hybrid Virtual Machines",
+    "description": "This initiative deploys Azure Monitor Baseline Alerts (AMBA-ALZ) to monitor Azure Arc-enabled servers.",
+    "displayName": "Deploy Azure Monitor Baseline Alerts (AMBA-ALZ) for Arc-enabled servers",
     "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policySetDefinitions/Alerting-HybridVM",
     "enforcementMode": "Default",
     "nonComplianceMessages": [
@@ -41,7 +41,7 @@
       },
       "ALZMonitorResourceGroupTags": {
         "value": {
-          "_deployed_by_alz_monitor": true
+          "_deployed_by_amba": true
         }
       },
       "ALZUserAssignedManagedIdentityName": {

@@ -9,6 +9,7 @@
     "Deploy-AMBA-RecoverySvc",
     "Deploy-AMBA-Storage",
     "Deploy-AMBA-VM",
+    "Deploy-AMBA-VMSS",
     "Deploy-AMBA-Web"
   ],
   "policy_definitions": [],
