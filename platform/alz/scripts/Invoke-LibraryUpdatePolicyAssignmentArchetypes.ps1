@@ -204,9 +204,36 @@ foreach ($managementGroup in $policyAssignments.Keys) {
         $parsedAssignment.properties | Add-Member -MemberType NoteProperty -Name "parameters" -Value @{}
       }
 
-      if (!(Get-Member -InputObject $parsedAssignment -Name "location" -MemberType Properties)) {
-        $parsedAssignment | Add-Member -MemberType NoteProperty -Name "location" -Value "uksouth"
+      # Ensure the policy assignment has a top-level "location", defaulting to the
+      # templated "${default_location}" placeholder when the source template does
+      # not specify one. The placeholder is substituted with the consumer's target
+      # region at deployment time, so the library must not hardcode a region here.
+      #
+      # The location is (re)positioned immediately after the "name" property to
+      # match the library's curated convention. We rebuild the assignment as an
+      # ordered dictionary because Add-Member only appends, which would place
+      # "location" at the end and create noisy property-order diffs against the
+      # existing curated assignments.
+      $existingLocation = $null
+      if (Get-Member -InputObject $parsedAssignment -Name "location" -MemberType Properties) {
+        $existingLocation = $parsedAssignment.location
       }
+      $assignmentLocation = if ([string]::IsNullOrEmpty($existingLocation)) { '${default_location}' } else { $existingLocation }
+
+      $orderedAssignment = [ordered]@{}
+      foreach ($assignmentProperty in $parsedAssignment.PSObject.Properties) {
+        if ($assignmentProperty.Name -eq "location") {
+          continue
+        }
+        $orderedAssignment[$assignmentProperty.Name] = $assignmentProperty.Value
+        if ($assignmentProperty.Name -eq "name") {
+          $orderedAssignment["location"] = $assignmentLocation
+        }
+      }
+      if (!($orderedAssignment.Contains("location"))) {
+        $orderedAssignment["location"] = $assignmentLocation
+      }
+      $parsedAssignment = [PSCustomObject]$orderedAssignment
 
       $enforcementMode = $enforcementModeLookup[[Tuple]::Create($managementGroupNameFinal, $policyAssignmentFile)]
       # If enforcement mode is one of: Default, DoNotEnforce, or Disabled, set it on the policy assignment
