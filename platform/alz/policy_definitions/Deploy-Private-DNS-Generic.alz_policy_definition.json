@@ -11,7 +11,7 @@
       ],
       "category": "Networking",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "2.0.0"
+      "version": "2.1.0"
     },
     "mode": "All",
     "parameters": {
@@ -80,22 +80,44 @@
             "field": "type"
           },
           {
-            "count": {
-              "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*]",
-              "where": {
-                "allOf": [
-                  {
-                    "contains": "[parameters('resourceType')]",
-                    "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].privateLinkServiceId"
-                  },
-                  {
-                    "equals": "[parameters('groupId')]",
-                    "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].groupIds[*]"
+            "anyOf": [
+              {
+                "count": {
+                  "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*]",
+                  "where": {
+                    "allOf": [
+                      {
+                        "contains": "[parameters('resourceType')]",
+                        "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].privateLinkServiceId"
+                      },
+                      {
+                        "equals": "[parameters('groupId')]",
+                        "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].groupIds[*]"
+                      }
+                    ]
                   }
-                ]
+                },
+                "greaterOrEquals": 1
+              },
+              {
+                "count": {
+                  "field": "Microsoft.Network/privateEndpoints/manualPrivateLinkServiceConnections[*]",
+                  "where": {
+                    "allOf": [
+                      {
+                        "contains": "[parameters('resourceType')]",
+                        "field": "Microsoft.Network/privateEndpoints/manualPrivateLinkServiceConnections[*].privateLinkServiceId"
+                      },
+                      {
+                        "equals": "[parameters('groupId')]",
+                        "field": "Microsoft.Network/privateEndpoints/manualPrivateLinkServiceConnections[*].groupIds[*]"
+                      }
+                    ]
+                  }
+                },
+                "greaterOrEquals": 1
               }
-            },
-            "greaterOrEquals": 1
+            ]
           }
         ]
       },

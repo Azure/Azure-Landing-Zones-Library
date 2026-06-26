@@ -2,7 +2,6 @@
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2024-04-01",
   "name": "Enforce-ALDO-Services",
-  "location": "${default_location}",
   "dependsOn": [],
   "properties": {
     "description": "Audit the use of Azure services to those supported in Azure Local disconnected operations.",
@@ -12,7 +11,7 @@
     "enforcementMode": "Default",
     "nonComplianceMessages": [
       {
-        "message": "Resource is not available on Azure local disconnected operations cluster"
+        "message": "Resource is not available on Azure Local disconnected operations cluster."
       }
     ],
     "parameters": {
@@ -22,5 +21,6 @@
     },
     "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
-  }
+  },
+  "location": "uksouth"
 }
