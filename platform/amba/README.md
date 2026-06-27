@@ -336,6 +336,7 @@ The resource id of the user assigned managed identity, required if you intend to
 | Deploy-AMBA-HybridVM   | BYOUserAssignedManagedIdentityResourceId |
 | Deploy-AMBA-Management | BYOUserAssignedManagedIdentityResourceId |
 | Deploy-AMBA-VM         | BYOUserAssignedManagedIdentityResourceId |
+| Deploy-AMBA-VMSS       | BYOUserAssignedManagedIdentityResourceId |
 | Deploy-AMBA-Web        | BYOUserAssignedManagedIdentityResourceId |
 
   
@@ -355,6 +356,7 @@ Tag name used to disable monitoring at the resource level.
 | Deploy-AMBA-Res-SvcHlth  | ALZMonitorDisableTagName |
 | Deploy-AMBA-Storage      | ALZMonitorDisableTagName |
 | Deploy-AMBA-VM           | ALZMonitorDisableTagName |
+| Deploy-AMBA-VMSS         | ALZMonitorDisableTagName |
 | Deploy-AMBA-Web          | ALZMonitorDisableTagName |
 | Deploy-AMBAConnectivity2 | ALZMonitorDisableTagName |
 
@@ -375,6 +377,7 @@ Tag value(s) used to disable monitoring at the resource level.
 | Deploy-AMBA-Res-SvcHlth  | ALZMonitorDisableTagValues |
 | Deploy-AMBA-Storage      | ALZMonitorDisableTagValues |
 | Deploy-AMBA-VM           | ALZMonitorDisableTagValues |
+| Deploy-AMBA-VMSS         | ALZMonitorDisableTagValues |
 | Deploy-AMBA-Web          | ALZMonitorDisableTagValues |
 | Deploy-AMBAConnectivity2 | ALZMonitorDisableTagValues |
 
@@ -433,6 +436,7 @@ The subscription id where the user assigned managed identity will be created.
 | Deploy-AMBA-HybridVM   | ALZManagementSubscriptionId |
 | Deploy-AMBA-Management | ALZManagementSubscriptionId |
 | Deploy-AMBA-VM         | ALZManagementSubscriptionId |
+| Deploy-AMBA-VMSS       | ALZManagementSubscriptionId |
 | Deploy-AMBA-Web        | ALZManagementSubscriptionId |
 
   
@@ -452,6 +456,7 @@ The region short name (e.g. `westus`) of the resource group that will be used fo
 | Deploy-AMBA-Res-SvcHlth  | ALZMonitorResourceGroupLocation |
 | Deploy-AMBA-Storage      | ALZMonitorResourceGroupLocation |
 | Deploy-AMBA-VM           | ALZMonitorResourceGroupLocation |
+| Deploy-AMBA-VMSS         | ALZMonitorResourceGroupLocation |
 | Deploy-AMBA-Web          | ALZMonitorResourceGroupLocation |
 
   
@@ -471,6 +476,7 @@ The name of the resource group for Azure Monitor Baseline Alerts.
 | Deploy-AMBA-Res-SvcHlth  | ALZMonitorResourceGroupName |
 | Deploy-AMBA-Storage      | ALZMonitorResourceGroupName |
 | Deploy-AMBA-VM           | ALZMonitorResourceGroupName |
+| Deploy-AMBA-VMSS         | ALZMonitorResourceGroupName |
 | Deploy-AMBA-Web          | ALZMonitorResourceGroupName |
 
   
@@ -490,6 +496,7 @@ The tags for the resource group for Azure Monitor Baseline Alerts.
 | Deploy-AMBA-Res-SvcHlth  | ALZMonitorResourceGroupTags |
 | Deploy-AMBA-Storage      | ALZMonitorResourceGroupTags |
 | Deploy-AMBA-VM           | ALZMonitorResourceGroupTags |
+| Deploy-AMBA-VMSS         | ALZMonitorResourceGroupTags |
 | Deploy-AMBA-Web          | ALZMonitorResourceGroupTags |
 
   
@@ -511,6 +518,7 @@ The name of the user assigned managed identity for monitoring purposes.
 | Deploy-AMBA-HybridVM   | ALZUserAssignedManagedIdentityName |
 | Deploy-AMBA-Management | ALZUserAssignedManagedIdentityName |
 | Deploy-AMBA-VM         | ALZUserAssignedManagedIdentityName |
+| Deploy-AMBA-VMSS       | ALZUserAssignedManagedIdentityName |
 | Deploy-AMBA-Web        | ALZUserAssignedManagedIdentityName |
 
   
