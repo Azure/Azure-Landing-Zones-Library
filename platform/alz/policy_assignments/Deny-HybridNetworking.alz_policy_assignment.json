@@ -2,6 +2,7 @@
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2024-04-01",
   "name": "Deny-HybridNetworking",
+  "location": "${default_location}",
   "dependsOn": [],
   "properties": {
     "description": "Denies deployment of vWAN/ER/VPN gateway resources in the Corp landing zone.",
@@ -34,6 +35,5 @@
     },
     "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
-  },
-  "location": "uksouth"
+  }
 }
