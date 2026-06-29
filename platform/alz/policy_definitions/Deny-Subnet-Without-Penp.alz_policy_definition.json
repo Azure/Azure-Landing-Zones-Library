@@ -11,7 +11,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     "mode": "All",
     "parameters": {
@@ -41,6 +41,20 @@
           "displayName": "Excluded Subnets"
         },
         "type": "Array"
+      },
+      "penpValue": {
+        "allowedValues": [
+          "Disabled",
+          "NetworkSecurityGroupEnabled",
+          "RouteTableEnabled",
+          "Enabled"
+        ],
+        "defaultValue": "Enabled",
+        "metadata": {
+          "description": "The privateEndpointNetworkPolicies value required for evaluated subnets",
+          "displayName": "Private Endpoint Network Policies Value"
+        },
+        "type": "String"
       }
     },
     "policyRule": {
@@ -59,7 +73,7 @@
                     "allOf": [
                       {
                         "field": "Microsoft.Network/virtualNetworks/subnets[*].privateEndpointNetworkPolicies",
-                        "notEquals": "Enabled"
+                        "notEquals": "[parameters('penpValue')]"
                       },
                       {
                         "field": "Microsoft.Network/virtualNetworks/subnets[*].name",
@@ -84,7 +98,7 @@
               },
               {
                 "field": "Microsoft.Network/virtualNetworks/subnets/privateEndpointNetworkPolicies",
-                "notEquals": "Enabled"
+                "notEquals": "[parameters('penpValue')]"
               }
             ]
           }
