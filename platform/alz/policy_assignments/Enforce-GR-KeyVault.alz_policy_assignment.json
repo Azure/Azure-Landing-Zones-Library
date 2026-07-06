@@ -2,6 +2,7 @@
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2022-06-01",
   "name": "Enforce-GR-KeyVault",
+  "location": "${default_location}",
   "dependsOn": [],
   "properties": {
     "description": "This initiative assignment enables recommended ALZ guardrails for Azure Key Vault.",
@@ -11,6 +12,5 @@
     "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": [],
     "parameters": {}
-  },
-  "location": "uksouth"
+  }
 }

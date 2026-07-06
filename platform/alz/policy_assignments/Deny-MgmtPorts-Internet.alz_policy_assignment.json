@@ -2,6 +2,7 @@
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2022-06-01",
   "name": "Deny-MgmtPorts-Internet",
+  "location": "${default_location}",
   "dependsOn": [],
   "properties": {
     "description": "This policy denies any network security rule that allows management port access from the Internet",
@@ -16,6 +17,5 @@
     "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": [],
     "parameters": {}
-  },
-  "location": "uksouth"
+  }
 }

@@ -12,7 +12,7 @@
     "enforcementMode": "Default",
     "nonComplianceMessages": [
       {
-        "message": "Resource is not available on Azure local disconnected operations cluster"
+        "message": "Resource is not available on Azure Local disconnected operations cluster."
       }
     ],
     "parameters": {
