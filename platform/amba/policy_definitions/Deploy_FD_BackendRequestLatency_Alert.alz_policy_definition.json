@@ -10,7 +10,7 @@
       ],
       "category": "Networking",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.3.1"
+      "version": "1.3.3"
     },
     "mode": "All",
     "parameters": {
@@ -140,13 +140,13 @@
               "mode": "incremental",
               "parameters": {
                 "autoMitigate": {
-                  "value": "[parameters('autoMitigate')]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-autoMitigate-Override_'), field('tags._amba-BackendRequestLatency-autoMitigate-Override_'), parameters('autoMitigate'))]"
                 },
                 "enabled": {
-                  "value": "[parameters('enabled')]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-enabled-Override_'), field('tags._amba-BackendRequestLatency-enabled-Override_'), parameters('enabled'))]"
                 },
                 "evaluationFrequency": {
-                  "value": "[parameters('evaluationFrequency')]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-evaluationFrequency-Override_'), field('tags._amba-BackendRequestLatency-evaluationFrequency-Override_'), parameters('evaluationFrequency'))]"
                 },
                 "resourceId": {
                   "value": "[field('id')]"
@@ -155,10 +155,10 @@
                   "value": "[field('name')]"
                 },
                 "severity": {
-                  "value": "[parameters('severity')]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-severity-Override_'), field('tags._amba-BackendRequestLatency-severity-Override_'), parameters('severity'))]"
                 },
                 "windowSize": {
-                  "value": "[parameters('windowSize')]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-windowSize-Override_'), field('tags._amba-BackendRequestLatency-windowSize-Override_'), parameters('windowSize'))]"
                 }
               },
               "template": {
@@ -271,23 +271,23 @@
                 "field": "Microsoft.Insights/metricalerts/scopes[*]"
               },
               {
-                "equals": "[parameters('enabled')]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-enabled-Override_'), field('tags._amba-BackendRequestLatency-enabled-Override_'), parameters('enabled'))]",
                 "field": "Microsoft.Insights/metricAlerts/enabled"
               },
               {
-                "equals": "[parameters('evaluationFrequency')]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-evaluationFrequency-Override_'), field('tags._amba-BackendRequestLatency-evaluationFrequency-Override_'), parameters('evaluationFrequency'))]",
                 "field": "Microsoft.Insights/metricAlerts/evaluationFrequency"
               },
               {
-                "equals": "[parameters('windowSize')]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-windowSize-Override_'), field('tags._amba-BackendRequestLatency-windowSize-Override_'), parameters('windowSize'))]",
                 "field": "Microsoft.Insights/metricAlerts/windowSize"
               },
               {
-                "equals": "[parameters('severity')]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-severity-Override_'), field('tags._amba-BackendRequestLatency-severity-Override_'), parameters('severity'))]",
                 "field": "Microsoft.Insights/metricalerts/severity"
               },
               {
-                "equals": "[parameters('autoMitigate')]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-autoMitigate-Override_'), field('tags._amba-BackendRequestLatency-autoMitigate-Override_'), parameters('autoMitigate'))]",
                 "field": "Microsoft.Insights/metricAlerts/autoMitigate"
               },
               {
@@ -299,15 +299,15 @@
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-MultipleResourceMultipleMetricCriteria.allOf[*].DynamicThresholdCriterion.operator"
               },
               {
-                "equals": "Medium",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-alertSensitivity-Override_'), field('tags._amba-BackendRequestLatency-alertSensitivity-Override_'), parameters('alertSensitivity'))]",
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-MultipleResourceMultipleMetricCriteria.allOf[*].DynamicThresholdCriterion.alertSensitivity"
               },
               {
-                "equals": 2,
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-failingPeriods-Override_'), field('tags._amba-BackendRequestLatency-failingPeriods-Override_'), parameters('failingPeriods'))]",
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-MultipleResourceMultipleMetricCriteria.allOf[*].DynamicThresholdCriterion.failingPeriods.minFailingPeriodsToAlert"
               },
               {
-                "equals": 2,
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-BackendRequestLatency-evaluationPeriods-Override_'), field('tags._amba-BackendRequestLatency-evaluationPeriods-Override_'), parameters('evaluationPeriods'))]",
                 "field": "Microsoft.Insights/metricAlerts/criteria.Microsoft-Azure-Monitor-MultipleResourceMultipleMetricCriteria.allOf[*].DynamicThresholdCriterion.failingPeriods.numberOfEvaluationPeriods"
               }
             ]
