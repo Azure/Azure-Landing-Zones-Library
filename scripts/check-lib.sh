@@ -19,11 +19,11 @@ if [ ! -d "$LIB" ]; then
 fi
 
 # Check if Azure CLI is authenticated; if not, fall back to offline mode
-OFFLINE_FLAG=""
-if ! az account show &>/dev/null 2>&1; then
+ARGS=()
+if ! az account show &>/dev/null; then
     echo "==> Azure CLI not authenticated. Running in offline mode..."
-    OFFLINE_FLAG="--offline"
+    ARGS+=("--offline")
 fi
 
 # check library
-alzlibtool check library $OFFLINE_FLAG "$LIB" 2>&1
+alzlibtool check library "${ARGS[@]}" "$LIB" 2>&1
