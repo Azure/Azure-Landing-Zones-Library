@@ -25,7 +25,7 @@
       "archetypes": [
         "landing_zones"
       ],
-      "display_name": "Landing zones",
+      "display_name": "Landing Zones",
       "exists": false,
       "id": "landingzones",
       "parent_id": "slz"
