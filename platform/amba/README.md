@@ -29,7 +29,7 @@ flowchart TD
   alz["Azure Landing Zones
 (amba_root)"]
   alz --> landingzones
-  landingzones["Landing zones
+  landingzones["Landing Zones
 (amba_landing_zones)"]
   alz --> platform
   platform["Platform

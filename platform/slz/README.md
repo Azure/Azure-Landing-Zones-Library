@@ -81,7 +81,7 @@ flowchart TD
   decommissioned["Decommissioned
 (decommissioned)"]
   slz --> landingzones
-  landingzones["Landing zones
+  landingzones["Landing Zones
 (landing_zones)"]
   landingzones --> confidential_corp
   confidential_corp["Confidential Corp

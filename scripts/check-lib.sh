@@ -18,5 +18,10 @@ if [ ! -d "$LIB" ]; then
     exit 1
 fi
 
-# check library
-alzlibtool check library "$LIB" 2>&1
+# check library (use --offline if Azure credentials are not available)
+if az account show &>/dev/null; then
+    alzlibtool check library "$LIB" 2>&1
+else
+    echo "==> Azure credentials not available, running offline check..."
+    alzlibtool check library --offline "$LIB" 2>&1
+fi

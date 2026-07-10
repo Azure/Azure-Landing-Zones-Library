@@ -32,7 +32,7 @@ flowchart TD
   decommissioned["Decommissioned
 (decommissioned)"]
   alz --> landingzones
-  landingzones["Landing zones
+  landingzones["Landing Zones
 (landing_zones)"]
   landingzones --> corp
   corp["Corp

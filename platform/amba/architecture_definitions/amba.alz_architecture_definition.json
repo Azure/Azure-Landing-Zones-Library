@@ -24,7 +24,7 @@
       "archetypes": [
         "amba_landing_zones"
       ],
-      "display_name": "Landing zones",
+      "display_name": "Landing Zones",
       "exists": true,
       "id": "landingzones",
       "parent_id": "alz"
