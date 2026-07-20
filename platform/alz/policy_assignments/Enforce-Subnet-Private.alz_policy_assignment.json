@@ -2,6 +2,7 @@
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2024-04-01",
   "name": "Enforce-Subnet-Private",
+  "location": "${default_location}",
   "dependsOn": [],
   "properties": {
     "description": "Ensure your subnets are secure by default by preventing default outbound access. For more information go to https://aka.ms/defaultoutboundaccessretirement",
@@ -21,6 +22,5 @@
     },
     "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
-  },
-  "location": "uksouth"
+  }
 }
