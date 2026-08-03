@@ -9,7 +9,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "5.2.0"
+      "version": "5.3.0"
     },
     "parameters": {
       "ACRPublicIpDenyEffect": {
@@ -448,6 +448,7 @@
       "managedDiskPublicNetworkAccess": {
         "allowedValues": [
           "Audit",
+          "Deny",
           "Disabled"
         ],
         "defaultValue": "Audit",
