@@ -2,6 +2,7 @@
   "type": "Microsoft.Authorization/policyAssignments",
   "apiVersion": "2022-06-01",
   "name": "Audit-PeDnsZones",
+  "location": "${default_location}",
   "dependsOn": [],
   "properties": {
     "description": "Audits the deployment of Private Link Private DNS Zone resources in the Corp landing zone.",
@@ -88,6 +89,5 @@
     },
     "scope": "/providers/Microsoft.Management/managementGroups/placeholder",
     "notScopes": []
-  },
-  "location": "uksouth"
+  }
 }
