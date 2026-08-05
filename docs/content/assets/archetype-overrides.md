@@ -63,3 +63,42 @@ management_groups:
     parent_id: my-mg
     exists: false
 ```
+
+## Example: adopting AMBA alongside ALZ
+
+When you deploy [Azure Monitor Baseline Alerts (AMBA)](https://github.com/Azure/Azure-Landing-Zones-Library/tree/main/platform/amba) on top of the ALZ archetypes, AMBA's `Deploy-AMBA-Res-SvcHlth` assignment provides Service Health alerting for your landing zones.
+
+The ALZ `root` archetype also assigns `Deploy-SvcHealth-BuiltIn`, which targets the **same** underlying built-in Service Health policy. When both are deployed together they each run their own remediation, resulting in **duplicate action groups and duplicate Service Health alert rules** (for example, in `rg-serviceHealthAlert` and `rg-amba-monitoring-001`).
+
+To avoid this overlap, remove `Deploy-SvcHealth-BuiltIn` from your ALZ `root` archetype using a local archetype override, and let AMBA own Service Health alerting:
+
+```yaml
+name: "root_amba_override"
+base_archetype: "root"
+policy_assignments_to_add: []
+policy_assignments_to_remove:
+  - "Deploy-SvcHealth-BuiltIn"
+policy_definitions_to_add: []
+policy_definitions_to_remove: []
+policy_set_definitions_to_add: []
+policy_set_definitions_to_remove: []
+role_definitions_to_add: []
+role_definitions_to_remove: []
+```
+
+Then reference the override in your architecture definition in place of `root`:
+
+```yaml
+name: my architecture
+management_groups:
+  - id: my-mg
+    display_name: My Management Group
+    archetypes:
+      - root_amba_override # Use the override instead of "root" when adopting AMBA
+    parent_id: null
+    exists: false
+```
+
+{{< hint type=note >}}
+Only remove `Deploy-SvcHealth-BuiltIn` when you are actually deploying AMBA's Service Health alerting. If you are **not** using AMBA, keep the built-in assignment so you retain default Service Health alerting.
+{{< /hint >}}
