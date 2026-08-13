@@ -4,7 +4,7 @@ This library provides the reference set of Sovereign Landing Zone (SLZ) policies
   
 ## Dependencies
   
-- platform/alz@2026.04.2
+- platform/alz@2026.08.0
   
 ## Usage
   
