@@ -11,7 +11,7 @@
       ],
       "category": "PostgreSQL",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     "parameters": {
       "postgreSqlAdvThreatProtection": {
@@ -34,6 +34,17 @@
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/db048e65-913c-49f9-bb5f-1084184671d3",
         "policyDefinitionReferenceId": "Dine-PostgreSql-Adv-Threat-Protection"
+      },
+      {
+        "definitionVersion": "1.*.*",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('postgreSqlAdvThreatProtection')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a6ae02f-7590-40d7-88ba-b18e205a32fd",
+        "policyDefinitionReferenceId": "Dine-PostgreSql-Flexible-Adv-Threat-Protection"
       }
     ],
     "policyType": "Custom"
