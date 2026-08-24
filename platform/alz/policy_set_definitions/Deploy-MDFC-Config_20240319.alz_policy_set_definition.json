@@ -10,7 +10,7 @@
       "category": "Security Center",
       "replacesPolicy": "Deploy-MDFC-Config",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "2.4.1"
+      "version": "2.4.2"
     },
     "parameters": {
       "ascExportResourceGroupLocation": {
@@ -44,7 +44,7 @@
           "PerSubscription",
           "PerApiCall"
         ],
-        "defaultValue": "PerApiCall",
+        "defaultValue": "PerSubscription",
         "metadata": {
           "description": "Select a Defender for Resource Manager plan",
           "displayName": "Defender for Resource Manager plans"
@@ -116,7 +116,7 @@
           "PerTransaction",
           "PerKeyVault"
         ],
-        "defaultValue": "PerTransaction",
+        "defaultValue": "PerKeyVault",
         "metadata": {
           "description": "Select a Defender for Key Vault plan",
           "displayName": "Key Vaults bundle's sub plan"
