@@ -42,3 +42,20 @@ A library memebr may extend another, if this is the case then the dependency inf
 
 - [**Policy Default Values**](/Azure-Landing-Zones-Library/assets/policy-default-values): It is common to want to pass the same value into multiple policy assignments.
 For example, a default Log Analytics workspace id. This construct allows you to define a default value that can be referenced by many policy assignments, for specific parameters.
+
+## Supported file formats
+
+Assets that represent Azure resources are JSON only, as the Azure Resource Manager APIs are JSON based.
+Library constructs may also be supplied as YAML.
+
+| Asset | JSON | YAML |
+| --- | --- | --- |
+| [Policy Definitions](/Azure-Landing-Zones-Library/assets/policy-definitions) | Yes | No |
+| [Policy Set Definitions](/Azure-Landing-Zones-Library/assets/policy-set-definitions) | Yes | No |
+| [Policy Assignments](/Azure-Landing-Zones-Library/assets/policy-assignments) | Yes | No |
+| [Role Definitions](/Azure-Landing-Zones-Library/assets/role-definitions) | Yes | No |
+| [Archetypes](/Azure-Landing-Zones-Library/assets/archetypes) | Yes | Yes |
+| [Archetype Overrides](/Azure-Landing-Zones-Library/assets/archetype-overrides) | Yes | Yes |
+| [Architectures](/Azure-Landing-Zones-Library/assets/architectures) | Yes | Yes |
+| [Policy Default Values](/Azure-Landing-Zones-Library/assets/policy-default-values) | Yes | Yes |
+| [Metadata](/Azure-Landing-Zones-Library/assets/metadata) | Yes | No |
