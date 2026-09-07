@@ -386,7 +386,7 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>42 policy set definitions</summary>
+<details><summary>43 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -423,6 +423,7 @@ flowchart TD
 - Enforce-Guardrails-MachineLearning
 - Enforce-Guardrails-MySQL
 - Enforce-Guardrails-Network_20250326
+- Enforce-Guardrails-Network_20260714
 - Enforce-Guardrails-OpenAI
 - Enforce-Guardrails-PostgreSQL
 - Enforce-Guardrails-SQL
@@ -778,7 +779,7 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy set definitions
   
-<details><summary>42 policy set definitions</summary>
+<details><summary>43 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -815,6 +816,7 @@ The default resource group name for service health alerts. This is used for the 
 - Enforce-Guardrails-MachineLearning
 - Enforce-Guardrails-MySQL
 - Enforce-Guardrails-Network_20250326
+- Enforce-Guardrails-Network_20260714
 - Enforce-Guardrails-OpenAI
 - Enforce-Guardrails-PostgreSQL
 - Enforce-Guardrails-SQL
