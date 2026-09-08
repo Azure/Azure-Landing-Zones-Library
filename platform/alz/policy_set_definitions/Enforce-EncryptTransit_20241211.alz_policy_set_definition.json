@@ -12,16 +12,16 @@
       "category": "Encryption",
       "replacesPolicy": "Enforce-EncryptTransit_20240509",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.2.2"
+      "version": "1.2.3"
     },
     "parameters": {
       "AKSIngressHttpsOnlyEffect": {
         "allowedValues": [
-          "audit",
-          "deny",
-          "disabled"
+          "Audit",
+          "Deny",
+          "Disabled"
         ],
-        "defaultValue": "deny",
+        "defaultValue": "Deny",
         "metadata": {
           "description": "This policy enforces HTTPS ingress in a Kubernetes cluster. This policy is generally available for Kubernetes Service (AKS), and preview for AKS Engine and Azure Arc enabled Kubernetes. For instructions on using this policy, visit https://aka.ms/kubepolicydoc.",
           "displayName": "AKS Service. Enforce HTTPS ingress in Kubernetes cluster"
@@ -584,7 +584,7 @@
         "policyDefinitionReferenceId": "WebAppServiceHttpsEffect"
       },
       {
-        "definitionVersion": "8.*.*",
+        "definitionVersion": "9.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {

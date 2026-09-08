@@ -1,8 +1,8 @@
 {
-  "name": "Enforce-Guardrails-Network_20250326",
+  "name": "Enforce-Guardrails-Network_20260714",
   "properties": {
-    "description": "This policy initiative is a group of policies that ensures Network and Networking services are compliant per regulated Landing Zones. Superseded by https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Enforce-Guardrails-Network_20260714.html",
-    "displayName": "[Deprecated]: Enforce recommended guardrails for Network and Networking services",
+    "description": "This policy initiative is a group of policies that ensures Network and Networking services are compliant per regulated Landing Zones.",
+    "displayName": "Enforce recommended guardrails for Network and Networking services",
     "metadata": {
       "alzCloudEnvironments": [
         "AzureCloud",
@@ -10,23 +10,12 @@
         "AzureUSGovernment"
       ],
       "category": "Network",
-      "deprecated": true,
-      "replacesPolicy": "Enforce-Guardrails-Network",
+      "replacesPolicy": "Enforce-Guardrails-Network_20250326",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "supersededBy": "Enforce-Guardrails-Network_20260714",
-      "version": "2.0.0-deprecated"
+      "version": "2.1.0"
     },
     "parameters": {
       "appGwTlsVersion": {
-        "allowedValues": [
-          "Audit",
-          "Deny",
-          "Disabled"
-        ],
-        "defaultValue": "Deny",
-        "type": "string"
-      },
-      "appGwWaf": {
         "allowedValues": [
           "Audit",
           "Deny",
@@ -313,17 +302,6 @@
         "parameters": {},
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/83a86a26-fd1f-447c-b59d-e51f44264114",
         "policyDefinitionReferenceId": "Deny-vNic-Pip"
-      },
-      {
-        "definitionVersion": "2.*.*",
-        "groupNames": [],
-        "parameters": {
-          "effect": {
-            "value": "[parameters('appGwWaf')]"
-          }
-        },
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/564feb30-bf6a-4854-b4bb-0d2d2d1e6c66",
-        "policyDefinitionReferenceId": "Deny-AppGw-Without-Waf"
       },
       {
         "definitionVersion": "1.*.*",
