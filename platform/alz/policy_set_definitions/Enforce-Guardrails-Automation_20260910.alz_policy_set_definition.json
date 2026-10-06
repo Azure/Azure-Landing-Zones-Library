@@ -1,8 +1,8 @@
 {
-  "name": "Enforce-Guardrails-Automation",
+  "name": "Enforce-Guardrails-Automation_20260910",
   "properties": {
-    "description": "This policy initiative is a group of policies that ensures Automation Account is compliant per regulated Landing Zones. Superseded by https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Enforce-Guardrails-Automation_20260910.html",
-    "displayName": "[Deprecated]: Enforce recommended guardrails for Automation Account",
+    "description": "This policy initiative is a group of policies that ensures Automation Account is compliant per regulated Landing Zones.",
+    "displayName": "Enforce recommended guardrails for Automation Account",
     "metadata": {
       "alzCloudEnvironments": [
         "AzureCloud",
@@ -10,10 +10,9 @@
         "AzureUSGovernment"
       ],
       "category": "Automation",
-      "deprecated": true,
+      "replacesPolicy": "Enforce-Guardrails-Automation",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "supersededBy": "Enforce-Guardrails-Automation_20260910",
-      "version": "1.1.0-deprecated"
+      "version": "1.0.0"
     },
     "parameters": {
       "aaLocalAuth": {
@@ -57,29 +56,9 @@
         ],
         "defaultValue": "Deny",
         "type": "string"
-      },
-      "autoHotPatch": {
-        "allowedValues": [
-          "Audit",
-          "Disabled",
-          "Deny"
-        ],
-        "defaultValue": "Deny",
-        "type": "string"
       }
     },
     "policyDefinitions": [
-      {
-        "definitionVersion": "1.*.*",
-        "groupNames": [],
-        "parameters": {
-          "effect": {
-            "value": "[parameters('autoHotPatch')]"
-          }
-        },
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6d02d2f7-e38b-4bdc-96f3-adc0a8726abc",
-        "policyDefinitionReferenceId": "Deny-Windows-Vm-HotPatch"
-      },
       {
         "definitionVersion": "1.*.*",
         "groupNames": [],
