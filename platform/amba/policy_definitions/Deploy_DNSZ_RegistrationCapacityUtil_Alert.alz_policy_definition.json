@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.1"
+      "version": "1.4.2"
     },
     "mode": "All",
     "parameters": {
@@ -148,13 +148,13 @@
               "mode": "incremental",
               "parameters": {
                 "autoMitigate": {
-                  "value": "[parameters('autoMitigate')]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-autoMitigate-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-autoMitigate-Override_'), parameters('autoMitigate'))]"
                 },
                 "enabled": {
-                  "value": "[parameters('enabled')]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-enabled-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-enabled-Override_'), parameters('enabled'))]"
                 },
                 "evaluationFrequency": {
-                  "value": "[parameters('evaluationFrequency')]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-evaluationFrequency-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-evaluationFrequency-Override_'), parameters('evaluationFrequency'))]"
                 },
                 "resourceId": {
                   "value": "[field('id')]"
@@ -163,13 +163,13 @@
                   "value": "[field('name')]"
                 },
                 "severity": {
-                  "value": "[parameters('severity')]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-severity-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-severity-Override_'), parameters('severity'))]"
                 },
                 "threshold": {
                   "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-threshold-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-threshold-Override_'), parameters('threshold'))]"
                 },
                 "windowSize": {
-                  "value": "[parameters('windowSize')]"
+                  "value": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-windowSize-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-windowSize-Override_'), parameters('windowSize'))]"
                 }
               },
               "template": {
@@ -284,23 +284,23 @@
                 "field": "Microsoft.Insights/metricalerts/scopes[*]"
               },
               {
-                "equals": "[parameters('enabled')]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-enabled-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-enabled-Override_'), parameters('enabled'))]",
                 "field": "Microsoft.Insights/metricAlerts/enabled"
               },
               {
-                "equals": "[parameters('evaluationFrequency')]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-evaluationFrequency-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-evaluationFrequency-Override_'), parameters('evaluationFrequency'))]",
                 "field": "Microsoft.Insights/metricAlerts/evaluationFrequency"
               },
               {
-                "equals": "[parameters('windowSize')]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-windowSize-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-windowSize-Override_'), parameters('windowSize'))]",
                 "field": "Microsoft.Insights/metricAlerts/windowSize"
               },
               {
-                "equals": "[parameters('severity')]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-severity-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-severity-Override_'), parameters('severity'))]",
                 "field": "Microsoft.Insights/metricalerts/severity"
               },
               {
-                "equals": "[parameters('autoMitigate')]",
+                "equals": "[if(contains(coalesce(field('tags'), createObject()), '_amba-VirtualNetworkWithRegistrationCapacityUtilization-autoMitigate-Override_'), field('tags._amba-VirtualNetworkWithRegistrationCapacityUtilization-autoMitigate-Override_'), parameters('autoMitigate'))]",
                 "field": "Microsoft.Insights/metricAlerts/autoMitigate"
               },
               {
