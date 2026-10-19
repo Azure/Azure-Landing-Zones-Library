@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.1"
+      "version": "1.5.0"
     },
     "mode": "All",
     "parameters": {
@@ -87,7 +87,7 @@
         "type": "String"
       },
       "evaluationPeriods": {
-        "defaultValue": "4",
+        "defaultValue": "2",
         "metadata": {
           "description": "The number of aggregated lookback points.",
           "displayName": "Evaluation Periods"
@@ -95,7 +95,7 @@
         "type": "String"
       },
       "failingPeriods": {
-        "defaultValue": "4",
+        "defaultValue": "2",
         "metadata": {
           "description": "Number of failing periods before alert is fired",
           "displayName": "Failing Periods"

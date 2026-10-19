@@ -10,7 +10,7 @@
       ],
       "category": "Key Vault",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.1"
+      "version": "1.5.0"
     },
     "mode": "All",
     "parameters": {
@@ -120,7 +120,7 @@
           "PT12H",
           "P1D"
         ],
-        "defaultValue": "PT5M",
+        "defaultValue": "PT1M",
         "metadata": {
           "description": "Window size for the alert",
           "displayName": "Window Size"
