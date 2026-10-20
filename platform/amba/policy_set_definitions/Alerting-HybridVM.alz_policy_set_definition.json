@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.0"
+      "version": "1.5.0"
     },
     "parameters": {
       "ALZManagementSubscriptionId": {
@@ -132,7 +132,6 @@
       },
       "HybridVMDataDiskReadLatencyEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -205,14 +204,13 @@
       },
       "HybridVMDataDiskReadLatencyWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -278,7 +276,6 @@
       },
       "HybridVMDataDiskSpaceEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -351,14 +348,13 @@
       },
       "HybridVMDataDiskSpaceWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -424,7 +420,6 @@
       },
       "HybridVMDataDiskWriteLatencyEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -497,14 +492,13 @@
       },
       "HybridVMDataDiskWriteLatencyWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -713,7 +707,6 @@
       },
       "HybridVMHeartBeatRGEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -778,16 +771,15 @@
       },
       "HybridVMHeartBeatRGWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
-        "defaultValue": "PT15M",
+        "defaultValue": "PT6H",
         "metadata": {
           "description": "Window size for the alert",
           "displayName": "Hybrid VM Heart Beat RG Window Size"
@@ -851,7 +843,6 @@
       },
       "HybridVMNetworkInEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -924,14 +915,13 @@
       },
       "HybridVMNetworkInWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -997,7 +987,6 @@
       },
       "HybridVMNetworkOutEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1070,14 +1059,13 @@
       },
       "HybridVMNetworkOutWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -1143,7 +1131,6 @@
       },
       "HybridVMOSDiskReadLatencyEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1216,14 +1203,13 @@
       },
       "HybridVMOSDiskReadLatencyWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -1289,7 +1275,6 @@
       },
       "HybridVMOSDiskSpaceEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1362,14 +1347,13 @@
       },
       "HybridVMOSDiskSpaceWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -1435,7 +1419,6 @@
       },
       "HybridVMOSDiskWriteLatencyEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1488,7 +1471,7 @@
         "type": "string"
       },
       "HybridVMOSDiskWriteLatencyThreshold": {
-        "defaultValue": "50",
+        "defaultValue": "30",
         "metadata": {
           "description": "Threshold for the alert",
           "displayName": "Hybrid VM OS Disk Write Latency Threshold"
@@ -1508,14 +1491,13 @@
       },
       "HybridVMOSDiskWriteLatencyWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -1581,7 +1563,6 @@
       },
       "HybridVMPercentCPUEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1646,14 +1627,13 @@
       },
       "HybridVMPercentCPUWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -1719,7 +1699,6 @@
       },
       "HybridVMPercentMemoryEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1784,14 +1763,13 @@
       },
       "HybridVMPercentMemoryWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {

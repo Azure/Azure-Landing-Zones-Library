@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.1"
+      "version": "1.5.0"
     },
     "mode": "All",
     "parameters": {
@@ -94,7 +94,7 @@
           "3",
           "4"
         ],
-        "defaultValue": "1",
+        "defaultValue": "3",
         "metadata": {
           "description": "Severity of the Alert",
           "displayName": "Severity"

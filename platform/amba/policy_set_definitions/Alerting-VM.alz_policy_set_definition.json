@@ -10,7 +10,7 @@
       ],
       "category": "Monitoring",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.0"
+      "version": "1.5.0"
     },
     "parameters": {
       "ALZManagementSubscriptionId": {
@@ -132,7 +132,6 @@
       },
       "VMDataDiskReadLatencyEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -205,14 +204,13 @@
       },
       "VMDataDiskReadLatencyWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -278,7 +276,6 @@
       },
       "VMDataDiskSpaceEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -351,14 +348,13 @@
       },
       "VMDataDiskSpaceWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -424,7 +420,6 @@
       },
       "VMDataDiskWriteLatencyEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -497,14 +492,13 @@
       },
       "VMDataDiskWriteLatencyWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -570,7 +564,6 @@
       },
       "VMHeartBeatRGEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -635,14 +628,13 @@
       },
       "VMHeartBeatRGWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT6H",
         "metadata": {
@@ -708,7 +700,6 @@
       },
       "VMNetworkInEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -781,14 +772,13 @@
       },
       "VMNetworkInWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -854,7 +844,6 @@
       },
       "VMNetworkOutEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -927,14 +916,13 @@
       },
       "VMNetworkOutWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -1000,7 +988,6 @@
       },
       "VMOSDiskReadLatencyEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1073,14 +1060,13 @@
       },
       "VMOSDiskReadLatencyWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -1146,7 +1132,6 @@
       },
       "VMOSDiskSpaceEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1219,14 +1204,13 @@
       },
       "VMOSDiskSpaceWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -1292,7 +1276,6 @@
       },
       "VMOSDiskWriteLatencyEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1365,14 +1348,13 @@
       },
       "VMOSDiskWriteLatencyWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -1438,7 +1420,6 @@
       },
       "VMPercentCPUEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1461,11 +1442,7 @@
       },
       "VMPercentCPUOperator": {
         "allowedValues": [
-          "Equals",
-          "GreaterThan",
-          "GreaterThanOrEqual",
-          "LessThan",
-          "LessThanOrEqual"
+          "GreaterThan"
         ],
         "defaultValue": "GreaterThan",
         "metadata": {
@@ -1507,14 +1484,13 @@
       },
       "VMPercentCPUWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {
@@ -1580,7 +1556,6 @@
       },
       "VMPercentMemoryEvaluationFrequency": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
@@ -1645,14 +1620,13 @@
       },
       "VMPercentMemoryWindowSize": {
         "allowedValues": [
-          "PT1M",
           "PT5M",
           "PT15M",
           "PT30M",
           "PT1H",
           "PT6H",
           "PT12H",
-          "P1D"
+          "PT24H"
         ],
         "defaultValue": "PT15M",
         "metadata": {

@@ -10,7 +10,7 @@
       ],
       "category": "Compute",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.0.1-preview"
+      "version": "1.1.0-preview"
     },
     "mode": "All",
     "parameters": {
@@ -95,7 +95,7 @@
         "type": "String"
       },
       "autoResolveTime": {
-        "defaultValue": "true",
+        "defaultValue": "00:10:00",
         "metadata": {
           "description": "Auto Resolve time for the alert in ISO 8601 format",
           "displayName": "Auto Resolve"

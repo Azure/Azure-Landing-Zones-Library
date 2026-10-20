@@ -10,7 +10,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/azure-monitor-baseline-alerts/",
-      "version": "1.4.1"
+      "version": "1.5.0"
     },
     "mode": "All",
     "parameters": {
@@ -79,7 +79,7 @@
           "PT30M",
           "PT1H"
         ],
-        "defaultValue": "PT1M",
+        "defaultValue": "PT5M",
         "metadata": {
           "description": "Evaluation frequency for the alert",
           "displayName": "Evaluation Frequency"
