@@ -101,6 +101,7 @@ $parameters = @{
     retentionInDays                          = "30"
     rgName                                   = "`${root_scope_id}-mgmt"
     logAnalyticsResourceId                   = "$logAnalyticsWorkspaceIdPlaceholder"
+    laCategory                               = "allLogs"
     topLevelManagementGroupPrefix            = "`${temp}"
     dnsZoneResourceGroupId                   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones/"
     ddosPlanResourceId                       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/ddosProtectionPlans/placeholder"
