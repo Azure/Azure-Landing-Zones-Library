@@ -101,6 +101,7 @@ $parameters = @{
     retentionInDays                          = "30"
     rgName                                   = "`${root_scope_id}-mgmt"
     logAnalyticsResourceId                   = "$logAnalyticsWorkspaceIdPlaceholder"
+    laCategory                               = "allLogs"
     topLevelManagementGroupPrefix            = "`${temp}"
     dnsZoneResourceGroupId                   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones/"
     ddosPlanResourceId                       = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/ddosProtectionPlans/placeholder"
@@ -188,6 +189,10 @@ foreach ($managementGroup in $policyAssignments.Keys) {
 
       if ($assignmentsToSkip.Contains($policyAssignmentName)) {
         continue
+      }
+
+      if ($policyAssignmentName -eq "Deploy-Diag-LogsCat") {
+        $parsedAssignment.properties.displayName = "Enable $($defaultParameters.laCategory) category group resource logging for supported resources to Log Analytics"
       }
 
       Write-Output "Parsed Assignment Name: $($parsedAssignment.name)"
