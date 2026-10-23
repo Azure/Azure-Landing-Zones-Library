@@ -191,6 +191,10 @@ foreach ($managementGroup in $policyAssignments.Keys) {
         continue
       }
 
+      if ($policyAssignmentName -eq "Deploy-Diag-LogsCat") {
+        $parsedAssignment.properties.displayName = "Enable $($defaultParameters.laCategory) category group resource logging for supported resources to Log Analytics"
+      }
+
       Write-Output "Parsed Assignment Name: $($parsedAssignment.name)"
 
       if (!(Get-Member -InputObject $parsedAssignment.properties -Name "scope" -MemberType Properties)) {

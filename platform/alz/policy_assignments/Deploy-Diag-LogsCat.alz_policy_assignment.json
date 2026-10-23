@@ -9,7 +9,7 @@
   },
   "properties": {
     "description": "Resource logs should be enabled to track activities and events that take place on your resources and give you visibility and insights into any changes that occur. This initiative deploys diagnostic setting using the allLogs category group to route logs to an Event Hub for all supported resources.",
-    "displayName": "Enable category group resource logging for supported resources to Log Analytics",
+    "displayName": "Enable allLogs category group resource logging for supported resources to Log Analytics",
     "policyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/0884adba-2312-4468-abeb-5422caed1038",
     "definitionVersion": "1.*.*",
     "enforcementMode": "Default",

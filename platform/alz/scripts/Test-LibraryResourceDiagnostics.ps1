@@ -47,4 +47,11 @@ $assignment = Get-Content -LiteralPath $assignmentPath -Raw | ConvertFrom-Json
 if ($assignment.properties.policyDefinitionId -ne $initiatives.allLogs) {
   throw "The generated Deploy-Diag-LogsCat library assignment must default to allLogs."
 }
+if ($assignment.name -ne "Deploy-Diag-LogsCat") {
+  throw "The generated diagnostic assignment must retain the Deploy-Diag-LogsCat name."
+}
+if ($assignment.properties.displayName -cne "Enable allLogs category group resource logging for supported resources to Log Analytics") {
+  throw "The generated Deploy-Diag-LogsCat display name must identify the allLogs category group."
+}
 Write-Output "PASS: the library diagnostic assignment defaults to allLogs."
+Write-Output "PASS: the library diagnostic assignment retains its name and allLogs display name."
