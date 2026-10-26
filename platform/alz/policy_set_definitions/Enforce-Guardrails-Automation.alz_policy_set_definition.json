@@ -1,8 +1,8 @@
 {
   "name": "Enforce-Guardrails-Automation",
   "properties": {
-    "description": "This policy initiative is a group of policies that ensures Automation Account is compliant per regulated Landing Zones.",
-    "displayName": "Enforce recommended guardrails for Automation Account",
+    "description": "This policy initiative is a group of policies that ensures Automation Account is compliant per regulated Landing Zones. Superseded by https://www.azadvertizer.net/azpolicyinitiativesadvertizer/Enforce-Guardrails-Automation_20260910.html",
+    "displayName": "[Deprecated]: Enforce recommended guardrails for Automation Account",
     "metadata": {
       "alzCloudEnvironments": [
         "AzureCloud",
@@ -10,8 +10,10 @@
         "AzureUSGovernment"
       ],
       "category": "Automation",
+      "deprecated": true,
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.1.0"
+      "supersededBy": "Enforce-Guardrails-Automation_20260910",
+      "version": "1.1.0-deprecated"
     },
     "parameters": {
       "aaLocalAuth": {
@@ -116,7 +118,7 @@
         "groupNames": [],
         "parameters": {
           "effect": {
-            "value": "[parameters('aaModifyLocalAUth')]"
+            "value": "[parameters('aaModifyLocalAuth')]"
           }
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/30d1d58e-8f96-47a5-8564-499a3f3cca81",
