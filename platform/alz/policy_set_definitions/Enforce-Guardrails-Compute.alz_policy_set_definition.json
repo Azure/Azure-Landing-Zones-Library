@@ -11,9 +11,18 @@
       ],
       "category": "Compute",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.1.0"
+      "version": "1.2.0"
     },
     "parameters": {
+      "autoHotPatch": {
+        "allowedValues": [
+          "Audit",
+          "Disabled",
+          "Deny"
+        ],
+        "defaultValue": "Deny",
+        "type": "string"
+      },
       "diskDoubleEncryption": {
         "allowedValues": [
           "Audit",
@@ -34,6 +43,17 @@
       }
     },
     "policyDefinitions": [
+      {
+        "definitionVersion": "1.*.*",
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('autoHotPatch')]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/6d02d2f7-e38b-4bdc-96f3-adc0a8726abc",
+        "policyDefinitionReferenceId": "Deny-Windows-Vm-HotPatch"
+      },
       {
         "definitionVersion": "1.*.*",
         "groupNames": [],

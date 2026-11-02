@@ -12,9 +12,9 @@
       "category": "Monitoring",
       "deprecated": false,
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "1.0.0"
+      "version": "1.0.1"
     },
-    "mode": "Indexed",
+    "mode": "All",
     "parameters": {},
     "policyRule": {
       "if": {
