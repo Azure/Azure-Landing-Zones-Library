@@ -107,6 +107,9 @@ jobs:
             ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
               -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+            ${{ github.repository }}/platform/alz/scripts/Test-LibraryResourceDiagnostics.ps1 `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
+              -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
           azPSVersion: "latest"
 
       - name: check for changes
