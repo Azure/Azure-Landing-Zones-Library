@@ -189,6 +189,7 @@
     "Enforce-EncryptTransit_20241211",
     "Enforce-Guardrails-APIM",
     "Enforce-Guardrails-AppServices",
+    "Enforce-Guardrails-Automation_20260910",
     "Enforce-Guardrails-Automation",
     "Enforce-Guardrails-BotService",
     "Enforce-Guardrails-CognitiveServices",
