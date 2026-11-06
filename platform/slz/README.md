@@ -4,7 +4,7 @@ This library provides the reference set of Sovereign Landing Zone (SLZ) policies
   
 ## Dependencies
   
-- platform/alz@2026.10.0
+- platform/alz@2026.11.0
   
 ## Usage
   
@@ -453,7 +453,7 @@ flowchart TD
   
 #### root policy set definitions
   
-<details><summary>43 policy set definitions</summary>
+<details><summary>44 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -473,6 +473,7 @@ flowchart TD
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
 - Enforce-Guardrails-Automation
+- Enforce-Guardrails-Automation_20260910
 - Enforce-Guardrails-BotService
 - Enforce-Guardrails-CognitiveServices
 - Enforce-Guardrails-Compute
@@ -885,7 +886,7 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy set definitions
   
-<details><summary>43 policy set definitions</summary>
+<details><summary>44 policy set definitions</summary>
 
 - Audit-TrustedLaunch
 - Audit-UnusedResourcesCostOptimization
@@ -905,6 +906,7 @@ The default resource group name for service health alerts. This is used for the 
 - Enforce-Guardrails-APIM
 - Enforce-Guardrails-AppServices
 - Enforce-Guardrails-Automation
+- Enforce-Guardrails-Automation_20260910
 - Enforce-Guardrails-BotService
 - Enforce-Guardrails-CognitiveServices
 - Enforce-Guardrails-Compute
