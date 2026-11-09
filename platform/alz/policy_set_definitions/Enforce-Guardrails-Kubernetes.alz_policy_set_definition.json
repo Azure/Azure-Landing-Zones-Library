@@ -261,7 +261,7 @@
         "policyDefinitionReferenceId": "Deny-Aks-Allowed-Capabilities"
       },
       {
-        "definitionVersion": "7.*.*",
+        "definitionVersion": "8.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
