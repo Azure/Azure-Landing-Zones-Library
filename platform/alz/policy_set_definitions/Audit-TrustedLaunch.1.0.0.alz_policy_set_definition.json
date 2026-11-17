@@ -51,8 +51,7 @@
         "policyDefinitionReferenceId": "AuditTrustedLaunchEnabled"
       }
     ],
-    "policyType": "Custom",
-    "version": "1.0.0"
+    "policyType": "Custom"
   },
   "type": "Microsoft.Authorization/policySetDefinitions"
 }
