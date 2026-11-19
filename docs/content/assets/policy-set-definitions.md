@@ -68,7 +68,3 @@ Web Apps policies also need Reader access to the target account or app, includin
 when it is in another subscription. Update the assignment identity's role grants
 when upgrading an existing assignment; listing a role in a policy definition does
 not itself grant that role.
-
-`platform/alz/scripts/Update-LibraryPrivateDnsZones.ps1` reapplies these curated
-additions after the Enterprise-Scale refresh, including reset runs. Run it with
-`-TargetPath <library-directory>` when refreshing the library manually.
