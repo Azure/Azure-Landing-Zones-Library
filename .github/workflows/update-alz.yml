@@ -107,6 +107,11 @@ jobs:
             ${{ github.repository }}/platform/alz/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1 `
               -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+            ${{ github.repository }}/platform/alz/scripts/Update-LibraryPrivateDnsZones.ps1 `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}"
+            ${{ github.repository }}/platform/alz/scripts/Test-LibraryPrivateDnsZones.ps1 `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}" `
+              -ParserPath "${{ github.workspace }}/${{ github.repository }}/${{ env.library_dir }}/scripts/Template.Parser.Cli"
             ${{ github.repository }}/platform/alz/scripts/Test-LibraryResourceDiagnostics.ps1 `
               -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"

@@ -81,3 +81,12 @@ jobs:
         run: |
           make lib-check LIB="platform/${{ matrix.lib }}"
         shell: bash
+
+      - name: Check ALZ private DNS coverage
+        if: matrix.lib == 'alz'
+        shell: pwsh
+        run: |
+          $parser = Join-Path $env:RUNNER_TEMP "Template.Parser.Cli"
+          Invoke-WebRequest "https://github.com/Azure/arm-template-parser/releases/download/0.2.4/Template.Parser.Cli" -OutFile $parser
+          chmod +x $parser
+          ./platform/alz/scripts/Test-LibraryPrivateDnsZones.ps1 -ParserPath $parser

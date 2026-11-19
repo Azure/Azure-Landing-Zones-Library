@@ -218,6 +218,24 @@
       },
       "azureSiteRecoveryQueuePrivateDnsZoneId": {
         "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones//providers/Microsoft.Network/privateDnsZones/privatelink.queue.core.windows.net"
+      },
+      "azureApiManagementPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azure-api.net"
+      },
+      "azureStaticWebAppsPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.azurestaticapps.net"
+      },
+      "azureOpenAIPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.openai.azure.com"
+      },
+      "azureAIServicesPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.services.ai.azure.com"
+      },
+      "azureSQLPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.database.windows.net"
+      },
+      "azureMySQLPrivateDnsZoneId": {
+        "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/placeholder/providers/Microsoft.Network/privateDnsZones/privatelink.mysql.database.azure.com"
       }
     },
     "scope": "/providers/Microsoft.Management/managementGroups/placeholder",

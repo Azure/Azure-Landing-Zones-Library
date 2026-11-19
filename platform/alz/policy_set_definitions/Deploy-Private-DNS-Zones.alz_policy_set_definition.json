@@ -9,7 +9,7 @@
       ],
       "category": "Network",
       "source": "https://github.com/Azure/Enterprise-Scale/",
-      "version": "2.5.0"
+      "version": "2.6.0"
     },
     "parameters": {
       "azureAcrPrivateDnsZoneId": {
@@ -686,7 +686,13 @@
           "azureSynapseSQLPrivateDnsZoneId": "privatelink.sql.azuresynapse.net",
           "azureVirtualDesktopHostpoolPrivateDnsZoneId": "privatelink.wvd.microsoft.com",
           "azureVirtualDesktopWorkspacePrivateDnsZoneId": "privatelink.wvd.microsoft.com",
-          "azureWebPrivateDnsZoneId": "privatelink.webpubsub.azure.com"
+          "azureWebPrivateDnsZoneId": "privatelink.webpubsub.azure.com",
+          "azureApiManagementPrivateDnsZoneId": "privatelink.azure-api.net",
+          "azureStaticWebAppsPrivateDnsZoneId": "privatelink.azurestaticapps.net",
+          "azureOpenAIPrivateDnsZoneId": "privatelink.openai.azure.com",
+          "azureAIServicesPrivateDnsZoneId": "privatelink.services.ai.azure.com",
+          "azureSQLPrivateDnsZoneId": "privatelink.database.windows.net",
+          "azureMySQLPrivateDnsZoneId": "privatelink.mysql.database.azure.com"
         },
         "metadata": {
           "description": "The list of private DNS zone names to be used for the Azure PaaS services.",
@@ -837,6 +843,66 @@
           "displayName": "Effect"
         },
         "type": "string"
+      },
+      "azureApiManagementPrivateDnsZoneId": {
+        "metadata": {
+          "assignPermissions": true,
+          "description": "Resource ID of the existing private DNS zone.",
+          "displayName": "azureApiManagementPrivateDnsZoneId",
+          "strongType": "Microsoft.Network/privateDnsZones"
+        },
+        "type": "String",
+        "defaultValue": ""
+      },
+      "azureStaticWebAppsPrivateDnsZoneId": {
+        "metadata": {
+          "assignPermissions": true,
+          "description": "Resource ID of the existing private DNS zone.",
+          "displayName": "azureStaticWebAppsPrivateDnsZoneId",
+          "strongType": "Microsoft.Network/privateDnsZones"
+        },
+        "type": "String",
+        "defaultValue": ""
+      },
+      "azureOpenAIPrivateDnsZoneId": {
+        "metadata": {
+          "assignPermissions": true,
+          "description": "Resource ID of the existing private DNS zone.",
+          "displayName": "azureOpenAIPrivateDnsZoneId",
+          "strongType": "Microsoft.Network/privateDnsZones"
+        },
+        "type": "String",
+        "defaultValue": ""
+      },
+      "azureAIServicesPrivateDnsZoneId": {
+        "metadata": {
+          "assignPermissions": true,
+          "description": "Resource ID of the existing private DNS zone.",
+          "displayName": "azureAIServicesPrivateDnsZoneId",
+          "strongType": "Microsoft.Network/privateDnsZones"
+        },
+        "type": "String",
+        "defaultValue": ""
+      },
+      "azureSQLPrivateDnsZoneId": {
+        "metadata": {
+          "assignPermissions": true,
+          "description": "Resource ID of the existing private DNS zone.",
+          "displayName": "azureSQLPrivateDnsZoneId",
+          "strongType": "Microsoft.Network/privateDnsZones"
+        },
+        "type": "String",
+        "defaultValue": ""
+      },
+      "azureMySQLPrivateDnsZoneId": {
+        "metadata": {
+          "assignPermissions": true,
+          "description": "Resource ID of the existing private DNS zone.",
+          "displayName": "azureMySQLPrivateDnsZoneId",
+          "strongType": "Microsoft.Network/privateDnsZones"
+        },
+        "type": "String",
+        "defaultValue": ""
       }
     },
     "policyDefinitions": [
@@ -1471,17 +1537,22 @@
         "policyDefinitionReferenceId": "DINE-Private-DNS-Azure-DiskAccess"
       },
       {
-        "definitionVersion": "1.*.*",
         "groupNames": [],
         "parameters": {
           "effect": {
             "value": "[parameters('effect')]"
           },
           "privateDnsZoneId": {
-            "value": "[if(equals(parameters('dnsZoneSubscriptionId'), ''), parameters('azureCognitiveServicesPrivateDnsZoneId'), format('/subscriptions/{0}/resourceGroups/{1}/providers/{2}/{3}', parameters('dnsZoneSubscriptionId'), toLower(parameters('dnsZoneResourceGroupName')), parameters('dnsZoneResourceType'), replace(replace(parameters('dnsZoneNames').azureCognitiveServicesPrivateDnsZoneId, '{regionName}', parameters('dnsZoneRegion')), '{regionCode}', parameters('dnzZoneRegionShortNames')[parameters('dnsZoneRegion')])))]"
+            "value": "[if(equals(parameters('dnsZoneSubscriptionId'), ''), parameters('azureCognitiveServicesPrivateDnsZoneId'), format('/subscriptions/{0}/resourceGroups/{1}/providers/{2}/{3}', parameters('dnsZoneSubscriptionId'), toLower(parameters('dnsZoneResourceGroupName')), parameters('dnsZoneResourceType'), parameters('dnsZoneNames').azureCognitiveServicesPrivateDnsZoneId))]"
+          },
+          "openaiPrivateDnsZoneId": {
+            "value": "[if(equals(parameters('dnsZoneSubscriptionId'), ''), parameters('azureOpenAIPrivateDnsZoneId'), format('/subscriptions/{0}/resourceGroups/{1}/providers/{2}/{3}', parameters('dnsZoneSubscriptionId'), toLower(parameters('dnsZoneResourceGroupName')), parameters('dnsZoneResourceType'), parameters('dnsZoneNames').azureOpenAIPrivateDnsZoneId))]"
+          },
+          "aiServicesPrivateDnsZoneId": {
+            "value": "[if(equals(parameters('dnsZoneSubscriptionId'), ''), parameters('azureAIServicesPrivateDnsZoneId'), format('/subscriptions/{0}/resourceGroups/{1}/providers/{2}/{3}', parameters('dnsZoneSubscriptionId'), toLower(parameters('dnsZoneResourceGroupName')), parameters('dnsZoneResourceType'), parameters('dnsZoneNames').azureAIServicesPrivateDnsZoneId))]"
           }
         },
-        "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/c4bc6f10-cb41-49eb-b000-d5ab82e2a091",
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policyDefinitions/Deploy-Private-DNS-CognitiveServices",
         "policyDefinitionReferenceId": "DINE-Private-DNS-Azure-CognitiveServices"
       },
       {
@@ -1746,6 +1817,76 @@
         },
         "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/af783da1-4ad1-42be-800d-d19c70038820",
         "policyDefinitionReferenceId": "DINE-Private-DNS-Azure-Site-Recovery-Backup"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('effect')]"
+          },
+          "privateDnsZoneId": {
+            "value": "[if(equals(parameters('dnsZoneSubscriptionId'), ''), parameters('azureApiManagementPrivateDnsZoneId'), format('/subscriptions/{0}/resourceGroups/{1}/providers/{2}/{3}', parameters('dnsZoneSubscriptionId'), toLower(parameters('dnsZoneResourceGroupName')), parameters('dnsZoneResourceType'), parameters('dnsZoneNames').azureApiManagementPrivateDnsZoneId))]"
+          },
+          "resourceType": {
+            "value": "Microsoft.ApiManagement/service"
+          },
+          "groupId": {
+            "value": "Gateway"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policyDefinitions/Deploy-Private-DNS-ZoneGroup",
+        "policyDefinitionReferenceId": "DINE-Private-DNS-Azure-ApiManagement"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('effect')]"
+          },
+          "privateDnsZoneId": {
+            "value": "[if(equals(parameters('dnsZoneSubscriptionId'), ''), parameters('azureSQLPrivateDnsZoneId'), format('/subscriptions/{0}/resourceGroups/{1}/providers/{2}/{3}', parameters('dnsZoneSubscriptionId'), toLower(parameters('dnsZoneResourceGroupName')), parameters('dnsZoneResourceType'), parameters('dnsZoneNames').azureSQLPrivateDnsZoneId))]"
+          },
+          "resourceType": {
+            "value": "Microsoft.Sql/servers"
+          },
+          "groupId": {
+            "value": "sqlServer"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policyDefinitions/Deploy-Private-DNS-ZoneGroup",
+        "policyDefinitionReferenceId": "DINE-Private-DNS-Azure-SQL"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('effect')]"
+          },
+          "privateDnsZoneId": {
+            "value": "[if(equals(parameters('dnsZoneSubscriptionId'), ''), parameters('azureMySQLPrivateDnsZoneId'), format('/subscriptions/{0}/resourceGroups/{1}/providers/{2}/{3}', parameters('dnsZoneSubscriptionId'), toLower(parameters('dnsZoneResourceGroupName')), parameters('dnsZoneResourceType'), parameters('dnsZoneNames').azureMySQLPrivateDnsZoneId))]"
+          },
+          "resourceType": {
+            "value": "Microsoft.DBforMySQL/"
+          },
+          "groupId": {
+            "value": "mysqlServer"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policyDefinitions/Deploy-Private-DNS-ZoneGroup",
+        "policyDefinitionReferenceId": "DINE-Private-DNS-Azure-MySQL"
+      },
+      {
+        "groupNames": [],
+        "parameters": {
+          "effect": {
+            "value": "[parameters('effect')]"
+          },
+          "privateDnsZoneId": {
+            "value": "[if(equals(parameters('dnsZoneSubscriptionId'), ''), parameters('azureStaticWebAppsPrivateDnsZoneId'), format('/subscriptions/{0}/resourceGroups/{1}/providers/{2}/{3}', parameters('dnsZoneSubscriptionId'), toLower(parameters('dnsZoneResourceGroupName')), parameters('dnsZoneResourceType'), parameters('dnsZoneNames').azureStaticWebAppsPrivateDnsZoneId))]"
+          }
+        },
+        "policyDefinitionId": "/providers/Microsoft.Management/managementGroups/placeholder/providers/Microsoft.Authorization/policyDefinitions/Deploy-Private-DNS-StaticWebApps",
+        "policyDefinitionReferenceId": "DINE-Private-DNS-Azure-StaticWebApps"
       }
     ],
     "policyType": "Custom"
