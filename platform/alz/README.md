@@ -230,7 +230,7 @@ flowchart TD
   
 #### root policy definitions
   
-<details><summary>149 policy definitions</summary>
+<details><summary>152 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -366,7 +366,10 @@ flowchart TD
 - Deploy-LogicApp-TLS
 - Deploy-MySQL-sslEnforcement
 - Deploy-PostgreSQL-sslEnforcement
+- Deploy-Private-DNS-CognitiveServices
 - Deploy-Private-DNS-Generic
+- Deploy-Private-DNS-StaticWebApps
+- Deploy-Private-DNS-ZoneGroup
 - Deploy-SQL-minTLS
 - Deploy-Sql-AuditingSettings
 - Deploy-Sql-SecurityAlertPolicies
@@ -624,7 +627,7 @@ The default resource group name for service health alerts. This is used for the 
   
 ### all policy definitions
   
-<details><summary>149 policy definitions</summary>
+<details><summary>152 policy definitions</summary>
 
 - Append-AppService-httpsonly
 - Append-AppService-latestTLS
@@ -760,7 +763,10 @@ The default resource group name for service health alerts. This is used for the 
 - Deploy-LogicApp-TLS
 - Deploy-MySQL-sslEnforcement
 - Deploy-PostgreSQL-sslEnforcement
+- Deploy-Private-DNS-CognitiveServices
 - Deploy-Private-DNS-Generic
+- Deploy-Private-DNS-StaticWebApps
+- Deploy-Private-DNS-ZoneGroup
 - Deploy-SQL-minTLS
 - Deploy-Sql-AuditingSettings
 - Deploy-Sql-SecurityAlertPolicies

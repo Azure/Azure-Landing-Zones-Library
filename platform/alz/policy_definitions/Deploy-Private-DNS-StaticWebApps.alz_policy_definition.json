@@ -1,0 +1,165 @@
+{
+  "name": "Deploy-Private-DNS-StaticWebApps",
+  "properties": {
+    "description": "Configure the private DNS zone group using the Static Web App default hostname, selecting the unpartitioned or partition-specific zone in the supplied zone's resource group.",
+    "displayName": "Configure Static Web Apps private DNS zones",
+    "metadata": {
+      "alzCloudEnvironments": [
+        "AzureCloud"
+      ],
+      "category": "Networking",
+      "source": "https://github.com/Azure/Azure-Landing-Zones-Library/",
+      "version": "1.0.0"
+    },
+    "mode": "All",
+    "parameters": {
+      "effect": {
+        "allowedValues": [
+          "DeployIfNotExists",
+          "Disabled"
+        ],
+        "defaultValue": "DeployIfNotExists",
+        "metadata": {
+          "description": "Enable or disable the execution of the policy",
+          "displayName": "Effect"
+        },
+        "type": "String"
+      },
+      "evaluationDelay": {
+        "defaultValue": "AfterProvisioningSuccess",
+        "metadata": {
+          "description": "The delay in evaluation of the policy. Review delay options at https://learn.microsoft.com/en-us/azure/governance/policy/concepts/effect-deploy-if-not-exists",
+          "displayName": "Evaluation Delay"
+        },
+        "type": "String"
+      },
+      "privateDnsZoneId": {
+        "metadata": {
+          "assignPermissions": true,
+          "description": "The private DNS zone name required for specific PaaS Services to resolve a private DNS Zone.",
+          "displayName": "Private DNS Zone ID for PaaS services",
+          "strongType": "Microsoft.Network/privateDnsZones"
+        },
+        "type": "String"
+      }
+    },
+    "policyRule": {
+      "if": {
+        "allOf": [
+          {
+            "equals": "Microsoft.Network/privateEndpoints",
+            "field": "type"
+          },
+          {
+            "anyOf": [
+              {
+                "count": {
+                  "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*]",
+                  "where": {
+                    "allOf": [
+                      {
+                        "contains": "Microsoft.Web/staticSites",
+                        "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].privateLinkServiceId"
+                      },
+                      {
+                        "equals": "staticSites",
+                        "field": "Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].groupIds[*]"
+                      }
+                    ]
+                  }
+                },
+                "greaterOrEquals": 1
+              },
+              {
+                "count": {
+                  "field": "Microsoft.Network/privateEndpoints/manualPrivateLinkServiceConnections[*]",
+                  "where": {
+                    "allOf": [
+                      {
+                        "contains": "Microsoft.Web/staticSites",
+                        "field": "Microsoft.Network/privateEndpoints/manualPrivateLinkServiceConnections[*].privateLinkServiceId"
+                      },
+                      {
+                        "equals": "staticSites",
+                        "field": "Microsoft.Network/privateEndpoints/manualPrivateLinkServiceConnections[*].groupIds[*]"
+                      }
+                    ]
+                  }
+                },
+                "greaterOrEquals": 1
+              }
+            ]
+          }
+        ]
+      },
+      "then": {
+        "details": {
+          "deployment": {
+            "properties": {
+              "mode": "incremental",
+              "parameters": {
+                "location": {
+                  "value": "[field('location')]"
+                },
+                "privateDnsZoneId": {
+                  "value": "[parameters('privateDnsZoneId')]"
+                },
+                "privateEndpointName": {
+                  "value": "[field('name')]"
+                },
+                "privateLinkServiceId": {
+                  "value": "[first(union(field('Microsoft.Network/privateEndpoints/privateLinkServiceConnections[*].privateLinkServiceId'), field('Microsoft.Network/privateEndpoints/manualPrivateLinkServiceConnections[*].privateLinkServiceId')))]"
+                }
+              },
+              "template": {
+                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+                "contentVersion": "1.0.0.0",
+                "parameters": {
+                  "location": {
+                    "type": "string"
+                  },
+                  "privateDnsZoneId": {
+                    "type": "string"
+                  },
+                  "privateEndpointName": {
+                    "type": "string"
+                  },
+                  "privateLinkServiceId": {
+                    "type": "string"
+                  }
+                },
+                "resources": [
+                  {
+                    "apiVersion": "2020-03-01",
+                    "location": "[parameters('location')]",
+                    "name": "[concat(parameters('privateEndpointName'), '/deployedByPolicy')]",
+                    "properties": {
+                      "privateDnsZoneConfigs": [
+                        {
+                          "name": "static-web-apps",
+                          "properties": {
+                            "privateDnsZoneId": "[concat(substring(parameters('privateDnsZoneId'), 0, lastIndexOf(parameters('privateDnsZoneId'), '/')), '/privatelink.', join(skip(split(reference(parameters('privateLinkServiceId'), '2023-12-01').defaultHostname, '.'), 1), '.'))]"
+                          }
+                        }
+                      ]
+                    },
+                    "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups"
+                  }
+                ]
+              }
+            }
+          },
+          "evaluationDelay": "[parameters('evaluationDelay')]",
+          "roleDefinitionIds": [
+            "/providers/Microsoft.Authorization/roleDefinitions/4d97b98b-1d4f-4787-a291-c67834d212e7",
+            "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7"
+          ],
+          "type": "Microsoft.Network/privateEndpoints/privateDnsZoneGroups"
+        },
+        "effect": "[parameters('effect')]"
+      }
+    },
+    "policyType": "Custom"
+  },
+  "type": "Microsoft.Authorization/policyDefinitions"
+}
