@@ -23,7 +23,6 @@
     "Deploy-VMSS-Monitoring",
     "Enable-AUM-CheckUpdates",
     "Enable-DDoS-VNET",
-    "Enforce-AKS-HTTPS",
     "Enforce-ASR",
     "Enforce-Encrypt-CMK0",
     "Enforce-GR-APIM0",

@@ -113,7 +113,7 @@ flowchart TD
   
 #### landing_zones policy assignments
   
-<details><summary>53 policy assignments</summary>
+<details><summary>52 policy assignments</summary>
 
 - Audit-AppGW-WAF
 - Deny-IP-forwarding
@@ -136,7 +136,6 @@ flowchart TD
 - Deploy-vmHybr-Monitoring
 - Enable-AUM-CheckUpdates
 - Enable-DDoS-VNET
-- Enforce-AKS-HTTPS
 - Enforce-ASR
 - Enforce-Encrypt-CMK0
 - Enforce-GR-APIM0
