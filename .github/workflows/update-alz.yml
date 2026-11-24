@@ -110,6 +110,8 @@ jobs:
             ${{ github.repository }}/platform/alz/scripts/Test-LibraryResourceDiagnostics.ps1 `
               -TargetPath "${{ github.workspace }}/${{ github.repository }}" `
               -SourcePath "${{ github.workspace }}/${{ env.remote_repository }}"
+            ${{ github.repository }}/platform/alz/scripts/Test-LibraryLandingZoneAssignments.ps1 `
+              -TargetPath "${{ github.workspace }}/${{ github.repository }}"
           azPSVersion: "latest"
 
       - name: check for changes

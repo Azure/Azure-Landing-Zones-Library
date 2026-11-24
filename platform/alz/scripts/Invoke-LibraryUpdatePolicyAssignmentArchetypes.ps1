@@ -294,6 +294,12 @@ foreach ($managementGroup in $policyAssignments.Keys) {
 
       Write-Verbose "Got final data for $managementGroupNameFinal and $policyAssignmentName"
 
+      # Enforce-TLS-SSL-Q225 already covers this control in landing_zones.
+      # Keep the assignment file available without assigning it twice by default.
+      if ($managementGroupNameFinal -eq "landing_zones" -and $policyAssignmentName -eq "Enforce-AKS-HTTPS") {
+        continue
+      }
+
       if (!($finalPolicyAssignments.ContainsKey($managementGroupNameFinal))) {
         $values = New-Object 'System.Collections.Generic.List[string]'
         $values.Add($policyAssignmentName)

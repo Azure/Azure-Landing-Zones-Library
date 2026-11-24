@@ -33,6 +33,14 @@ Where `<library>` is the name of the library you want to build the docs for. For
 make docs LIB=platform/alz
 ```
 
+The ALZ sync rebuilds archetype policy assignments from `Azure/Enterprise-Scale`.
+Intentional differences must be handled in
+`platform/alz/scripts/Invoke-LibraryUpdatePolicyAssignmentArchetypes.ps1`, not just
+in the generated archetype JSON. For example, `landing_zones` excludes
+`Enforce-AKS-HTTPS` because `Enforce-TLS-SSL-Q225` already covers that control;
+the standalone assignment file remains available for explicit use.
+The sync workflow checks this with `Test-LibraryLandingZoneAssignments.ps1`.
+
 # Release process
 
 Once the PR has been merged, a new release must be created that follows the Library and CalVer versioning scheme.
